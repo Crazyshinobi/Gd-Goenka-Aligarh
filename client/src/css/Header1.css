@@ -1,0 +1,157 @@
+html, body {
+    height: 100vh; /* Ensures full height is used */
+}
+.nav{
+    height: 100vh;
+    width: 100%;
+}
+
+.menu-item{
+    height: 38px;
+    position: relative;
+    padding: 1.1rem 0.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.menu-item::before{
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: -240px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(63, 194, 246);
+    color: white;
+    transition: left 0.2s ease;
+    z-index: -1;
+}
+
+.menu-item:hover::before{
+    left: 0;
+}
+.menu-item{
+    color: #0e1133;
+    font-weight: 600;
+}
+
+.screenSidebar .menu-item:hover{
+    color: black;
+}
+
+
+.smallSidebar{
+    position: fixed;
+    top: 0;
+    right: -100%; /* Sidebar starts off-screen */
+    width: 250px; /* Width of the sidebar */
+    height: 100%;
+    background-color: #f8f9fa; /* Light background for the sidebar */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transition: right 0.4s ease-in-out; /* Animate from the right */
+    padding-top: 20px; /* Add some top padding */
+}
+.screenSidebar{
+    position: fixed;
+    top: 0; 
+    right: -100%;
+    height: 100%;
+    width: 252px;
+    background-color: #f8f9fa;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transition: right 0.4s ease-in-out;
+    padding-top: 20px;
+}
+
+/* Sidebar when opened (moving into view) */
+.smallSidebar.open ,.screenSidebar.open{
+    right: 0; /* Sidebar comes into view */
+}
+
+/* Close button style */
+.smallSidebarCross {
+    padding: 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+.sidebarCross{
+    padding: 16px;
+    margin-top: -8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cross {
+    font-size: 24px;
+    cursor: pointer;
+    color: #333; /* Color for the close icon */
+}
+
+.scrollSidebarOne {
+    /* max-height: calc(99vh - 80px);  */
+    height: 88vh;
+    overflow-y: auto;
+    padding: 1px;
+}
+/* Sidebar item container */
+.sidebardiv {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    color: #333; /* Text color */
+    transition: background-color 0.3s ease; /* Add hover effect */
+}
+
+/* Sidebar item hover effect */
+.sidebardiv:hover {
+    background-color: #e2e6ea; /* Light background on hover */
+}
+
+/* Arrow icon alignment */
+.arrow {
+    margin-right: 10px;
+}
+
+/* Small sidebar item text */
+.sidebardiv p {
+    margin: 0; /* Remove margin from text */
+    font-size: 16px; /* Adjust font size */
+}
+
+/* Ensure the arrow icon is aligned properly */
+.sidebardiv .arrow {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.scrollSidebar {
+    /* max-height: calc(99vh - 80px);  */
+    height: 84vh;
+    overflow-y: auto;
+    padding: 1px;
+}
+header {
+    position: sticky;
+    top: 0;  /* Sticks to the top of the viewport */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    width: 100%; /* Ensure it spans the full width */
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    max-width: 1660px; /* Ensure it is above other content */
+}
+
+/* Drop shadow effect when sticky */
+header.sticky {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
