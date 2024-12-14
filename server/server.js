@@ -15,6 +15,7 @@ const galleryRoutes = require("./src/routes/galleryRoutes");
 const contentRoutes = require("./src/routes/contentRoutes");
 const admissionRoutes = require("./src/routes/admissionRoutes");
 const jobRoutes = require("./src/routes/jobRoutes");
+const jobApplicationRoutes = require("./src/routes/jobApplicationRoutes");
 
 // Middleware
 app.use(cors());
@@ -32,6 +33,7 @@ app.use("/api/v1/gallery", galleryRoutes);
 app.use("/api/v1/content", contentRoutes);
 app.use("/api/v1/admission", admissionRoutes);
 app.use("/api/v1/job", jobRoutes);
+app.use("/api/v1/job-application", jobApplicationRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
