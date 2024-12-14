@@ -3,9 +3,9 @@ import '../css/ExcellenceSection.css';
 
 const ExcellenceSection = () => {
   return (
-    <div className="bg-red-50 text-white py-10">
+    <div className="bg-rose-200 text-white py-10">
       {/* Middle Heading */}
-      <h1 className="text-3xl font-bold text-center mb-6 uppercase">
+      <h1 className="text-3xl  font-bold text-center mb-6 uppercase">
         29 Years of Excellence GD Goenka Group
       </h1>
 
