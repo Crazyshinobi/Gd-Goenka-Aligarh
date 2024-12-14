@@ -6,6 +6,7 @@ import ImageSection from './components/ImageSection';
 import VisionSection from './components/VisionSection';
 import BeyondAcademics from './components/BeyondAcademics';
 import ExcellenceSection from './components/ExcellenceSection';
+import Achievers from './components/Achievers';
 
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
        <Header1/>
        <ImageSection/>
        <VisionSection/>
-       <ExcellenceSection/>       
+       <ExcellenceSection/>  
+       <BeyondAcademics/>     
+       {/* <Achievers/> */}
     </div>
   )
 }

@@ -1,0 +1,34 @@
+.carousel-container {
+    padding-bottom: 40px;
+  }
+  
+  .custom-dot-list-style {
+    bottom: 0px;
+  }
+  
+  .custom-dot-list-style li {
+    margin: 0 4px;
+  }
+  
+  .custom-dot-list-style button {
+    border: none;
+    background: #CBD5E0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-dot-list-style .react-multi-carousel-dot--active button {
+    background: #2B6CB0;
+    opacity: 1;
+  }
+  
+  @media (max-width: 640px) {
+    .carousel-container {
+      padding-bottom: 30px;
+    }
+  }
+  
+  

@@ -3,7 +3,7 @@ import '../css/ExcellenceSection.css';
 
 const ExcellenceSection = () => {
   return (
-    <div className="bg-rose-200 text-white py-10">
+    <div className="bg-blue-900 text-white py-10">
       {/* Middle Heading */}
       <h1 className="text-3xl  font-bold text-center mb-6 uppercase">
         29 Years of Excellence GD Goenka Group
@@ -17,7 +17,7 @@ const ExcellenceSection = () => {
               NEW FRONTIERS ... 29 YEARS OF EXCELLENCE! THE NEXT BIG THING!
             </h2>
             <p className="text-lg leading-relaxed mb-4">
-              In 29 years, GDGPSVK has gained a firm foothold on the national arena with new expansions in infrastructure and a dynamic curriculum.
+              In 29 years, GDGPS Aligarh has gained a firm foothold on the national arena with new expansions in infrastructure and a dynamic curriculum.
             </p>
             <p className="text-lg leading-relaxed mb-4">
               The Goenkan odyssey has revolutionized the way education is perceived and given it a new meaning and direction.
@@ -59,7 +59,7 @@ const ExcellenceSection = () => {
         <div className="md:w-1/2 p-2 rounded-lg flex justify-center items-center h-[26rem]">
           <iframe
             className="w-full h-full rounded-md"
-            src="https://www.youtube.com/embed/8FnQiplTX50?si=UD-6MyJIrSvPcpuY"
+            src="https://www.youtube.com/embed/NOrwQv50ScU?si=ARn0x4EqPtDB6NGy"
             title="GD Goenka Group Video"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
