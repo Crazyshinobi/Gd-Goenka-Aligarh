@@ -3,15 +3,15 @@ import '../css/ExcellenceSection.css';
 
 const ExcellenceSection = () => {
   return (
-    <div className="bg-blue-900 text-white py-10">
+    <div className="bg-blue-900  text-white py-10">
       {/* Middle Heading */}
       <h1 className="text-3xl  font-bold text-center mb-6 uppercase">
         29 Years of Excellence GD Goenka Group
       </h1>
 
-      <div className="container mx-auto px-4 flex flex-col justify-center md:flex-row md:items-stretch gap-4">
+      <div className="container  mx-auto px-4 flex flex-col justify-center md:flex-row md:items-stretch gap-4">
         {/* Left Scrollable Text Box */}
-        <div className="md:w-1/2 bg-white text-blue-900 rounded-lg shadow-lg h-[26rem] flex flex-col items-center justify-center lg:w-2/5">
+        <div className="md:w-1/2 max-w-[1280px] w-full bg-white text-blue-900 rounded-lg shadow-lg h-[26rem] flex flex-col items-center justify-center lg:w-2/5">
           <div className="w-5/6 overflow-y-scroll scrollable-content h-[20rem] pr-4">
             <h2 className="text-2xl font-bold mb-4">
               NEW FRONTIERS ... 29 YEARS OF EXCELLENCE! THE NEXT BIG THING!

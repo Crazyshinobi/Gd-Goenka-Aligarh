@@ -58,8 +58,8 @@ const cardsData = [
 
 function BeyondAcademics() {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-cover bg-center" style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", }}>
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 px-4 w-full sm:px-6 lg:px-8 bg-cover bg-center" style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", }}>
+      <div className=" mx-auto max-w-[1280px] ">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Left Section */}
           <div className="lg:col-span-1 text-center lg:text-left">

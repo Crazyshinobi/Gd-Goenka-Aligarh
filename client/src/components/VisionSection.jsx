@@ -1,11 +1,12 @@
 import React from 'react';
-import principal from '../assets/Principal.jpeg'
+import principal from '../assets/principal1.jpeg'
 import icon from '../assets/prin_icon1.png'
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { NavLink } from 'react-router-dom';
 
 function VisionSection() {
   return (
-    <div className='max-w-[1380px] w-full mx-auto px-4 py-8 sm:py-12 lg:py-16'>
+    <div className='max-w-[1280px] w-full mx-auto px-1 py-8 sm:py-12 lg:py-16'>
       <div className="flex flex-col lg:flex-row gap-8">
         
         {/* PRINCIPAL SECTION */}
@@ -17,10 +18,10 @@ function VisionSection() {
             </div>
             <div className='mt-4 sm:mt-3 text-center'>
               <h2 className='text-3xl sm:text-3xl lg:text-5xl text-[#003963] mb-2'>Principal's Message</h2>
-              <p className='text-red-400 sm:text-sm mb-2'>Mr. Pradeep Kumar</p>
+              <p className='text-red-400 sm:text-sm mb-2'>Dr. Anubhav Lodhi</p>
               <p className='text-[#666666] sm:text-sm mb-4'>GD Goenka Public School provides every student with the opportunity to achieve their best in academics, sports, and personal development, shaping a bright future.</p>
               <div className='flex justify-end'>
-                <IoIosArrowRoundForward className="text-4xl sm:text-5xl lg:text-6xl cursor-pointer" />
+               <NavLink to={"/about/principalMessage"}><IoIosArrowRoundForward className="text-4xl sm:text-5xl lg:text-6xl cursor-pointer" /></NavLink> 
               </div>
             </div>
           </div>

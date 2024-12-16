@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 // import 'animate.css';
 import logo from '../assets/GD-Goenka-logo.png'
 import '../css/Header1.css'
-import { IoIosArrowForward } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
 import { FaBars } from "react-icons/fa6";
 import { Accordion, AccordionSummary, AccordionDetails} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import TopScrollButton from '../pages/TopScrollButton';
+import TopScrollButton from './TopScrollButton';
+import { NavLink } from 'react-router-dom'
 
 
 function Header1() {
@@ -36,7 +36,7 @@ function Header1() {
 
 
   return (
-    
+     
         <header className='sticky'> 
           <div className='header sticky  w-full bg-gray-100 flex justify-between items-center text-black py-4 px-2 md:w-full drop-shadow-md'>
 
@@ -45,15 +45,15 @@ function Header1() {
             </a> 
 
             <ul className='hidden xl:flex items-center gap-4 font-semibold text-base relative right-[60px]'>
-                <li className='peer p-3 hover:bg-sky-300 hover:text-white rounded-md cursor-pointer transition-all'>
+               <li className='peer p-3 hover:bg-sky-300 hover:text-white rounded-md cursor-pointer transition-all'>
                   ABOUT US
                 </li>
                    
                 <ul className='pt-4  top-[49px] font-extralight absolute hidden peer-hover:flex hover:flex w-[240px] 
                 flex-col bg-white drop-shadow-lg rounded-md gap-2 transition-all duration-100 ease-in'>
-                    <li className='menu-item cursor-pointer mt-[-8px] mb-[-8px]'>PRINCIPAL'S MESSAGE</li><hr />
-                    <li className='menu-item cursor-pointer mt-[-8px] mb-[-8px]'>MANAGEMENT</li><hr />
-                    <li className='menu-item cursor-pointer mt-[-9px]'>VISION & MISSION</li>
+                   <NavLink to={"/about/principal-Message"}><li className='menu-item cursor-pointer mt-[-8px] mb-[-8px]'>PRINCIPAL'S MESSAGE</li></NavLink> <hr />
+                    <NavLink to={'/about/management'}><li className='menu-item cursor-pointer mt-[-8px] mb-[-8px]'>MANAGEMENT</li></NavLink><hr />
+                    <NavLink to={'/about/vision-And-Mission'}> <li className='menu-item cursor-pointer mt-[-9px]'>VISION & MISSION</li></NavLink>
                </ul>   
 
                <div className='relative peer'>
@@ -367,9 +367,9 @@ function Header1() {
                       </AccordionSummary>
                       <AccordionDetails>
                         <ul className='mt-[-16px]'>
-                           <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase'>principal's message</li><hr />
-                           <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>management</li><hr />
-                           <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>vision & mission</li>
+                          <NavLink to={'/about/principalMessage'}> <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase'>principal's message</li></NavLink><hr />
+                          <NavLink to={'/about/management'}><li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>management</li></NavLink><hr />
+                          <NavLink to={'/about/visionandMission'}>  <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>vision & mission</li></NavLink>
                        </ul>
                       </AccordionDetails> 
                     </Accordion>
@@ -662,7 +662,6 @@ function Header1() {
      {/* NAVIGATION ENDS */}
         <TopScrollButton/>
         </header>
-        
         
        
 
