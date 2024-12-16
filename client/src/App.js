@@ -6,6 +6,10 @@ import Home from "./pages/home/Home";
 import PrincipalMessage from "./pages/PrincipalMessage";
 import ManagementPage from "./pages/ManagementPage";
 import VisionAndMission from "./pages/VisionAndMission";
+import { Dashboard } from "./admin/Dashboard";
+import { AdminLogin } from "./admin/pages/auth/AdminLogin";
+import { ForgotPassword } from "./admin/pages/auth/ForgotPassword";
+import PrivateRoute from "./admin/components/PrivateRoute";
 
 function App() {
   return (
