@@ -1,25 +1,30 @@
-import React from 'react'
-import Header1 from './components/Header1'
-import './App.css'
-import 'animate.css';
-import ImageSection from './components/ImageSection';
-import VisionSection from './components/VisionSection';
-import BeyondAcademics from './components/BeyondAcademics';
-import ExcellenceSection from './components/ExcellenceSection';
-import Achievers from './components/Achievers';
-
+import React from "react";
+import "./App.css";
+import "animate.css";
+import { Routes, Route } from "react-router-dom";
+import { AdminLogin } from "./admin/pages/auth/AdminLogin";
+import { ForgotPassword } from "./admin/pages/auth/ForgotPassword";
+import { Dashboard } from "./admin/Dashboard";
+import PrivateRoute from "./admin/components/PrivateRoute"; // Move this import to the top
 
 function App() {
   return (
-    <div className='all flex flex-col items-center'>
-       <Header1/>
-       <ImageSection/>
-       <VisionSection/>
-       <ExcellenceSection/>  
-       <BeyondAcademics/>     
-       {/* <Achievers/> */}
-    </div>
-  )
+    <Routes>
+      {/* AdminRoutes */}
+      <Route path={"/admin"} element={<AdminLogin />} />
+      <Route path={"/admin/forgot-password"} element={<ForgotPassword />} />
+      
+      {/* Admin Protected Routes */}
+      <Route
+        path={"/admin/dashboard"}
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
