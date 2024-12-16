@@ -23,6 +23,7 @@
   .custom-dot-list-style .react-multi-carousel-dot--active button {
     background: #2B6CB0;
     opacity: 1;
+    
   }
   
   @media (max-width: 640px) {
