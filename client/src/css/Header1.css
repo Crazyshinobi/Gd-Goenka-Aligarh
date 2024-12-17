@@ -50,7 +50,7 @@ html, body {
     height: 100%;
     background-color: #f8f9fa; /* Light background for the sidebar */
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 10;
+    z-index: 1000;
     transition: right 0.4s ease-in-out; /* Animate from the right */
     padding-top: 20px; /* Add some top padding */
 }
@@ -62,7 +62,7 @@ html, body {
     width: 252px;
     background-color: #f8f9fa;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 10;
+    z-index: 1000;
     transition: right 0.4s ease-in-out;
     padding-top: 20px;
 }
