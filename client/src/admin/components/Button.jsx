@@ -7,13 +7,13 @@ export const Button = ({name, loading}) => {
       disabled={loading} // Disable button while loading
       className={`w-[100%] focus:outline-none text-white ${
         loading ? "bg-gray-400" : "bg-purple-700 hover:bg-purple-800"
-      } focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900`}
+      } focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-xs md:text-sm lg:text-sm px-5 py-1.5 md:py-2 lg:py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900`}
     >
       {loading ? (
         <div className="flex justify-center items-center" role="status">
           <svg
             aria-hidden="true"
-            className="inline w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"
+            className="inline w-4 h-4 md:w-6 md:h-6 lg:w-6 lg:h-6 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
