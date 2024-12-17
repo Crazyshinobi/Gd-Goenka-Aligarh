@@ -1,103 +1,70 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
-import axios from "axios";
+import React, { useState } from "react";
+import { AdminLayout } from "../../components/AdminLayout";
+import { usePostRequest } from "../../../hooks/usePostRequest";
 import toast, { Toaster } from "react-hot-toast";
-import adminBg from "../../assets/adminBg.jpg";
-import { Button } from "../../components/Button";
 
-export const AdminLogin = () => {
-  document.title = "Admin Login";
+export const AddAdmin = () => {
+  document.title = "Admin - Add Admin";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = Cookies.get("token");
-    if (token) {
-      navigate("/admin/dashboard");
-    }
-  }, [navigate]);
+  const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admin/signup`;
 
-  const handleLogin = async (e) => {
+  const { postRequest, loading, error } = usePostRequest(apiURL);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admin/login`;
-    try {
-      const response = await axios.post(apiURL, { email, password });
+    const data = {
+      email,
+      password,
+    };
+    const response = await postRequest(data);
 
-      if (response.data.success) {
-        Cookies.set("token", response.data.token, {
-          expires: 1,
-          secure: true,
-          sameSite: "Strict",
-        });
-        navigate("/admin/dashboard");
-      } else {
-        toast.error("Invalid credentials");
-      }
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error("Something went wrong. Please try again!");
-      }
+    if (response && response.success) {
+      toast.success("Admin added successfully!");
       setEmail("");
       setPassword("");
-    } finally {
-      setLoading(false);
+    } else if (error) {
+      toast.error(error);
+      console.error("Error adding admin:", error);
     }
   };
 
   return (
     <>
       <Toaster />
-      <div
-        className="h-screen flex justify-center items-center"
-        style={{
-          background: `url(${adminBg}) no-repeat top / cover`,
-        }}
-      >
-        <div className="bg-white h-auto w-[90%] md:w-[60%] lg:w-[40%] rounded-xl">
-          <form onSubmit={handleLogin}>
-            <div className="grid sm:grid-cols-12 gap-3 lg:gap-5 m-5 lg:mx-8 lg:my-5 ">
+      <AdminLayout />
+      <div class="p-4 py-6 sm:ml-64 dark:bg-gray-700 h-screen">
+        <div class="p-4 border-2 border-gray-200 rounded-lg dark:border-white mt-14">
+          <form onSubmit={handleSubmit}>
+            <div className="grid sm:grid-cols-12 gap-5">
               <div className="col-span-12">
-                <h3 className="text-lg md:text-xl lg:text-3xl text-center lg:py-3">
-                  Admin Login
+                <h3 className="text-lg md:text-xl lg:text-3xl text-center text-black dark:text-white">
+                  Add Admin
                 </h3>
-                <p className="text-xs md:text-sm lg:text-lg text-center text-black py-3">
-                  Welcome back! Unlock the power of administrative controls.
-                </p>
               </div>
-
-              <div className="col-span-12">
+              <div className="col-span-12 lg:col-span-6">
                 <label
-                  htmlFor="email"
-                  className="block mb-2 text-xs md:text-sm lg:text-sm font-medium text-gray-900"
+                  for="email"
+                  class="block mb-2 text-xs md:text-sm lg:text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
-                  Email address
+                  Email Address
                 </label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 outline-none text-gray-900 text-xs lg:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 md:p-2 lg:p-2.5"
-                  required
+                  id="email"
+                  class="bg-transparent border outline-none border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-1 lg:p-2.5 dark:text-white"
                 />
               </div>
-              <div className="col-span-12">
+              <div className="col-span-12 lg:col-span-6">
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-xs md:text-sm lg:text-sm font-medium text-gray-900"
+                  className="block mb-2 text-xs md:text-sm lg:text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Password
                 </label>
@@ -108,14 +75,14 @@ export const AdminLogin = () => {
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="bg-gray-50 outline-none border border-gray-300 text-gray-900 text-xs lg:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 md:p-2 lg:p-2.5"
+                    className="bg-transparent border border-gray-300 outline-none text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-1 lg:p-2.5 dark:text-white"
                     required
                   />
                   {/* Show/Hide Password Button */}
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)} // Toggle show/hide password
-                    className="absolute right-2 top-[50%] transform -translate-y-[50%] text-gray-600 focus:outline-none"
+                    className="absolute right-0 top-[50%] transform -translate-y-[50%] p-2 rounded-e-lg text-gray-600 dark:bg-white focus:outline-none"
                   >
                     {showPassword ? (
                       <span>
@@ -165,16 +132,12 @@ export const AdminLogin = () => {
                 </div>
               </div>
               <div className="col-span-12">
-                <Button name="Login" loading={loading} />
-              </div>
-              <div className="col-span-12">
-                <div className="flex justify-end">
-                  <Link to="/admin/forgot-password">
-                    <p className="hover:underline text-xs md:text-sm lg:text-lg">
-                      Forgot Password?
-                    </p>
-                  </Link>
-                </div>
+                <button
+                  type="submit"
+                  class="text-white bg-fuchsia-500 font-medium rounded-lg text-sm px-5 py-1 lg:py-2 mr-2 mb-2 text-center inline-flex items-center shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </form>
@@ -183,5 +146,3 @@ export const AdminLogin = () => {
     </>
   );
 };
-
-export default AdminLogin;

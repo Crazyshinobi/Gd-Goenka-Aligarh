@@ -10,6 +10,9 @@ import { Dashboard } from "./admin/Dashboard";
 import { AdminLogin } from "./admin/pages/auth/AdminLogin";
 import { ForgotPassword } from "./admin/pages/auth/ForgotPassword";
 import PrivateRoute from "./admin/components/PrivateRoute";
+import { Error404 } from "./pages/Error404";
+import { AddAdmin } from "./admin/pages/admins/AddAdmin";
+import { ViewContact } from "./admin/pages/contact/ViewContact";
 
 function App() {
   return (
@@ -22,11 +25,13 @@ function App() {
         element={<VisionAndMission />}
       />
 
-      {/* AdminRoutes */}
+      {/* Admin Routes */}
       <Route path={"/admin"} element={<AdminLogin />} />
       <Route path={"/admin/forgot-password"} element={<ForgotPassword />} />
 
       {/* Admin Protected Routes */}
+
+      {/* Dashboard */}
       <Route
         path={"/admin/dashboard"}
         element={
@@ -35,6 +40,26 @@ function App() {
           </PrivateRoute>
         }
       />
+      {/* Admin  */}
+      <Route
+        path={"/admin/add-admin"}
+        element={
+          <PrivateRoute>
+            <AddAdmin />
+          </PrivateRoute>
+        }
+      />
+      {/* Contact */}
+      <Route
+        path={"/admin/view-contact"}
+        element={
+          <PrivateRoute>
+            <ViewContact />
+          </PrivateRoute>
+        }
+      />
+
+      <Route path="/*" element={<Error404 />} />
     </Routes>
   );
 }
