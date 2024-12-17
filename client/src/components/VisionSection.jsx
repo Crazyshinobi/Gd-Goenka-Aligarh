@@ -21,7 +21,7 @@ function VisionSection() {
               <p className='text-red-400 sm:text-sm mb-2'>Dr. Anubhav Lodhi</p>
               <p className='text-[#666666] sm:text-sm mb-4'>GD Goenka Public School provides every student with the opportunity to achieve their best in academics, sports, and personal development, shaping a bright future.</p>
               <div className='flex justify-end'>
-               <NavLink to={"/about/principalMessage"}><IoIosArrowRoundForward className="text-4xl sm:text-5xl lg:text-6xl cursor-pointer" /></NavLink> 
+               <NavLink to={"/about/principal-message"}><IoIosArrowRoundForward className="text-4xl sm:text-5xl lg:text-6xl cursor-pointer" /></NavLink> 
               </div>
             </div>
           </div>
@@ -33,14 +33,14 @@ function VisionSection() {
             <h2 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4'>Vision</h2>
             <p className='text-white text-lg mb-4'>To create an inspiring environment that fosters creativity, curiosity, and growth, where learning becomes a journey of limitless possibilities.</p>
             <div className='flex justify-end'>
-              <IoIosArrowRoundForward className="text-4xl sm:text-5xl lg:text-6xl text-white cursor-pointer" />
+            <NavLink to={'/about/vision-and-mission'}><IoIosArrowRoundForward className="text-4xl sm:text-5xl lg:text-6xl text-white cursor-pointer" /></NavLink>
             </div>
           </div>
           <div className="bg-[#003963] p-6 rounded-md">
             <h2 className='text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4'>Mission</h2>
             <p className='text-white text-lg mb-4'>GD Goenka Aligarh empowers students with knowledge, skills, and leadership to thrive in a dynamic world and meet future challenges with confidence.</p>
             <div className='flex justify-end'>
-              <IoIosArrowRoundForward className="text-4xl sm:text-5xl lg:text-6xl text-white cursor-pointer" />
+              <NavLink to={'/about/vision-and-mission'}><IoIosArrowRoundForward className="text-4xl sm:text-5xl lg:text-6xl text-white cursor-pointer" /></NavLink>
             </div>
           </div>
         </div>

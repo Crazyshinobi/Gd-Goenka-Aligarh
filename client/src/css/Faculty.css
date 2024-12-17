@@ -1,0 +1,17 @@
+.custom-bullet {
+    list-style: none; /* Remove default bullets */
+    position: relative; /* Position pseudo-element */
+    padding-left: 1.5rem; /* Space between bullet and text */
+  }
+
+  .custom-bullet::before {
+    content: "•"; /* Custom bullet character */
+    color: hsl(37, 65%, 66%); /* Bullet color */
+    font-size: 1.8rem; /* Bullet size */
+    position: absolute;
+    left: 0;
+    top: 0rem; /* Adjust vertical alignment */
+  }
+  .hover-text {
+    transition: transform 0.5s ease;
+  }

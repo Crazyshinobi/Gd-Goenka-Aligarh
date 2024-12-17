@@ -51,9 +51,9 @@ function Header1() {
                    
                 <ul className='pt-4  top-[49px] font-extralight absolute hidden peer-hover:flex hover:flex w-[240px] 
                 flex-col bg-white drop-shadow-lg rounded-md gap-2 transition-all duration-100 ease-in'>
-                   <NavLink to={"/about/principal-Message"}><li className='menu-item cursor-pointer mt-[-8px] mb-[-8px]'>PRINCIPAL'S MESSAGE</li></NavLink> <hr />
+                   <NavLink to={"/about/principal-message"}><li className='menu-item cursor-pointer  mb-[-8px]'>PRINCIPAL'S MESSAGE</li></NavLink> <hr />
                     <NavLink to={'/about/management'}><li className='menu-item cursor-pointer mt-[-8px] mb-[-8px]'>MANAGEMENT</li></NavLink><hr />
-                    <NavLink to={'/about/vision-And-Mission'}> <li className='menu-item cursor-pointer mt-[-9px]'>VISION & MISSION</li></NavLink>
+                    <NavLink to={'/about/vision-and-mission'}> <li className='menu-item cursor-pointer mt-[-9px]'>VISION & MISSION</li></NavLink>
                </ul>   
 
                <div className='relative peer'>
@@ -64,11 +64,11 @@ function Header1() {
                 <ul className='academics_drop pt-4 top-[49px] font-extralight absolute hidden peer-hover:flex hover:flex w-[240px]
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4'>
 
-                    <li className='menu-item cursor-pointer ps-2 flex mb-[-16px]'>FACULTY & CURRICULUM</li><hr />
-                    <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>TEACHING METHODOLOGY</li><hr />
-                    <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>IGNITING MINDS</li><hr />
-                    <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>COMPETITIONS & AWARDS</li><hr />
-                    <li className='menu-item cursor-pointer ps-2 flex  mt-[-16px] leading-none'>LIST OF AUTHORISED BOOK SELLERS</li>
+                    <NavLink to={'/academics/faculty-&-curriculum'}><li className='menu-item cursor-pointer ps-2 flex mb-[-16px]'>FACULTY & CURRICULUM</li></NavLink><hr />
+                  <NavLink to={"/academics/teaching-methodology"}>  <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>TEACHING METHODOLOGY</li></NavLink><hr />
+                  <NavLink to={"/academics/igniting-minds"}>  <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>IGNITING MINDS</li></NavLink><hr />
+                   <NavLink to={"/academics/competition-&-awards"}> <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>COMPETITIONS & AWARDS</li></NavLink><hr />
+                   <NavLink to={"/academics/authorised-book-seller"}>  <li className='menu-item cursor-pointer ps-2 flex  mt-[-16px] leading-none'>LIST OF AUTHORISED BOOK SELLERS</li></NavLink>
                 </ul>
 
                </div>
@@ -367,9 +367,9 @@ function Header1() {
                       </AccordionSummary>
                       <AccordionDetails>
                         <ul className='mt-[-16px]'>
-                          <NavLink to={'/about/principalMessage'}> <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase'>principal's message</li></NavLink><hr />
+                          <NavLink to={'/about/principal-message'}> <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase'>principal's message</li></NavLink><hr />
                           <NavLink to={'/about/management'}><li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>management</li></NavLink><hr />
-                          <NavLink to={'/about/visionandMission'}>  <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>vision & mission</li></NavLink>
+                          <NavLink to={'/about/vision-and-mission'}>  <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>vision & mission</li></NavLink>
                        </ul>
                       </AccordionDetails> 
                     </Accordion>
@@ -386,11 +386,11 @@ function Header1() {
                       </AccordionSummary>
                       <AccordionDetails>
                         <ul className='mt-[-16px]'>
-                           <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase'>faculty & curriculum</li><hr />
-                           <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>teaching methodology</li><hr/>
-                           <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>igniting minds</li><hr/>
-                           <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>teaching methodology</li><hr/>
-                           <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>igniting minds </li>
+                          <NavLink to={'/academics/faculty-&-curriculum'}> <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase'>faculty & curriculum</li></NavLink><hr />
+                         <NavLink to={"/academics/teaching-methodology"}>  <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>teaching methodology</li></NavLink><hr/>
+                         <NavLink to={"/academics/igniting-minds"}>  <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>igniting minds</li></NavLink><hr/>
+                          <NavLink to={"/academics/competition-&-awards"}> <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>Competition & awards</li></NavLink><hr/>
+                           <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>List of authorised book sellers</li>
                        </ul>
                       </AccordionDetails> 
                     </Accordion>
