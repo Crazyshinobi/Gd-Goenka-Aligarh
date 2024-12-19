@@ -8,6 +8,7 @@ import { Button } from "../../components/Button";
 import greentick from "../../assets/greentick.jpg";
 
 export const ForgotPassword = () => {
+  document.title = "Admin - Forgot Password";
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState("");
@@ -95,7 +96,7 @@ export const ForgotPassword = () => {
             <form onSubmit={handleEmailSubmit}>
               <div className="grid sm:grid-cols-12 gap-5 lg:gap-10 m-5 lg:mx-8 lg:my-5">
                 <div className="col-span-12">
-                  <h3 className="text-lg md:text-xl lg:text-3xl text-center lg:py-3">
+                  <h3 className="text-black text-lg md:text-xl lg:text-3xl text-center lg:py-3">
                     Forgot your password?
                   </h3>
                   <p className="text-xs md:text-sm lg:text-lg text-center text-black py-3">
@@ -124,7 +125,7 @@ export const ForgotPassword = () => {
                 </div>
                 <div className="col-span-12 flex justify-start">
                   <Link to="/admin">
-                    <p className="hover:underline text-xs md:text-sm lg:text-lg">
+                    <p className="text-black hover:underline text-xs md:text-sm lg:text-lg">
                       Back
                     </p>
                   </Link>
@@ -139,7 +140,7 @@ export const ForgotPassword = () => {
             <form onSubmit={handleOtpSubmit}>
               <div className="grid sm:grid-cols-12 gap-5 lg:gap-10 m-5 lg:mx-8 lg:my-5">
                 <div className="col-span-12">
-                  <h3 className="text-lg md:text-xl lg:text-3xl text-center lg:py-3">
+                  <h3 className="text-black text-lg md:text-xl lg:text-3xl text-center lg:py-3">
                     Verify OTP
                   </h3>
                   <p className="text-xs md:text-sm lg:text-lg text-center text-black py-3">
@@ -155,7 +156,7 @@ export const ForgotPassword = () => {
                     renderInput={(props) => (
                       <input
                         {...props}
-                        className="h-8 w-8 lg:w-12 md:w-10 md:h-10 lg:h-12 mx-1 lg:mx-2 text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="h-8 w-8 lg:w-12 md:w-10 md:h-10 lg:h-12 mx-1 lg:mx-2 text-center border bg-white text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         style={{ fontSize: "24px" }}
                       />
                     )}
@@ -166,7 +167,7 @@ export const ForgotPassword = () => {
                 </div>
                 <div className="col-span-12 flex justify-start">
                   <Link to="/admin">
-                    <p className="hover:underline text-xs md:text-sm lg:text-lg">
+                    <p className="text-black hover:underline text-xs md:text-sm lg:text-lg">
                       Back
                     </p>
                   </Link>
@@ -181,7 +182,7 @@ export const ForgotPassword = () => {
             <form onSubmit={handleResetSubmit}>
               <div className="grid sm:grid-cols-12 gap-5 lg:gap-10 m-5 lg:mx-8 lg:my-5">
                 <div className="col-span-12">
-                  <h3 className="text-lg md:text-xl lg:text-3xl text-center lg:py-3">
+                  <h3 className="text-black text-lg md:text-xl lg:text-3xl text-center lg:py-3">
                     Reset Password
                   </h3>
                   <p className="text-xs md:text-sm lg:text-lg text-center text-black py-3">
@@ -343,7 +344,7 @@ export const ForgotPassword = () => {
               alt="Success"
               className="h-[80px] w-[80px] lg:h-[100px] lg:w-[100px]"
             />
-            <h3 className="text-sm md:text-xl lg:text-3xl text-center lg:py-3">
+            <h3 className="text-black text-sm md:text-xl lg:text-3xl text-center lg:py-3">
               Password changed successfully!
             </h3>
             <p className="text-xs md:text-sm lg:text-lg text-center text-black py-3">

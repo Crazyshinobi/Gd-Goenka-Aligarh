@@ -1,29 +1,21 @@
 import React from "react";
-import toast, { Toaster } from "react-hot-toast";
 import { AdminLayout } from "../../components/AdminLayout";
 import { useFetchData } from "../../../hooks/useFetchData";
-import { BasicTable } from "../../components/BasicTable";
+import { CrudTable } from "../../components/CrudTable";
 
-export const ViewContact = () => {
-  document.title = "Admin - View Contact";
-  const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/contact`;
+export const ViewJob = () => {
+  document.title = "Admin - View Jobs";
+  const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/job/`;
   const { data, loading, error, refetch } = useFetchData(apiURL);
-
-  // Prepare data for the DataTable
-  const contacts = data?.data || [];
+  const jobs = data?.data || [];
 
   const columns = [
     {
       header: "S.No",
       body: (rowData, { rowIndex }) => rowIndex + 1,
     },
-    { field: "parent_name", header: "Parent Name" },
-    { field: "student_name", header: "Student Name" },
-    { field: "parent_email_address", header: "Parent Email" },
-    { field: "mobile", header: "Mobile" },
-    { field: "state", header: "State" },
-    { field: "city", header: "City" },
-    { field: "grade", header: "Grade" },
+    { field: "name", header: "Name of Job" },
+    { field: "subject", header: "Subject" },
     {
       field: "createdAt",
       header: "Date",
@@ -33,17 +25,22 @@ export const ViewContact = () => {
     },
   ];
 
+  const fields = [
+    { name: "name", label: "Name of Job", required: true },
+    { name: "subject", label: "Subject", required: true },
+  ];
+
   return (
     <>
-      <Toaster />
       <AdminLayout />
       <div className="p-4 py-6 sm:ml-64 dark:bg-gray-700 min-h-screen">
-        <div className="p-2 border-2 border-gray-200 rounded-lg dark:border-none mt-14">
+        <div className="p-2 border-2 border-gray-200 rounded-lg dark:border-white mt-14">
           <h3 className="text-xl lg:text-2xl font-semibold text-center text-gray-900 dark:text-white py-5">
-            View Contact Form Enquiries
+            View Jobs Posted
           </h3>
-          <BasicTable
-            data={contacts}
+          <CrudTable
+            fields={fields}
+            data={jobs}
             refetch={refetch}
             apiURL={apiURL}
             columns={columns}

@@ -68,11 +68,11 @@ export const AdminLogin = () => {
         <div className="bg-white h-auto w-[90%] md:w-[60%] lg:w-[40%] rounded-xl">
           <form onSubmit={handleLogin}>
             <div className="grid sm:grid-cols-12 gap-3 lg:gap-5 m-5 lg:mx-8 lg:my-5 ">
-              <div className="col-span-12">
-                <h3 className="text-lg md:text-xl lg:text-3xl text-center lg:py-3">
+              <div className="col-span-12 ">
+                <h3 className="text-black text-lg md:text-xl lg:text-3xl text-center lg:py-3">
                   Admin Login
                 </h3>
-                <p className="text-xs md:text-sm lg:text-lg text-center text-black py-3">
+                <p className="text-xs md:text-sm lg:text-lg text-center dark:text-black text-black py-3">
                   Welcome back! Unlock the power of administrative controls.
                 </p>
               </div>
@@ -170,7 +170,7 @@ export const AdminLogin = () => {
               <div className="col-span-12">
                 <div className="flex justify-end">
                   <Link to="/admin/forgot-password">
-                    <p className="hover:underline text-xs md:text-sm lg:text-lg">
+                    <p className="text-black hover:underline text-xs md:text-sm lg:text-lg">
                       Forgot Password?
                     </p>
                   </Link>

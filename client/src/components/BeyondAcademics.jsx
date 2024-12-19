@@ -90,9 +90,9 @@ function BeyondAcademics() {
               showDots={true}
               swipeable={true}
               draggable={true}
-              containerClass="carousel-container"
-              itemClass="px-2 py-4"
-              dotListClass="custom-dot-list-style"
+              containerclassName="carousel-container"
+              itemclassName="px-2 py-4"
+              dotListclassName="custom-dot-list-style"
               customLeftArrow={<CustomArrow direction="left" />}
               customRightArrow={<CustomArrow direction="right" />}
             >

@@ -28,7 +28,7 @@ export const Button = ({name, loading}) => {
             />
           </svg>
           <span className="sr-only">Loading...</span>
-        </div> // Show loading text or spinner
+        </div>
       ) : (
         name
       )}
