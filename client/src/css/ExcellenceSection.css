@@ -8,17 +8,17 @@
     background: wheat;
     border-radius: 3px;
   }
-  /* .scrollable-content::-webkit-scrollbar-track:hover {
-    background: gray;
+  .scrollable-content::-webkit-scrollbar-track:hover {
+    background: wheat;
     border-radius: 3px;
-  } */
+  }
   
   .scrollable-content::-webkit-scrollbar-thumb {
     background-color: rgb(254, 48, 48);
     border-radius: 3px;
   }
   
-  /* .scrollable-content::-webkit-scrollbar-thumb:hover {
-    background-color: #fff;
-  } */
+  .scrollable-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(254, 48, 48);
+  }
   

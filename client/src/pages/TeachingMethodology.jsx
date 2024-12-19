@@ -5,41 +5,62 @@ import NavigationPages from "./NavigationPages";
 import Student1 from "../assets/Student1.JPG";
 import Student2 from "../assets/Student2.JPG";
 import Carousel from "react-multi-carousel";
+import { motion } from "framer-motion";
 
 const TeachingMethodology = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
     tablet: { breakpoint: { max: 1024, min: 464 }, items: 1 },
     mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
   };
+
   return (
     <Layout>
       {/* Banner Section */}
-      <div className="relative bgImage">
-        <h1 className="text-3xl md:text-5xl font-bold absolute bottom-4 md:bottom-6 left-4 md:left-8 text-[#e1b671]">
-          ACADEMICS
-        </h1>
-        <img
+      <div className="relative">
+        <motion.img
           src={TeachingBanner}
           alt="Teaching Methodology"
-          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[65vh] w-full object-fill"
+          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] w-full object-fill"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
         />
+        <motion.h1
+          className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          ABOUT
+        </motion.h1>
       </div>
 
       {/* Navigation Section */}
       <NavigationPages />
 
-      <div className="principalMessageSection px-4 py-8 md:py-12">
-        <h1 className="text-center text-2xl md:text-4xl font-bold text-blue-900 mb-6">
+      <div className=" px-4 py-8 md:py-12">
+        <motion.h1
+          className="text-center text-2xl md:text-4xl font-bold text-blue-900 mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        >
           Teaching Methodology
-        </h1>
+        </motion.h1>
 
         <section className="container mx-auto max-w-7xl py-12 flex flex-col lg:flex-row items-center justify-center">
           {/* Left Content */}
-          <div className="w-[90%] md:w-[80%] lg:w-[45%] bg-gray-100 text-gray-800 rounded-l shadow-lg p-8 h-[26rem] flex items-center">
+          <motion.div
+            className="w-[90%] md:w-[80%] lg:w-[45%] bg-gray-100 text-gray-800 rounded-l shadow-lg p-8 h-[26rem] flex items-center"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          >
             <div className="w-full h-[20rem] overflow-y-scroll pr-4 scrollable-content">
               <p className="text-lg leading-relaxed mb-4">
                 GDGPSVK aims at nurturing individuals with paramount values and
@@ -55,7 +76,7 @@ const TeachingMethodology = () => {
               </p>
               <p className="text-lg leading-relaxed mb-4">
                 An upgraded and advanced school ethos with mentorship that is
-                innovative has provided an activity based, blended learning
+                innovative has provided an activity-based, blended learning
                 experience at its core.
               </p>
               <p className="text-lg leading-relaxed mb-4">
@@ -63,11 +84,11 @@ const TeachingMethodology = () => {
                 lifelong learners through efficient systems and processes to
                 optimally realize their potential. An all-embracing new
                 curriculum design meets the demands of the NEP with a stress on
-                meta cognitive awareness that facilitates the process of
+                meta-cognitive awareness that facilitates the process of
                 Innovation and research.
               </p>
               <p className="text-lg leading-relaxed mb-4">
-                The inter disciplinary projects based blended learning with
+                The interdisciplinary projects-based blended learning with
                 focus on a progressive pedagogy, nurtures the emotional health
                 and social awareness and responsibility of the students.
               </p>
@@ -78,10 +99,15 @@ const TeachingMethodology = () => {
                 elements.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Slider */}
-          <div className="w-[90%] lg:w-[45%] md:w-[80%] cursor-grab overflow-hidden shadow-lg">
+          <motion.div
+            className="w-[90%] lg:w-[45%] md:w-[80%] cursor-grab overflow-hidden shadow-lg"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          >
             <Carousel
               responsive={responsive}
               infinite={true}
@@ -90,18 +116,24 @@ const TeachingMethodology = () => {
               showDots={true}
               arrows={false}
             >
-              <img
+              <motion.img
                 src={Student1}
                 alt="Students"
                 className="w-full h-[27rem] object-cover"
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               />
-              <img
+              <motion.img
                 src={Student2}
                 alt="Students"
                 className="w-full h-[27rem] object-cover"
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               />
             </Carousel>
-          </div>
+          </motion.div>
         </section>
       </div>
     </Layout>

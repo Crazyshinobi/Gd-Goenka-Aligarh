@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.css'
-import 'animate.css';
 import {Routes, Route} from "react-router-dom"
 import Home from './pages/Home';
 import PrincipalMessage from './pages/PrincipalMessage';
@@ -18,6 +17,11 @@ import { Error404 } from "./pages/Error404";
 import { AddAdmin } from "./admin/pages/admins/AddAdmin";
 import { ViewContact } from "./admin/pages/contact/ViewContact";
 import PrivateRoute from "./admin/components/PrivateRoute";
+import BeyondAcademics from './pages/BeyondAcademics';
+import ClassInfrastructure from './pages/ClassInfrastructure';
+import LabsAndLibrary from './pages/LabsAndLibrary';
+import Cafeteria from './pages/Cafeteria';
+import Activities from './pages/Activities';
 
 function App() {
   return (
@@ -31,6 +35,16 @@ function App() {
       <Route path={"/academics/igniting-minds"} element={<IgnitingMindsPage/>}/>
       <Route path={"/academics/competition-&-awards"} element={<CompetitionAwards/>}/>
       <Route path={"/academics/authorised-book-seller"} element={<BookSeller/>}/>
+      <Route path={"/beyond-academics"} element={<BeyondAcademics/>}/>
+      <Route path={"/our-campus/class-infrastructure"} element={<ClassInfrastructure/>}/>
+      <Route path={"/our-campus/labs-and-library"} element={<LabsAndLibrary/>}/>
+      <Route path={"/our-campus/cafeteria"} element={<Cafeteria/>}/>
+      <Route path={"/activities"} element={<Activities/>}/>
+
+
+
+
+
 
       {/* Admin Routes */}
       <Route path={"/admin"} element={<AdminLogin />} />

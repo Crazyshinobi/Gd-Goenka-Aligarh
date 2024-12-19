@@ -2,7 +2,7 @@ import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { AdminLayout } from "../../components/AdminLayout";
 import { useFetchData } from "../../../hooks/useFetchData";
-import { DataTable } from "../../components/DataTable";
+// import { DataTable } from "../../components/DataTable";
 
 export const ViewContact = () => {
   document.title = "Admin - View Contact";
@@ -89,9 +89,9 @@ export const ViewContact = () => {
               <h1>Error: {error}</h1>
             </div>
           )}
-          {!loading && !error && contacts.length > 0 && (
-            <DataTable data={contacts} columns={columns} />
-          )}
+          {/* {!loading && !error && contacts.length > 0 && (
+            // <DataTable data={contacts} columns={columns} />
+          )} */}
         </div>
       </div>
     </>
