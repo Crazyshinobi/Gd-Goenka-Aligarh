@@ -10,6 +10,8 @@ import TopScrollButton from './TopScrollButton';
 import { NavLink } from 'react-router-dom'
 
 
+
+
 function Header1() {
     document.title = "GDGPS Aligarh"
 
@@ -68,15 +70,15 @@ function Header1() {
                   <NavLink to={"/academics/teaching-methodology"}>  <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>TEACHING METHODOLOGY</li></NavLink><hr />
                   <NavLink to={"/academics/igniting-minds"}>  <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>IGNITING MINDS</li></NavLink><hr />
                    <NavLink to={"/academics/competition-&-awards"}> <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>COMPETITIONS & AWARDS</li></NavLink><hr />
-                   <NavLink to={"/academics/authorised-book-seller"}>  <li className='menu-item cursor-pointer ps-2 flex  mt-[-16px] leading-none'>LIST OF AUTHORISED BOOK SELLERS</li></NavLink>
+                   <a href={"/academics/authorised-book-seller"} target="_blank" rel="noopener noreferrer">  <li className='menu-item cursor-pointer ps-2 flex  mt-[-16px] leading-none'>LIST OF AUTHORISED BOOK SELLERS</li></a>
                 </ul>
 
                </div>
 
                <div className='relative peer'>
-                <li className='relative peer p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all'>
+               <NavLink to={'/beyond-academics'}> <li className='relative peer p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all'>
                    BEYOND ACADEMICS
-                </li>
+                </li></NavLink>
                </div>
 
 
@@ -88,10 +90,9 @@ function Header1() {
                 <ul className='fee_payment_drop pt-3 top-[49px] font-extralight uppercase absolute hidden peer-hover:flex hover:flex w-[200px]
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4'>
 
-                    <li className='menu-item cursor-pointer ps-2 flex mb-[-16px]'>class infrastructure</li><hr />
-                    <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>labs and library</li><hr />
-                    <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>cafeteria</li><hr />
-                    <li className='menu-item cursor-pointer ps-2 flex mt-[-16px]'>playfields</li>
+         <NavLink to={"/our-campus/class-infrastructure"}><li className='menu-item cursor-pointer ps-2 flex mb-[-16px]'>class infrastructure</li></NavLink><hr />
+                 <NavLink to={"/our-campus/labs-and-library"}><li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>labs and library</li></NavLink><hr />
+                 <NavLink to={"/our-campus/cafeteria"}> <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>cafeteria</li></NavLink><hr />
                 </ul>
 
                </div>
@@ -201,13 +202,13 @@ function Header1() {
 
                     {/* ASSEMBLIES ACCORDIAN */}
                     <Accordion>
-                       <AccordionSummary
+                      <NavLink to={'/activities'}> <AccordionSummary
                        aria-controls="panel2-content"
                        id="panel2-header"
                        className='uppercase'
                        >
-                       assemblies
-                       </AccordionSummary>
+                       Activities
+                       </AccordionSummary></NavLink>
                     </Accordion>
       
                      {/* COLLEGE PLACEMENTS ACCORDIAN */}
@@ -390,7 +391,7 @@ function Header1() {
                          <NavLink to={"/academics/teaching-methodology"}>  <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>teaching methodology</li></NavLink><hr/>
                          <NavLink to={"/academics/igniting-minds"}>  <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>igniting minds</li></NavLink><hr/>
                           <NavLink to={"/academics/competition-&-awards"}> <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>Competition & awards</li></NavLink><hr/>
-                           <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>List of authorised book sellers</li>
+                          <a href={"/academics/authorised-book-seller"} target="_blank" rel="noopener noreferrer">   <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>List of authorised book sellers</li></a>
                        </ul>
                       </AccordionDetails> 
                     </Accordion>
@@ -407,10 +408,9 @@ function Header1() {
                       </AccordionSummary>
                       <AccordionDetails>
                         <ul className='mt-[-16px]'>
-                           <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase'>class infrastructure</li><hr />
-                           <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>labs & library</li><hr/>
-                           <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>cafeteria</li><hr/>
-                           <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>playfields</li>
+                    <NavLink to={"/our-campus/class-infrastructure"}>       <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase'>class infrastructure</li></NavLink><hr />
+                    <NavLink to={"/our-campus/labs-and-library"}>     <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>labs & library</li></NavLink><hr/>
+                    <NavLink to={"/our-campus/cafeteria"}>    <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>cafeteria</li></NavLink><hr/>
                        </ul>
                       </AccordionDetails> 
                     </Accordion>
@@ -435,13 +435,13 @@ function Header1() {
 
                     {/* BEYOND ACADEMICS ACCORDIAN */}
                     <Accordion>
-                      <AccordionSummary
+               <NavLink to={'/beyond-academics'}><AccordionSummary
                         aria-controls="panel1-content"
                         id="panel1-header"
                         className='uppercase'
                         >
                         beyond academics
-                      </AccordionSummary>
+                      </AccordionSummary></NavLink>
                     </Accordion>
 
                     {/* ALUMNI ACCORDIAN */}
@@ -477,7 +477,7 @@ function Header1() {
                       </AccordionDetails> 
                     </Accordion>
 
-                    {/* ACADEMICS ACCORDIAN */}
+                    {/* MENTORSHIP ACCORDIAN */}
                     <Accordion>
                        <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
@@ -515,13 +515,13 @@ function Header1() {
 
                     {/* ASSEMBLIES ACCORDIAN */}
                     <Accordion>
-                       <AccordionSummary
+                    <NavLink to={'/activities'}><AccordionSummary
                        aria-controls="panel2-content"
                        id="panel2-header"
                        className='uppercase'
                        >
-                       assemblies
-                       </AccordionSummary>
+                       activities
+                       </AccordionSummary></NavLink>
                     </Accordion>
       
                      {/* COLLEGE PLACEMENTS ACCORDIAN */}
