@@ -25,6 +25,7 @@ const getSingleRecord = async (Model, query) => {
 const updateRecord = async (Model, query, updateObj, options = {}) => {
   const result = await Model.findOneAndUpdate(query, updateObj, {
     new: true,
+    runValidators: true,
     ...options,
   }).exec();
   return {
