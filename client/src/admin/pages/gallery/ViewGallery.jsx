@@ -36,8 +36,8 @@ export const ViewGallery = () => {
   ];
 
   const fields = [
-    { field: "category", label: "Category", type: "text" },
-    { field: "image", label: "Image", type: "file" },
+    { name: "category", label: "Category", type: "text" },
+    { name: "image", label: "Image", type: "file" },
   ];
   return (
     <>

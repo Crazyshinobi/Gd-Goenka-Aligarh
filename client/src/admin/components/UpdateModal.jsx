@@ -2,21 +2,32 @@ import { useState, useEffect } from "react";
 import { useUpdateRecord } from "../../hooks/useUpdateRecord";
 import { Button } from "../components/Button";
 
-export const UpdateModal = ({ record, toggleModal, refetch, apiURL, fields }) => {
-  // Initialize formData with empty values, we will populate it once record is loaded
+export const UpdateModal = ({
+  record,
+  toggleModal,
+  refetch,
+  apiURL,
+  fields,
+}) => {
+  // Initialize formData with empty values for text fields only
   const [formData, setFormData] = useState(() => {
     const initialFormData = {};
-    fields.forEach(field => {
-      initialFormData[field.name] = "";
+    fields.forEach((field) => {
+      if (field.type !== "file" && field.type !== "file-multiple") {
+        initialFormData[field.name] = "";
+      }
     });
     return initialFormData;
   });
 
+  // Update formData when record changes
   useEffect(() => {
     if (record) {
       const updatedData = { ...formData };
-      fields.forEach(field => {
-        updatedData[field.name] = record[field.name] || "";
+      fields.forEach((field) => {
+        if (field.type !== "file" && field.type !== "file-multiple") {
+          updatedData[field.name] = record[field.name] || "";
+        }
       });
       setFormData(updatedData);
     }
@@ -26,12 +37,84 @@ export const UpdateModal = ({ record, toggleModal, refetch, apiURL, fields }) =>
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     if (record) {
       await updateRecord(record._id);
       if (!loading && !error) {
         toggleModal(); // Close the modal after successful update
         refetch(); // Refresh the data
       }
+    }
+  };
+
+  // Modify the handleSingleFileChange function
+  const handleSingleFileChange = (e, fieldName) => {
+    const file = e.target.files[0]; // Get the actual file
+    setFormData({
+      ...formData,
+      [fieldName]: file, // Store the file object itself
+    });
+  };
+
+  // Modify the handleMultipleFileChange function
+  const handleMultipleFileChange = (e, fieldName) => {
+    const files = e.target.files; // Get the file list (FileList object)
+    let fileArray = [];
+
+    for (let i = 0; i < files.length; i++) {
+      fileArray.push(files[i]); // Push the file object to the array
+    }
+
+    setFormData({
+      ...formData,
+      [fieldName]: fileArray, // Store the array of file objects
+    });
+  };
+  // Render the appropriate input fields based on type
+  const renderInputField = (field) => {
+    switch (field.type) {
+      case "text":
+        return (
+          <input
+            type="text"
+            id={field.name}
+            name={field.name}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            value={formData[field.name]}
+            onChange={(e) =>
+              setFormData({ ...formData, [field.name]: e.target.value })
+            }
+            required={field.required || false}
+          />
+        );
+
+      case "file":
+        return (
+          <input
+            type="file"
+            id={field.name}
+            name={field.name}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            onChange={(e) => handleSingleFileChange(e, field.name)} // For single file upload
+            required={field.required || false}
+          />
+        );
+
+      case "file-multiple":
+        return (
+          <input
+            type="file"
+            id={field.name}
+            name={field.name}
+            multiple
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            onChange={(e) => handleMultipleFileChange(e, field.name)} // For multiple file upload
+            required={field.required || false}
+          />
+        );
+
+      default:
+        return null;
     }
   };
 
@@ -81,17 +164,7 @@ export const UpdateModal = ({ record, toggleModal, refetch, apiURL, fields }) =>
                 >
                   {field.label}
                 </label>
-                <input
-                  type={field.type || "text"} 
-                  id={field.name}
-                  name={field.name}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  value={formData[field.name]}
-                  onChange={(e) =>
-                    setFormData({ ...formData, [field.name]: e.target.value })
-                  }
-                  required={field.required || false} 
-                />
+                {renderInputField(field)}
               </div>
             ))}
             <div className="col-span-12">

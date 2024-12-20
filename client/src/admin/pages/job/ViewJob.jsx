@@ -26,8 +26,8 @@ export const ViewJob = () => {
   ];
 
   const fields = [
-    { name: "name", label: "Name of Job", required: true },
-    { name: "subject", label: "Subject", required: true },
+    { name: "name", label: "Name of Job", required: true, type:"text" },
+    { name: "subject", label: "Subject", required: true, type:"text" },
   ];
 
   return (

@@ -18,7 +18,7 @@ export const BasicTable = ({ data, refetch, apiURL, columns }) => {
     data && (
       <>
         <Toaster />
-        <div className="flex items-center justify-end dark:bg-gray-700 dark:text-white">
+        <div className="flex items-center justify-end dark:bg-gray-700 dark:text-white my-5">
           <RefreshButton refetch={refetch} />
           <ExcelExport data={data} columns={columns} />
         </div>

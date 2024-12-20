@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AdminLayout } from "../../components/AdminLayout";
 import toast, { Toaster } from "react-hot-toast";
 import { Button } from "../../components/Button";
 import { usePostRequest } from "../../../hooks/usePostRequest";
 
 export const AddGallery = () => {
-  document.title = "Admin - Add Gallery"
+  document.title = "Admin - Add Gallery";
   const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/gallery/`;
   const [category, setCategory] = useState("");
   const [file, setFile] = useState(null);
+
+  // Reference to the file input
+  const fileInputRef = useRef(null);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -37,6 +40,9 @@ export const AddGallery = () => {
         toast.success(response.message);
         setCategory("");
         setFile(null);
+
+        // Reset the file input field
+        fileInputRef.current.value = null;
       } else {
         toast.error(response.message || "Something went wrong!");
       }
@@ -84,6 +90,7 @@ export const AddGallery = () => {
                   Upload file (1 file)
                 </label>
                 <input
+                  ref={fileInputRef}
                   className="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                   aria-describedby="file_input_help"
                   id="file_input"

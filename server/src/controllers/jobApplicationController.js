@@ -1,6 +1,6 @@
 const JobApplication = require("../models/JobApplication");
 const { sendResponse } = require("../utils/responseUtils");
-const { createRecord, deleteRecord } = require("../common/commonDatabaseQueries");
+const { createRecord, deleteRecord, getCount } = require("../common/commonDatabaseQueries");
 const fs = require("fs");
 const path = require("path");
 
@@ -182,8 +182,21 @@ const deleteJobApplication = async (req, res) => {
     sendResponse(res, 500, false, "Internal Server Error");
   }
 };
+
+const countJobApplication = async (req, res) => {
+  try {
+    const response = await getCount(JobApplication);
+
+    sendResponse(res, 200, true, "Count Successfully fetched", response.data);
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal server error", error);
+  }
+};
+
 module.exports = {
   createJobApplication,
   getJobApplications,
   deleteJobApplication,
+  countJobApplication
 };

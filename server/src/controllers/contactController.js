@@ -2,6 +2,7 @@ const {
   createRecord,
   getRecord,
   deleteRecord,
+  getCount,
 } = require("../common/commonDatabaseQueries");
 const { sendResponse } = require("../utils/responseUtils");
 const Contact = require("../models/Contact");
@@ -82,4 +83,15 @@ const deleteContact = async (req, res) => {
   }
 };
 
-module.exports = { createContact, getContact, deleteContact };
+const countContact = async (req, res) => {
+  try {
+    const response = await getCount(Contact);
+
+    sendResponse(res, 200, true, "Count Successfully fetched", response.data);
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal server error", error);
+  }
+};
+
+module.exports = { createContact, getContact, deleteContact , countContact};

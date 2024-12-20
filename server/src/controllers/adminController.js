@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const { sendOtpEmail } = require("../services/emailService");
+const { getCount } = require("../common/commonDatabaseQueries");
+const { sendResponse } = require("../utils/responseUtils");
 
 const loginAdmin = [
   body("email").isEmail().withMessage("Please enter a valid email"),
@@ -112,7 +114,9 @@ const forgotPassword = [
 
     try {
       await sendOtpEmail(email);
-      res.status(200).json({ success: true, message: "OTP sent to your email" });
+      res
+        .status(200)
+        .json({ success: true, message: "OTP sent to your email" });
     } catch (error) {
       console.error(error);
       if (error.message === "Admin not found") {
@@ -212,10 +216,22 @@ const resetPassword = [
   },
 ];
 
+const countAdmin = async (req, res) => {
+  try {
+    const response = await getCount(Admin);
+
+    sendResponse(res, 200, true, "Count Successfully fetched", response.data);
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal server error", error);
+  }
+};
+
 module.exports = {
   loginAdmin,
   createAdmin,
   forgotPassword,
   verifyOtp,
   resetPassword,
+  countAdmin,
 };

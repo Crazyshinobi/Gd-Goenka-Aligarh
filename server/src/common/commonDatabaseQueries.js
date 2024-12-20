@@ -41,25 +41,20 @@ const deleteRecord = async (Model, query) => {
   };
 };
 
+const getCount = async (Model, query = {}) => {
+  const count = await Model.countDocuments(query).exec();
+  return {
+    status: true,
+    data: count,
+  };
+};
+
+
 module.exports = {
   createRecord,
   getRecord,
   updateRecord,
   deleteRecord,
   getSingleRecord,
+  getCount
 };
-
-// const { createRecord, getRecord, updateRecord, deleteRecord } = require('./common_database_queries');
-// const Employee = require('./models/Employee'); // Your Mongoose model
-
-// // Create a record
-// await createRecord(Employee, { name: "John Doe", employeeId: "12345", salary: 50000 });
-
-// // Get records
-// await getRecord(Employee, { salary: { $gt: 30000 } });
-
-// // Update a record
-// await updateRecord(Employee, { employeeId: "12345" }, { salary: 55000 });
-
-// // Delete a record
-// await deleteRecord(Employee, { employeeId: "12345" });

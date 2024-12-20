@@ -21,7 +21,7 @@ export const CrudTable = ({ data, refetch, apiURL, columns, fields }) => {
     data && (
       <>
         <Toaster />
-        <div className="flex items-center justify-end dark:bg-gray-700 dark:text-white">
+        <div className="flex items-center justify-end dark:bg-gray-700 dark:text-white my-5">
           <RefreshButton refetch={refetch} />
           <ExcelExport data={data} columns={columns} />
         </div>
@@ -37,7 +37,7 @@ export const CrudTable = ({ data, refetch, apiURL, columns, fields }) => {
         >
           {columns.map((col, i) => (
             <Column
-              key={col.field}
+              key={i}
               field={col.field}
               header={col.header}
               body={col.body}

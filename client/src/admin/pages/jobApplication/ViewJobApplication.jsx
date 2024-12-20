@@ -273,7 +273,7 @@ export const ViewJobApplication = () => {
           >
             <div className="flex gap-2 items-center">
               <svg
-                class="w-4 h-4 text-white"
+                className="w-4 h-4 text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -314,7 +314,7 @@ export const ViewJobApplication = () => {
           >
             <div className="flex gap-2 items-center">
               <svg
-                class="w-4 h-4 text-white"
+                className="w-4 h-4 text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

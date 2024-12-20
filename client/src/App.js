@@ -10,6 +10,12 @@ import TeachingMethodology from "./pages/TeachingMethodology";
 import IgnitingMindsPage from "./pages/IgnitingMindsPage";
 import CompetitionAwards from "./pages/CompetitionAwards";
 import BookSeller from "./pages/BookSeller";
+import BeyondAcademics from "./pages/BeyondAcademics";
+import ClassInfrastructure from "./pages/ClassInfrastructure";
+import LabsAndLibrary from "./pages/LabsAndLibrary";
+import Cafeteria from "./pages/Cafeteria";
+import Activities from "./pages/Activities";
+// Admin Imports 
 import { Dashboard } from "./admin/Dashboard";
 import { AdminLogin } from "./admin/pages/auth/AdminLogin";
 import { ForgotPassword } from "./admin/pages/auth/ForgotPassword";
@@ -23,11 +29,8 @@ import { ViewAddmission } from "./admin/pages/admission/ViewAddmission";
 import { AddGallery } from "./admin/pages/gallery/AddGallery";
 import { ViewGallery } from "./admin/pages/gallery/ViewGallery";
 import { ViewJobApplication } from "./admin/pages/jobApplication/ViewJobApplication";
-import BeyondAcademics from "./pages/BeyondAcademics";
-import ClassInfrastructure from "./pages/ClassInfrastructure";
-import LabsAndLibrary from "./pages/LabsAndLibrary";
-import Cafeteria from "./pages/Cafeteria";
-import Activities from "./pages/Activities";
+import { ViewContent } from "./admin/pages/content/ViewContent";
+import { AddContent } from "./admin/pages/content/AddContent";
 
 function App() {
   return (
@@ -52,7 +55,6 @@ function App() {
       <Route path={"/admin/forgot-password"} element={<ForgotPassword />} />
 
       {/* Admin Protected Routes */}
-
       {/* Dashboard */}
       <Route
         path={"/admin/dashboard"}
@@ -123,6 +125,24 @@ function App() {
           </PrivateRoute>
         }
       />
+      {/* Content  */}
+      <Route
+        path={"/admin/add-content"}
+        element={
+          <PrivateRoute>
+            <AddContent />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path={"/admin/view-content"}
+        element={
+          <PrivateRoute>
+            <ViewContent />
+          </PrivateRoute>
+        }
+      />
+
       {/* Job Applications  */}
       <Route
         path={"/admin/view-job-applications"}

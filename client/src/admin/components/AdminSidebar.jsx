@@ -170,12 +170,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               >
                 <path
                   fillRule="evenodd"
-                  d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z"
-                  clipRule="evenodd"
-                />
-                <path
-                  fillRule="evenodd"
-                  d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z"
+                  d="M19.003 3A2 2 0 0 1 21 5v2h-2V5.414L17.414 7h-2.828l2-2h-2.172l-2 2H9.586l2-2H9.414l-2 2H3V5a2 2 0 0 1 2-2h14.003ZM3 9v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9H3Zm2-2.414L6.586 5H5v1.586Zm4.553 4.52a1 1 0 0 1 1.047.094l4 3a1 1 0 0 1 0 1.6l-4 3A1 1 0 0 1 9 18v-6a1 1 0 0 1 .553-.894Z"
                   clipRule="evenodd"
                 />
               </svg>
@@ -202,26 +197,26 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <NavLink
-                  to="/admin/add-gallery"
+                  to="/admin/add-content"
                   className={({ isActive }) =>
                     `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
                       isActive ? "bg-gray-200 dark:bg-gray-600" : ""
                     }`
                   }
                 >
-                  Add Gallery Images
+                  Add Content
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  to="/admin/view-gallery"
+                  to="/admin/view-content"
                   className={({ isActive }) =>
                     `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
                       isActive ? "bg-gray-200 dark:bg-gray-600" : ""
                     }`
                   }
                 >
-                  View Gallery Images
+                  View Content
                 </NavLink>
               </li>
             </ul>
@@ -306,7 +301,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               }
             >
               <svg
-                class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -315,14 +310,14 @@ export const AdminSidebar = ({ mobileMenu }) => {
                 viewBox="0 0 24 24"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M12 8a1 1 0 0 0-1 1v10H9a1 1 0 1 0 0 2h11a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-8Zm4 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M5 3a2 2 0 0 0-2 2v6h6V9a3 3 0 0 1 3-3h8c.35 0 .687.06 1 .17V5a2 2 0 0 0-2-2H5Zm4 10H3v2a2 2 0 0 0 2 2h4v-4Z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
               <span className="ms-3">Job Applications</span>

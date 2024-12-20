@@ -4,6 +4,7 @@ const {
   deleteRecord,
   updateRecord,
   getSingleRecord,
+  getCount,
 } = require("../common/commonDatabaseQueries");
 const Job = require("../models/Job");
 const { sendResponse } = require("../utils/responseUtils");
@@ -111,4 +112,15 @@ const getSingleJob = async (req, res) => {
   }
 };
 
-module.exports = { createJob, getJobs, deleteJob, updateJob, getSingleJob };
+const countJob = async (req, res) => {
+  try {
+    const response = await getCount(Job);
+
+    sendResponse(res, 200, true, "Count Successfully fetched", response.data);
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal server error", error);
+  }
+};
+
+module.exports = { createJob, getJobs, deleteJob, updateJob, getSingleJob, countJob};

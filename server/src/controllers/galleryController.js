@@ -4,6 +4,7 @@ const {
   deleteRecord,
   updateRecord,
   getSingleRecord,
+  getCount,
 } = require("../common/commonDatabaseQueries");
 
 const { sendResponse } = require("../utils/responseUtils");
@@ -175,10 +176,23 @@ const updateGallery = async (req, res) => {
   }
 };
 
+const countGallery = async (req, res) => {
+  try {
+    const response = await getCount(Gallery);
+
+    sendResponse(res, 200, true, "Count Successfully fetched", response.data);
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal server error", error);
+  }
+};
+
+
 module.exports = {
   createGallery,
   getGallery,
   deleteGallery,
   updateGallery,
   getSingleGallery,
+  countGallery
 };

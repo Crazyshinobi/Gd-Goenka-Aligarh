@@ -1,14 +1,14 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { motion } from 'framer-motion'; // Import framer-motion
+import { motion } from "framer-motion"; // Import framer-motion
 import "../css/BeyondAcademics.css";
 import ParentChild from "../assets/Family.jpg";
 import Sports from "../assets/Sports.JPG";
 import Music from "../assets/MusicAndDance.jpg";
-import Art from '../assets/Art.jpg';
-import bg from '../assets/imagebg.jpg';
-import CulturalFestivals from '../assets/Festival.JPG';
+import Art from "../assets/Art.jpg";
+import bg from "../assets/imagebg.jpg";
+import CulturalFestivals from "../assets/Festival.JPG";
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1536 }, items: 3 },
@@ -21,33 +21,41 @@ const cardsData = [
   {
     title: "Parent-Child Activities",
     image: ParentChild,
-    description: "GD Goenka Public School, Aligarh, strengthens family bonds through engaging parent-child activities and collaborative events.",
+    description:
+      "GD Goenka Public School, Aligarh, strengthens family bonds through engaging parent-child activities and collaborative events.",
   },
   {
     title: "Sport",
     image: Sports,
-    description: "At GD Goenka Public School, Aligarh, sports training instills a sense of discipline, teamwork, and physical fitness.",
+    description:
+      "At GD Goenka Public School, Aligarh, sports training instills a sense of discipline, teamwork, and physical fitness.",
   },
   {
     title: "Music & Dance",
     image: Music,
-    description: "Learning at GD Goenka Public School extends beyond the classrooms into the vibrant world of music and dance.",
+    description:
+      "Learning at GD Goenka Public School extends beyond the classrooms into the vibrant world of music and dance.",
   },
   {
     title: "Cultural Festivals",
     image: CulturalFestivals,
-    description: "Cultural festivals celebrate diversity and heritage, fostering unity among students."
+    description:
+      "Cultural festivals celebrate diversity and heritage, fostering unity among students.",
   },
   {
     title: "Art & Craft",
     image: Art,
-    description: "GD Goenka Public School encourages artistic expression through a vibrant art and craft curriculum."
-  }
+    description:
+      "GD Goenka Public School encourages artistic expression through a vibrant art and craft curriculum.",
+  },
 ];
 
 function BeyondAcademics() {
   return (
-    <section className="py-16 px-4 w-full sm:px-6 lg:px-8 bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}>
+    <section
+      className="py-16 px-4 w-full sm:px-6 lg:px-8 bg-cover bg-center"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
       <div className="mx-auto max-w-[1280px]">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -55,9 +63,12 @@ function BeyondAcademics() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">Beyond Academics</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">
+            Beyond Academics
+          </h2>
           <p className="text-lg text-gray-600 italic leading-relaxed">
-            "You don't have to be great to start, but you have to start to be great."
+            "You don't have to be great to start, but you have to start to be
+            great."
             <br />
             <span className="text-sm mt-2 block">— Zig Ziglar</span>
           </p>
@@ -87,9 +98,9 @@ function BeyondAcademics() {
             showDots={true}
             swipeable={true}
             draggable={true}
-            containerClass="carousel-container"
-            itemClass="px-2 py-4"
-            dotListClass="custom-dot-list-style"
+            containerclassName="carousel-container"
+            itemclassName="px-2 py-4"
+            dotListclassName="custom-dot-list-style"
           >
             {cardsData.map((card, index) => (
               <motion.div
@@ -108,8 +119,12 @@ function BeyondAcademics() {
                 </div>
                 <div className="p-6 flex-grow flex flex-col justify-between">
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">{card.title}</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">{card.description}</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                      {card.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                      {card.description}
+                    </p>
                   </div>
                   <a
                     href="#"
