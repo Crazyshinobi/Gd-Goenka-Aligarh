@@ -2,6 +2,7 @@ const {
   createRecord,
   getRecord,
   deleteRecord,
+  getCount,
 } = require("../common/commonDatabaseQueries");
 const Admission = require("../models/Admission");
 const { sendResponse } = require("../utils/responseUtils");
@@ -87,4 +88,16 @@ const deleteAdmission = async (req, res) => {
   }
 };
 
-module.exports = { createAdmission, getAdmission, deleteAdmission };
+const countAdmission = async (req, res) => {
+  try {
+    const response = await getCount(Admission);
+
+    sendResponse(res, 200, true, "Count Successfully fetched", response.data)
+    
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal server error", error);
+  }
+}
+
+module.exports = { createAdmission, getAdmission, deleteAdmission, countAdmission };

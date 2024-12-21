@@ -11,6 +11,8 @@
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
+    "file-saver": "^2.0.5",
+    "primereact": "^10.8.5",
     "gsap": "^3.12.5",
     "js-cookie": "^3.0.5",
     "motion": "^11.15.0",
@@ -26,10 +28,17 @@
     "react-otp-input": "^3.1.1",
     "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1",
+<<<<<<< HEAD
     "react-table": "^7.8.0",
     "react-tilt": "^1.0.2",
+=======
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
+>>>>>>> ab341c4494eab69dde82f66f714bd6acd217537a
     "styled-components": "^6.1.13",
-    "web-vitals": "^2.1.4"
+    "swiper": "^11.1.15",
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",

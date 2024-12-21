@@ -4,6 +4,7 @@ const {
   getSingleRecord,
   deleteRecord,
   updateRecord,
+  getCount,
 } = require("../common/commonDatabaseQueries");
 
 const { sendResponse } = require("../utils/responseUtils");
@@ -29,7 +30,7 @@ const createContent = async (req, res) => {
   } catch (error) {
     console.error(error);
 
-    sendResponse(res, 500, "Internal Server Error");
+    sendResponse(res, 500, false, "Internal Server Error");
   }
 };
 
@@ -197,10 +198,22 @@ const updateContent = async (req, res) => {
   }
 };
 
+const countContent = async (req, res) => {
+  try {
+    const response = await getCount(Content);
+
+    sendResponse(res, 200, true, "Count Successfully fetched", response.data);
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal server error", error);
+  }
+};
+
 module.exports = {
   createContent,
   getContent,
   deleteContent,
   getSingleContent,
   updateContent,
+  countContent
 };

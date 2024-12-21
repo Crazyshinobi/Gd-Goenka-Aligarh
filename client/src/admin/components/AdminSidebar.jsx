@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 export const AdminSidebar = ({ mobileMenu }) => {
@@ -10,6 +10,14 @@ export const AdminSidebar = ({ mobileMenu }) => {
     navigate("/admin");
   };
 
+  const [accordions, setAccordions] = useState([true, true, true]);
+
+  const handleAccordion = (index) => {
+    const newAccordions = [...accordions];
+    newAccordions[index] = !newAccordions[index];
+    setAccordions(newAccordions);
+  };
+
   return (
     <aside
       id="logo-sidebar"
@@ -18,15 +26,21 @@ export const AdminSidebar = ({ mobileMenu }) => {
       }`}
       aria-label="Sidebar"
     >
-      <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
-        <ul className="space-y-2 font-medium">
+      <div className="h-full px-4 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+        {/* Sidebar Links */}
+        <ul className="space-y-4 font-medium">
+          {/* Dashboard  */}
           <li>
-            <Link
+            <NavLink
               to="/admin/dashboard"
-              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
+                  isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                }`
+              }
             >
               <svg
-                className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -36,15 +50,20 @@ export const AdminSidebar = ({ mobileMenu }) => {
                 <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
               </svg>
               <span className="ms-3">Dashboard</span>
-            </Link>
+            </NavLink>
           </li>
+          {/* Contact Form  */}
           <li>
-            <Link
+            <NavLink
               to="/admin/view-contact"
-              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
+                  isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                }`
+              }
             >
               <svg
-                className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -52,56 +71,318 @@ export const AdminSidebar = ({ mobileMenu }) => {
               >
                 <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
               </svg>
-              <span className="flex-1 ms-3 whitespace-nowrap">Inbox</span>
-              <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                3
-              </span>
-            </Link>
+              <span className="flex-1 ms-3">Inbox</span>
+            </NavLink>
           </li>
+          {/* Gallery  */}
           <li>
-            <Link
-              to="/admin/add-admin"
-              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            <button
+              onClick={() => handleAccordion(0)}
+              type="button"
+              className="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white group hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200"
+              aria-controls="dropdown-example"
+              data-collapse-toggle="dropdown-example"
             >
               <svg
-                className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z"
+                  clipRule="evenodd"
+                />
+                <path
+                  fillRule="evenodd"
+                  d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span className="ms-3">Gallery</span>
+              <svg
+                className="w-3 h-3 ml-2 transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </button>
+            <ul
+              id="dropdown-example"
+              className={accordions[0] ? "hidden" : "py-2 space-y-2"}
+            >
+              <li>
+                <NavLink
+                  to="/admin/add-gallery"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
+                      isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                    }`
+                  }
+                >
+                  Add Gallery Images
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/admin/view-gallery"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
+                      isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                    }`
+                  }
+                >
+                  View Gallery Images
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+          {/* Content  */}
+          <li>
+            <button
+              onClick={() => handleAccordion(1)}
+              type="button"
+              className="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white group hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200"
+              aria-controls="dropdown-example"
+              data-collapse-toggle="dropdown-example"
+            >
+              <svg
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M19.003 3A2 2 0 0 1 21 5v2h-2V5.414L17.414 7h-2.828l2-2h-2.172l-2 2H9.586l2-2H9.414l-2 2H3V5a2 2 0 0 1 2-2h14.003ZM3 9v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9H3Zm2-2.414L6.586 5H5v1.586Zm4.553 4.52a1 1 0 0 1 1.047.094l4 3a1 1 0 0 1 0 1.6l-4 3A1 1 0 0 1 9 18v-6a1 1 0 0 1 .553-.894Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span className="ms-3">Content</span>
+              <svg
+                className="w-3 h-3 ml-2 transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </button>
+            <ul
+              id="dropdown-example"
+              className={accordions[1] ? "hidden" : "py-2 space-y-2"}
+            >
+              <li>
+                <NavLink
+                  to="/admin/add-content"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
+                      isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                    }`
+                  }
+                >
+                  Add Content
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/admin/view-content"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
+                      isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                    }`
+                  }
+                >
+                  View Content
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+          {/* Job */}
+          <li>
+            <button
+              onClick={() => handleAccordion(2)}
+              type="button"
+              className="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white group hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200"
+              aria-controls="dropdown-example"
+              data-collapse-toggle="dropdown-example"
+            >
+              <svg
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 2a3 3 0 0 0-3 3v1H5a3 3 0 0 0-3 3v2.382l1.447.723.005.003.027.013.12.056c.108.05.272.123.486.212.429.177 1.056.416 1.834.655C7.481 13.524 9.63 14 12 14c2.372 0 4.52-.475 6.08-.956.78-.24 1.406-.478 1.835-.655a14.028 14.028 0 0 0 .606-.268l.027-.013.005-.002L22 11.381V9a3 3 0 0 0-3-3h-2V5a3 3 0 0 0-3-3h-4Zm5 4V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1h6Zm6.447 7.894.553-.276V19a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-5.382l.553.276.002.002.004.002.013.006.041.02.151.07c.13.06.318.144.557.242.478.198 1.163.46 2.01.72C7.019 15.476 9.37 16 12 16c2.628 0 4.98-.525 6.67-1.044a22.95 22.95 0 0 0 2.01-.72 15.994 15.994 0 0 0 .707-.312l.041-.02.013-.006.004-.002.001-.001-.431-.866.432.865ZM12 10a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H12Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span className="ms-3">Job</span>
+              <svg
+                className="w-3 h-3 ml-2 transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </button>
+            <ul
+              id="dropdown-example"
+              className={accordions[2] ? "hidden" : "py-2 space-y-2"}
+            >
+              <li>
+                <NavLink
+                  to="/admin/add-job"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
+                      isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                    }`
+                  }
+                >
+                  Create Job
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/admin/view-job"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
+                      isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                    }`
+                  }
+                >
+                  View Jobs
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+          {/* Job Applications */}
+          <li>
+            <NavLink
+              to="/admin/view-job-applications"
+              className={({ isActive }) =>
+                `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
+                  isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                }`
+              }
+            >
+              <svg
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12 8a1 1 0 0 0-1 1v10H9a1 1 0 1 0 0 2h11a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-8Zm4 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
+                  clipRule="evenodd"
+                />
+                <path
+                  fillRule="evenodd"
+                  d="M5 3a2 2 0 0 0-2 2v6h6V9a3 3 0 0 1 3-3h8c.35 0 .687.06 1 .17V5a2 2 0 0 0-2-2H5Zm4 10H3v2a2 2 0 0 0 2 2h4v-4Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span className="ms-3">Job Applications</span>
+            </NavLink>
+          </li>
+          {/* Admission Applications */}
+          <li>
+            <NavLink
+              to="/admin/view-admission"
+              className={({ isActive }) =>
+                `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
+                  isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                }`
+              }
+            >
+              <svg
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M4 4a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2v14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2V5a1 1 0 0 1-1-1Zm5 2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1Zm-5 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1Zm-3 4a2 2 0 0 0-2 2v3h2v-3h2v3h2v-3a2 2 0 0 0-2-2h-2Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+
+              <span className="ms-3">Admission Applications</span>
+            </NavLink>
+          </li>
+          {/* Admin Section */}
+          <li>
+            <NavLink
+              to="/admin/add-admin"
+              className={({ isActive }) =>
+                `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
+                  isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                }`
+              }
+            >
+              <svg
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 viewBox="0 0 20 18"
               >
-                <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM10 12a6.957 6.957 0 0 1-1.264-.931A6.432 6.432 0 0 1 9 9v-2A6.439 6.439 0 0 1 9 2v2a6.444 6.444 0 0 1 2-.3v-1a3.963 3.963 0 0 0-1.4.267A3.963 3.963 0 0 0 9.5 2c.95 0 2 .318 2.625.75 1.125-.748 3.03-.843 3.5-.675-.98-.6 5.036-1.635-.266-2.62Z" />
               </svg>
-              <span className="flex-1 ms-3 whitespace-nowrap">Admin</span>
-            </Link>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-            >
-              <svg
-                className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 18 20"
-              >
-                <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
-              </svg>
-              <span className="flex-1 ms-3 whitespace-nowrap">Products</span>
-            </a>
-          </li>
-          <li>
-            <button
-              onClick={signOut}
-              type="button"
-              class="text-white bg-yellow-500 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 text-center inline-flex items-center shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
-            >
-              Log out
-            </button>
+              <span className="ms-3">Admin</span>
+            </NavLink>
           </li>
         </ul>
+
+        {/* Sign-out Button */}
+        <button
+          className="w-full mt-5 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-700"
+          onClick={signOut}
+        >
+          Sign out
+        </button>
       </div>
     </aside>
   );
