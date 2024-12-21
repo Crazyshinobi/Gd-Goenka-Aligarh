@@ -64,12 +64,12 @@ function BeyondAcademics() {
         </motion.div>
 
         <div className="hidden lg:flex space-x-4 justify-center mb-8">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+         <a href="/beyond-academics"><button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
             Explore More
-          </button>
-          <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded transition duration-300">
+          </button></a> 
+          {/* <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded transition duration-300">
             Our Programs
-          </button>
+          </button> */}
         </div>
 
         {/* Carousel Section */}
@@ -90,6 +90,7 @@ function BeyondAcademics() {
             containerClass="carousel-container"
             itemClass="px-2 py-4"
             dotListClass="custom-dot-list-style"
+            className="z-20"
           >
             {cardsData.map((card, index) => (
               <motion.div
@@ -112,7 +113,7 @@ function BeyondAcademics() {
                     <p className="text-gray-600 mb-4 leading-relaxed">{card.description}</p>
                   </div>
                   <a
-                    href="#"
+                    href="/beyond-academics"
                     className="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors mt-auto"
                   >
                     Read More

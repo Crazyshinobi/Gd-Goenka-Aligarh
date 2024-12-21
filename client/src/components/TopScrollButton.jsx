@@ -29,7 +29,7 @@ function TopScrollButton() {
 
   return (
     <div>
-      <div className="fixed top-0 left-0 w-full h-1  z-50">
+      <div className="fixed top-0 left-0 w-full h-1  z-[10000]">
         <div
           className="h-[1.4px] bg-red-600 transition-all duration-300 ease-out"
           style={{ width: `${progress}%` }}

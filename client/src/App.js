@@ -22,6 +22,10 @@ import ClassInfrastructure from './pages/ClassInfrastructure';
 import LabsAndLibrary from './pages/LabsAndLibrary';
 import Cafeteria from './pages/Cafeteria';
 import Activities from './pages/Activities';
+import ImageGallery from './pages/ImageGallery';
+import ContactForm from './pages/ContactForm';
+import MandatoryDisclosure from './pages/MandatoryDisclosure';
+import GoenkanPursuits from './pages/GoenkanPursuits';
 
 function App() {
   return (
@@ -30,6 +34,7 @@ function App() {
       <Route path={"/about/principal-message"} element={<PrincipalMessage/>}/>
       <Route path={"/about/Management"} element={<ManagementPage/>}/>
       <Route path={"/about/vision-and-mission"} element={<VisionAndMission/>}/>
+      <Route path={"/about/mandatory-disclosure"} element={<MandatoryDisclosure/>}/>
       <Route path={"/academics/faculty-&-curriculum"} element={<FacultyAndCurriculum/>}/>
       <Route path={"/academics/teaching-methodology"} element={<TeachingMethodology/>}/>
       <Route path={"/academics/igniting-minds"} element={<IgnitingMindsPage/>}/>
@@ -40,9 +45,9 @@ function App() {
       <Route path={"/our-campus/labs-and-library"} element={<LabsAndLibrary/>}/>
       <Route path={"/our-campus/cafeteria"} element={<Cafeteria/>}/>
       <Route path={"/activities"} element={<Activities/>}/>
-
-
-
+      <Route path={"/gallery"} element={<ImageGallery/>}/>
+      <Route path={"/contact-us"} element={<ContactForm/>}/>
+      <Route path={"/goenkan-pursuits"} element={<GoenkanPursuits/>}/>
 
 
 

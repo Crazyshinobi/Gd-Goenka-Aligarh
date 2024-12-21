@@ -10,11 +10,12 @@ import Outdoor from "../assets/Outdoor.jpg";
 import Robotics from '../assets/Robotics.JPG';
 import Art from "../assets/Art.jpg";
 import HorseRiding from "../assets/HorseRiding.jpg";
+import bgDesign from "../assets/bgdesign3.jpg";
+
 
 const Activities = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-      }, []);
+  document.title = "Activities - GDGPS Aligarh"
+  const bannerRef = useRef(null);
   const cardsRef = useRef([]);
 
   const activitiesData = [
@@ -72,79 +73,77 @@ const Activities = () => {
   return (
     <Layout>
       {/* Banner Section */}
-      <div className="relative">
+      <motion.div
+        className="relative h-[50vh] md:h-[60vh] lg:h-[60vh] overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      >
         <motion.img
           src={Banner}
-          alt="Activities"
-          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] w-full object-fill"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          alt="Activities Banner"
+          className="h-full w-full object-cover"
+          initial={{ scale: 1.2 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5 }}
         />
+
         <motion.h1
           className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.5,
+            type: "spring",
+            stiffness: 100,
+          }}
         >
-          OUR CAMPUS
+          ACTIVITIES
         </motion.h1>
-      </div>
+      </motion.div>
 
       <NavigationPages />
 
-      <div className="px-4 py-8 md:py-12 flex flex-col items-center">
-        <motion.h1
-          className="text-center text-2xl md:text-4xl font-bold text-blue-900 mb-6"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
+      <div className="px-4 py-12 md:py-20 bg-pattern">
+        <h1 className="text-center text-3xl md:text-5xl font-bold text-blue-900 mb-6">
           Activities at G.D. Goenka Aligarh
-        </motion.h1>
-        <motion.p
-          className="text-center mb-6 text-slate-600 max-w-7xl w-[90%]"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          At G.D. Goenka Aligarh, we believe in nurturing not just academic excellence but also physical prowess and sportsmanship. Our world-class playfields and sports facilities are designed to inspire and challenge students, helping them develop a lifelong love for sports and fitness. From cricket to yoga, we offer a diverse range of sporting activities to cater to every interest and skill level.
-        </motion.p>
+        </h1>
+        <p className="text-center mb-12 text-slate-600 max-w-7xl w-[90%] mx-auto">
+          At G.D. Goenka Aligarh, we believe in nurturing not just academic excellence but also physical prowess and creativity. Our diverse range of activities is designed to inspire and challenge students, helping them develop lifelong passions and skills.
+        </p>
 
-        <div className="flex flex-wrap max-w-7xl w-full items-center justify-center gap-8">
+        <div className="flex flex-wrap max-w-7xl w-full mx-auto items-center justify-center gap-8">
           {activitiesData.map((item) => (
-            <motion.div
+            <div
               key={item.id}
               ref={(el) => (cardsRef.current[item.id - 1] = el)}
               className="relative group w-[340px] h-[320px] overflow-hidden rounded-lg shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
             >
-              <motion.img
+              <img
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover"
-                initial={{ scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
               />
-              <motion.div
-                className="absolute bottom-0 left-0 w-full h-full bg-blue-600 text-white text-center p-3 transform translate-y-full transition-transform duration-500 group-hover:-translate-y-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                {item.description}
-              </motion.div>
+              <div className="absolute bottom-0 left-0 w-full h-full bg-blue-600 bg-opacity-90 text-white text-center p-3 transform translate-y-full transition-transform duration-500 group-hover:-translate-y-0">
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-sm">{item.description}</p>
+              </div>
               <div className="absolute bottom-0 left-0 w-full bg-white text-gray-800 text-center p-2 font-bold">
                 {item.title}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        .bg-pattern {
+          background-image: url(${bgDesign}); // Use the imported image here
+          background-size: 10px;
+          background-repeat: repeat;
+        }
+      `}</style>
     </Layout>
   );
 };

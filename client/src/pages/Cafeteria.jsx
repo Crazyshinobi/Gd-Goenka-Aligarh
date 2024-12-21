@@ -9,6 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
+document.title = 'Cafeteria - GDGPS Aligarh'
 
 const Cafeteria = () => {
   const leftContentRef = useRef(null);
@@ -21,7 +22,7 @@ const Cafeteria = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    
 
     // GSAP animations for left and right content sections
     gsap.fromTo(

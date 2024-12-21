@@ -11,8 +11,8 @@ import mission from "../assets/mission.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 const VisionAndMission = () => {
+  document.title = 'Vision and Mission - GDGPS Aligarh'
   useEffect(() => {
-    window.scrollTo(0, 0);
 
     // GSAP Animations
     gsap.fromTo(

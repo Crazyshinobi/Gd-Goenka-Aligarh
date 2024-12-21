@@ -9,6 +9,7 @@ import ToppersX from "../components/ToppersX";
 import InstagramSection from "../components/InstagramSection";
 
 const Home = () => {
+  document.title = "GDGPS Aligarh"
   return (
     <Layout>
       <ImageSection />

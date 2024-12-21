@@ -6,6 +6,8 @@ import Reel1 from '../assets/Reel1.JPG';
 import Reel2 from '../assets/Family.jpg';
 import Reel3 from '../assets/Janamashtmi.png';
 import Reel4 from '../assets/MusicAndDance.jpg';
+import bg1 from '../assets/bg2.jpg';
+
 
 const reels = [
   { link: "https://www.instagram.com/reel/Cz_KgiRrOnI/", image: Reel },
@@ -17,7 +19,7 @@ const reels = [
 
 const InstagramSection = () => {
   return (
-    <div className="p-4 sm:p-6 w-full">
+    <div className="p-4 sm:p-6 w-full " style={{backgroundImage : `url(${bg1})`}}>
       <h2 className="text-center text-xl sm:text-4xl font-bold mb-4">Follow Us on Instagram</h2>
       <div className="relative overflow-hidden w-full">
         {/* Scrolling Container */}

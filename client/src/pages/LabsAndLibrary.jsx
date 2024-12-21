@@ -13,6 +13,7 @@ import bgDesign from "../assets/bgdesign4.webp";
 gsap.registerPlugin(ScrollTrigger);
 
 const LabsAndLibrary = () => {
+  document.title = 'Labs and Library - GDGPS Aligarh'
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
     tablet: { breakpoint: { max: 1024, min: 464 }, items: 1 },

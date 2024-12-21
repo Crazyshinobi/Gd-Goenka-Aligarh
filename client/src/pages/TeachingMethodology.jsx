@@ -6,11 +6,12 @@ import Student1 from "../assets/Student1.JPG";
 import Student2 from "../assets/Student2.JPG";
 import Carousel from "react-multi-carousel";
 import { motion } from "framer-motion";
+import bgDesign from '../assets/bgdesign3.jpg'
+
 
 const TeachingMethodology = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  document.title = 'Teaching Methodology - GDGPS Aligarh'
+ 
 
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
@@ -43,7 +44,7 @@ const TeachingMethodology = () => {
       {/* Navigation Section */}
       <NavigationPages />
 
-      <div className=" px-4 py-8 md:py-12">
+      <div className=" px-4 py-8 md:py-12 bg-pattern">
         <motion.h1
           className="text-center text-2xl md:text-4xl font-bold text-blue-900 mb-6"
           initial={{ opacity: 0 }}
@@ -136,6 +137,13 @@ const TeachingMethodology = () => {
           </motion.div>
         </section>
       </div>
+      <style>{`
+        .bg-pattern {
+          background-image: url(${bgDesign}); // Use the imported image here
+          background-size: 10px;
+          background-repeat: repeat;
+        }
+      `}</style>
     </Layout>
   );
 };

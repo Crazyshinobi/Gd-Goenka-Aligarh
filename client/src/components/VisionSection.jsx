@@ -3,12 +3,13 @@ import principal from '../assets/principal1.jpeg';
 import icon from '../assets/prin_icon1.png';
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion'; // Import framer-motion for animations
+import { motion } from 'framer-motion'; 
+import bg1 from '../assets/bg2.jpg'
 
 function VisionSection() {
   return (
-    <div className="max-w-[1280px] w-full mx-auto px-4 py-12 sm:py-16">
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+    <div className=" w-full mx-auto px-4 py-12 sm:py-16 flex flex-col items-center" style={{backgroundImage : `url(${bg1})`}}>
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 max-w-[1280px]">
         {/* Principal Section */}
         <motion.div
           className="w-full lg:w-[50%]"

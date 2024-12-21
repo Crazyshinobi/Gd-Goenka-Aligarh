@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Banner1 from "../assets/OutdoorActivity2.jpg";
 import Banner2 from "../assets/beyond-banner2.JPG" ;
-import Banner3 from "../assets/beyond-banner3.jpg";
 import { Layout } from "../components/Layout";
 import Carousel from "react-multi-carousel";
 import NavigationPages from "./NavigationPages";
@@ -18,11 +17,14 @@ import Art2 from "../assets/Reel1.JPG";
 import FestivalImage1 from "../assets/Festival.JPG";
 import FestivalImage2 from "../assets/Festival2.JPG";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 const BeyondAcademics = () => {
+  document.title = 'Beyond Academics - GDGPS Aligarh'
   const bannerRef = useRef(null);
   const sectionsRef = useRef([]);
+  
 
   useEffect(() => {
     // Enhanced parallax effect for banner
@@ -108,6 +110,7 @@ Both Indian and western dance is taught to our school students. Classical Indian
 Students gain valuable knowledge through this process of creative learning and also become deeply sensitive to our rich traditions and heritage. Their young bodies become supple and their minds become more alert and active, through the process of memorizing and learning the choreographed steps.`,
     },
     {
+      id: "art",
       title: "Art & Robotics",
       images: [Art, Art2],
       content: `Art is important for the development of individual and societies. Art enables individuals to imagine novel, productive, and fulfilling solutions to the challenges humanity faces. If you pause reading this and take a look around, what you notice is not the structures, but pieces of art - whether they are pictures, paintings, crafts, decorative items, or an aesthetically made piece of furniture.
@@ -149,7 +152,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
           className="w-full"
           customTransition="transform 800ms ease-in-out"
         >
-          {[Banner1, Banner2, Banner3].map((banner, index) => (
+          {[Banner1, Banner2].map((banner, index) => (
             <motion.div
               key={index}
               className="relative h-full"
@@ -160,7 +163,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
               <img
                 src={banner}
                 alt={`Banner ${index + 1}`}
-                className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[65vh] w-full object-cover"
+                className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[65vh] w-full object-fill"
               />
             </motion.div>
           ))}
@@ -199,7 +202,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
 
         <div className="relative px-4 sm:px-6 md:px-8 py-8 md:py-12">
           <motion.h1
-            className="text-center text-xl sm:text-2xl md:text-4xl font-bold text-blue-900 mb-8 md:mb-12"
+            className="text-center text-xl sm:text-2xl md:text-4xl font-bold text-red-600 mb-8 md:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -236,7 +239,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
                   transition={{ delay: 0.3 }}
                 >
                   <motion.h2
-                    className="text-2xl sm:text-3xl font-bold text-blue-900 mb-4 sm:mb-6"
+                    className="text-2xl sm:text-3xl font-bold text-red-600 mb-4 sm:mb-6"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 }}
@@ -295,7 +298,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
                         <img
                           src={img}
                           alt={`${section.title} ${imgIndex + 1}`}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-fill"
                         />
                         {/* Gradient overlay for images */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -311,6 +314,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
 
       {/* Footer gradient */}
       <div className="h-32 bg-gradient-to-t from-blue-50 to-transparent" />
+      
     </Layout>
   );
 };

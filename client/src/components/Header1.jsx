@@ -13,7 +13,7 @@ import { NavLink } from 'react-router-dom'
 
 
 function Header1() {
-    document.title = "GDGPS Aligarh"
+    
 
     const [isSmallSidebar, setIsSmallSidebar] = useState(false)
     const [isSidebar,setIsSidebar] = useState(false);
@@ -55,7 +55,8 @@ function Header1() {
                 flex-col bg-white drop-shadow-lg rounded-md gap-2 transition-all duration-100 ease-in'>
                    <NavLink to={"/about/principal-message"}><li className='menu-item cursor-pointer  mb-[-8px]'>PRINCIPAL'S MESSAGE</li></NavLink> <hr />
                     <NavLink to={'/about/management'}><li className='menu-item cursor-pointer mt-[-8px] mb-[-8px]'>MANAGEMENT</li></NavLink><hr />
-                    <NavLink to={'/about/vision-and-mission'}> <li className='menu-item cursor-pointer mt-[-9px]'>VISION & MISSION</li></NavLink>
+                    <NavLink to={'/about/vision-and-mission'}> <li className='menu-item cursor-pointer mt-[-8px] mb-[-8px]'>VISION & MISSION</li></NavLink><hr />
+                    <a href={"/about/mandatory-disclosure"} target="_blank" rel="noopener noreferrer"> <li className='menu-item cursor-pointer mt-[-9px]'>MANDATORY DISCLOSURE</li></a>
                </ul>   
 
                <div className='relative peer'>
@@ -92,7 +93,7 @@ function Header1() {
 
          <NavLink to={"/our-campus/class-infrastructure"}><li className='menu-item cursor-pointer ps-2 flex mb-[-16px]'>class infrastructure</li></NavLink><hr />
                  <NavLink to={"/our-campus/labs-and-library"}><li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>labs and library</li></NavLink><hr />
-                 <NavLink to={"/our-campus/cafeteria"}> <li className='menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]'>cafeteria</li></NavLink><hr />
+                 <NavLink to={"/our-campus/cafeteria"}> <li className='menu-item cursor-pointer ps-2 flex mt-[-16px]'>cafeteria</li></NavLink>
                 </ul>
 
                </div>
@@ -113,9 +114,9 @@ function Header1() {
 
 
                <div className='relative peer'>
-                <li className='relative peer p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all'>
+             <NavLink to={'/contact-us'}>   <li className='relative peer p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all'>
                     CONTACT US
-                </li>
+                </li></NavLink>
 
                </div>
 
@@ -157,29 +158,13 @@ function Header1() {
                       </AccordionSummary>
                       <AccordionDetails>
                         <ul className='mt-[-16px]'>
-                           <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px]'>2022-23</li><hr />
-                           <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px]'>2023-24</li><hr />
-                           <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none'>2024-25</li>
+                          
+                        <a href={'/goenkan-pursuits'} target="_blank" rel="noopener noreferrer">      <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none'>2024-25</li></a>
                        </ul>
                       </AccordionDetails> 
                     </Accordion>
 
-                    {/* GOENKAN MENTORSHIP PROGRAMME ACCORDIAN */}
-                    <Accordion>
-                       <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel2-content"
-                        id="panel2-header"
-                        className='uppercase'
-                       >
-                       goenkan mentorship programme
-                       </AccordionSummary>
-                       <AccordionDetails>
-                            <ul>
-                               <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px]'>2023-24</li>
-                            </ul>
-                       </AccordionDetails>
-                    </Accordion>
+                    
 
                     {/* ADMISSION ACCORDIAN */}
 
@@ -211,63 +196,6 @@ function Header1() {
                        </AccordionSummary></NavLink>
                     </Accordion>
       
-                     {/* COLLEGE PLACEMENTS ACCORDIAN */}
-                     <Accordion>
-                        <AccordionSummary
-                         expandIcon={<ExpandMoreIcon />}
-                         aria-controls="panel2-content"
-                         id="panel2-header"
-                         className='uppercase'
-                        >
-                         college placements
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <ul>
-                              <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase'>2019-20</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>2020-21</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px]'>2021-22</li><hr />
-                              <li className='menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]'>2022-23</li>
-                          </ul>
-                        </AccordionDetails>
-                     </Accordion>
-
-                     {/* ACHIEVEMENTS ACCORDIAN */}
-                     <Accordion>
-                        <AccordionSummary
-                         expandIcon={<ExpandMoreIcon />}
-                         aria-controls="panel2-content"
-                         id="panel2-header"
-                         className='uppercase'
-                        >
-                         ACHIEVEMENTS
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <ul>
-                              <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase'>achievements-2022-2023</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>achievements-2021-2022</li><hr />
-                              <li className='menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]'>achievements-2020-2021</li>
-                          </ul>
-                        </AccordionDetails>
-                     </Accordion>
-
-                     {/* SCHOLASTIC ACHIEVERS ACCORDIAN */}
-                     <Accordion>
-                        <AccordionSummary
-                         expandIcon={<ExpandMoreIcon />}
-                         aria-controls="panel2-content"
-                         id="panel2-header"
-                         className='uppercase'
-                        >
-                         scholastic achievers
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <ul>
-                              <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase'>2021-22</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>2022-23</li><hr />
-                              <li className='menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]'>2023-24</li>
-                          </ul>
-                        </AccordionDetails>
-                     </Accordion>
 
                      {/* CLUBS ACCORDIAN */}
                      <Accordion>
@@ -293,13 +221,13 @@ function Header1() {
 
                     {/* IMAGE GALLERY ACCORDIAN */}
                     <Accordion>
-                       <AccordionSummary
+                      <NavLink to={'/gallery'}> <AccordionSummary
                        aria-controls="panel2-content"
                        id="panel2-header"
                        className='uppercase'
                        >
                        image gallery
-                       </AccordionSummary>
+                       </AccordionSummary></NavLink>
                     </Accordion>
 
                      {/* GDGPS BLOGS ACCORDIAN */}
@@ -312,25 +240,6 @@ function Header1() {
                        gdgps blogs
                        </AccordionSummary>
                     </Accordion>
-
-                    {/* E-PUBLICATIONS ACCORDIAN */}
-                    <Accordion>
-                        <AccordionSummary
-                         expandIcon={<ExpandMoreIcon />}
-                         aria-controls="panel2-content"
-                         id="panel2-header"
-                         className='uppercase'
-                        >
-                         e-publications
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <ul>
-                              <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase'>e-newsletter</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>year book</li><hr />
-                              <li className='menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]'>goenkan gazette</li>
-                          </ul>
-                        </AccordionDetails>
-                     </Accordion>
 
                       {/* IN NEWS ACCORDIAN */}
                     <Accordion>
@@ -370,7 +279,8 @@ function Header1() {
                         <ul className='mt-[-16px]'>
                           <NavLink to={'/about/principal-message'}> <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase'>principal's message</li></NavLink><hr />
                           <NavLink to={'/about/management'}><li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>management</li></NavLink><hr />
-                          <NavLink to={'/about/vision-and-mission'}>  <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>vision & mission</li></NavLink>
+                          <NavLink to={'/about/vision-and-mission'}>  <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] uppercase'>vision & mission</li></NavLink><hr />
+                          <a href={"/about/mandatory-disclosure"} target="_blank" rel="noopener noreferrer"> <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase'>mandatory disclosure</li></a>
                        </ul>
                       </AccordionDetails> 
                     </Accordion>
@@ -395,6 +305,7 @@ function Header1() {
                        </ul>
                       </AccordionDetails> 
                     </Accordion>
+                    
 
                     {/* OUR CAMPUS ACCORDIAN */}
                     <Accordion>
@@ -470,29 +381,13 @@ function Header1() {
                       </AccordionSummary>
                       <AccordionDetails>
                         <ul className='mt-[-16px]'>
-                           <li className='menu-item cursor-pointer mb-[-4px] ms-[-4px]'>2022-23</li><hr />
-                           <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px]'>2023-24</li><hr />
-                           <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none'>2024-25</li>
+                          
+                        <a href={"/goenkan-pursuits"} target="_blank" rel="noopener noreferrer">     <li className='menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none'>2024-25</li></a>
                        </ul>
                       </AccordionDetails> 
                     </Accordion>
 
-                    {/* MENTORSHIP ACCORDIAN */}
-                    <Accordion>
-                       <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel2-content"
-                        id="panel2-header"
-                        className='uppercase'
-                       >
-                       goenkan mentorship programme
-                       </AccordionSummary>
-                       <AccordionDetails>
-                            <ul>
-                               <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px]'>2023-24</li>
-                            </ul>
-                       </AccordionDetails>
-                    </Accordion>
+                   
 
                     {/* ADMISSION ACCORDIAN */}
 
@@ -523,64 +418,6 @@ function Header1() {
                        activities
                        </AccordionSummary></NavLink>
                     </Accordion>
-      
-                     {/* COLLEGE PLACEMENTS ACCORDIAN */}
-                     <Accordion>
-                        <AccordionSummary
-                         expandIcon={<ExpandMoreIcon />}
-                         aria-controls="panel2-content"
-                         id="panel2-header"
-                         className='uppercase'
-                        >
-                         college placements
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <ul>
-                              <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase'>2019-20</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>2020-21</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px]'>2021-22</li><hr />
-                              <li className='menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]'>2022-23</li>
-                          </ul>
-                        </AccordionDetails>
-                     </Accordion>
-
-                     {/* ACHIEVEMENTS ACCORDIAN */}
-                     <Accordion>
-                        <AccordionSummary
-                         expandIcon={<ExpandMoreIcon />}
-                         aria-controls="panel2-content"
-                         id="panel2-header"
-                         className='uppercase'
-                        >
-                         ACHIEVEMENTS
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <ul>
-                              <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase'>achievements-2022-2023</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>achievements-2021-2022</li><hr />
-                              <li className='menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]'>achievements-2020-2021</li>
-                          </ul>
-                        </AccordionDetails>
-                     </Accordion>
-
-                     {/* SCHOLASTIC ACHIEVERS ACCORDIAN */}
-                     <Accordion>
-                        <AccordionSummary
-                         expandIcon={<ExpandMoreIcon />}
-                         aria-controls="panel2-content"
-                         id="panel2-header"
-                         className='uppercase'
-                        >
-                         scholastic achievers
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <ul>
-                              <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase'>2021-22</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>2022-23</li><hr />
-                              <li className='menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]'>2023-24</li>
-                          </ul>
-                        </AccordionDetails>
-                     </Accordion>
 
                      {/* CLUBS ACCORDIAN */}
                      <Accordion>
@@ -606,13 +443,13 @@ function Header1() {
 
                     {/* IMAGE GALLERY ACCORDIAN */}
                     <Accordion>
-                       <AccordionSummary
+                    <NavLink to={'/gallery'} > <AccordionSummary
                        aria-controls="panel2-content"
                        id="panel2-header"
                        className='uppercase'
                        >
                        image gallery
-                       </AccordionSummary>
+                       </AccordionSummary> </NavLink>
                     </Accordion>
 
                      {/* GDGPS BLOGS ACCORDIAN */}
@@ -626,25 +463,6 @@ function Header1() {
                        </AccordionSummary>
                     </Accordion>
 
-                    {/* E-PUBLICATIONS ACCORDIAN */}
-                    <Accordion>
-                        <AccordionSummary
-                         expandIcon={<ExpandMoreIcon />}
-                         aria-controls="panel2-content"
-                         id="panel2-header"
-                         className='uppercase'
-                        >
-                         e-publications
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <ul>
-                              <li className='menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase'>e-newsletter</li><hr />
-                              <li className='menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase'>year book</li><hr />
-                              <li className='menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]'>goenkan gazette</li>
-                          </ul>
-                        </AccordionDetails>
-                     </Accordion>
-
                       {/* IN NEWS ACCORDIAN */}
                     <Accordion>
                        <AccordionSummary
@@ -654,6 +472,16 @@ function Header1() {
                        >
                        in-news
                        </AccordionSummary>
+                    </Accordion>
+
+                    <Accordion>
+                     <NavLink to={'/contact-us'}>  <AccordionSummary
+                       aria-controls="panel2-content"
+                       id="panel2-header"
+                       className='uppercase'
+                       >
+                       Contact-us
+                       </AccordionSummary></NavLink>
                     </Accordion>
                      
                 </div>

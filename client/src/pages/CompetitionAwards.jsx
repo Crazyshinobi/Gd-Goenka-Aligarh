@@ -6,10 +6,13 @@ import Student2 from "../assets/Student2.JPG";
 import Carousel from "react-multi-carousel";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+import bgDesign from '../assets/bgdesign3.jpg'
+
 
 const CompetitionAwards = () => {
+  document.title ='Competition and Awards - GDGPS Aligarh'
   useEffect(() => {
-    window.scrollTo(0, 0);
+   
     // GSAP Scroll Trigger Animation
     gsap.fromTo(
       ".award-title",
@@ -60,7 +63,7 @@ const CompetitionAwards = () => {
       <NavigationPages />
 
       {/* Main Content Section */}
-      <div className="principalMessageSection px-4 py-12">
+      <div className="principalMessageSection px-4 py-12 bg-pattern">
         <h1 className="text-center text-3xl font-bold text-blue-900 mb-8 award-title">
           Competition & Awards
         </h1>
@@ -172,6 +175,13 @@ const CompetitionAwards = () => {
           </div>
         </section>
       </div>
+      <style>{`
+        .bg-pattern {
+          background-image: url(${bgDesign}); // Use the imported image here
+          background-size: 10px;
+          background-repeat: repeat;
+        }
+      `}</style>
     </Layout>
   );
 };

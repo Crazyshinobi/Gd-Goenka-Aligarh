@@ -82,9 +82,11 @@ function Footer() {
               Competitions & Awards
             </li>
             </NavLink>
-            <li className="hover:text-blue-300 cursor-pointer">
+            <a href={"/about/mandatory-disclosure"} target="_blank" rel="noopener noreferrer">
+              <li className="hover:text-blue-300 cursor-pointer">
               Mandatory Disclosure
             </li>
+            </a>
           </ul>
         </div>
 
@@ -96,11 +98,10 @@ function Footer() {
               Events & Celebrations
             </li>
             <li className="hover:text-blue-300 cursor-pointer">Admissions</li>
-            <li className="hover:text-blue-300 cursor-pointer">Bus Routes</li>
             <li className="hover:text-blue-300 cursor-pointer">
               Image Gallery
             </li>
-            <li className="hover:text-blue-300 cursor-pointer">Contact Us</li>
+            <NavLink to={'/contact-us'}><li className="hover:text-blue-300 cursor-pointer">Contact Us</li></NavLink>
           </ul>
         </div>
       </div>

@@ -6,9 +6,8 @@ import School from "../assets/School.jpg";
 import PrincipalPhoto from "../assets/principal1.jpeg";
 
 const PrincipalMessage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  document.title = 'Principal Message - GDGPS Aligarh'
+ 
 
   return (
     <Layout>

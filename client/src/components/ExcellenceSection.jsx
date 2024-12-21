@@ -47,7 +47,7 @@ const ExcellenceSection = () => {
               Our aim is for children to be enlightened in mind, enriched in character, empowered to forge ahead, and encouraged beyond belief to be creative thinkers, world citizens, and responsible individuals.
             </p>
             <p className="text-lg leading-relaxed mb-4">
-              Passion, potential, and purpose find a new direction at GDGPSVK.
+              Passion, potential, and purpose find a new direction at GDGPS ALIGARH.
             </p>
             <p className="text-lg leading-relaxed">
               A new generation of learners is learning to expand their horizons, spread their wings towards change and empathy, and empowerment. These trendsetters thus face life with finesse, elan, and equanimity!

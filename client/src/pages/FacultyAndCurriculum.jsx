@@ -23,15 +23,16 @@ import OutdoorActivity from "../assets/OutdoorActivity2.jpg";
 import Outdoor from "../assets/Outdoor.jpg";
 import IndoorGames from "../assets/IndoorGames.JPG";
 import TableTennis from "../assets/TableTennis.JPG";
+import bg1 from '../assets/bg2.jpg'
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FacultyAndCurriculum = () => {
+  document.title = 'Faculty and Curriculum - GDGPS Aligarh'
   const bannerRef = useRef(null);
   const sectionRefs = useRef([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
 
     // Banner animation
    gsap.from(bannerRef.current, {
@@ -135,7 +136,7 @@ const FacultyAndCurriculum = () => {
   return (
     <Layout>
       {/* Banner Section */}
-      <div className="relative bgImage">
+      <div className="relative bgImage" >
         <motion.img
           src={Academics}
           alt="Academics"
@@ -158,12 +159,13 @@ const FacultyAndCurriculum = () => {
       <NavigationPages />
 
       {/* Main Content */}
-      <motion.section
+      <motion.section 
         ref={(el) => (sectionRefs.current[0] = el)}
-        className="container mx-auto max-w-7xl py-12"
+        className="container mx-auto py-12 w-full"
+        style={{backgroundImage : `url(${bg1})`}}
       >
         <motion.h1
-          className="text-xl lg:text-3xl mx-auto max-w-7xl lg:w-[60%] w-full mt-8 font-bold text-center mb-6 uppercase"
+          className="text-xl lg:text-3xl mx-auto  lg:w-[60%]  mt-8 font-bold text-center mb-6 uppercase"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -172,7 +174,7 @@ const FacultyAndCurriculum = () => {
           of over 150 faculty members and a large support staff of lab
           assistants, attendants etc.
         </motion.h1>
-        <div className="flex flex-col lg:flex-row items-center justify-center">
+        <div className="flex flex-col max-w-7xl mx-auto lg:flex-row items-center justify-center">
           {/* Left Content */}
           <motion.div
             className="w-[90%] md:w-[80%] lg:w-[45%] bg-gray-200 text-gray-500 rounded-l shadow-lg p-8 h-[26rem] flex items-center"
@@ -191,7 +193,7 @@ const FacultyAndCurriculum = () => {
               <p
                 className="text-lg leading-relaxed mb-4" >
                 With an updated professional development of teachers, the
-                school’s progressive pedagogy has reached new frontiers. An
+                school's progressive pedagogy has reached new frontiers. An
                 updated think tank plans each activity and event with a
                 reciprocal, blended and interdisciplinary teaching strategy.
               </p>
@@ -356,17 +358,17 @@ const FacultyAndCurriculum = () => {
       {/* Slider */}
       <motion.div
         ref={(el) => (sectionRefs.current[3] = el)}
-        className="animated-border flex flex-col h-80 w-full justify-center max-w-6xl mx-auto p-4"
+        className="animated-border flex flex-col h-[360px] w-full justify-center max-w-6xl mx-auto p-4 overflow-hidden"
       >
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center lg:h-[250px] ">
           <Marquee>
             {url.map((url, index) => (
               <motion.img
                 key={index}
                 src={url.icon}
                 alt={`img ${index}`}
-                className="lg:h-52 md:h-40 h-36 rounded- mx-10"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="lg:h-52 md:h-40 h-36 rounded- mx-10 overflow-hidden"
+                whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               />
             ))}

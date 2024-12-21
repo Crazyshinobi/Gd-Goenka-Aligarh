@@ -1,0 +1,54 @@
+@media (max-width: 426px){
+    .aboutUs{
+        display: flex;
+        flex-direction: column;
+    }
+    .aboutUsHeadings{
+      letter-spacing: 10px;
+    }
+   
+}
+ .aboutUs{
+  max-width: 1380px;
+ }
+
+ .aboutUsHeadings{
+  color: transparent;
+  -webkit-text-stroke: 1px #000;
+  /* font-size: 4vw; */
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -4px;
+  /* font-size: 60px; */
+}
+
+
+.btn-shaketext:hover {
+    animation: btnrotate 0.7s ease-in-out both; }
+    .btn-shaketext:hover span {
+      animation: storm 0.7s ease-in-out both;
+      animation-delay: 0.06s; }
+
+@keyframes btnrotate {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0); }
+  25% {
+    transform: rotate(3deg) translate3d(0, 0, 0); }
+  50% {
+    transform: rotate(-3deg) translate3d(0, 0, 0); }
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0); }
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0); } }
+
+@keyframes storm {
+  0% {
+    transform: translate3d(0, 0, 0) translateZ(0); }
+  25% {
+    transform: translate3d(4px, 0, 0) translateZ(0); }
+  50% {
+    transform: translate3d(-3px, 0, 0) translateZ(0); }
+  75% {
+    transform: translate3d(2px, 0, 0) translateZ(0); }
+  100% {
+    transform: translate3d(0, 0, 0) translateZ(0); } }

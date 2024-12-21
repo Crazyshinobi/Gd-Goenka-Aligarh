@@ -1,0 +1,252 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Layout } from '../components/Layout';
+import NavigationPages from './NavigationPages';
+import { Tilt } from 'react-tilt';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+// Import images
+import lab from "../assets/Lab.JPG";
+import lab2 from "../assets/Lab2.jpg";
+import Library from "../assets/Library.jpg";
+import OutdoorActivity from "../assets/OutdoorActivity.jpg";
+import Sports from "../assets/Reel.JPG";
+import MusicAndDance from "../assets/MusicAndDance.jpg";
+import Dance from "../assets/Janamashtmi.png";
+import Art from "../assets/Art.jpg";
+import Art2 from "../assets/Reel1.JPG";
+import bgDesign from "../assets/bgdesign3.jpg";
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+const categories = ['ALL', 'SPECIAL ASSEMBLIES', 'CAMPUS', 'LABS', 'ACTIVITIES', 'EVENTS'];
+
+const images = [
+  { src: lab, category: 'LABS' },
+  { src: lab2, category: 'LABS' },
+  { src: Library, category: 'LABS' },
+  { src: Art, category: 'CAMPUS' },
+  { src: Art2, category: 'CAMPUS' },
+  { src: Sports, category: 'ACTIVITIES' },
+  { src: OutdoorActivity, category: 'ACTIVITIES' },
+  { src: MusicAndDance, category: 'SPORTS' },
+  { src: Dance, category: 'SPORTS' },
+];
+
+const ImageGallery = () => {
+  const [selectedCategory, setSelectedCategory] = useState('ALL');
+  const [filteredImages, setFilteredImages] = useState(images);
+  const galleryRef = useRef(null);
+
+  useEffect(() => {
+    document.title = 'Gallery - GDGPS Aligarh';
+
+    gsap.from(".category-btn", {
+      duration: 0.8,
+      opacity: 0,
+      y: 50,
+      stagger: 0.2,
+      ease: "power3.out"
+    });
+
+    ScrollTrigger.batch(".gallery-image", {
+      onEnter: (elements) => {
+        gsap.to(elements, {
+          opacity: 1,
+          y: 0,
+          stagger: 0.15,
+          overwrite: true
+        });
+      },
+      onLeave: (elements) => {
+        gsap.set(elements, { opacity: 0, y: 50 });
+      },
+      onEnterBack: (elements) => {
+        gsap.to(elements, {
+          opacity: 1,
+          y: 0,
+          stagger: 0.15,
+          overwrite: true
+        });
+      },
+      onLeaveBack: (elements) => {
+        gsap.set(elements, { opacity: 0, y: 50 });
+      }
+    });
+
+  }, []);
+
+  useEffect(() => {
+    const filtered = selectedCategory === 'ALL'
+      ? images
+      : images.filter((image) => image.category === selectedCategory);
+
+    setFilteredImages(filtered);
+  }, [selectedCategory]);
+
+  return (
+    <Layout>
+      <motion.div
+        className="relative h-[50vh] md:h-[60vh] lg:h-[60vh] overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      >
+        <motion.img
+          src={OutdoorActivity}
+          alt="Gallery Banner"
+          className="h-full w-full object-cover"
+          initial={{ scale: 1.2 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5 }}
+        />
+        <motion.h1
+          className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.5,
+            type: "spring",
+            stiffness: 100,
+          }}
+        >
+          GALLERY
+        </motion.h1>
+      </motion.div>
+
+      <NavigationPages />
+
+      {/* Categories */}
+      <div className="categories bg-pattern">
+        {categories.map((category, index) => (
+          <motion.button
+            key={category}
+            className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
+            onClick={() => setSelectedCategory(category)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            {category}
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Gallery */}
+      <motion.div
+        className="gallery bg-pattern"
+        ref={galleryRef}
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.1
+            }
+          }
+        }}
+      >
+        <AnimatePresence>
+          {filteredImages.map((image, index) => (
+            <motion.div
+              key={`${image.src}-${index}`}
+              layout
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5 }}
+              className="gallery-item"
+            >
+              <Tilt className="Tilt" options={{ max: 25, scale: 1.05 }}>
+                <LazyLoadImage
+                  src={image.src}
+                  alt={`${image.category} ${index + 1}`}
+                  effect="blur"
+                  className="gallery-image"
+                />
+              </Tilt>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Styles */}
+      <style>{`
+      .bg-pattern {
+        background-image: url(${bgDesign}); // Use the imported image here
+        background-size: 10px;
+        background-repeat: repeat;
+      }
+        .categories {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin: 20px 0;
+          gap: 15px;
+        }
+        .category-btn {
+          padding: 12px 30px;
+          font-size: 16px;
+          cursor: pointer;
+          border: none;
+          border-radius: 50px;
+          background: linear-gradient(45deg, #00C9FF, #92FE9D);
+          color: white;
+          font-weight: 600;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .category-btn:hover {
+          background: linear-gradient(45deg, #FF5E3A, #FFB9A1);
+          transform: scale(1.05);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .category-btn.active {
+          background: linear-gradient(45deg, #8E2DE2, #4A00E0);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+          transform: scale(1.1);
+        }
+        .gallery {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          padding: 20px;
+        }
+        .gallery-item {
+          position: relative;
+        }
+        .gallery-image {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 15px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+        }
+        .gallery-image:hover {
+          transform: scale(1.05);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+          .gallery {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          }
+          .gallery-image {
+            height: 150px;
+          }
+        }
+      `}</style>
+    </Layout>
+  );
+};
+
+export default ImageGallery;

@@ -5,11 +5,11 @@ import IgnitingBanner from "../assets/IgnitingMindsBanner.jpg";
 import IgnitingMinds from "../assets/IgnitingMinds.jpg";
 import IgnitingMinds1 from "../assets/IgnitingMinds1.JPG";
 import Carousel from "react-multi-carousel";
+import bgDesign from '../assets/bgdesign3.jpg'
 
 const IgnitingMindsPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  document.title = 'Ignitind Minds - GDGPS Aligarh'
+  
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
     tablet: { breakpoint: { max: 1024, min: 464 }, items: 1 },
@@ -32,7 +32,7 @@ const IgnitingMindsPage = () => {
       {/* Navigation Section */}
       <NavigationPages />
 
-      <div className="principalMessageSection px-4 py-8 md:py-12">
+      <div className="principalMessageSection px-4 py-8 md:py-12 bg-pattern">
         <h1 className="text-center text-2xl md:text-4xl font-bold text-blue-900 mb-6">
           Igniting Minds
         </h1>
@@ -98,6 +98,14 @@ const IgnitingMindsPage = () => {
           </div>
         </section>
       </div>
+
+      <style>{`
+        .bg-pattern {
+          background-image: url(${bgDesign}); // Use the imported image here
+          background-size: 10px;
+          background-repeat: repeat;
+        }
+      `}</style>
     </Layout>
   );
 };

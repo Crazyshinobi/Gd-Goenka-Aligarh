@@ -10,8 +10,8 @@ import PrincipalPhoto from "../assets/principal1.jpeg"; // Replace with the actu
 gsap.registerPlugin(ScrollTrigger);
 
 const ManagementPage = () => {
+  document.title = 'Management - GDGPS Aligarh'
   useEffect(() => {
-    window.scrollTo(0, 0);
 
     // GSAP Animations
     gsap.fromTo(

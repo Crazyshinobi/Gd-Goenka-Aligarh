@@ -6,6 +6,7 @@ import classInfraBanner from "../assets/classInfraBanner.JPG";
 import Carousel from "react-multi-carousel";
 
 const ClassInfrastructure = () => {
+  document.title = 'Class Infrastructure - GDGPS Aligarh'
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
     tablet: { breakpoint: { max: 1024, min: 464 }, items: 1 },
