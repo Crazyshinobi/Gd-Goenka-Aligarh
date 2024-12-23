@@ -35,6 +35,8 @@ import { ViewGallery } from "./admin/pages/gallery/ViewGallery";
 import { ViewJobApplication } from "./admin/pages/jobApplication/ViewJobApplication";
 import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
+import CurrentOpening from "./pages/CurrentOpening";
+import JobApplicationForm from "./pages/JobApplicationForm";
 
 function App() {
   return (
@@ -57,6 +59,10 @@ function App() {
       <Route path={"/gallery"} element={<ImageGallery/>}/>
       <Route path={"/contact-us"} element={<ContactForm/>}/>
       <Route path={"/goenkan-pursuits"} element={<GoenkanPursuits/>}/>
+      <Route path={"/career/current-openings"} element={<CurrentOpening/>}/>
+      <Route path={"/application-form"} element={<JobApplicationForm/>}/>
+
+    
 
       {/* Admin Routes */}
       <Route path={"/admin"} element={<AdminLogin />} />

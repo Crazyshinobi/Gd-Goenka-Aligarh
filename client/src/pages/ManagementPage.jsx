@@ -5,7 +5,9 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import School from "../assets/School.jpg"; // Replace with relevant image path
-import PrincipalPhoto from "../assets/principal1.jpeg"; // Replace with the actual image path for Dr. Anubhav Lodhi
+import PrincipalPhoto from "../assets/principal1.jpeg";
+import bgDesign from "../assets/bgdesign3.jpg";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +42,7 @@ const ManagementPage = () => {
       <motion.img
           src={School}
           alt="GD Goenka School"
-          className="h-[50vh] md:h-[40vh] lg:h-[75vh] w-full object-cover"
+          className="h-[50vh] md:h-[40vh] lg:h-[60vh] w-full object-cover"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -59,7 +61,7 @@ const ManagementPage = () => {
       <NavigationPages />
 
       {/* Management Content Section */}
-      <div className="managementMessageSection px-4 py-8 md:py-12">
+      <div className="managementMessageSection px-4 py-8 md:py-12 bg-pattern">
         <motion.h1
           className="text-center text-4xl text-blue-900 mb-8 fade-in"
           initial={{ opacity: 0, y: -20 }}
@@ -160,6 +162,13 @@ const ManagementPage = () => {
           </p>
         </motion.section>
       </div>
+      <style>{`
+        .bg-pattern {
+          background-image: url(${bgDesign}); // Use the imported image here
+          background-size: 10px;
+          background-repeat: repeat;
+        }
+      `}</style>
     </Layout>
   );
 };

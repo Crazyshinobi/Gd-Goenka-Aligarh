@@ -44,7 +44,7 @@ function TopScrollButton() {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-5 right-5 h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-lg transition-all hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className="fixed bottom-5 right-5 h-14 w-14 bg-white rounded-full bg-primary text-primary-foreground shadow-lg transition-all hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           aria-label="Scroll to top"
         >
           <svg className="h-14 w-14 absolute top-0 left-0" viewBox="0 0 100 100">

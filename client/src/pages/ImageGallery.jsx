@@ -2,49 +2,61 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Layout } from '../components/Layout';
+import { Layout } from "../components/Layout";
 import NavigationPages from './NavigationPages';
 import { Tilt } from 'react-tilt';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
-// Import images
-import lab from "../assets/Lab.JPG";
-import lab2 from "../assets/Lab2.jpg";
-import Library from "../assets/Library.jpg";
-import OutdoorActivity from "../assets/OutdoorActivity.jpg";
-import Sports from "../assets/Reel.JPG";
-import MusicAndDance from "../assets/MusicAndDance.jpg";
-import Dance from "../assets/Janamashtmi.png";
-import Art from "../assets/Art.jpg";
-import Art2 from "../assets/Reel1.JPG";
+import { useFetchData } from '../hooks/useFetchData';
 import bgDesign from "../assets/bgdesign3.jpg";
-
+import { IoIosClose } from "react-icons/io";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const categories = ['ALL', 'SPECIAL ASSEMBLIES', 'CAMPUS', 'LABS', 'ACTIVITIES', 'EVENTS'];
-
-const images = [
-  { src: lab, category: 'LABS' },
-  { src: lab2, category: 'LABS' },
-  { src: Library, category: 'LABS' },
-  { src: Art, category: 'CAMPUS' },
-  { src: Art2, category: 'CAMPUS' },
-  { src: Sports, category: 'ACTIVITIES' },
-  { src: OutdoorActivity, category: 'ACTIVITIES' },
-  { src: MusicAndDance, category: 'SPORTS' },
-  { src: Dance, category: 'SPORTS' },
-];
-
 const ImageGallery = () => {
+  document.title = 'Gallery - GDGPS Aligarh'
   const [selectedCategory, setSelectedCategory] = useState('ALL');
-  const [filteredImages, setFilteredImages] = useState(images);
+  const [filteredImages, setFilteredImages] = useState([]);
+  const [categories, setCategories] = useState(['ALL']);
+  const [isFullScreen, setIsFullScreen] = useState(false); 
+  const [fullScreenImage, setFullScreenImage] = useState(null); 
   const galleryRef = useRef(null);
 
-  useEffect(() => {
-    document.title = 'Gallery - GDGPS Aligarh';
+  const baseURL = process.env.REACT_APP_BASE_URL;
+  const galleryURL = `${baseURL}/api/v1/gallery`;
+  const categoryURL = `${baseURL}/api/v1/gallery/?category`;
 
+  const { data: images,  error: imagesError,  } = useFetchData(galleryURL);
+  const { data: categoryData,  error: categoriesError } = useFetchData(categoryURL);
+
+  useEffect(() => {
+    if (categoryData && categoryData.success) {
+      const uniqueCategories = ['ALL', ...new Set(categoryData.data.map(item => item.category))];
+      setCategories(uniqueCategories);
+    }
+  }, [categoryData]);
+
+  useEffect(() => {
+    if (imagesError) {
+      console.error('Error fetching images:', imagesError);
+    }
+    if (categoriesError) {
+      console.error('Error fetching categories:', categoriesError);
+    }
+  }, [imagesError, categoriesError]);
+
+  useEffect(() => {
+    if (Array.isArray(images.data)) {
+      const filtered = selectedCategory === 'ALL'
+        ? images.data
+        : images.data.filter((image) => image.category === selectedCategory);
+      setFilteredImages(filtered);
+    } else {
+      setFilteredImages([]);
+    }
+  }, [selectedCategory, images]);
+
+  useEffect(() => {
     gsap.from(".category-btn", {
       duration: 0.8,
       opacity: 0,
@@ -77,16 +89,19 @@ const ImageGallery = () => {
         gsap.set(elements, { opacity: 0, y: 50 });
       }
     });
-
   }, []);
 
-  useEffect(() => {
-    const filtered = selectedCategory === 'ALL'
-      ? images
-      : images.filter((image) => image.category === selectedCategory);
 
-    setFilteredImages(filtered);
-  }, [selectedCategory]);
+
+  const openFullScreen = (image) => {
+    setFullScreenImage(image);
+    setIsFullScreen(true);
+  };
+
+  const closeFullScreen = () => {
+    setIsFullScreen(false);
+    setFullScreenImage(null);
+  };
 
   return (
     <Layout>
@@ -97,7 +112,7 @@ const ImageGallery = () => {
         transition={{ duration: 1.5 }}
       >
         <motion.img
-          src={OutdoorActivity}
+          src={bgDesign}
           alt="Gallery Banner"
           className="h-full w-full object-cover"
           initial={{ scale: 1.2 }}
@@ -121,7 +136,6 @@ const ImageGallery = () => {
 
       <NavigationPages />
 
-      {/* Categories */}
       <div className="categories bg-pattern">
         {categories.map((category, index) => (
           <motion.button
@@ -134,12 +148,11 @@ const ImageGallery = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: index * 0.1 }}
           >
-            {category}
+            {category.toUpperCase()}
           </motion.button>
         ))}
       </div>
 
-      {/* Gallery */}
       <motion.div
         className="gallery bg-pattern"
         ref={galleryRef}
@@ -156,9 +169,9 @@ const ImageGallery = () => {
         }}
       >
         <AnimatePresence>
-          {filteredImages.map((image, index) => (
+          {Array.isArray(filteredImages) && filteredImages.map((image, index) => (
             <motion.div
-              key={`${image.src}-${index}`}
+              key={`${image._id}-${index}`}
               layout
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -168,10 +181,11 @@ const ImageGallery = () => {
             >
               <Tilt className="Tilt" options={{ max: 25, scale: 1.05 }}>
                 <LazyLoadImage
-                  src={image.src}
+                  src={`${baseURL}/${image.image}`}
                   alt={`${image.category} ${index + 1}`}
                   effect="blur"
                   className="gallery-image"
+                  onClick={() => openFullScreen(image)} // Open full screen on click
                 />
               </Tilt>
             </motion.div>
@@ -179,13 +193,26 @@ const ImageGallery = () => {
         </AnimatePresence>
       </motion.div>
 
-      {/* Styles */}
+      {/* Full-Screen Modal */}
+      {isFullScreen && (
+        <div className="fullscreen-modal" onClick={closeFullScreen}>
+          <div className="fullscreen-content" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={`${baseURL}/${fullScreenImage.image}`}
+              alt="Full Screen"
+              className="fullscreen-image"
+            />
+            <button className="close-btn" onClick={closeFullScreen}><IoIosClose /></button>
+          </div>
+        </div>
+      )}
+
       <style>{`
-      .bg-pattern {
-        background-image: url(${bgDesign}); // Use the imported image here
-        background-size: 10px;
-        background-repeat: repeat;
-      }
+        .bg-pattern {
+          background-image: url(${bgDesign});
+          background-size: 10px;
+          background-repeat: repeat;
+        }
         .categories {
           display: flex;
           justify-content: center;
@@ -231,11 +258,54 @@ const ImageGallery = () => {
           border-radius: 15px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           transition: all 0.3s ease;
+          cursor: pointer;
         }
         .gallery-image:hover {
           transform: scale(1.05);
           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
+
+        /* Full-Screen Modal Styles */
+        .fullscreen-modal {
+          position: fixed;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 999;
+        }
+        .fullscreen-content {
+          position: relative;
+          max-width: 100vh;
+          max-height: 100vh;
+          overflow: hidden;
+        }
+        .fullscreen-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .close-btn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: rgba(255, 255, 255, 0.8);
+          border: none;
+          padding: 6px;
+          font-size: 30px;
+          color: #000;
+          cursor: pointer;
+          border-radius: 50%;
+          transition: background 0.3s ease;
+        }
+        .close-btn:hover {
+          background: rgba(255, 255, 255, 1);
+        }
+
         @media (max-width: 768px) {
           .gallery {
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

@@ -1,4 +1,3 @@
-/* Remove any extra styles, just ensure this works with Tailwind */
 .icon-content {
     @apply relative mx-2.5 my-0;
   }
@@ -20,23 +19,14 @@
   }
   
   .icon-content a .filled {
-    @apply absolute w-full h-0 bg-black transition-all duration-[0.3s] ease-[ease-in-out] left-0 top-auto bottom-0;
+    @apply absolute w-full h-0  transition-all duration-[0.3s] ease-[ease-in-out] left-0 top-auto bottom-0;
   }
   
   .icon-content a:hover .filled {
     @apply h-full;
   }
   
-  /* Specific social color styles */
-  .icon-content a[data-social="linkedin"] .filled,
-  .icon-content a[data-social="linkedin"] ~ .tooltip {
-    @apply bg-[#0274b3];
-  }
   
-  .icon-content a[data-social="github"] .filled,
-  .icon-content a[data-social="github"] ~ .tooltip {
-    @apply bg-[#24262a];
-  }
   
   .icon-content a[data-social="instagram"] .filled,
   .icon-content a[data-social="instagram"] ~ .tooltip {
@@ -61,26 +51,73 @@
     transition: all 0.3s ease-in-out;
   }
 
-  /* .icons .icon-content {
-    margin: 0 10px;
-    position: relative;
-  } */
-  /* .icons .icon-content .tooltip {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 5px;
-    opacity: 0;
-    visibility: hidden;
-    font-size: 14px;
-    transition: all 0.3s ease;
-  } */
   .icons .icon-content a svg {
     position: relative;
     z-index: 1;
     width: 15px;
     height: 15px;
   }
+
+  /* Second */
+
+  .icon-contentFooter {
+    @apply relative mx-2 my-0;
+  }
+  
+  .tooltip {
+    @apply absolute top-[-30px] -translate-x-2/4 text-white opacity-0 invisible text-sm transition-all duration-[0.3s] ease-[ease] px-2.5 py-1.5 rounded-[5px] left-2/4;
+  }
+  
+  .icon-contentFooter:hover .tooltip {
+    @apply opacity-100 visible top-[-30px];
+  }
+  
+  .icon-contentFooter a {
+    @apply relative overflow-hidden flex justify-center items-center w-[30px] h-[30px] text-white bg-white transition-all duration-[0.3s] ease-[ease-in-out] rounded-[50%] hover:shadow-[3px_2px_45px_0px_rgb(0_0_0_/_12%)] hover:text-[white];
+  }
+  
+  .icon-contentFooter a svg {
+    @apply relative z-[1] w-[30px] h-[30px];
+  }
+  
+  .icon-contentFooter a .filledFooter {
+    @apply absolute w-full h-full  transition-all duration-[0.3s] ease-[ease-in-out] left-0 top-auto bottom-0;
+  }
+  
+  .icon-contentFooter a:hover .filled {
+    @apply h-full;
+  }
+  
+  
+  
+  .icon-contentFooter a[data-social="instagram"] .filledFooter,
+  .icon-contentFooter a[data-social="instagram"] ~ .tooltip {
+    background: linear-gradient(45deg, #405de6, #5b51db, #b33ab4, #c135b4, #e1306c, #fd1f1f);
+  }
+  
+  .icon-contentFooter a[data-social="youtube"] .filledFooter,
+  .icon-contentFooter a[data-social="youtube"] ~ .tooltip {
+    @apply bg-[#ff0000];
+  }
+  .iconsFooter .icon-contentFooter a {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    /* color: #4d4d4d; */
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .iconsFooter .icon-contentFooter a svg {
+    position: relative;
+    z-index: 1;
+    width: 15px;
+    height: 15px;
+  }
+
+  

@@ -37,7 +37,7 @@ const TeachingMethodology = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          ABOUT
+          ACADEMICS
         </motion.h1>
       </div>
 
@@ -64,7 +64,7 @@ const TeachingMethodology = () => {
           >
             <div className="w-full h-[20rem] overflow-y-scroll pr-4 scrollable-content">
               <p className="text-lg leading-relaxed mb-4">
-                GDGPSVK aims at nurturing individuals with paramount values and
+                GDGPS ALIGARH aims at nurturing individuals with paramount values and
                 multivalent competencies. As we continue our vision, a dynamic
                 new curriculum developed by an accomplished team ensures not
                 only academic excellence with pedagogical discipline but an
