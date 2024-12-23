@@ -16,241 +16,50 @@ export const ViewJobApplication = () => {
       style: { width: "50px" },
     },
     {
-      field: "personal_details.name",
+      field: "name",
       header: "Name",
-      body: (rowData) => rowData.personal_details.name,
     },
     {
-      field: "personal_details.gender",
-      header: "Gender",
-      body: (rowData) => rowData.personal_details.gender,
+      field: "email",
+      header: "Email Address",
     },
     {
-      field: "personal_details.nationality",
-      header: "Nationality",
-      body: (rowData) => rowData.personal_details.nationality,
+      field: "phone",
+      header: "Mobile Number",
     },
     {
-      field: "personal_details.father_name",
-      header: "Father's Name",
-      body: (rowData) => rowData.personal_details.father_name,
+      field: "qualification",
+      header: "Qualification",
     },
     {
-      field: "personal_details.occupation",
-      header: "Occupation",
-      body: (rowData) => rowData.personal_details.occupation,
+      field: "expected_salary",
+      header: "Expected Salary",
     },
     {
-      field: "personal_details.children",
-      header: "Children",
-      body: (rowData) => rowData.personal_details.children,
+      field: "last_organization",
+      header: "Last Organization",
     },
     {
-      field: "personal_details.age",
-      header: "Age",
-      body: (rowData) => rowData.personal_details.age,
-    },
-    {
-      field: "address.house_no",
-      header: "House Number",
-      body: (rowData) => rowData.address.house_no,
-    },
-    {
-      field: "address.lane",
-      header: "Lane",
-      body: (rowData) => rowData.address.lane,
-    },
-    {
-      field: "address.street",
-      header: "Street",
-      body: (rowData) => rowData.address.street,
-    },
-    {
-      field: "address.city",
-      header: "City",
-      body: (rowData) => rowData.address.city,
-    },
-    {
-      field: "address.country",
-      header: "Country",
-      body: (rowData) => rowData.address.country,
-    },
-    {
-      field: "address.mobile",
-      header: "Mobile",
-      body: (rowData) => rowData.address.mobile,
-    },
-    {
-      field: "address.state",
-      header: "State",
-      body: (rowData) => rowData.address.state,
-    },
-    {
-      field: "address.pincode",
-      header: "Pincode",
-      body: (rowData) => rowData.address.pincode,
-    },
-    {
-      field: "address.email",
-      header: "Email",
-      body: (rowData) => rowData.address.email,
-    },
-    {
-      field: "academic_details.degree",
-      header: "Degree",
-      body: (rowData) => rowData.academic_details.degree,
-    },
-    {
-      field: "academic_details.institute",
-      header: "Institute",
-      body: (rowData) => rowData.academic_details.institute,
-    },
-    {
-      field: "academic_details.dissertation",
-      header: "Dissertation",
-      body: (rowData) => rowData.academic_details.dissertation,
-    },
-    {
-      field: "academic_details.advisor",
-      header: "Advisor",
-      body: (rowData) => rowData.academic_details.advisor,
-    },
-    {
-      field: "academic_details.registration_date",
-      header: "Registration Date",
-      body: (rowData) =>
-        new Date(rowData.academic_details.registration_date).toLocaleDateString(
-          "en-GB"
-        ),
-    },
-    {
-      field: "academic_details.submission_date",
-      header: "Submission Date",
-      body: (rowData) =>
-        new Date(rowData.academic_details.submission_date).toLocaleDateString(
-          "en-GB"
-        ),
-    },
-    {
-      field: "educational_qualification.type",
-      header: "Degree - (UG/PG)",
-      body: (rowData) => rowData.educational_qualification.type,
-    },
-    {
-      field: "educational_qualification.degree",
-      header: "Degree Name",
-      body: (rowData) => rowData.educational_qualification.degree,
-    },
-    {
-      field: "educational_qualification.institute",
-      header: "Institute Name",
-      body: (rowData) => rowData.educational_qualification.institute,
-    },
-    {
-      field: "educational_qualification.start_year",
-      header: "Start Year",
-      body: (rowData) => rowData.educational_qualification.start_year,
-    },
-    {
-      field: "educational_qualification.end_year",
-      header: "End Year",
-      body: (rowData) => rowData.educational_qualification.end_year,
-    },
-    {
-      field: "educational_qualification.specialization",
-      header: "Degree Specialization",
-      body: (rowData) => rowData.educational_qualification.specialization,
-    },
-    {
-      field: "educational_qualification.marks",
-      header: "Marks",
-      body: (rowData) => rowData.educational_qualification.marks,
-    },
-    {
-      field: "educational_qualification.division",
-      header: "Division",
-      body: (rowData) => rowData.educational_qualification.division,
-    },
-    {
-      field: "educational_qualification.ctet",
-      header: "CTET",
-      body: (rowData) => rowData.educational_qualification.ctet,
-    },
-    {
-      field: "teaching_experience.institute",
-      header: "Experience - Institute",
-      body: (rowData) => rowData.teaching_experience.institute,
-    },
-    {
-      field: "teaching_experience.designation",
-      header: "Designation",
-      body: (rowData) => rowData.teaching_experience.designation,
-    },
-    {
-      field: "teaching_experience.start_date",
-      header: "Start Date",
-      body: (rowData) =>
-        new Date(rowData.teaching_experience.start_date).toLocaleDateString(
-          "en-GB"
-        ),
-    },
-    {
-      field: "teaching_experience.end_date",
-      header: "End Date",
-      body: (rowData) =>
-        new Date(rowData.teaching_experience.end_date).toLocaleDateString(
-          "en-GB"
-        ),
-    },
-    {
-      field: "teaching_experience.classes_taught",
-      header: "Classes Taught",
-      body: (rowData) => rowData.teaching_experience.classes_taught,
-    },
-    {
-      field: "teaching_experience.years",
-      header: "Experience (in yrs)",
-      body: (rowData) => rowData.teaching_experience.years,
-    },
-    {
-      field: "job.name",
-      header: "Applied for Job",
-      body: (rowData) => rowData.job.name,
-    },
-    {
-      field: "job.subject",
-      header: "Applied for Subject",
-      body: (rowData) => rowData.job.subject,
-    },
-    {
-      field: "subject",
-      header: "Subject",
-      body: (rowData) => rowData.subject,
+      field: "last_salary",
+      header: "Last Salary",
     },
     {
       field: "experience",
       header: "Experience",
-      body: (rowData) => rowData.experience,
     },
     {
-      field: "achievement",
-      header: "Achievement",
-      body: (rowData) => rowData.achievement,
+      field: "address",
+      header: "Address",
     },
     {
-      field: "references.name",
-      header: "References - Name",
-      body: (rowData) => rowData.references.name,
+      field: "job.name",
+      header: "Applied For",
+      body: (rowData) => rowData.job.name
     },
     {
-      field: "references.designation",
-      header: "References - Designation",
-      body: (rowData) => rowData.references.designation,
-    },
-    {
-      field: "references.address",
-      header: "References - Address",
-      body: (rowData) => rowData.references.address,
+      field: "job.subject",
+      header: "Applied For  Subjects",
+      body: (rowData) => rowData.job.subject
     },
     {
       field: "createdAt",

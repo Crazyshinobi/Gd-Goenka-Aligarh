@@ -7,15 +7,15 @@ const path = require("path");
 const createJobApplication = async (req, res) => {
   const {
     job,
-    subject,
+    name,
+    email,
+    phone,
+    qualification,
+    expected_salary,
+    last_organization,
+    last_salary,
     experience,
-    personal_details,
     address,
-    academic_details,
-    educational_qualification,
-    teaching_experience,
-    achievement,
-    references,
   } = req.body;
 
   // Handle file uploads
@@ -26,37 +26,37 @@ const createJobApplication = async (req, res) => {
   if (!job) {
     return sendResponse(res, 400, false, "Job field is required!");
   }
-  if (!subject) {
-    return sendResponse(res, 400, false, "Subject field is required!");
+  if (!name) {
+    return sendResponse(res, 400, false, "name field is required!");
   }
-  if (!experience) {
-    return sendResponse(res, 400, false, "Experience field is required!");
+  if (!email) {
+    return sendResponse(res, 400, false, "email field is required!");
   }
-  if (!personal_details) {
-    return sendResponse(res, 400, false, "Personal details are required!");
+  if (!phone) {
+    return sendResponse(res, 400, false, "phone details are required!");
   }
-  if (!address) {
-    return sendResponse(res, 400, false, "Address is required!");
+  if (!qualification) {
+    return sendResponse(res, 400, false, "qualification is required!");
   }
-  if (!academic_details) {
-    return sendResponse(res, 400, false, "Academic details are required!");
+  if (!expected_salary) {
+    return sendResponse(res, 400, false, "expected_salary details are required!");
   }
-  if (!educational_qualification) {
+  if (!last_organization) {
     return sendResponse(
       res,
       400,
       false,
-      "Educational qualification is required!"
+      "last_organization is required!"
     );
   }
-  if (!teaching_experience) {
-    return sendResponse(res, 400, false, "Teaching experience is required!");
+  if (!last_salary) {
+    return sendResponse(res, 400, false, "last_salary experience is required!");
   }
-  if (!achievement) {
-    return sendResponse(res, 400, false, "Achievement field is required!");
+  if (!experience) {
+    return sendResponse(res, 400, false, "experience field is required!");
   }
-  if (!references) {
-    return sendResponse(res, 400, false, "References are required!");
+  if (!address) {
+    return sendResponse(res, 400, false, "address are required!");
   }
   if (!image) {
     return sendResponse(res, 400, false, "Image file is required!");
@@ -68,15 +68,15 @@ const createJobApplication = async (req, res) => {
   try {
     const recordObj = {
       job,
-      subject,
+      name,
+      email,
+      phone,
+      qualification,
+      expected_salary,
+      last_organization,
+      last_salary,
       experience,
-      personal_details,
       address,
-      academic_details,
-      educational_qualification,
-      teaching_experience,
-      achievement,
-      references,
       image,
       resume,
     };
