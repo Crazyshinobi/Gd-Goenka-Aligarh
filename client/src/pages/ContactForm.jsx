@@ -4,7 +4,6 @@ import NavigationPages from "./NavigationPages";
 import ContactBanner from "../assets/ContactBanner.jpg";
 import { motion } from "framer-motion";
 import bgdesign from "../assets/bgdesign3.jpg";
-import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { usePostRequest } from  "../hooks/usePostRequest";
 

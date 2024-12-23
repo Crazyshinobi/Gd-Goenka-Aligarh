@@ -9,9 +9,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
-document.title = 'Cafeteria - GDGPS Aligarh'
+
 
 const Cafeteria = () => {
+  document.title = 'Cafeteria - GDGPS Aligarh'
+  
   const leftContentRef = useRef(null);
   const rightContentRef = useRef(null);
   
@@ -62,9 +64,7 @@ const Cafeteria = () => {
     <Layout>
       {/* Banner Section */}
       <motion.div className="relative bgImage" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <h1 className="text-3xl md:text-5xl font-bold absolute bottom-4 md:bottom-6 left-4 md:left-8 text-[#e1b671]">
-          OUR CAMPUS
-        </h1>
+       
         <motion.img
           src={CafeBanner}
           alt="Cafeteria"
@@ -72,6 +72,14 @@ const Cafeteria = () => {
           whileInView={{ scale: 1.05 }}
           transition={{ duration: 1.5 }}
         />
+          <motion.h1
+          className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          OUR CAMPUS
+        </motion.h1>
       </motion.div>
 
       {/* Navigation Section */}

@@ -55,7 +55,7 @@ const CompetitionAwards = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          ABOUT
+          ACADEMICS
         </motion.h1>
       </div>
 

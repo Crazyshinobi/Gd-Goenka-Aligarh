@@ -163,13 +163,13 @@ The benefits of art education do not stop in the classroom or at the school. Art
               <img
                 src={banner}
                 alt={`Banner ${index + 1}`}
-                className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[65vh] w-full object-fill"
+                className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[65vh] w-full object-cover"
               />
             </motion.div>
           ))}
         </Carousel>
        <motion.h1
-          className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-2xl lg:text-5xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}

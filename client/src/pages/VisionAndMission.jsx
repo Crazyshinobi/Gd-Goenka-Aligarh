@@ -11,9 +11,8 @@ import mission from "../assets/mission.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 const VisionAndMission = () => {
-  document.title = 'Vision and Mission - GDGPS Aligarh'
+  document.title = "Vision and Mission - GDGPS Aligarh";
   useEffect(() => {
-
     // GSAP Animations
     gsap.fromTo(
       ".section-heading",
@@ -123,11 +122,11 @@ const VisionAndMission = () => {
               </p>
               <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                 The goal is to support and nurture the student's and our own
-                natural desire to be lifelong learners. We anticipate
-                creativity and initiative, enterprise and innovation, and
-                cognitive strategies for progressive learning. Our vision is to
-                prepare and motivate our students for a rapidly changing world,
-                by instilling in them critical thinking skills, a global
+                natural desire to be lifelong learners. We anticipate creativity
+                and initiative, enterprise and innovation, and cognitive
+                strategies for progressive learning. Our vision is to prepare
+                and motivate our students for a rapidly changing world, by
+                instilling in them critical thinking skills, a global
                 perspective, and a respect for core values of honesty, loyalty,
                 perseverance, and compassion. Students will have success for
                 today and be prepared for tomorrow.
@@ -141,14 +140,18 @@ const VisionAndMission = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-center">
             {/* Mission Image */}
             <motion.div
-              className="relative order-1 md:order-1 mt-8 md:mt-0 section-image"
+              className="relative order-1 md:order-1 mt-8 md:mt-0 section-image z-10" // Ensure it's above background text
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
             >
               <div className="rounded-lg overflow-hidden shadow-xl">
-                <img src={mission} alt="Mission" className="w-full h-auto" />
+                <img
+                  src={mission}
+                  alt="Mission"
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </motion.div>
 
@@ -183,9 +186,9 @@ const VisionAndMission = () => {
                 </p>
                 <p>
                   Our mission is to provide a safe haven where everyone is
-                  valued and respected. The faculty, in partnership with
-                  parents and families, are fully committed to student's college
-                  and career readiness.
+                  valued and respected. The faculty, in partnership with parents
+                  and families, are fully committed to student's college and
+                  career readiness.
                 </p>
                 <p>
                   We honour achievement and promote pride in ourselves, our
