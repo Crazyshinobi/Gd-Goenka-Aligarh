@@ -223,7 +223,7 @@ const resetPassword = [
 
 const getAdmins = async (req, res) => {
   try {
-    const options = { name: 1, email: 1 };
+    const options = { name: 1, email: 1, createdAt: 1 };
     const admins = await getRecord(Admin, (query = {}), options);
     sendResponse(res, 200, true, "Data fetched successfully", admins.data);
   } catch (error) {
