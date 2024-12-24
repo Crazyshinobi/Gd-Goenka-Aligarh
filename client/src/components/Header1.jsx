@@ -118,6 +118,17 @@ function Header1() {
               </NavLink>
               <hr />
               <a
+                href={"/academics/goenkan-pursuits"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]">
+                  GOENKAN PURSUITS
+                </li>
+              </a>
+              <hr />
+              <a
                 href={"/academics/authorised-book-seller"}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -201,9 +212,16 @@ function Header1() {
           </div>
 
           <div className="relative peer">
-            <li className="relative peer p-3 hover:bg-sky-300 uppercase  hover:text-white rounded-md cursor-pointer transition-all">
-              Alumni
-            </li>
+            <a
+              href="https://smartpay.easebuzz.in/75872/AdmissionFee"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              <li className="relative peer p-3 hover:bg-sky-300 uppercase  hover:text-white rounded-md cursor-pointer transition-all">
+                Fee Payment
+              </li>
+            </a>
           </div>
 
           <div
@@ -236,31 +254,6 @@ function Header1() {
           </div>
 
           <div className="scrollSidebarOne">
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1-content"
-                id="panel1-header"
-                className="uppercase"
-              >
-                goenkan pursuits
-              </AccordionSummary>
-              <AccordionDetails>
-                <ul className="mt-[-16px]">
-                  <a
-                    href={"/goenkan-pursuits"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {" "}
-                    <li className="menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none">
-                      2024-25
-                    </li>
-                  </a>
-                </ul>
-              </AccordionDetails>
-            </Accordion>
-
             {/* ADMISSION ACCORDIAN */}
 
             <Accordion>

@@ -28,6 +28,10 @@ html, body {
     transition: left 0.2s ease;
     z-index: -1;
 }
+.menu-item:hover{
+    color: white;
+}
+
 
 .menu-item:hover::before{
     left: 0;

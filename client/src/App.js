@@ -58,7 +58,7 @@ function App() {
       <Route path={"/activities"} element={<Activities/>}/>
       <Route path={"/gallery"} element={<ImageGallery/>}/>
       <Route path={"/contact-us"} element={<ContactForm/>}/>
-      <Route path={"/goenkan-pursuits"} element={<GoenkanPursuits/>}/>
+      <Route path={"/academics/goenkan-pursuits"} element={<GoenkanPursuits/>}/>
       <Route path={"/career/current-openings"} element={<CurrentOpening/>}/>
       <Route path={"/application-form"} element={<JobApplicationForm/>}/>
 

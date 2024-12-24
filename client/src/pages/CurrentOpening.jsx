@@ -36,13 +36,11 @@ const CurrentOpening = () => {
 
         <ul className="space-y-4">
           {jobs.map((job) => (
-            <div className='border p-4 rounded-lg shadow-md flex flex-row items-center' key={job.id}>
+            <div key={job._id} className='border p-4 rounded-lg shadow-md flex flex-row items-center' >
               <div className='w-5/6'>
-                <li className="">
                   <h3 className="text-xl font-semibold">Profile: {job.name}</h3>
                   <p className="text-black font-bold">Subject: {job.subject}</p>
                   <p className="text-gray-500">Posted on: {new Date(job.createdAt).toLocaleDateString("en-GB")}</p>
-                </li>
               </div>
 
               <div className='w-2/12 flex justify-end'>
