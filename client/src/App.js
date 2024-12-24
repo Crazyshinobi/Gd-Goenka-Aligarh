@@ -37,6 +37,7 @@ import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
 import CurrentOpening from "./pages/CurrentOpening";
 import JobApplicationForm from "./pages/JobApplicationForm";
+import { ViewAdmin } from "./admin/pages/admins/ViewAdmin";
 
 function App() {
   return (
@@ -84,6 +85,14 @@ function App() {
         element={
           <PrivateRoute>
             <AddAdmin />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path={"/admin/view-admin"}
+        element={
+          <PrivateRoute>
+            <ViewAdmin />
           </PrivateRoute>
         }
       />

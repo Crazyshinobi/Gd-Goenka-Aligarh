@@ -34,7 +34,7 @@ export const BasicTable = ({ data, refetch, apiURL, columns }) => {
         >
           {columns.map((col, i) => (
             <Column
-              key={col.field}
+              key={i}
               field={col.field}
               header={col.header}
               body={col.body}

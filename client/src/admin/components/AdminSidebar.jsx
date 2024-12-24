@@ -10,7 +10,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
     navigate("/admin");
   };
 
-  const [accordions, setAccordions] = useState([true, true, true]);
+  const [accordions, setAccordions] = useState([true, true, true, true]);
 
   const handleAccordion = (index) => {
     const newAccordions = [...accordions];
@@ -354,13 +354,12 @@ export const AdminSidebar = ({ mobileMenu }) => {
           </li>
           {/* Admin Section */}
           <li>
-            <NavLink
-              to="/admin/add-admin"
-              className={({ isActive }) =>
-                `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
-                  isActive ? "bg-gray-200 dark:bg-gray-600" : ""
-                }`
-              }
+            <button
+              onClick={() => handleAccordion(3)}
+              type="button"
+              className="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white group hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200"
+              aria-controls="dropdown-example"
+              data-collapse-toggle="dropdown-example"
             >
               <svg
                 className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
@@ -372,7 +371,51 @@ export const AdminSidebar = ({ mobileMenu }) => {
                 <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM10 12a6.957 6.957 0 0 1-1.264-.931A6.432 6.432 0 0 1 9 9v-2A6.439 6.439 0 0 1 9 2v2a6.444 6.444 0 0 1 2-.3v-1a3.963 3.963 0 0 0-1.4.267A3.963 3.963 0 0 0 9.5 2c.95 0 2 .318 2.625.75 1.125-.748 3.03-.843 3.5-.675-.98-.6 5.036-1.635-.266-2.62Z" />
               </svg>
               <span className="ms-3">Admin</span>
-            </NavLink>
+              <svg
+                className="w-3 h-3 ml-2 transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 1 4 4 4-4"
+                />
+              </svg>
+            </button>
+            <ul
+              id="dropdown-example"
+              className={accordions[3] ? "hidden" : "py-2 space-y-2"}
+            >
+              <li>
+                <NavLink
+                  to="/admin/add-admin"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
+                      isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                    }`
+                  }
+                >
+                  Add Admin
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/admin/view-admin"
+                  className={({ isActive }) =>
+                    `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
+                      isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                    }`
+                  }
+                >
+                  View Admins
+                </NavLink>
+              </li>
+            </ul>
           </li>
         </ul>
 
