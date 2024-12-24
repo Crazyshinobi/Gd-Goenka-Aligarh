@@ -37,7 +37,7 @@ export const ViewGallery = () => {
 
   const fields = [
     { name: "category", label: "Category", type: "text" },
-    { name: "image", label: "Image", type: "file" },
+    { name: "image", label: "  Upload 1 file (JPEG, PNG, JPG or WEBP - MAX. 5 MB)", type: "file" },
   ];
   return (
     <>

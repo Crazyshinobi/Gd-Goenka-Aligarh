@@ -21,6 +21,7 @@ export const ViewContent = () => {
     {
       field: "description",
       header: "Description",
+      body: (rowData) => rowData.description.slice(0,50) + "..."
     },
     {
       field: "images",
@@ -51,7 +52,7 @@ export const ViewContent = () => {
   ];
 
   const fields = [
-    { name: "type", label: "Content Type", type: "text", required: true },
+    { name: "type", label: "Content Type (Only - club, blog, assembly, event, news)", type: "text", required: true },
     { name: "title", label: "Title", type: "text", required: true },
     {
       name: "description",
@@ -61,7 +62,7 @@ export const ViewContent = () => {
     },
     {
       name: "images",
-      label: "Images",
+      label: "Upload Images (JPEG, PNG, JPG or WEBP - MAX. 5 MB)",
       type: "file-multiple",
       required: false,
     },

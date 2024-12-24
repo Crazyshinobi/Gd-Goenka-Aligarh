@@ -3,7 +3,11 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const { sendOtpEmail } = require("../services/emailService");
-const { getCount } = require("../common/commonDatabaseQueries");
+const {
+  getCount,
+  getRecord,
+  deleteRecord,
+} = require("../common/commonDatabaseQueries");
 const { sendResponse } = require("../utils/responseUtils");
 
 const loginAdmin = [
@@ -74,7 +78,7 @@ const createAdmin = [
       });
     }
 
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
     const existingAdmin = await Admin.findOne({ email });
     if (existingAdmin) {
       console.log("Admin already exists!");
@@ -86,6 +90,7 @@ const createAdmin = [
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const newAdmin = new Admin({
+      name,
       email,
       password: hashedPassword,
     });
@@ -216,6 +221,17 @@ const resetPassword = [
   },
 ];
 
+const getAdmins = async (req, res) => {
+  try {
+    const options = { name: 1, email: 1 };
+    const admins = await getRecord(Admin, (query = {}), options);
+    sendResponse(res, 200, true, "Data fetched successfully", admins.data);
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal server error", error);
+  }
+};
+
 const countAdmin = async (req, res) => {
   try {
     const response = await getCount(Admin);
@@ -227,6 +243,32 @@ const countAdmin = async (req, res) => {
   }
 };
 
+const deleteAdmin = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const admin = await Admin.findById(id);
+    if (!admin) {
+      return sendResponse(res, 404, false, "Record not found");
+    }
+    const deletedAdmin = await deleteRecord(Admin, {
+      _id: id,
+    });
+    if (deletedAdmin.status) {
+      sendResponse(
+        res,
+        200,
+        true,
+        "Admin deleted successfully",
+      );
+    } else {
+      sendResponse(res, 500, false, "Something went wrong");
+    }
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal Server Error", error);
+  }
+};
+
 module.exports = {
   loginAdmin,
   createAdmin,
@@ -234,4 +276,6 @@ module.exports = {
   verifyOtp,
   resetPassword,
   countAdmin,
+  getAdmins,
+  deleteAdmin
 };

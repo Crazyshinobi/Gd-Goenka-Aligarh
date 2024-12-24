@@ -7,6 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 export const AddAdmin = () => {
   document.title = "Admin - Add Admin";
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +19,7 @@ export const AddAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
+      name,
       email,
       password,
     };
@@ -25,6 +27,7 @@ export const AddAdmin = () => {
 
     if (response && response.success) {
       toast.success("Admin added successfully!");
+      setName("");
       setEmail("");
       setPassword("");
     } else if (error) {
@@ -46,6 +49,23 @@ export const AddAdmin = () => {
                   Create Admin
                 </h3>
               </div>
+
+              <div className="col-span-12 lg:col-span-6">
+                <label
+                  htmlFor="name"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  id="name"
+                  className="w-full p-1 lg:p-2 bg-transparent border border-gray-300 rounded-lg focus:ring-2 focus:ring-fuchsia-300 focus:border-fuchsia-300 dark:text-white dark:border-gray-500 outline-none dark:bg-gray-600"
+                />
+              </div>
               <div className="col-span-12 lg:col-span-6">
                 <label
                   htmlFor="email"
@@ -62,7 +82,7 @@ export const AddAdmin = () => {
                   className="w-full p-1 lg:p-2 bg-transparent border border-gray-300 rounded-lg focus:ring-2 focus:ring-fuchsia-300 focus:border-fuchsia-300 dark:text-white dark:border-gray-500 outline-none dark:bg-gray-600"
                 />
               </div>
-              <div className="col-span-12 lg:col-span-6">
+              <div className="col-span-12">
                 <label
                   htmlFor="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
