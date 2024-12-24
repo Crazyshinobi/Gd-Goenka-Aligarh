@@ -51,20 +51,20 @@ function Header1() {
                 flex-col bg-white drop-shadow-lg rounded-md gap-2 transition-all duration-100 ease-in"
           >
             <NavLink to={"/about/principal-message"}>
-              <li className="menu-item cursor-pointer  mb-[-8px]">
+              <li className="menu-item cursor-pointer  mb-[-8px] hover:text-white">
                 PRINCIPAL'S MESSAGE
               </li>
             </NavLink>{" "}
             <hr />
             <NavLink to={"/about/management"}>
-              <li className="menu-item cursor-pointer mt-[-8px] mb-[-8px]">
+              <li className="menu-item cursor-pointer hover:text-white mt-[-8px] mb-[-8px]">
                 MANAGEMENT
               </li>
             </NavLink>
             <hr />
             <NavLink to={"/about/vision-and-mission"}>
               {" "}
-              <li className="menu-item cursor-pointer mt-[-8px] mb-[-8px]">
+              <li className="menu-item cursor-pointer hover:text-white mt-[-8px] mb-[-8px]">
                 VISION & MISSION
               </li>
             </NavLink>
@@ -75,7 +75,7 @@ function Header1() {
               rel="noopener noreferrer"
             >
               {" "}
-              <li className="menu-item cursor-pointer mt-[-9px]">
+              <li className="menu-item cursor-pointer hover:text-white mt-[-9px]">
                 MANDATORY DISCLOSURE
               </li>
             </a>
@@ -91,28 +91,28 @@ function Header1() {
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
               <NavLink to={"/academics/faculty-&-curriculum"}>
-                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px]">
+                <li className="menu-item cursor-pointer ps-2 hover:text-white flex mb-[-16px]">
                   FACULTY & CURRICULUM
                 </li>
               </NavLink>
               <hr />
               <NavLink to={"/academics/teaching-methodology"}>
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]">
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex mt-[-16px] mb-[-16px]">
                   TEACHING METHODOLOGY
                 </li>
               </NavLink>
               <hr />
               <NavLink to={"/academics/igniting-minds"}>
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]">
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex mt-[-16px] mb-[-16px]">
                   IGNITING MINDS
                 </li>
               </NavLink>
               <hr />
               <NavLink to={"/academics/competition-&-awards"}>
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]">
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex mt-[-16px] mb-[-16px]">
                   COMPETITIONS & AWARDS
                 </li>
               </NavLink>
@@ -123,7 +123,7 @@ function Header1() {
                 rel="noopener noreferrer"
               >
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]">
+                <li className="menu-item cursor-pointer ps-2 hover:text-white flex mt-[-16px] mb-[-16px]">
                   GOENKAN PURSUITS
                 </li>
               </a>
@@ -134,7 +134,7 @@ function Header1() {
                 rel="noopener noreferrer"
               >
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex  mt-[-16px] leading-none">
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px] leading-none">
                   LIST OF AUTHORISED BOOK SELLERS
                 </li>
               </a>
@@ -160,20 +160,20 @@ function Header1() {
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
               <NavLink to={"/our-campus/class-infrastructure"}>
-                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px]">
+                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px] hover:text-white">
                   class infrastructure
                 </li>
               </NavLink>
               <hr />
               <NavLink to={"/our-campus/labs-and-library"}>
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px]">
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px] hover:text-white">
                   labs and library
                 </li>
               </NavLink>
               <hr />
               <NavLink to={"/our-campus/cafeteria"}>
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px]">
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
                   cafeteria
                 </li>
               </NavLink>
@@ -191,14 +191,11 @@ function Header1() {
             >
               <NavLink to={"/career/current-openings"}>
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px]">
+                <li className="menu-item cursor-pointer ps-2 flex  hover:text-white">
                   current opening
                 </li>
               </NavLink>
-              <hr />
-              <li className="menu-item cursor-pointer ps-2 flex mt-[-16px]">
-                online application
-              </li>
+             
             </ul>
           </div>
 
@@ -212,16 +209,32 @@ function Header1() {
           </div>
 
           <div className="relative peer">
-            <a
-              href="https://smartpay.easebuzz.in/75872/AdmissionFee"
-              target="_blank"
-              rel="noopener noreferrer"
+            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+              Fee Payment
+            </li>
+
+            <ul
+              className="fee_payment_drop pt-3 top-[49px] font-extralight uppercase absolute hidden peer-hover:flex hover:flex w-[200px]
+                flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
-              {" "}
-              <li className="relative peer p-3 hover:bg-sky-300 uppercase  hover:text-white rounded-md cursor-pointer transition-all">
-                Fee Payment
+              <a
+                href="https://smartpay.easebuzz.in/75872/AdmissionFee"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px] hover:text-white">
+                  payment link
+                </li>
+              </a>
+              <hr />
+
+             <NavLink to={'/fee-payment/fees-structure'}>
+               <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
+                Fee structure
               </li>
-            </a>
+              </NavLink>
+            </ul>
           </div>
 
           <div
@@ -267,9 +280,9 @@ function Header1() {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                <NavLink to={'/admission/application-form'} > <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
                     application form
-                  </li>
+                  </li></NavLink>
                   <hr />
                   <li className="menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]">
                     application schedule 2025-26

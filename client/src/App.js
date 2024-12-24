@@ -38,6 +38,8 @@ import { AddContent } from "./admin/pages/content/AddContent";
 import CurrentOpening from "./pages/CurrentOpening";
 import JobApplicationForm from "./pages/JobApplicationForm";
 import { ViewAdmin } from "./admin/pages/admins/ViewAdmin";
+import FeeStructure from "./pages/FeeStructure";
+import AdmissionForm from "./pages/AdmissionForm";
 
 function App() {
   return (
@@ -62,6 +64,9 @@ function App() {
       <Route path={"/academics/goenkan-pursuits"} element={<GoenkanPursuits/>}/>
       <Route path={"/career/current-openings"} element={<CurrentOpening/>}/>
       <Route path={"/application-form"} element={<JobApplicationForm/>}/>
+      <Route path={'/fee-payment/fees-structure'} element={<FeeStructure/>}/>
+      <Route path={'/admission/application-form'} element={<AdmissionForm/>}/>
+
 
     
 
