@@ -22,7 +22,7 @@ import Gymnastics from "../assets/Gymnastics.jpg";
 import OutdoorActivity from "../assets/OutdoorActivity2.jpg";
 import Outdoor from "../assets/Outdoor.jpg";
 import IndoorGames from "../assets/IndoorGames.JPG";
-import TableTennis from "../assets/TableTennis.JPG";
+import TableTennis from "../assets/TableTennis.jpg";
 import bg1 from '../assets/bg2.jpg'
 
 gsap.registerPlugin(ScrollTrigger);
