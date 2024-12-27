@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Banner1 from "../assets/OutdoorActivity2.jpg";
-import Banner2 from "../assets/beyond-banner2.JPG" ;
+import Banner2 from "../assets/beyond-banner2.jpg" ;
 import { Layout } from "../components/Layout";
 import Carousel from "react-multi-carousel";
 import NavigationPages from "./NavigationPages";

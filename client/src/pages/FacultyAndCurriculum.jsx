@@ -18,11 +18,11 @@ import icon5 from "../assets/smart-icon5.png";
 import BadmintonCourt from "../assets/BadmintonCourt.JPG";
 import HorseRiding from "../assets/HorseRiding.jpg";
 import Robotics from "../assets/Robotics.JPG";
-import Gymnastics from "../assets/Gymnastics.JPG";
+import Gymnastics from "../assets/Gymnastics.jpg";
 import OutdoorActivity from "../assets/OutdoorActivity2.jpg";
 import Outdoor from "../assets/Outdoor.jpg";
 import IndoorGames from "../assets/IndoorGames.JPG";
-import TableTennis from "../assets/TableTennis.JPG";
+import TableTennis from "../assets/TableTennis.jpg";
 import bg1 from '../assets/bg2.jpg'
 
 gsap.registerPlugin(ScrollTrigger);
