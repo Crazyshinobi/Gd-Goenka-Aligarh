@@ -146,8 +146,7 @@ const ContactForm = () => {
                     />
                   </svg>
                   <span className="text-base md:text-lg font-medium mt-2 md:mt-0">
-                    3Kms Stone, Mathura Rd, Laxmi Nagar, Sasni Gate, Aligarh,
-                    Uttar Pradesh 202001
+                  3KMs Stone, Mathura Rd, Sasni Gate, Aligarh - Uttar Pradesh 202001
                   </span>
                 </div>
 
@@ -382,7 +381,7 @@ const ContactForm = () => {
                   type="submit"
                   className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out transform hover:scale-105"
                 >
-                  Submit Registration
+                  Submit
                 </button>
               </form>
             </div>

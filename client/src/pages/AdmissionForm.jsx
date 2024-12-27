@@ -7,6 +7,7 @@ import NavigationPages from "./NavigationPages";
 import bgdesign from "../assets/bgdesign3.jpg";
 
 const AdmissionForm = () => {
+  document.title = 'Admission -GDGPS Aligarh'
   const [formData, setFormData] = useState({
     name: "",
     dob: "",

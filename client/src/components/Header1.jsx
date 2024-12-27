@@ -166,35 +166,34 @@ function Header1() {
               </NavLink>
               <hr />
               <NavLink to={"/our-campus/labs-and-library"}>
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px] hover:text-white">
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px]  hover:text-white">
                   labs and library
                 </li>
               </NavLink>
-              <hr />
-              <NavLink to={"/our-campus/cafeteria"}>
-                {" "}
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
-                  cafeteria
-                </li>
-              </NavLink>
+             
             </ul>
           </div>
 
           <div className="relative peer">
             <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
-              Career
+            admissions
             </li>
 
             <ul
               className="fee_payment_drop pt-3 top-[49px] font-extralight uppercase absolute hidden peer-hover:flex hover:flex w-[200px]
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
-              <NavLink to={"/career/current-openings"}>
+                 <NavLink to={"/admission/application-form"}>
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex  hover:text-white">
-                  current opening
+                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px]  hover:text-white">
+                application form 
                 </li>
               </NavLink>
+              <hr />
+              <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px] leading-none ">
+              admission schedule 2025-26
+                </li>
+
             </ul>
           </div>
 
@@ -278,19 +277,19 @@ function Header1() {
                 id="panel2-header"
                 className="uppercase"
               >
-                admissions
+                 Career
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                  <NavLink to={"/admission/application-form"}>
+                <NavLink to={"/career/current-openings"}>
                     {" "}
                     <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
-                      application form
+                      currrent opening
                     </li>
                   </NavLink>
                   <hr />
                   <li className="menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]">
-                    application schedule 2025-26
+                    admission schedule 2025-26
                   </li>
                 </ul>
               </AccordionDetails>
@@ -310,27 +309,9 @@ function Header1() {
               </NavLink>
             </Accordion>
 
-            {/* CLUBS ACCORDIAN */}
-            <Accordion>
-              <AccordionSummary
-                aria-controls="panel2-content"
-                id="panel2-header"
-                className="uppercase"
-              >
-                clubs
-              </AccordionSummary>
-            </Accordion>
+            
 
-            {/* EVENTS & CELEBRATIONS */}
-            <Accordion>
-              <AccordionSummary
-                aria-controls="panel2-content"
-                id="panel2-header"
-                className="uppercase"
-              >
-                events & celebrations
-              </AccordionSummary>
-            </Accordion>
+            
 
             {/* IMAGE GALLERY ACCORDIAN */}
             <Accordion>
@@ -346,16 +327,7 @@ function Header1() {
               </NavLink>
             </Accordion>
 
-            {/* GDGPS BLOGS ACCORDIAN */}
-            <Accordion>
-              <AccordionSummary
-                aria-controls="panel2-content"
-                id="panel2-header"
-                className="uppercase"
-              >
-                gdgps blogs
-              </AccordionSummary>
-            </Accordion>
+           
 
             {/* IN NEWS ACCORDIAN */}
             <Accordion>
@@ -515,13 +487,7 @@ function Header1() {
                     labs & library
                   </li>
                 </NavLink>
-                <hr />
-                <NavLink to={"/our-campus/cafeteria"}>
-                  {" "}
-                  <li className="menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase">
-                    cafeteria
-                  </li>
-                </NavLink>
+               
               </ul>
             </AccordionDetails>
           </Accordion>
@@ -628,7 +594,7 @@ function Header1() {
                 </NavLink>
                 <hr />
                 <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
-                  application schedule 2025-26
+                  Admission schedule 2025-26
                 </li>
               </ul>
             </AccordionDetails>
@@ -647,27 +613,9 @@ function Header1() {
             </NavLink>
           </Accordion>
 
-          {/* CLUBS ACCORDIAN */}
-          <Accordion>
-            <AccordionSummary
-              aria-controls="panel2-content"
-              id="panel2-header"
-              className="uppercase"
-            >
-              clubs
-            </AccordionSummary>
-          </Accordion>
+         
 
-          {/* EVENTS & CELEBRATIONS */}
-          <Accordion>
-            <AccordionSummary
-              aria-controls="panel2-content"
-              id="panel2-header"
-              className="uppercase"
-            >
-              events & celebrations
-            </AccordionSummary>
-          </Accordion>
+  
 
           {/* IMAGE GALLERY ACCORDIAN */}
           <Accordion>
@@ -683,16 +631,7 @@ function Header1() {
             </NavLink>
           </Accordion>
 
-          {/* GDGPS BLOGS ACCORDIAN */}
-          <Accordion>
-            <AccordionSummary
-              aria-controls="panel2-content"
-              id="panel2-header"
-              className="uppercase"
-            >
-              gdgps blogs
-            </AccordionSummary>
-          </Accordion>
+         
 
           {/* IN NEWS ACCORDIAN */}
           <Accordion>

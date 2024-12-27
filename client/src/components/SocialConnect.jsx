@@ -10,7 +10,8 @@ const SocialConnect = () => {
           <BsTelephoneInbound />
         </p>
         <a href="tel:011-43060860">011-43060860,</a>{" "}
-        <a href="tel:+91-9810054878"> +91-9810054878 </a>
+        <a href="tel:+91-9810054878"> +91-9810054878, </a>
+        <a href="tel:+91-8126747489"> 8126747489 </a>
       </div>
       <div>
         <ul className="icons flex justify-center items-center">

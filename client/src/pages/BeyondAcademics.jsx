@@ -10,8 +10,8 @@ import Carousel from "react-multi-carousel";
 import NavigationPages from "./NavigationPages";
 import OutdoorActivity from "../assets/OutdoorActivity.jpg";
 import Sports from "../assets/Reel.JPG";
+import music from "../assets/music.jpg";
 import MusicAndDance from "../assets/MusicAndDance.jpg";
-import Dance from "../assets/Janamashtmi.png";
 import Art from "../assets/Art.jpg";
 import Art2 from "../assets/Reel1.JPG";
 import FestivalImage1 from "../assets/Festival.JPG";
@@ -102,7 +102,7 @@ Our sports curriculum is designed to nurture athleticism and teamwork. From foot
     },
     {
       title: "Music & Dance",
-      images: [MusicAndDance, Dance],
+      images: [music , MusicAndDance],
       content: `Schooling at G. D. Goenka Public School goes beyond the classrooms into the wider creative world outside. Apart from a keen focus on academics, various creative activities are taught that engage the mental and intellectual faculties of our students. Indian and Western Music, both vocal and instrumental are offered to our students.
 
 Both Indian and western dance is taught to our school students. Classical Indian dance is taught and students enjoy the varied foot positions and hand gestures associated with our classical dance styles. Periodic presentations and special assemblies to celebrate festivals showcase dance presentations on a particular theme.

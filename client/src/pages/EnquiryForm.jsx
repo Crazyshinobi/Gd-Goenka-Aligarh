@@ -3,8 +3,9 @@ import toast, { Toaster } from "react-hot-toast";
 import { usePostRequest } from "../hooks/usePostRequest";
 
 const EnquiryForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    parent_name: "",    
+    parent_name: "",
     student_name: "",
     parent_email_address: "",
     mobile: "",
@@ -25,13 +26,21 @@ const EnquiryForm = () => {
 
   const validateForm = () => {
     let newErrors = {};
-    if (!formData.parent_name) newErrors.parent_name = "Parent name is required";
-    if (!formData.student_name) newErrors.student_name = "Student name is required";
-    if (!formData.parent_email_address) newErrors.parent_email_address = "Parent email is required";
-    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.parent_email_address)) {
+    if (!formData.parent_name)
+      newErrors.parent_name = "Parent name is required";
+    if (!formData.student_name)
+      newErrors.student_name = "Student name is required";
+    if (!formData.parent_email_address)
+      newErrors.parent_email_address = "Parent email is required";
+    else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+        formData.parent_email_address
+      )
+    ) {
       newErrors.parent_email_address = "Invalid email address";
     }
-    if (!formData.mobile) newErrors.mobile = "Student mobile number is required";
+    if (!formData.mobile)
+      newErrors.mobile = "Student mobile number is required";
     else if (!/^[0-9]{10}$/.test(formData.mobile)) {
       newErrors.mobile = "Invalid mobile number";
     }
@@ -48,9 +57,15 @@ const EnquiryForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
 
     if (validateForm()) {
       const response = await postRequest(formData);
+
 
       if (response && response.success) {
         toast.success("Thank you for your enquiry!");
@@ -63,6 +78,7 @@ const EnquiryForm = () => {
           city: "",
           grade: "",
         });
+        
       } else {
         toast.error("Failed to submit the form.");
         console.error("Error Submitting form:", error);
@@ -71,16 +87,21 @@ const EnquiryForm = () => {
   };
 
   return (
-    <div className="w-full bg-gradient-to-r p-3 from-blue-500 to-indigo-600 rounded-lg shadow-lg">
+    <div className="w-full bg-gradient-to-r p-6 from-blue-500 to-indigo-600 rounded-lg shadow-lg">
       <div className="mb-2 text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">Get In Touch</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
+          Get In Touch
+        </h2>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-1 sm:space-y-1">
-        <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 mb-4">
           {/* Form fields */}
           <div className="col-span-1 sm:col-span-2">
-            <label htmlFor="parentName" className="block text-sm font-semibold text-white mb-1">
+            <label
+              htmlFor="parentName"
+              className="block text-sm font-semibold text-white mb-1"
+            >
               Parent Name
             </label>
             <input
@@ -98,7 +119,10 @@ const EnquiryForm = () => {
           </div>
 
           <div>
-            <label htmlFor="studentName" className="block text-sm font-semibold text-white mb-1">
+            <label
+              htmlFor="studentName"
+              className="block text-sm font-semibold text-white mb-1"
+            >
               Student Name
             </label>
             <input
@@ -116,7 +140,10 @@ const EnquiryForm = () => {
           </div>
 
           <div>
-            <label htmlFor="parent_email_address" className="block text-sm font-semibold text-white mb-1">
+            <label
+              htmlFor="parent_email_address"
+              className="block text-sm font-semibold text-white mb-1"
+            >
               Parent Email
             </label>
             <input
@@ -136,7 +163,10 @@ const EnquiryForm = () => {
           </div>
 
           <div>
-            <label htmlFor="studentMobile" className="block text-sm font-semibold text-white mb-1">
+            <label
+              htmlFor="studentMobile"
+              className="block text-sm font-semibold text-white mb-1"
+            >
               Student Mobile No.
             </label>
             <input
@@ -154,7 +184,10 @@ const EnquiryForm = () => {
           </div>
 
           <div>
-            <label htmlFor="state" className="block text-sm font-semibold text-white mb-1">
+            <label
+              htmlFor="state"
+              className="block text-sm font-semibold text-white mb-1"
+            >
               State
             </label>
             <input
@@ -172,7 +205,10 @@ const EnquiryForm = () => {
           </div>
 
           <div>
-            <label htmlFor="city" className="block text-sm font-semibold text-white mb-1">
+            <label
+              htmlFor="city"
+              className="block text-sm font-semibold text-white mb-1"
+            >
               City
             </label>
             <input
@@ -190,7 +226,10 @@ const EnquiryForm = () => {
           </div>
 
           <div>
-            <label htmlFor="class" className="block text-sm font-semibold text-white mb-1">
+            <label
+              htmlFor="class"
+              className="block text-sm font-semibold text-white mb-1"
+            >
               Class
             </label>
             <select
@@ -223,8 +262,36 @@ const EnquiryForm = () => {
         <button
           type="submit"
           className="w-full py-2 sm:py-3 px-4 bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-indigo-300 focus:ring-opacity-50 rounded-lg shadow-md text-white text-base sm:text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105"
+          disabled={isLoading} // Disable the button while loading
         >
-          Enquiry now
+          {isLoading ? (
+            <span className="flex justify-center items-center">
+              <svg
+                className="w-5 h-5 mr-2 animate-spin"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 1116 0A8 8 0 014 12z"
+                ></path>
+              </svg>
+              Submitting...
+            </span>
+          ) : (
+            "Enquiry now"
+          )}
         </button>
       </form>
       <Toaster />
@@ -233,4 +300,3 @@ const EnquiryForm = () => {
 };
 
 export default EnquiryForm;
-

@@ -162,7 +162,7 @@ const LabsAndLibrary = () => {
                 infinite={true}
                 autoPlay={true}
                 autoPlaySpeed={5000}
-                showDots={true}
+                showDots={false}
                 arrows={false}
                 className="rounded-xl"
               >

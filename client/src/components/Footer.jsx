@@ -26,13 +26,13 @@ function Footer() {
             <FaMapMarkerAlt className="mr-2" /> G.D. Goenka Public School
           </h2>
           <p className="mb-2">
-            Hajipur Chauhatta, Aligarh, Uttar Pradesh - 202001
+            3KMs Stone, Mathura Rd, Sasni Gate, Aligarh - Uttar Pradesh 202001
           </p>
           <p className="mb-1 flex items-center">
             <FaPhoneAlt className="mr-2" /> Landline: 011-43060860
           </p>
           <p className="mb-1 flex items-center">
-            <FaMobileAlt className="mr-2" /> Mobile: +91-9810054878
+            <FaMobileAlt className="mr-2" /> Mobile: +91-9810054878 , 8126747489
           </p>
           <p className="mb-1 flex items-center">
             <FaEnvelope className="mr-2" /> Email: admission@gdgpsaligarh.com
@@ -100,7 +100,7 @@ function Footer() {
             <li className="hover:text-blue-300 cursor-pointer">
               Events & Celebrations
             </li>
-            <NavLink to={"/job-application-form"}>
+            <NavLink to={"/admission/application-form"}>
               <li className="hover:text-blue-300 cursor-pointer">Admissions</li>
             </NavLink>
             <NavLink to={"/gallery "}>
@@ -139,6 +139,55 @@ function Footer() {
                       </svg>
                     </a>
                   </li>
+
+                  <li className="icon-contentFooter">
+                    <a
+                      href="https://www.linkedin.com/company/gdgpsaligarh/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      data-social="linkedin"
+                    >
+                      <div className="filledFooter" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-linkedin"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li className='icon-contentFooter'>
+                    <a
+                      href="https://www.facebook.com/gdgpsaligarh"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                      data-social = "facebook"
+                    >
+                      <div className="filledFooter" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-facebook"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+                        fill="currentcolor" />
+                      </svg>
+                    </a>
+                  </li>
+
                   <li className="icon-contentFooter">
                     <a
                       href="https://www.youtube.com/@gdgpsaligarh"

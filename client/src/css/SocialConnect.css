@@ -37,6 +37,8 @@
   .icon-content a[data-social="youtube"] ~ .tooltip {
     @apply bg-[#ff0000];
   }
+
+  
   .icons .icon-content a {
     position: relative;
     overflow: hidden;
@@ -99,6 +101,17 @@
   .icon-contentFooter a[data-social="youtube"] ~ .tooltip {
     @apply bg-[#ff0000];
   }
+  .icon-contentFooter a[data-social="linkedin"] .filledFooter,
+.icon-contentFooter a[data-social="linkedin"] ~ .tooltip {
+  background: #0e76a8; /* Solid LinkedIn color */
+  /* OR if you want a gradient */
+  background: linear-gradient(45deg, #0e76a8, #0077b5, #005c8e, #003f64);
+}
+
+.icon-contentFooter a[data-social="facebook"] .filledFooter,
+.icon-contentFooter a[data-social="facebook"] ~ .tooltip {
+  background: #1877f2; /* Facebook's blue color */
+}
   .iconsFooter .icon-contentFooter a {
     position: relative;
     overflow: hidden;
