@@ -195,7 +195,6 @@ function Header1() {
                   current opening
                 </li>
               </NavLink>
-             
             </ul>
           </div>
 
@@ -229,11 +228,14 @@ function Header1() {
               </a>
               <hr />
 
-             <NavLink to={'/fee-payment/fees-structure'}>
-               <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
-                Fee structure
-              </li>
-              </NavLink>
+              <a href="/fee-payment/fees-structure"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
+                  Fee structure
+                </li>
+              </a>
             </ul>
           </div>
 
@@ -280,9 +282,12 @@ function Header1() {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                <NavLink to={'/admission/application-form'} > <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
-                    application form
-                  </li></NavLink>
+                  <NavLink to={"/admission/application-form"}>
+                    {" "}
+                    <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                      application form
+                    </li>
+                  </NavLink>
                   <hr />
                   <li className="menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]">
                     application schedule 2025-26
@@ -462,12 +467,22 @@ function Header1() {
                 </NavLink>
                 <hr />
                 <a
+                  href={"/academics/goenkan-pursuits"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase">
+                    GOENKAN PURSUIT
+                  </li>
+                </a>
+                <hr />
+                <a
                   href={"/academics/authorised-book-seller"}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {" "}
-                  <li className="menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase">
+                  <li className="menu-item cursor-pointer  ms-[-4px] leading-none uppercase">
                     List of authorised book sellers
                   </li>
                 </a>
@@ -507,7 +522,6 @@ function Header1() {
                     cafeteria
                   </li>
                 </NavLink>
-                <hr />
               </ul>
             </AccordionDetails>
           </Accordion>
@@ -530,10 +544,41 @@ function Header1() {
                     current opening
                   </li>
                 </NavLink>
+              </ul>
+            </AccordionDetails>
+          </Accordion>
+
+          {/* FEE PAYMENT */}
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+              className="uppercase"
+            >
+              fee payment
+            </AccordionSummary>
+            <AccordionDetails>
+              <ul>
+                <a
+                  href="https://smartpay.easebuzz.in/75872/AdmissionFee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                    payment link
+                  </li>
+                </a>
                 <hr />
-                <li className="menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase">
-                  online applications
-                </li>
+                <a
+                  href="/fee-payment/fees-structure"  
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
+                    fees structure
+                  </li>
+                </a>
               </ul>
             </AccordionDetails>
           </Accordion>
@@ -563,32 +608,6 @@ function Header1() {
             </AccordionSummary>
           </Accordion>
 
-          {/* GOENKAN PURSUITS */}
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1-content"
-              id="panel1-header"
-              className="uppercase"
-            >
-              goenkan pursuits
-            </AccordionSummary>
-            <AccordionDetails>
-              <ul className="mt-[-16px]">
-                <a
-                  href={"/goenkan-pursuits"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {" "}
-                  <li className="menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none">
-                    2024-25
-                  </li>
-                </a>
-              </ul>
-            </AccordionDetails>
-          </Accordion>
-
           {/* ADMISSION ACCORDIAN */}
 
           <Accordion>
@@ -602,11 +621,13 @@ function Header1() {
             </AccordionSummary>
             <AccordionDetails>
               <ul>
-                <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
-                  application form
-                </li>
+                <NavLink to={"/admission/application-form"}>
+                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                    application form
+                  </li>
+                </NavLink>
                 <hr />
-                <li className="menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]">
+                <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
                   application schedule 2025-26
                 </li>
               </ul>

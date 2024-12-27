@@ -14,7 +14,7 @@ const CurrentOpening = () => {
 
   const handleApplyClick = (job) => {
     setSelectedJob(job);
-    navigate('/application-form', { state: { job } });
+    navigate('/job-application-form', { state: { job } });
   };
 
   return (

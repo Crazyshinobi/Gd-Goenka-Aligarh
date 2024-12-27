@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import footerbg from "../assets/bg1.jpg";
 import { NavLink } from "react-router-dom";
-import '../css/SocialConnect.css'
+import "../css/SocialConnect.css";
 
 function Footer() {
   return (
@@ -100,7 +100,9 @@ function Footer() {
             <li className="hover:text-blue-300 cursor-pointer">
               Events & Celebrations
             </li>
-            <li className="hover:text-blue-300 cursor-pointer">Admissions</li>
+            <NavLink to={"/job-application-form"}>
+              <li className="hover:text-blue-300 cursor-pointer">Admissions</li>
+            </NavLink>
             <NavLink to={"/gallery "}>
               {" "}
               <li className="hover:text-blue-300 cursor-pointer">

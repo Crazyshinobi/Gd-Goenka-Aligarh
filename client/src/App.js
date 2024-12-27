@@ -63,7 +63,7 @@ function App() {
       <Route path={"/contact-us"} element={<ContactForm/>}/>
       <Route path={"/academics/goenkan-pursuits"} element={<GoenkanPursuits/>}/>
       <Route path={"/career/current-openings"} element={<CurrentOpening/>}/>
-      <Route path={"/application-form"} element={<JobApplicationForm/>}/>
+      <Route path={"/job-application-form"} element={<JobApplicationForm/>}/>
       <Route path={'/fee-payment/fees-structure'} element={<FeeStructure/>}/>
       <Route path={'/admission/application-form'} element={<AdmissionForm/>}/>
 

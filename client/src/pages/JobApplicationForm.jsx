@@ -3,6 +3,10 @@ import { useLocation } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import { usePostRequest } from "../hooks/usePostRequest";
 import { toast, Toaster } from "react-hot-toast";
+import NavigationPages from "./NavigationPages";
+import JobBanner from '../assets/JobBanner.jpg'
+import bgdesign from "../assets/bgdesign3.jpg";
+import { Button } from "../admin/components/Button";
 
 export default function JobApplicationForm() {
   document.title = "Job Application - GDGPS Aligarh";
@@ -23,6 +27,7 @@ export default function JobApplicationForm() {
     address: "",
     image: null,
     resume: null,
+    profile: job?.name || "",
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -166,9 +171,30 @@ export default function JobApplicationForm() {
     <>
       <Toaster />
       <Layout>
+
+      <div className="relative bgImage">
+        <h1  className="absolute bottom-4 shadow-md md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded">
+          JOB APPLICATION
+        </h1>
+        <img
+          src={JobBanner}
+          alt="Job Application Banner"
+          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[40vh] w-full object-cover"
+        />
+      </div>
+
+      <NavigationPages/>
+
+      <div
+        className="py-6"
+        style={{
+          backgroundImage: `url(${bgdesign})`,
+        }}
+      >
+
         <form
           onSubmit={handleSubmit}
-          className="max-w-6xl mx-auto p-6 space-y-6 bg-white shadow-lg rounded-md"
+          className="max-w-6xl mx-auto p-6 space-y-6 bg-blue-200 shadow-lg rounded-md"
           encType="multipart/form-data"
         >
           <h2 className="text-2xl font-semibold text-gray-700 mb-4">
@@ -449,7 +475,24 @@ export default function JobApplicationForm() {
           </div>
 
           {/* Submit Button */}
-          <button
+          <Button name="Submit"  type="submit"
+            disabled={
+              isSubmitting ||
+              !formData.name ||
+              !formData.email ||
+              !formData.phone ||
+              !formData.qualification ||
+              !formData.expected_salary ||
+              !formData.last_organization ||
+              !formData.last_salary ||
+              !formData.experience ||
+              !formData.address ||
+              !formData.image ||
+              !formData.resume
+            }
+              loading={loading} />
+
+          {/* <button
             type="submit"
             className={`w-full py-3 rounded-md transition-colors text-white ${
               isSubmitting
@@ -472,8 +515,10 @@ export default function JobApplicationForm() {
             }
           >
             {isSubmitting ? "Submitting..." : "Submit"}
-          </button>
+          </button> */}
         </form>
+
+        </div>
       </Layout>
     </>
   );

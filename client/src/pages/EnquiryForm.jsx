@@ -72,11 +72,11 @@ const EnquiryForm = () => {
 
   return (
     <div className="w-full bg-gradient-to-r p-3 from-blue-500 to-indigo-600 rounded-lg shadow-lg">
-      <div className="mb-6 text-center">
+      <div className="mb-2 text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">Get In Touch</h2>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-1 sm:space-y-1">
         <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
           {/* Form fields */}
           <div className="col-span-1 sm:col-span-2">
@@ -222,7 +222,7 @@ const EnquiryForm = () => {
 
         <button
           type="submit"
-          className="w-full py-2 sm:py-3 px-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-300 focus:ring-opacity-50 rounded-lg shadow-md text-white text-base sm:text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105"
+          className="w-full py-2 sm:py-3 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-indigo-300 focus:ring-opacity-50 rounded-lg shadow-md text-white text-base sm:text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105"
         >
           Enquiry now
         </button>

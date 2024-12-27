@@ -19,7 +19,7 @@ const IgnitingMindsPage = () => {
     <Layout>
       {/* Banner Section */}
       <div className="relative bgImage">
-        <h1  className="absolute bottom-6 left-8 text-4xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-lg">
+        <h1  className="absolute  bottom-6 left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-md">
           ACADEMICS
         </h1>
         <img

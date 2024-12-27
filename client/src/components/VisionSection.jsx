@@ -119,7 +119,7 @@ function VisionSection() {
             </div>
           </div>
           <div className="text-center mt-4">
-            <a href="#" className="text-blue-500 hover:underline">
+            <a href="/academics/goenkan-pursuits" target='_blank'  rel="noopener noreferrer" className="text-blue-500 hover:underline">
               Read more
             </a>
           </div>
