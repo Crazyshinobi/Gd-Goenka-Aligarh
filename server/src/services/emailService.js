@@ -79,7 +79,7 @@ const sendOtpEmail = async (email) => {
         <p>If you did not request this, please ignore this email.</p>
 
         <div className="footer">
-            <p>Thank you,<br>Saroj Education Group - Gd Goenka Team</p>
+            <p>Thank you,<br>Saroj Education Group - Gd Goenka Aligarh Team</p>
         </div>
     </div>
     </body>
