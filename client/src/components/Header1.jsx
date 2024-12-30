@@ -166,36 +166,34 @@ function Header1() {
               </NavLink>
               <hr />
               <NavLink to={"/our-campus/labs-and-library"}>
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] mb-[-16px] hover:text-white">
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px]  hover:text-white">
                   labs and library
                 </li>
               </NavLink>
-              <hr />
-              <NavLink to={"/our-campus/cafeteria"}>
-                {" "}
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
-                  cafeteria
-                </li>
-              </NavLink>
+             
             </ul>
           </div>
 
           <div className="relative peer">
             <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
-              Career
+            admissions
             </li>
 
             <ul
               className="fee_payment_drop pt-3 top-[49px] font-extralight uppercase absolute hidden peer-hover:flex hover:flex w-[200px]
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
-              <NavLink to={"/career/current-openings"}>
+                 <NavLink to={"/admission/application-form"}>
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex  hover:text-white">
-                  current opening
+                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px]  hover:text-white">
+                application form 
                 </li>
               </NavLink>
-             
+              <hr />
+              <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px] leading-none ">
+              admission schedule 2025-26
+                </li>
+
             </ul>
           </div>
 
@@ -229,11 +227,14 @@ function Header1() {
               </a>
               <hr />
 
-             <NavLink to={'/fee-payment/fees-structure'}>
-               <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
-                Fee structure
-              </li>
-              </NavLink>
+              <a href="/fee-payment/fees-structure"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
+                  Fee structure
+                </li>
+              </a>
             </ul>
           </div>
 
@@ -276,16 +277,19 @@ function Header1() {
                 id="panel2-header"
                 className="uppercase"
               >
-                admissions
+                 Career
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                <NavLink to={'/admission/application-form'} > <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
-                    application form
-                  </li></NavLink>
+                <NavLink to={"/career/current-openings"}>
+                    {" "}
+                    <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                      currrent opening
+                    </li>
+                  </NavLink>
                   <hr />
                   <li className="menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]">
-                    application schedule 2025-26
+                    admission schedule 2025-26
                   </li>
                 </ul>
               </AccordionDetails>
@@ -305,27 +309,9 @@ function Header1() {
               </NavLink>
             </Accordion>
 
-            {/* CLUBS ACCORDIAN */}
-            <Accordion>
-              <AccordionSummary
-                aria-controls="panel2-content"
-                id="panel2-header"
-                className="uppercase"
-              >
-                clubs
-              </AccordionSummary>
-            </Accordion>
+            
 
-            {/* EVENTS & CELEBRATIONS */}
-            <Accordion>
-              <AccordionSummary
-                aria-controls="panel2-content"
-                id="panel2-header"
-                className="uppercase"
-              >
-                events & celebrations
-              </AccordionSummary>
-            </Accordion>
+            
 
             {/* IMAGE GALLERY ACCORDIAN */}
             <Accordion>
@@ -341,16 +327,7 @@ function Header1() {
               </NavLink>
             </Accordion>
 
-            {/* GDGPS BLOGS ACCORDIAN */}
-            <Accordion>
-              <AccordionSummary
-                aria-controls="panel2-content"
-                id="panel2-header"
-                className="uppercase"
-              >
-                gdgps blogs
-              </AccordionSummary>
-            </Accordion>
+           
 
             {/* IN NEWS ACCORDIAN */}
             <Accordion>
@@ -462,12 +439,22 @@ function Header1() {
                 </NavLink>
                 <hr />
                 <a
+                  href={"/academics/goenkan-pursuits"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase">
+                    GOENKAN PURSUIT
+                  </li>
+                </a>
+                <hr />
+                <a
                   href={"/academics/authorised-book-seller"}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {" "}
-                  <li className="menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase">
+                  <li className="menu-item cursor-pointer  ms-[-4px] leading-none uppercase">
                     List of authorised book sellers
                   </li>
                 </a>
@@ -500,14 +487,7 @@ function Header1() {
                     labs & library
                   </li>
                 </NavLink>
-                <hr />
-                <NavLink to={"/our-campus/cafeteria"}>
-                  {" "}
-                  <li className="menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase">
-                    cafeteria
-                  </li>
-                </NavLink>
-                <hr />
+               
               </ul>
             </AccordionDetails>
           </Accordion>
@@ -530,10 +510,41 @@ function Header1() {
                     current opening
                   </li>
                 </NavLink>
+              </ul>
+            </AccordionDetails>
+          </Accordion>
+
+          {/* FEE PAYMENT */}
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+              className="uppercase"
+            >
+              fee payment
+            </AccordionSummary>
+            <AccordionDetails>
+              <ul>
+                <a
+                  href="https://smartpay.easebuzz.in/75872/AdmissionFee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                    payment link
+                  </li>
+                </a>
                 <hr />
-                <li className="menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase">
-                  online applications
-                </li>
+                <a
+                  href="/fee-payment/fees-structure"  
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
+                    fees structure
+                  </li>
+                </a>
               </ul>
             </AccordionDetails>
           </Accordion>
@@ -563,32 +574,6 @@ function Header1() {
             </AccordionSummary>
           </Accordion>
 
-          {/* GOENKAN PURSUITS */}
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1-content"
-              id="panel1-header"
-              className="uppercase"
-            >
-              goenkan pursuits
-            </AccordionSummary>
-            <AccordionDetails>
-              <ul className="mt-[-16px]">
-                <a
-                  href={"/goenkan-pursuits"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {" "}
-                  <li className="menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none">
-                    2024-25
-                  </li>
-                </a>
-              </ul>
-            </AccordionDetails>
-          </Accordion>
-
           {/* ADMISSION ACCORDIAN */}
 
           <Accordion>
@@ -602,12 +587,14 @@ function Header1() {
             </AccordionSummary>
             <AccordionDetails>
               <ul>
-                <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
-                  application form
-                </li>
+                <NavLink to={"/admission/application-form"}>
+                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                    application form
+                  </li>
+                </NavLink>
                 <hr />
-                <li className="menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]">
-                  application schedule 2025-26
+                <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
+                  Admission schedule 2025-26
                 </li>
               </ul>
             </AccordionDetails>
@@ -626,27 +613,9 @@ function Header1() {
             </NavLink>
           </Accordion>
 
-          {/* CLUBS ACCORDIAN */}
-          <Accordion>
-            <AccordionSummary
-              aria-controls="panel2-content"
-              id="panel2-header"
-              className="uppercase"
-            >
-              clubs
-            </AccordionSummary>
-          </Accordion>
+         
 
-          {/* EVENTS & CELEBRATIONS */}
-          <Accordion>
-            <AccordionSummary
-              aria-controls="panel2-content"
-              id="panel2-header"
-              className="uppercase"
-            >
-              events & celebrations
-            </AccordionSummary>
-          </Accordion>
+  
 
           {/* IMAGE GALLERY ACCORDIAN */}
           <Accordion>
@@ -662,16 +631,7 @@ function Header1() {
             </NavLink>
           </Accordion>
 
-          {/* GDGPS BLOGS ACCORDIAN */}
-          <Accordion>
-            <AccordionSummary
-              aria-controls="panel2-content"
-              id="panel2-header"
-              className="uppercase"
-            >
-              gdgps blogs
-            </AccordionSummary>
-          </Accordion>
+         
 
           {/* IN NEWS ACCORDIAN */}
           <Accordion>

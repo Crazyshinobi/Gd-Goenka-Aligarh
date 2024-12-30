@@ -20,7 +20,7 @@ const reels = [
 const InstagramSection = () => {
   return (
     <div className="p-4 sm:p-6 w-full " style={{backgroundImage : `url(${bg1})`}}>
-      <h2 className="text-center text-xl sm:text-4xl font-bold mb-4">Follow Us on Instagram</h2>
+      <h2 className="text-center text-xl sm:text-4xl font-bold mb-4">Follow us on Instagram</h2>
       <div className="relative overflow-hidden w-full">
         {/* Scrolling Container */}
         <motion.div

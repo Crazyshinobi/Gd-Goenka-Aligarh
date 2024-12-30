@@ -87,7 +87,7 @@ const LabsAndLibrary = () => {
         />
 
         <motion.h1
-          className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          className="absolute shadow-md bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
@@ -127,7 +127,7 @@ const LabsAndLibrary = () => {
 
         {[ 
           {
-            image: LabsAndLibraryBanner,
+            image: lab2,
             content: `The school has made a strong impact in the educational scenario with its unique philosophy and futuristic thinking. The school has taken a lead and initiated very robust changes in the laboratories and the school library.
           
           The three Science labs are specially designed for well-equipped learning stations and flexible approach to seating. The active learning experience for Physics, Chemistry, Biology and Computer Science students takes cognizance of the best apparatus, tools, aids, AI based technology and the latest hands on subject related elements.`,
@@ -139,11 +139,11 @@ const LabsAndLibrary = () => {
           A dynamic Virtual Reality lab encourages young thinkers to expand their horizons. An exciting addition is the Tab lab that combines daily classes with a three-dimensional teaching aid.`,
           },
           {
-            image: lab2,
+            image: LabsAndLibraryBanner,
             content: `The glorious ambience of the Library is the jewel in the Goenkan crown because of its excellent and highly endorsed collection of books, journals, reference material and academic resources. All these spaces are fitted with safe and conducive interiors and an aesthetic environment friendly ambience.
           
           Every step of AI aided teaching methodology is aimed at harnessing the skills and optimization of the potential of each child.`,
-          },// Add other section data here
+          },
         ].map((section, index) => (
           <motion.section
             key={index}
@@ -162,7 +162,7 @@ const LabsAndLibrary = () => {
                 infinite={true}
                 autoPlay={true}
                 autoPlaySpeed={5000}
-                showDots={true}
+                showDots={false}
                 arrows={false}
                 className="rounded-xl"
               >

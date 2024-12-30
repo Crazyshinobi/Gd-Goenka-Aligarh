@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import School from "../assets/School.jpg"; // Replace with relevant image path
-import PrincipalPhoto from "../assets/principal1.jpeg";
-import bgDesign from "../assets/bgdesign3.jpg";
+import managementPhoto from "../assets/Management1.jpg";
+import managementPhoto2 from "../assets/Management2.jpg";
 
+import bgDesign from "../assets/bgdesign3.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ManagementPage = () => {
-  document.title = 'Management - GDGPS Aligarh'
+  document.title = "Management - GDGPS Aligarh";
   useEffect(() => {
-
     // GSAP Animations
     gsap.fromTo(
       ".fade-in",
@@ -39,7 +39,7 @@ const ManagementPage = () => {
     <Layout>
       {/* Banner Section */}
       <div className="bgImage relative">
-      <motion.img
+        <motion.img
           src={School}
           alt="GD Goenka School"
           className="h-[50vh] md:h-[40vh] lg:h-[60vh] w-full object-cover"
@@ -48,7 +48,7 @@ const ManagementPage = () => {
           transition={{ duration: 0.8 }}
         />
         <motion.h1
-          className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          className="absolute bottom-4 md:bottom-6 shadow-md left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -89,15 +89,15 @@ const ManagementPage = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.img
-              src={PrincipalPhoto}
-              alt="Dr. Anubhav Lodhi"
+              src={managementPhoto}
+              alt="Anjani kumar goenka"
               className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] object-cover rounded-full shadow-lg"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.4 }}
             />
           </motion.div>
 
-          {/* Principal's Content */}
+          {/* ManagementContent */}
           <motion.div
             className="w-full md:w-2/3 p-6 md:p-8"
             initial={{ opacity: 0, x: 50 }}
@@ -109,57 +109,105 @@ const ManagementPage = () => {
               className="text-2xl md:text-3xl font-bold text-blue-700 mb-2"
               whileHover={{ color: "#003963" }}
             >
-              Dr. ANUBHAV LODHI
+              “I don’t teach children, but create conditions for them to learn.”
+              - Albert Einstein
             </motion.h2>
-            <p className="italic text-gray-500 mb-4">M.Com, LLB, B.Ed, Ph.D.</p>
-            <p className="text-gray-700 leading-relaxed mb-4 fade-in">
-              “Education is not merely about filling a child’s mind with
-              information but nurturing their ability to think critically,
-              innovate, and embrace lifelong learning.”
+            <p className="italic text-gray-500 mb-4 font-bold">
+              Founder & Visionary - Mr. Anjani Kumar Goenka
             </p>
             <p className="text-gray-700 leading-relaxed mb-4 fade-in">
-              Dr. Anubhav Lodhi, the Principal of GD Goenka Public School,
-              Aligarh, brings over two decades of expertise in education.
-              Holding multiple prestigious degrees—M.Com, LLB, B.Ed, and
-              Ph.D.—he is a dynamic leader committed to academic excellence and
-              holistic student development. His vision is to create a learning
-              environment that fosters curiosity, creativity, and leadership.
+              G.D. Goenka Public School Aligarh is the realization of a dream of
+              a visionary, Mr. Anjani Kumar Goenka, a noted businessman whose
+              experience across multiple industries has shaped his dynamic and
+              revolutionary approach. His relentless pursuit of excellence is
+              reflected in the school, which strives for the highest standards
+              in education and holistic development.
             </p>
             <p className="text-gray-700 leading-relaxed mb-4 fade-in">
-              Under Dr. Lodhi’s leadership, GD Goenka Public School has emerged
-              as a beacon of innovation and excellence, focusing on building
-              strong values, critical thinking, and adaptability among students.
-              His philosophy centers on empowering students with knowledge,
-              ethics, and the confidence to face the challenges of a globalized
-              world.
+              Mrs. Renu Goenka plays a crucial role behind the scenes, ensuring
+              every detail adds to the extraordinary nature of the school.
+            </p>
+
+            <p className="text-gray-700 leading-relaxed mb-4 fade-in">
+              The school continues to excel academically and in co-curricular
+              activities, with numerous students securing top ranks and
+              representing the state in national competitions.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-4 fade-in">
+              Affiliated with CBSE, G.D. Goenka Public School Aligarh is
+              committed to creating an environment where students can thrive and
+              achieve their fullest potential.
+            </p>
+            <p className="text-black leading-relaxed mb-4 fade-in font-bold  text-xl">
+              Mr. Anjani Kumar Goenka
             </p>
           </motion.div>
         </motion.section>
 
         {/* Co-Manager Section */}
         <motion.section
-          className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg mt-8 p-6 md:p-8 fade-in"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg flex flex-col md:flex-row overflow-hidden fade-in"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-blue-700 mb-2">
-            Mrs. [Name of Co-Manager/Director]
-          </h2>
-          <p className="italic text-gray-500 mb-4">- Co-Manager/Director</p>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            As part of the leadership team, Mrs. [Co-Manager's Name] is
-            dedicated to ensuring the seamless operation of the school. Her
-            passion for student welfare and attention to detail help create a
-            positive, nurturing environment where children thrive academically
-            and emotionally.
-          </p>
-          <p className="text-gray-700 leading-relaxed">
-            Together with Dr. Lodhi, she strives to maintain GD Goenka
-            Aligarh’s reputation as a school committed to academic excellence,
-            innovation, and student-centric education.
-          </p>
+          {/* Photo Section */}
+          <motion.div
+            className="w-full md:w-1/3 flex justify-center items-center p-4"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.img
+              src={managementPhoto2} // Replace with the appropriate image path for Ms. Renu Goenka
+              alt="Ms. Renu Goenka"
+              className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] object-cover rounded-full shadow-lg"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.4 }}
+            />
+          </motion.div>
+
+          {/* Management Content */}
+          <motion.div
+            className="w-full md:w-2/3 p-6 md:p-8"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h2
+              className="text-xl md:text-3xl font-bold text-blue-700 mb-2"
+              whileHover={{ color: "#003963" }}
+            >
+              “Stories have no end; countries have no lines. Everything you feel
+              you know may be worked upon and bettered.”
+            </motion.h2>
+
+            <p className="text-gray-700 leading-relaxed mb-4 fade-in">
+              Ms. Renu Goenka plays a vital role in shaping the vision and
+              direction of G.D. Goenka Public School Aligarh, ensuring every
+              detail adds to the school's success. Her dedication to student
+              welfare and excellence makes her a cornerstone of the school’s
+              extraordinary journey.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-4 fade-in">
+              With a strong focus on holistic development, she works
+              relentlessly to uphold the institution's reputation for academic
+              excellence, innovation, and co-curricular achievements.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-4 fade-in">
+              Enjoy every part of this journey that leads to your future. It is
+              the only time you are not burdened by responsibilities. Listen to
+              your parents talk about their childhood and notice how their eyes
+              sparkle. That is the joy of childhood. Make the most of it to
+              enrich yourselves and work steadily to build your future.
+            </p>
+            <p className="text-black leading-relaxed mb-4 fade-in font-bold  text-xl">
+              Ms. Renu Goenka
+            </p>
+          </motion.div>
         </motion.section>
       </div>
       <style>{`

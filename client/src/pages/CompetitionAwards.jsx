@@ -50,7 +50,7 @@ const CompetitionAwards = () => {
           transition={{ duration: 1 }}
         />
         <motion.h1
-          className="absolute bottom-6 left-8 text-4xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-lg"
+          className="absolute bottom-6 text-3xl md:text-5xl left-8  font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-md"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}

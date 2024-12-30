@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { usePostRequest } from "../hooks/usePostRequest";
 import { Layout } from "../components/Layout";
+import AdmissionBanner from "../assets/AdmissionBanner.jpg";
+import NavigationPages from "./NavigationPages";
+import bgdesign from "../assets/bgdesign3.jpg";
 
 const AdmissionForm = () => {
+  document.title = 'Admission -GDGPS Aligarh'
   const [formData, setFormData] = useState({
     name: "",
     dob: "",
@@ -46,7 +50,8 @@ const AdmissionForm = () => {
     }
 
     // Validate Academic Year
-    if (!formData.academic_year) newErrors.academic_year = "Academic year is required";
+    if (!formData.academic_year)
+      newErrors.academic_year = "Academic year is required";
 
     // Validate Board
     if (!formData.board) newErrors.board = "Board is required";
@@ -89,7 +94,26 @@ const AdmissionForm = () => {
   return (
     <Layout>
       <Toaster />
-      <div className="w-full lg:flex-[66%] md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-red-500">
+
+      <div className="relative bgImage">
+        <h1 className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded shadow-md" >
+          ADMISSION
+        </h1>
+        <img
+          src={AdmissionBanner}
+          alt="Admission Banner"
+          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[50vh] w-full object-cover"
+        />
+      </div>
+
+      <NavigationPages />
+
+      <div
+        style={{
+          backgroundImage: `url(${bgdesign})`,
+        }}
+      >
+      <div className="w-full mx-auto  lg:flex-[66%] md:w-2/3 md:flex-1 p-6 my-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-red-500">
         <div className="mb-6 md:mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600">
             Registration Form
@@ -99,7 +123,10 @@ const AdmissionForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Name
               </label>
               <input
@@ -111,12 +138,17 @@ const AdmissionForm = () => {
                 className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                 placeholder="Enter full name"
               />
-              {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+              {errors.name && (
+                <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+              )}
             </div>
 
             {/* Date of Birth */}
             <div>
-              <label htmlFor="dob" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="dob"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Date of Birth
               </label>
               <input
@@ -127,12 +159,17 @@ const AdmissionForm = () => {
                 onChange={handleChange}
                 className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
               />
-              {errors.dob && <p className="mt-1 text-sm text-red-600">{errors.dob}</p>}
+              {errors.dob && (
+                <p className="mt-1 text-sm text-red-600">{errors.dob}</p>
+              )}
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Email
               </label>
               <input
@@ -144,12 +181,17 @@ const AdmissionForm = () => {
                 className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                 placeholder="Enter your email"
               />
-              {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+              )}
             </div>
 
             {/* Mobile No */}
             <div>
-              <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="mobile"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Mobile No.
               </label>
               <input
@@ -161,12 +203,17 @@ const AdmissionForm = () => {
                 className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                 placeholder="Enter 10-digit mobile number"
               />
-              {errors.mobile && <p className="mt-1 text-sm text-red-600">{errors.mobile}</p>}
+              {errors.mobile && (
+                <p className="mt-1 text-sm text-red-600">{errors.mobile}</p>
+              )}
             </div>
 
             {/* Academic Year */}
             <div>
-              <label htmlFor="academicyear" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="academicyear"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Academic Year
               </label>
               <select
@@ -184,12 +231,19 @@ const AdmissionForm = () => {
                 <option value="2029">2029</option>
                 <option value="2030">2030</option>
               </select>
-              {errors.academic_year && <p className="mt-1 text-sm text-red-600">{errors.academic_year}</p>}
+              {errors.academic_year && (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.academic_year}
+                </p>
+              )}
             </div>
 
             {/* Board */}
             <div>
-              <label htmlFor="board" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="board"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Board
               </label>
               <input
@@ -201,12 +255,17 @@ const AdmissionForm = () => {
                 className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                 placeholder="Enter your board"
               />
-              {errors.board && <p className="mt-1 text-sm text-red-600">{errors.board}</p>}
+              {errors.board && (
+                <p className="mt-1 text-sm text-red-600">{errors.board}</p>
+              )}
             </div>
 
             {/* Grade */}
             <div>
-              <label htmlFor="grade" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="grade"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Class
               </label>
               <select
@@ -230,7 +289,9 @@ const AdmissionForm = () => {
                 <option value="classXI">Class XI</option>
                 <option value="classXII">Class XII</option>
               </select>
-              {errors.grade && <p className="mt-1 text-sm text-red-600">{errors.grade}</p>}
+              {errors.grade && (
+                <p className="mt-1 text-sm text-red-600">{errors.grade}</p>
+              )}
             </div>
           </div>
 
@@ -242,6 +303,7 @@ const AdmissionForm = () => {
             Apply now
           </button>
         </form>
+      </div>
       </div>
     </Layout>
   );
