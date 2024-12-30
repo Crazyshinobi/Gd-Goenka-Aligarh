@@ -3,7 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { usePostRequest } from "../hooks/usePostRequest";
 
 const EnquiryForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     parent_name: "",
     student_name: "",
@@ -57,18 +57,14 @@ const EnquiryForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
 
     if (validateForm()) {
+      setLoading(true);
       const response = await postRequest(formData);
 
 
       if (response && response.success) {
-        toast.success("Thank you for your enquiry!");
+       
         setFormData({
           parent_name: "",
           student_name: "",
@@ -77,6 +73,10 @@ const EnquiryForm = () => {
           state: "",
           city: "",
           grade: "",
+        });
+        setTimeout(() => {
+          setLoading(false);
+          toast.success("Thank you for your enquiry!");
         });
         
       } else {
@@ -259,42 +259,34 @@ const EnquiryForm = () => {
           </div>
         </div>
 
-        <button
-          type="submit"
-          className="w-full py-2 sm:py-3 px-4 bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-indigo-300 focus:ring-opacity-50 rounded-lg shadow-md text-white text-base sm:text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105"
-          disabled={isLoading} // Disable the button while loading
-        >
-          {isLoading ? (
-            <span className="flex justify-center items-center">
-              <svg
-                className="w-5 h-5 mr-2 animate-spin"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 1116 0A8 8 0 014 12z"
-                ></path>
-              </svg>
-              Submitting...
-            </span>
-          ) : (
-            "Enquiry now"
-          )}
-        </button>
+              <button
+                  type="submit"
+                  className="w-full py-3 px-4 border border-green-600 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 ease-in-out transform hover:scale-105"
+                >
+                  {loading ? <div className="loader1"></div> : "Enquire now"}
+                </button>
       </form>
       <Toaster />
+      <style>{`
+        .loader1 {
+          border: 4px solid rgba(255, 255, 255, 0.3);
+          border-top: 4px solid #fff;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          animation: spin 1s linear infinite;
+          margin: 0 auto;
+        }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
   );
 };

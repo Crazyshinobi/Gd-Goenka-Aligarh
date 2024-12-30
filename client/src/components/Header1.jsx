@@ -190,9 +190,17 @@ function Header1() {
                 </li>
               </NavLink>
               <hr />
-              <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px] leading-none ">
+              <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
               admission schedule 2025-26
+                </li><hr />
+                <a href="/fee-payment/fees-structure"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
+                  Fee structure
                 </li>
+              </a>
 
             </ul>
           </div>
@@ -221,20 +229,11 @@ function Header1() {
                 rel="noopener noreferrer"
               >
                 {" "}
-                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px] hover:text-white">
+                <li className="menu-item cursor-pointer ps-2 flex  hover:text-white">
                   payment link
                 </li>
               </a>
-              <hr />
-
-              <a href="/fee-payment/fees-structure"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
-                  Fee structure
-                </li>
-              </a>
+             
             </ul>
           </div>
 
@@ -286,11 +285,8 @@ function Header1() {
                     <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
                       currrent opening
                     </li>
-                  </NavLink>
-                  <hr />
-                  <li className="menu-item cursor-pointer ps-1 leading-none flex mt-[-4px] mb-[-4px] uppercase ms-[-4px]">
-                    admission schedule 2025-26
-                  </li>
+                  </NavLink> 
+                                   
                 </ul>
               </AccordionDetails>
             </Accordion>
@@ -613,10 +609,6 @@ function Header1() {
             </NavLink>
           </Accordion>
 
-         
-
-  
-
           {/* IMAGE GALLERY ACCORDIAN */}
           <Accordion>
             <NavLink to={"/gallery"}>
@@ -630,8 +622,6 @@ function Header1() {
               </AccordionSummary>{" "}
             </NavLink>
           </Accordion>
-
-         
 
           {/* IN NEWS ACCORDIAN */}
           <Accordion>

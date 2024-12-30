@@ -5,7 +5,7 @@ import ContactBanner from "../assets/ContactBanner.jpg";
 import { motion } from "framer-motion";
 import bgdesign from "../assets/bgdesign3.jpg";
 import toast, { Toaster } from "react-hot-toast";
-import { usePostRequest } from  "../hooks/usePostRequest";
+import { usePostRequest } from "../hooks/usePostRequest";
 
 const ContactForm = () => {
   document.title = "Contact Us - GDGPS Aligarh";
@@ -21,6 +21,7 @@ const ContactForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,29 +66,34 @@ const ContactForm = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      const response = await postRequest(formData);
-      
-      if (response && response.success) {
-        toast.success("Form Submitted successfully!");
-        setFormData({
-          parent_name: "",
-          student_name: "",
-          parent_email_address: "",
-          mobile: "",
-          state: "",
-          city: "",
-          grade: "",
-        });
-      } else {
-        toast.error("Failed to submit the form.");
-        console.error("Error Submitting form:", error);
-      }
+
+    setLoading(true);
+    const response = await postRequest(formData);
+
+    if (response && response.success) {
+      setFormData({
+        parent_name: "",
+        student_name: "",
+        parent_email_address: "",
+        mobile: "",
+        state: "",
+        city: "",
+        grade: "",
+      });
+      setTimeout(() => {
+        setLoading(false);
+        toast.success("Form submitted successfully");
+      });
+    } else {
+      toast.error("Failed to submit the form.");
+      console.error("Error Submitting form:", error);
     }
+  }
   };
 
   return (
     <Layout>
-      <Toaster/>
+      <Toaster />
       <div className="relative bgImage">
         <motion.img
           src={ContactBanner}
@@ -146,7 +152,8 @@ const ContactForm = () => {
                     />
                   </svg>
                   <span className="text-base md:text-lg font-medium mt-2 md:mt-0">
-                  3KMs Stone, Mathura Rd, Sasni Gate, Aligarh - Uttar Pradesh 202001
+                    3KMs Stone, Mathura Rd, Sasni Gate, Aligarh - Uttar Pradesh
+                    202001
                   </span>
                 </div>
 
@@ -166,7 +173,9 @@ const ContactForm = () => {
                     />
                   </svg>
                   <span className="text-base md:text-lg font-medium">
-                    <a href="tel:011-43060860">011-43060860</a>
+                    <a href="tel:011-43060860">011-43060860,</a>
+                    <a href="tel:+91-9810054878"> 9810054878, </a>
+                    <a href="tel:+91-8126747489"> 8126747489 </a>
                   </span>
                 </div>
                 <div className="flex items-center space-x-4 hover:text-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
@@ -194,7 +203,7 @@ const ContactForm = () => {
             </div>
 
             {/* Registration Form */}
-            <div className="w-full lg:flex-[66%]   md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-red-500">
+            <div className="w-full lg:flex-[66%] md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-red-500">
               <div className="mb-6 md:mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600">
                   Get In Touch
@@ -381,7 +390,7 @@ const ContactForm = () => {
                   type="submit"
                   className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out transform hover:scale-105"
                 >
-                  Submit
+                  {loading ? <div className="loader"></div> : "Submit"}
                 </button>
               </form>
             </div>
@@ -401,6 +410,27 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        .loader {
+          border: 4px solid rgba(255, 255, 255, 0.3);
+          border-top: 4px solid #fff;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          animation: spin 1s linear infinite;
+          margin: 0 auto;
+        }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </Layout>
   );
 };
