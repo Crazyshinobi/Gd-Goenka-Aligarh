@@ -44,7 +44,7 @@ const CompetitionAwards = () => {
         <motion.img
           src={AwardBanner}
           alt="Competitions Awards"
-          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] w-full object-cover"
+          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] w-[100%] object-cover"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}

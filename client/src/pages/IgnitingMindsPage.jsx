@@ -25,7 +25,7 @@ const IgnitingMindsPage = () => {
         <img
           src={IgnitingBanner}
           alt="Teaching Methodology"
-          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[65vh] w-full object-fill"
+          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[55vh] w-full object-fill"
         />
       </div>
 

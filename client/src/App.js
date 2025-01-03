@@ -13,7 +13,6 @@ import BookSeller from "./pages/BookSeller";
 import BeyondAcademics from "./pages/BeyondAcademics";
 import ClassInfrastructure from "./pages/ClassInfrastructure";
 import LabsAndLibrary from "./pages/LabsAndLibrary";
-import Cafeteria from "./pages/Cafeteria";
 import Activities from "./pages/Activities";
 import ImageGallery from './pages/ImageGallery';
 import ContactForm from './pages/ContactForm';
@@ -57,7 +56,6 @@ function App() {
       <Route path={"/beyond-academics"} element={<BeyondAcademics/>}/>
       <Route path={"/our-campus/class-infrastructure"} element={<ClassInfrastructure/>}/>
       <Route path={"/our-campus/labs-and-library"} element={<LabsAndLibrary/>}/>
-      <Route path={"/our-campus/cafeteria"} element={<Cafeteria/>}/>
       <Route path={"/activities"} element={<Activities/>}/>
       <Route path={"/gallery"} element={<ImageGallery/>}/>
       <Route path={"/contact-us"} element={<ContactForm/>}/>

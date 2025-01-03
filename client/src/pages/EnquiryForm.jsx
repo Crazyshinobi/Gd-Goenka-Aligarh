@@ -82,6 +82,7 @@ const EnquiryForm = () => {
       } else {
         toast.error("Failed to submit the form.");
         console.error("Error Submitting form:", error);
+        setLoading(false)
       }
     }
   };

@@ -87,6 +87,7 @@ const ContactForm = () => {
     } else {
       toast.error("Failed to submit the form.");
       console.error("Error Submitting form:", error);
+      setLoading(false);
     }
   }
   };
@@ -98,7 +99,7 @@ const ContactForm = () => {
         <motion.img
           src={ContactBanner}
           alt="Contact Us Banner"
-          className="h-[50vh] md:h-[40vh] lg:h-[50vh] w-full object-cover"
+          className="h-[50vh] md:h-[40vh] lg:h-[55vh] w-full object-fill"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
