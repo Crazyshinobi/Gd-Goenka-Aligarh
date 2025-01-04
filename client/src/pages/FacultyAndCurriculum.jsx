@@ -3,6 +3,12 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Academics from "../assets/academics.jpg";
+
+import nurseryStudentImage from '../assets/nurseryStudent.jpg'
+import fifthClassImage from '../assets/fifthClass.jpg'
+import eightClassImage from '../assets/eightClass.jpg'
+import ninthClassImage from '../assets/ninthClass.jpg'
+
 import { Layout } from "../components/Layout";
 import NavigationPages from "./NavigationPages";
 import Carousel from "react-multi-carousel";
@@ -254,7 +260,7 @@ const FacultyAndCurriculum = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src={Academics}
+              src={nurseryStudentImage}
               alt="Pre Primary School"
               className="w-full h-[25rem] p-6 object-cover"
             />
@@ -279,7 +285,7 @@ const FacultyAndCurriculum = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src={Academics}
+              src={fifthClassImage}
               alt="Primary School"
               className="w-full h-[25rem] p-6 object-cover"
             />
@@ -312,7 +318,7 @@ const FacultyAndCurriculum = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src={Academics}
+              src={eightClassImage}
               alt="Pre Primary School"
               className="w-full h-[25rem] p-6 object-cover"
             />
@@ -336,7 +342,7 @@ const FacultyAndCurriculum = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src={Academics}
+              src={ninthClassImage}
               alt="Primary School"
               className="w-full h-[25rem] p-6 object-cover"
             />
