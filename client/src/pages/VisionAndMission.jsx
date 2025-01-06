@@ -13,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 const VisionAndMission = () => {
   document.title = "Vision and Mission - GDGPS Aligarh";
   useEffect(() => {
-    // GSAP Animations
     gsap.fromTo(
       ".section-heading",
       { opacity: 0, y: 50 },
@@ -28,7 +27,6 @@ const VisionAndMission = () => {
         },
       }
     );
-
     gsap.fromTo(
       ".section-content",
       { opacity: 0, x: -100 },

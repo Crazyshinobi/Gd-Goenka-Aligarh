@@ -237,6 +237,20 @@ function Header1() {
             </ul>
           </div>
 
+
+          <div className="relative peer">
+          <a
+                href="https://gdgaligarh.gdgoenka.com/Index"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+              ERP LOGIN
+            </li>
+            </a>
+           
+          </div>
+
           <div
             className="nav_toggler cursor-pointer text-xl text-red-400"
             onClick={sideToggle}
@@ -283,7 +297,7 @@ function Header1() {
                 <NavLink to={"/career/current-openings"}>
                     {" "}
                     <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
-                      currrent opening
+                      current opening
                     </li>
                   </NavLink> 
                                    
@@ -508,6 +522,23 @@ function Header1() {
                 </NavLink>
               </ul>
             </AccordionDetails>
+          </Accordion>
+
+          {/* ERP ACCORDIAN */}
+          <Accordion>
+              <a
+                href="https://gdgaligarh.gdgoenka.com/Index"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+              <AccordionSummary
+                aria-controls="panel1-content"
+                id="panel1-header"
+                className="uppercase"
+              >
+                erp
+              </AccordionSummary>
+              </a>
           </Accordion>
 
           {/* FEE PAYMENT */}

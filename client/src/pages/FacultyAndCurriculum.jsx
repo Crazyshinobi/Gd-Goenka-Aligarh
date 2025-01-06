@@ -30,6 +30,7 @@ import Outdoor from "../assets/Outdoor.jpg";
 import IndoorGames from "../assets/IndoorGames.JPG";
 import TableTennis from "../assets/TableTennis.JPG";
 import bg1 from '../assets/bg2.jpg'
+import CricketGround from '../assets/Cricket.jpeg'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,6 +81,13 @@ const FacultyAndCurriculum = () => {
   ];
 
   const sportsData = [
+    {
+      id: 1,
+      title: "Cricket Ground",
+      description: 
+        "Our Cricket Ground offers a spacious and well-maintained area for students to learn and play cricket. The ground is equipped with the appropriate pitch, boundary, and equipment, ensuring a safe and enjoyable environment for both practice and matches.",
+      image: CricketGround, // Keep the image as the existing one
+    },
     {
       id: 1,
       title: "Badminton Court",
