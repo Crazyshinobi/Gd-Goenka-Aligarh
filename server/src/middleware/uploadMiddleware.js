@@ -58,7 +58,7 @@ const pdfFilter = (req, file, cb) => {
     cb(null, true); // Accept the PDF file
   } else {
     cb(new Error("Only PDF files are allowed!"), false);
-  }
+  } 
 };
 
 // Set up multer middleware to handle both image and PDF
