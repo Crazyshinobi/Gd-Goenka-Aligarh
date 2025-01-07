@@ -4,16 +4,15 @@ import NavigationPages from "./NavigationPages";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import Bannerbg from "../assets/visionBanner.jpg";
-import vision from "../assets/vision.jpg";
-import mission from "../assets/mission.jpg";
+import Bannerbg from "../assets/visionBanner.jpeg";
+import vision from "../assets/vision.jpeg";
+import mission from "../assets/mission.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const VisionAndMission = () => {
   document.title = "Vision and Mission - GDGPS Aligarh";
   useEffect(() => {
-    // GSAP Animations
     gsap.fromTo(
       ".section-heading",
       { opacity: 0, y: 50 },
@@ -28,7 +27,6 @@ const VisionAndMission = () => {
         },
       }
     );
-
     gsap.fromTo(
       ".section-content",
       { opacity: 0, x: -100 },
@@ -67,7 +65,7 @@ const VisionAndMission = () => {
         <motion.img
           src={Bannerbg}
           alt="Vision And Mission"
-          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] w-full object-cover"
+          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[62vh] w-full object-fill"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}

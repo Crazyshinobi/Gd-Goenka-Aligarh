@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, {  useRef } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "../components/Layout";
 import NavigationPages from "./NavigationPages";
@@ -11,11 +11,17 @@ import Robotics from '../assets/Robotics.JPG';
 import Art from "../assets/Art.jpg";
 import HorseRiding from "../assets/HorseRiding.jpg";
 import bgDesign from "../assets/bgdesign3.jpg";
+import ChristmasCelebrationImage from "../assets/Christmas.jpeg";
+import IndoorActivityImage from "../assets/IndoorActivity.jpeg";
+import DiwaliCelebrationImage from "../assets/Diwali.jpeg";
+import PoojaCeremonyImage from "../assets/Pooja.jpeg";
+import NationalSportsDayImage from "../assets/SportsDay.jpeg";
+import Trips from "../assets/Trips.jpeg";
+import Rakshabandhan from '../assets/Rakshabandhan.jpeg'
 
 
 const Activities = () => {
   document.title = "Activities - GDGPS Aligarh"
-  const bannerRef = useRef(null);
   const cardsRef = useRef([]);
 
   const activitiesData = [
@@ -25,6 +31,55 @@ const Activities = () => {
       description:
         "At G.D. Goenka Aligarh, we celebrate a variety of cultural festivals with great enthusiasm. These events bring students together to learn about different traditions, foster creativity, and enjoy moments of joy through music, dance, and food.",
       image: FestivalImage,
+    },
+    {
+      id: 1,
+      title: "Christmas Celebration",
+      description:
+        "At G.D. Goenka Aligarh, Christmas is celebrated with joy and warmth. Students engage in various festive activities, including carol singing, decorating the school, and exchanging gifts. The event fosters a sense of togetherness and spreads the spirit of kindness and giving.",
+      image: ChristmasCelebrationImage, // Replace with actual image import
+    },
+    {
+      id: 2,
+      title: "Indoor Activities",
+      description:
+        "Our indoor activities provide a creative and engaging environment for students. From board games and art workshops to puzzle-solving and science experiments, these activities promote teamwork, critical thinking, and overall development, making learning fun and interactive.",
+      image: IndoorActivityImage, // Replace with actual image import
+    },
+    {
+      id: 3,
+      title: "Diwali Celebration",
+      description:
+        "Diwali at G.D. Goenka Aligarh is a festival of lights, celebrated with zeal and enthusiasm. The students participate in rangoli making, diya decorating, and traditional dance performances, creating a vibrant atmosphere that fosters cultural understanding and joy.",
+      image: DiwaliCelebrationImage, // Replace with actual image import
+    },
+    {
+      id: 4,
+      title: "Pooja Ceremony",
+      description:
+        "The Pooja ceremony at G.D. Goenka Aligarh is a significant event that brings the school community together in a spiritual celebration. Students, teachers, and parents join in to offer prayers, seek blessings, and celebrate the positive energy and harmony in the school.",
+      image: PoojaCeremonyImage, // Replace with actual image import
+    },
+    {
+      id: 5,
+      title: "National Sports Day",
+      description:
+        "National Sports Day is celebrated at G.D. Goenka Aligarh to encourage physical fitness and sportsmanship. Students participate in various sports events and activities, highlighting the importance of teamwork, discipline, and healthy competition.",
+      image: NationalSportsDayImage, // Replace with actual image import
+    },
+    {
+      id: 6,
+      title: "Rakshabandhan Celebration",
+      description:
+        "Rakshabandhan is a special celebration at G.D. Goenka Aligarh, where students honor the bond between siblings and express love and affection. The celebration includes the tying of rakhis, exchanging sweets, and creating memorable moments with friends and family.",
+      image: Rakshabandhan, // Replace with actual image import
+    },
+    {
+      id: 7,
+      title: "School Trips",
+      description:
+        "Educational trips at G.D. Goenka Aligarh offer students the opportunity to explore new places, learn beyond the classroom, and build stronger bonds with their peers. These trips are designed to provide enriching experiences that complement academic learning and encourage curiosity.",
+      image: Trips, // Replace with actual image import
     },
     {
       id: 2,

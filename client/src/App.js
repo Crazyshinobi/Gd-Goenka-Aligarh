@@ -13,13 +13,12 @@ import BookSeller from "./pages/BookSeller";
 import BeyondAcademics from "./pages/BeyondAcademics";
 import ClassInfrastructure from "./pages/ClassInfrastructure";
 import LabsAndLibrary from "./pages/LabsAndLibrary";
-import Cafeteria from "./pages/Cafeteria";
 import Activities from "./pages/Activities";
-import ImageGallery from './pages/ImageGallery';
-import ContactForm from './pages/ContactForm';
-import MandatoryDisclosure from './pages/MandatoryDisclosure';
-import GoenkanPursuits from './pages/GoenkanPursuits';
-// Admin Imports 
+import ImageGallery from "./pages/ImageGallery";
+import ContactForm from "./pages/ContactForm";
+import MandatoryDisclosure from "./pages/MandatoryDisclosure";
+import GoenkanPursuits from "./pages/GoenkanPursuits";
+// Admin Imports
 import { Dashboard } from "./admin/Dashboard";
 import { AdminLogin } from "./admin/pages/auth/AdminLogin";
 import { ForgotPassword } from "./admin/pages/auth/ForgotPassword";
@@ -45,30 +44,56 @@ function App() {
   return (
     <Routes>
       <Route path={"/"} element={<Home />} />
-      <Route path={"/about/principal-message"} element={<PrincipalMessage/>}/>
-      <Route path={"/about/Management"} element={<ManagementPage/>}/>
-      <Route path={"/about/vision-and-mission"} element={<VisionAndMission/>}/>
-      <Route path={"/about/mandatory-disclosure"} element={<MandatoryDisclosure/>}/>
-      <Route path={"/academics/faculty-&-curriculum"} element={<FacultyAndCurriculum/>}/>
-      <Route path={"/academics/teaching-methodology"} element={<TeachingMethodology/>}/>
-      <Route path={"/academics/igniting-minds"} element={<IgnitingMindsPage/>}/>
-      <Route path={"/academics/competition-&-awards"} element={<CompetitionAwards/>}/>
-      <Route path={"/academics/authorised-book-seller"} element={<BookSeller/>}/>
-      <Route path={"/beyond-academics"} element={<BeyondAcademics/>}/>
-      <Route path={"/our-campus/class-infrastructure"} element={<ClassInfrastructure/>}/>
-      <Route path={"/our-campus/labs-and-library"} element={<LabsAndLibrary/>}/>
-      <Route path={"/our-campus/cafeteria"} element={<Cafeteria/>}/>
-      <Route path={"/activities"} element={<Activities/>}/>
-      <Route path={"/gallery"} element={<ImageGallery/>}/>
-      <Route path={"/contact-us"} element={<ContactForm/>}/>
-      <Route path={"/academics/goenkan-pursuits"} element={<GoenkanPursuits/>}/>
-      <Route path={"/career/current-openings"} element={<CurrentOpening/>}/>
-      <Route path={"/job-application-form"} element={<JobApplicationForm/>}/>
-      <Route path={'/fee-payment/fees-structure'} element={<FeeStructure/>}/>
-      <Route path={'/admission/application-form'} element={<AdmissionForm/>}/>
-
-
-    
+      <Route path={"/about/principal-message"} element={<PrincipalMessage />} />
+      <Route path={"/about/Management"} element={<ManagementPage />} />
+      <Route
+        path={"/about/vision-and-mission"}
+        element={<VisionAndMission />}
+      />
+      <Route
+        path={"/about/mandatory-disclosure"}
+        element={<MandatoryDisclosure />}
+      />
+      <Route
+        path={"/academics/faculty-&-curriculum"}
+        element={<FacultyAndCurriculum />}
+      />
+      <Route
+        path={"/academics/teaching-methodology"}
+        element={<TeachingMethodology />}
+      />
+      <Route
+        path={"/academics/igniting-minds"}
+        element={<IgnitingMindsPage />}
+      />
+      <Route
+        path={"/academics/competition-&-awards"}
+        element={<CompetitionAwards />}
+      />
+      <Route
+        path={"/academics/authorised-book-seller"}
+        element={<BookSeller />}
+      />
+      <Route path={"/beyond-academics"} element={<BeyondAcademics />} />
+      <Route
+        path={"/our-campus/class-infrastructure"}
+        element={<ClassInfrastructure />}
+      />
+      <Route
+        path={"/our-campus/labs-and-library"}
+        element={<LabsAndLibrary />}
+      />
+      <Route path={"/activities"} element={<Activities />} />
+      <Route path={"/gallery"} element={<ImageGallery />} />
+      <Route path={"/contact-us"} element={<ContactForm />} />
+      <Route
+        path={"/academics/goenkan-pursuits"}
+        element={<GoenkanPursuits />}
+      />
+      <Route path={"/career/current-openings"} element={<CurrentOpening />} />
+      <Route path={"/job-application-form"} element={<JobApplicationForm />} />
+      <Route path={"/fee-payment/fees-structure"} element={<FeeStructure />} />
+      <Route path={"/admission/application-form"} element={<AdmissionForm />} />
 
       {/* Admin Routes */}
       <Route path={"/admin"} element={<AdminLogin />} />
@@ -182,6 +207,7 @@ function App() {
       />
 
       <Route path="/*" element={<Error404 />} />
+      
     </Routes>
   );
 }

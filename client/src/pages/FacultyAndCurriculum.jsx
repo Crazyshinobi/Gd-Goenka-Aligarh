@@ -3,6 +3,12 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Academics from "../assets/academics.jpg";
+
+import nurseryStudentImage from '../assets/nurseryStudent.jpg'
+import fifthClassImage from '../assets/fifthClass.jpg'
+import eightClassImage from '../assets/eightClass.jpg'
+import ninthClassImage from '../assets/ninthClass.jpg'
+
 import { Layout } from "../components/Layout";
 import NavigationPages from "./NavigationPages";
 import Carousel from "react-multi-carousel";
@@ -24,6 +30,7 @@ import Outdoor from "../assets/Outdoor.jpg";
 import IndoorGames from "../assets/IndoorGames.JPG";
 import TableTennis from "../assets/TableTennis.JPG";
 import bg1 from '../assets/bg2.jpg'
+import CricketGround from '../assets/Cricket.jpeg'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,6 +81,13 @@ const FacultyAndCurriculum = () => {
   ];
 
   const sportsData = [
+    {
+      id: 1,
+      title: "Cricket Ground",
+      description: 
+        "Our Cricket Ground offers a spacious and well-maintained area for students to learn and play cricket. The ground is equipped with the appropriate pitch, boundary, and equipment, ensuring a safe and enjoyable environment for both practice and matches.",
+      image: CricketGround, // Keep the image as the existing one
+    },
     {
       id: 1,
       title: "Badminton Court",
@@ -254,7 +268,7 @@ const FacultyAndCurriculum = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src={Academics}
+              src={nurseryStudentImage}
               alt="Pre Primary School"
               className="w-full h-[25rem] p-6 object-cover"
             />
@@ -279,7 +293,7 @@ const FacultyAndCurriculum = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src={Academics}
+              src={fifthClassImage}
               alt="Primary School"
               className="w-full h-[25rem] p-6 object-cover"
             />
@@ -312,7 +326,7 @@ const FacultyAndCurriculum = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src={Academics}
+              src={eightClassImage}
               alt="Pre Primary School"
               className="w-full h-[25rem] p-6 object-cover"
             />
@@ -336,7 +350,7 @@ const FacultyAndCurriculum = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src={Academics}
+              src={ninthClassImage}
               alt="Primary School"
               className="w-full h-[25rem] p-6 object-cover"
             />

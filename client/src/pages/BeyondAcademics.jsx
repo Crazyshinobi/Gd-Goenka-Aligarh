@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Banner1 from "../assets/OutdoorActivity2.jpg";
+import Banner1 from "../assets/beyond-banner.jpeg";
 import Banner2 from "../assets/beyond-banner2.JPG" ;
 import { Layout } from "../components/Layout";
 import Carousel from "react-multi-carousel";
@@ -16,6 +16,8 @@ import Art from "../assets/Art.jpg";
 import Art2 from "../assets/Reel1.JPG";
 import FestivalImage1 from "../assets/Festival.JPG";
 import FestivalImage2 from "../assets/Festival2.JPG";
+import plantation1 from '../assets/plantation1.jpeg'
+import plantation2 from '../assets/plantation2.jpeg'
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -125,6 +127,15 @@ The benefits of art education do not stop in the classroom or at the school. Art
     Every year, the festival features a vibrant mix of performances, ranging from music and dance to drama and art exhibitions. Our students actively participate in organizing and performing, demonstrating their creativity and teamwork. It's a chance for them to explore their artistic talents, build confidence, and develop leadership skills.
     
     In addition to the performances, the festival also includes sports competitions, food stalls, games, and interactive workshops. It’s an occasion where students can bond with peers, parents, and teachers, making it a memorable experience for everyone involved. The Annual School Festival is not only a celebration of talent and creativity but also a testament to the spirit of unity and collaboration at G. D. Goenka Public School.`
+    },
+    {
+      title: "Annual Plantation Drive",
+      images: [plantation1, plantation2], // Replace with actual image imports
+      content: `The Annual Plantation Drive at G. D. Goenka Public School is an inspiring event aimed at promoting environmental awareness and sustainability. This initiative brings together students, teachers, and parents to plant trees, enhance green spaces, and contribute to preserving nature for future generations.
+    
+    Every year, the plantation drive witnesses enthusiastic participation from our school community. Students play an active role in planting saplings, learning about various types of plants, and the importance of greenery in maintaining ecological balance. The drive not only promotes environmental conservation but also educates the participants about the need to protect and nurture our planet.
+    
+    In addition to the tree planting, the event includes informative sessions on sustainability, composting, and other green practices. It’s an opportunity for students to take on responsibility, work together in teams, and make a lasting impact on their surroundings. The Annual Plantation Drive is more than just an event; it’s a chance to reinforce the values of environmental stewardship and inspire students to adopt eco-friendly practices in their daily lives.`
     }
   ];
 
@@ -146,7 +157,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
           responsive={responsive}
           infinite={true}
           autoPlay={true}
-          autoPlaySpeed={5000}
+          autoPlaySpeed={3000}
           showDots={false}
           arrows={false}
           className="w-full"
