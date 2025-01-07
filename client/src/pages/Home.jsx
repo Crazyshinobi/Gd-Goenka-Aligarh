@@ -9,6 +9,7 @@ import ToppersX from "../components/ToppersX";
 import InstagramSection from "../components/InstagramSection";
 import ModalBox from "../components/ModalBox";
 
+
 const Home = () => {
   document.title = "GDGPS Aligarh"
   return (
@@ -18,8 +19,8 @@ const Home = () => {
       <VisionSection />
       <ExcellenceSection />
       <BeyondAcademics />
-      <Achievers />
       <ToppersX />
+      <Achievers />
       <InstagramSection />
     </Layout>
   );

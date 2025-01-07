@@ -1,13 +1,13 @@
 import React from "react";
 import { Layout } from "../components/Layout";
 import NavigationPages from "./NavigationPages";
-import { motion } from "framer-motion"; // Import framer-motion for animations
+import { motion } from "framer-motion";
 import School from "../assets/School.jpg";
 import PrincipalPhoto from "../assets/principal1.jpeg";
+import bg1 from '../assets/bg2.jpg'
 
 const PrincipalMessage = () => {
-  document.title = 'Principal Message - GDGPS Aligarh'
- 
+  document.title = 'Principal Message - GDGPS Aligarh';
 
   return (
     <Layout>
@@ -41,6 +41,7 @@ const PrincipalMessage = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
+        style={{backgroundImage : `url(${bg1})`}}
       >
         <motion.h1
           className="text-center text-2xl md:text-4xl font-bold text-blue-900 mb-6"
@@ -51,18 +52,18 @@ const PrincipalMessage = () => {
           Principal's Message
         </motion.h1>
 
+        {/* Card Section */}
         <motion.section
-          className="max-w-7xl mx-auto bg-white shadow-lg rounded-lg flex flex-col md:flex-row overflow-hidden"
+          className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
           initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
           {/* Photo Section */}
           <motion.div
-            className="w-full md:w-1/3 flex justify-center items-center p-4"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="w-full flex justify-center items-center p-4 bg-gray-200"
+            initial={{ opacity: 1, }}
+            whileInView={{ opacity: 1, }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
@@ -70,47 +71,124 @@ const PrincipalMessage = () => {
               src={PrincipalPhoto}
               alt="Dr. Anubhav Lodhi"
               className="w-[200px] h-[200px] md:w-[250px] md:h-[250px] object-cover rounded-full shadow-lg"
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.4 }}
             />
           </motion.div>
 
           {/* Content Section */}
           <motion.div
-            className="w-full md:w-2/3 p-4 sm:p-6 md:p-8"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="w-full p-4 sm:p-6 md:p-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <motion.h2
-              className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-700 mb-2"
+              className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-700 mb-2 text-center"
               whileHover={{ color: "#003963" }}
             >
               Dr. ANUBHAV LODHI
             </motion.h2>
-            <p className="italic text-gray-500 mb-4 text-sm sm:text-base">
+            <p className="italic text-gray-500 mb-4 text-sm sm:text-base text-center">
               - Principal | M.Com, LLB, B.Ed, Ph.D
             </p>
 
-            {/* Paragraphs */}
-            {[
-              "With an illustrious academic background and a passion for education, Dr. Anubhav Lodhi has dedicated his life to shaping the future of students. His qualifications, including M.Com, LLB, B.Ed, and Ph.D., reflect his commitment to excellence and deep knowledge in diverse fields.",
-              "Dr. Lodhi brings years of experience in education, administration, and leadership. His vision for GD Goenka Public School, Aligarh, focuses on holistic development, combining academic excellence with personal growth and character building.",
-              "He firmly believes in providing a nurturing and inclusive learning environment where students are encouraged to discover their potential, develop critical thinking skills, and become responsible global citizens.",
-              "Under his leadership, GD Goenka Public School continues to set new benchmarks in education, innovation, and student well-being. His guidance ensures that every child receives the tools they need to thrive in an ever-changing world.",
-            ].map((paragraph, index) => (
-              <motion.p
-                key={index}
-                className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                {paragraph}
-              </motion.p>
-            ))}
+            <motion.p
+              className="text-black font-semibold leading-relaxed mb-4 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              "Learning gives creativity, creativity leads to thinking, thinking provides knowledge, and knowledge makes you great."
+              <br />
+              - Dr. A.P.J. Abdul Kalam
+            </motion.p>
+            <motion.p
+              className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              It is my great pleasure to welcome you all to G.D. Goenka Public School, Aligarh. We are fortunate that the G.D. Goenka Group has established another branch in our district, dedicated to nurturing future citizens. I am truly honored to be part of this wonderful school community, committed to providing outstanding education to each and every child.
+            </motion.p>
+            <motion.p
+              className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Our esteemed School Management Committee, with over three decades of service in the education field, continues to share its experience, vision, and dedication with us. We are blessed to have their guidance in shaping our institution's mission.
+            </motion.p>
+            <motion.p
+              className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              As an educator with twenty-two years of experience, I am dedicated to fostering an environment that promotes curiosity, creativity, and critical thinking. My vision for G.D. Goenka Public School is to provide a holistic education that prepares students for success in an ever-changing world.
+            </motion.p>
+            <motion.p
+              className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              We believe that every child is unique and possesses qualities that need to be identified and nurtured. With this in mind, we tailor education to each student's individual level, supported by a teacher-student ratio of 1:20, allowing for personalized attention.
+            </motion.p>
+            <motion.p
+              className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Our school implements activity-based learning and applies child-centric pedagogy to ensure meaningful learning experiences. We guide each student toward excellence in academics, vocational training, sports, and co-curricular activities.
+            </motion.p>
+            <motion.p
+              className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Under the guidelines of the New National Education Policy (NEP), the NCF, and CBSE, along with continuous mentoring from the Goenka Group, we strive to nurture each child based on their unique core skills. Our experienced faculty, state-of-the-art facilities, and innovative teaching methods position us as a leader in academic excellence.
+            </motion.p>
+            <motion.p
+              className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              I assure the community and all stakeholders that, with our well-planned curriculum, the dedication of our team, and the support of parents, we will nurture skilled and strong future citizens. These individuals will be responsible, emotionally well-rounded, and committed to upholding social values and ethics.
+            </motion.p>
+            <motion.p
+              className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              We always welcome and value the suggestions of parents, as this journey of preparing successful and responsible future citizens is not possible without their support.
+            </motion.p>
+            <motion.p
+              className="text-gray-700 leading-relaxed text-sm sm:text-base font-semibold mt-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              With Best Wishes, <br />
+              Dr. Anubhav Lodhi <br />
+              Principal <br />
+              M.Com., LL.B., B.Ed., Ph.D
+            </motion.p>
           </motion.div>
         </motion.section>
       </motion.div>

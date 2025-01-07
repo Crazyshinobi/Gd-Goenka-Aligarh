@@ -4,6 +4,7 @@ import '../css/Activities.css'
 import pe from '../assets/Physical-Education-activities.jpg'
 import pa from '../assets/Personalize-Attention-activities.jpg'
 import pv from '../assets/Promoting-Values-activities.jpg'
+
 function Activities() {
   return (
     <div className='activities max-w-[1380px] w-full h-auto lg:h-auto md:h-auto   lg:pt-14 md:pt-10 pt-4 '>
