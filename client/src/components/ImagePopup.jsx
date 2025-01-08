@@ -21,7 +21,7 @@ function ImagePopup() {
       setPopupVisible(true);
       const timer = setTimeout(() => {
         closePopup();
-      }, 5000);
+      }, 20000);
       return () => clearTimeout(timer);
     } else {
       setPopupVisible(false);

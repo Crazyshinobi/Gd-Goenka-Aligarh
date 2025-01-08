@@ -379,9 +379,9 @@ const ContactForm = () => {
                       <option value="classXI">Class XI</option>
                       <option value="classXII">Class XII</option>
                     </select>
-                    {errors.class && (
+                    {errors.grade && (
                       <p className="mt-1 text-sm text-red-600">
-                        {errors.class}
+                        {errors.grade}
                       </p>
                     )}
                   </div>

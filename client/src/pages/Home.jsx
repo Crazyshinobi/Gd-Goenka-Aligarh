@@ -12,6 +12,7 @@ import ModalBox from "../components/ModalBox";
 
 const Home = () => {
   document.title = "GDGPS Aligarh"
+  
   return (
     <Layout>
        <ModalBox />
