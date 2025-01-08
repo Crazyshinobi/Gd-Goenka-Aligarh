@@ -18,7 +18,6 @@ const jobRoutes = require("./src/routes/jobRoutes");
 const jobApplicationRoutes = require("./src/routes/jobApplicationRoutes");
 
 // Middleware
-// Middleware
 const corsOptions = {
   origin: 'https://gd-goenka-aligarh-frontend.onrender.com', // Allow only the frontend domain
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Adjust allowed methods
@@ -44,6 +43,7 @@ app.use("/api/v1/job-application", jobApplicationRoutes);
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
+
 app.get("/", (req, res) => {
   res.json({ message: "Hello" });
 });
