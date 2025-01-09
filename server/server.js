@@ -19,9 +19,9 @@ const jobApplicationRoutes = require("./src/routes/jobApplicationRoutes");
 
 // Middleware
 const corsOptions = {
-  origin: 'https://gd-goenka-aligarh-frontend.onrender.com', // Allow only the frontend domain
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Adjust allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Adjust allowed methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
 };
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -40,10 +40,10 @@ app.use("/api/v1/admission", admissionRoutes);
 app.use("/api/v1/job", jobRoutes);
 app.use("/api/v1/job-application", jobApplicationRoutes);
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+app.listen(process.env.PORT || 4000, () => {
+  console.log(`Server is running on port ${process.env.PORT || 4000}`);
 });
 
 app.get("/", (req, res) => {
-  res.json({ message: "Hello" });
+  res.sendFile(path.join(__dirname) + "/src/views/index.html");
 });
