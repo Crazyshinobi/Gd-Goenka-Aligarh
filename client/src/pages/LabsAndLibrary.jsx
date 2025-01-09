@@ -13,7 +13,7 @@ import bgDesign from "../assets/bgdesign4.webp";
 gsap.registerPlugin(ScrollTrigger);
 
 const LabsAndLibrary = () => {
-  document.title = 'Labs and Library - GDGPS Aligarh'
+  document.title = "Labs and Library - GDGPS Aligarh";
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
     tablet: { breakpoint: { max: 1024, min: 464 }, items: 1 },
@@ -27,7 +27,6 @@ const LabsAndLibrary = () => {
   const bannerScale = useTransform(scrollYProgress, [0, 0.3], [1, 1.2]);
 
   useEffect(() => {
-    // Parallax effect for banner
     gsap.to(bannerRef.current, {
       yPercent: 30,
       ease: "none",
@@ -39,7 +38,6 @@ const LabsAndLibrary = () => {
       },
     });
 
-    // Animate sections
     sectionsRef.current.forEach((section, index) => {
       gsap.fromTo(
         section,
@@ -53,7 +51,7 @@ const LabsAndLibrary = () => {
           duration: 1,
           scrollTrigger: {
             trigger: section,
-            start: "top 80%",  // Adjusting this trigger to make sure sections appear as you scroll
+            start: "top 80%", 
             end: "top 20%",
             toggleActions: "play none none reverse",
           },
@@ -125,7 +123,7 @@ const LabsAndLibrary = () => {
           enhance their objectives!
         </motion.p>
 
-        {[ 
+        {[
           {
             image: lab2,
             content: `The school has made a strong impact in the educational scenario with its unique philosophy and futuristic thinking. The school has taken a lead and initiated very robust changes in the laboratories and the school library.

@@ -1,6 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { setFormStep } from "../../utils/status"; 
 
 const GeneralInformation = () => {
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    setFormStep(2); 
+    navigate("/student-application/personal-details");
+  };
   const [formData, setFormData] = useState({
     grade: "",
     applied_before: false,
@@ -21,7 +29,7 @@ const GeneralInformation = () => {
       <h2 className="text-2xl font-semibold mb-4">General Information</h2>
       <form>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Grade</label>
+          <label className="block text-sm font-medium text-gray-700">We are considering enrollment in Grade/Class</label>
           <input
             type="text"
             name="grade"
@@ -40,13 +48,13 @@ const GeneralInformation = () => {
             onChange={handleChange}
             className="mr-2"
           />
-          <label className="text-sm text-gray-700">Applied Before?</label>
+          <label className="text-sm text-gray-700">Have you ever Applied for Admission at G.D. Goenka Schools?</label>
         </div>
 
         {formData.applied_before && (
           <>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">Applied Year</label>
+              <label className="block text-sm font-medium text-gray-700">Academic year</label>
               <input
                 type="text"
                 name="applied_year"
@@ -57,7 +65,7 @@ const GeneralInformation = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">Applied Grade</label>
+              <label className="block text-sm font-medium text-gray-700">Which class</label>
               <input
                 type="text"
                 name="applied_grade"
@@ -69,8 +77,8 @@ const GeneralInformation = () => {
           </>
         )}
 
-        <button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-full mt-4">
-          Save
+        <button onClick={handleNext} type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-full mt-4">
+          Submit
         </button>
       </form>
     </div>

@@ -19,7 +19,7 @@ const jobApplicationRoutes = require("./src/routes/jobApplicationRoutes");
 
 // Middleware
 const corsOptions = {
-  origin: 'https://gd-goenka-aligarh-frontend.onrender.com', // Allow only the frontend domain
+  origin: 'http://localhost:3000', // Allow only the frontend domain
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Adjust allowed methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
 };

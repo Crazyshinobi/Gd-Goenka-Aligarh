@@ -41,11 +41,8 @@ import FeeStructure from "./pages/FeeStructure";
 import AdmissionForm from "./pages/AdmissionForm";
 import PaymentSuccess from "./dashboardPortal/paymentPages/PaymentSuccess";
 import PaymentFailure from "./dashboardPortal/paymentPages/PaymentFailure";
-import GeneralInformation from "./dashboardPortal/studentApplication/GeneralInformation";
-import PersonalDetails from "./dashboardPortal/studentApplication/PersonalDetails";
-import HealthInformation from "./dashboardPortal/studentApplication/HealthInformation";
-import EducationalBackground from "./dashboardPortal/studentApplication/EducationalBackground";
 import RecognisationCet from "./pages/Recognisation-Cet-Nur-to-8";
+import StudentApplicationRoutes from "./dashboardPortal/studentApplication/StudentApplicationRoutes";
 
 function App() {
   return (
@@ -101,17 +98,15 @@ function App() {
       <Route path={"/job-application-form"} element={<JobApplicationForm />} />
       <Route path={"/fee-payment/fees-structure"} element={<FeeStructure />} />
       <Route path={"/admission/application-form"} element={<AdmissionForm />} />
-      <Route path={"/payment-success"} element={<PaymentSuccess />} />
-      <Route path={"/payment-failure"} element={<PaymentFailure />} />
-      <Route path={"/generalInformation"} element={<GeneralInformation />} />
-      <Route path={"/personalDetails"} element={<PersonalDetails />} />
-      <Route path={"/HealthInformation"} element={<HealthInformation />} />
-      <Route path={"/EducationalBackground"} element={<EducationalBackground />} />
+      {/* <Route path="/*" element={<StudentApplicationRoutes />} />  */}
+      {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}
+      {/* <Route path={"/payment-failure"} element={<PaymentFailure />} /> */}
+      
       <Route
         path={"/about/mandatory-disclosure/RecognisationCet"}
         element={<RecognisationCet />}
       />
-
+      
 
       {/* Admin Routes */}
       <Route path={"/admin"} element={<AdminLogin />} />
@@ -225,7 +220,6 @@ function App() {
       />
 
       <Route path="/*" element={<Error404 />} />
-      
     </Routes>
   );
 }

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { setFormStep } from "../../utils/status";  
 
 const PersonalDetails = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     first_name: "",
     middle_name: "",
@@ -22,6 +26,10 @@ const PersonalDetails = () => {
       ...formData,
       [name]: value,
     });
+  };
+  const handleSubmit = () => {
+    setFormStep(3);  // User is now on form 3
+    navigate("/student-application/health-information");  // Redirect to form 3
   };
 
   return (
@@ -203,7 +211,7 @@ const PersonalDetails = () => {
         </div>
 
         {/* Submit Button */}
-        <button type="submit" className="w-full bg-blue-500 text-white py-3 rounded-full text-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button onClick={handleSubmit} type="submit" className="w-full bg-blue-500 text-white py-3 rounded-full text-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
           Save
         </button>
       </form>
