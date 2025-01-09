@@ -1,10 +1,9 @@
-
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Banner1 from "../assets/beyond-banner.jpeg";
-import Banner2 from "../assets/beyond-banner2.JPG" ;
+import Banner2 from "../assets/beyond-banner2.JPG";
 import { Layout } from "../components/Layout";
 import Carousel from "react-multi-carousel";
 import NavigationPages from "./NavigationPages";
@@ -16,17 +15,15 @@ import Art from "../assets/Art.jpg";
 import Art2 from "../assets/Reel1.JPG";
 import FestivalImage1 from "../assets/Festival.JPG";
 import FestivalImage2 from "../assets/Festival2.JPG";
-import plantation1 from '../assets/plantation1.jpeg'
-import plantation2 from '../assets/plantation2.jpeg'
-
+import plantation1 from "../assets/plantation1.jpeg";
+import plantation2 from "../assets/plantation2.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const BeyondAcademics = () => {
-  document.title = 'Beyond Academics - GDGPS Aligarh'
+  document.title = "Beyond Academics - GDGPS Aligarh";
   const bannerRef = useRef(null);
   const sectionsRef = useRef([]);
-  
 
   useEffect(() => {
     // Enhanced parallax effect for banner
@@ -104,7 +101,7 @@ Our sports curriculum is designed to nurture athleticism and teamwork. From foot
     },
     {
       title: "Music & Dance",
-      images: [music , MusicAndDance],
+      images: [music, MusicAndDance],
       content: `Schooling at G. D. Goenka Public School goes beyond the classrooms into the wider creative world outside. Apart from a keen focus on academics, various creative activities are taught that engage the mental and intellectual faculties of our students. Indian and Western Music, both vocal and instrumental are offered to our students.
 
 Both Indian and western dance is taught to our school students. Classical Indian dance is taught and students enjoy the varied foot positions and hand gestures associated with our classical dance styles. Periodic presentations and special assemblies to celebrate festivals showcase dance presentations on a particular theme.
@@ -126,7 +123,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
     
     Every year, the festival features a vibrant mix of performances, ranging from music and dance to drama and art exhibitions. Our students actively participate in organizing and performing, demonstrating their creativity and teamwork. It's a chance for them to explore their artistic talents, build confidence, and develop leadership skills.
     
-    In addition to the performances, the festival also includes sports competitions, food stalls, games, and interactive workshops. It’s an occasion where students can bond with peers, parents, and teachers, making it a memorable experience for everyone involved. The Annual School Festival is not only a celebration of talent and creativity but also a testament to the spirit of unity and collaboration at G. D. Goenka Public School.`
+    In addition to the performances, the festival also includes sports competitions, food stalls, games, and interactive workshops. It’s an occasion where students can bond with peers, parents, and teachers, making it a memorable experience for everyone involved. The Annual School Festival is not only a celebration of talent and creativity but also a testament to the spirit of unity and collaboration at G. D. Goenka Public School.`,
     },
     {
       title: "Annual Plantation Drive",
@@ -135,8 +132,8 @@ The benefits of art education do not stop in the classroom or at the school. Art
     
     Every year, the plantation drive witnesses enthusiastic participation from our school community. Students play an active role in planting saplings, learning about various types of plants, and the importance of greenery in maintaining ecological balance. The drive not only promotes environmental conservation but also educates the participants about the need to protect and nurture our planet.
     
-    In addition to the tree planting, the event includes informative sessions on sustainability, composting, and other green practices. It’s an opportunity for students to take on responsibility, work together in teams, and make a lasting impact on their surroundings. The Annual Plantation Drive is more than just an event; it’s a chance to reinforce the values of environmental stewardship and inspire students to adopt eco-friendly practices in their daily lives.`
-    }
+    In addition to the tree planting, the event includes informative sessions on sustainability, composting, and other green practices. It’s an opportunity for students to take on responsibility, work together in teams, and make a lasting impact on their surroundings. The Annual Plantation Drive is more than just an event; it’s a chance to reinforce the values of environmental stewardship and inspire students to adopt eco-friendly practices in their daily lives.`,
+    },
   ];
 
   return (
@@ -179,7 +176,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
             </motion.div>
           ))}
         </Carousel>
-       <motion.h1
+        <motion.h1
           className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-2xl lg:text-5xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded shadow-md"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -187,8 +184,6 @@ The benefits of art education do not stop in the classroom or at the school. Art
         >
           BEYOND ACADEMICS
         </motion.h1>
-
-        
       </div>
 
       <NavigationPages />
@@ -325,7 +320,6 @@ The benefits of art education do not stop in the classroom or at the school. Art
 
       {/* Footer gradient */}
       <div className="h-32 bg-gradient-to-t from-blue-50 to-transparent" />
-      
     </Layout>
   );
 };

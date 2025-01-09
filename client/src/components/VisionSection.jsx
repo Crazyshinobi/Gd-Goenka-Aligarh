@@ -8,7 +8,7 @@ import bg1 from '../assets/bg2.jpg'
 
 function VisionSection() {
   return (
-    <div className=" w-full mx-auto px-4 py-12 sm:py-16 flex flex-col items-center" style={{backgroundImage : `url(${bg1})`}}>
+    <div className=" w-full mx-auto px-4 py-12 sm:py-16 flex flex-col items-center bg-gradient-to-r  from-blue-50  to-blue-100 " >
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 max-w-[1280px]">
         {/* Principal Section */}
         <motion.div

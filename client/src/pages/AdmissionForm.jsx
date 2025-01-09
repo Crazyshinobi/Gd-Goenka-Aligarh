@@ -5,6 +5,8 @@ import { Layout } from "../components/Layout";
 import AdmissionBanner from "../assets/AdmissionBanner.jpg";
 import NavigationPages from "./NavigationPages";
 import bgdesign from "../assets/bgdesign3.jpg";
+import { useNavigate } from "react-router-dom";
+import { setApplicationStatus, setFormStep } from "../utils/status";
 
 const AdmissionForm = () => {
   document.title = "Admission -GDGPS Aligarh";
@@ -17,6 +19,7 @@ const AdmissionForm = () => {
     board: "",
     grade: "",
   });
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -88,7 +91,11 @@ const AdmissionForm = () => {
         setTimeout(() => {
           setLoading(false);
           toast.success("Form submitted successfully");
+          setApplicationStatus(true);
+        setFormStep(1);
+        navigate("/student-application/general-information");
         });
+        
       } else {
         toast.error("Failed to submit the form.");
         console.error("Error Submitting form:", error);

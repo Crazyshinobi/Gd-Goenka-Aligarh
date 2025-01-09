@@ -75,9 +75,11 @@ function BeyondAcademics() {
         </motion.div>
 
         <div className="hidden lg:flex space-x-4 justify-center mb-8">
-         <a href="/beyond-academics"><button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
-            Explore More
-          </button></a> 
+          <a href="/beyond-academics">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+              Explore More
+            </button>
+          </a>
           {/* <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded transition duration-300">
             Our Programs
           </button> */}

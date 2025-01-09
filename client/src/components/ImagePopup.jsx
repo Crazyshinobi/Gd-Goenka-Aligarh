@@ -21,7 +21,7 @@ function ImagePopup() {
       setPopupVisible(true);
       const timer = setTimeout(() => {
         closePopup();
-      }, 5000);
+      }, 20000); // Hide after 20 seconds
       return () => clearTimeout(timer);
     } else {
       setPopupVisible(false);
@@ -36,15 +36,11 @@ function ImagePopup() {
         isClosing ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      <div
-        className={`relative w-full max-w-2xl bg-white rounded-lg p-4 transition-transform duration-500 ease-in-out transform ${
-          isClosing ? 'scale-90' : 'scale-100'
-        }`}
-      >
+      <div className="relative">
         <img
           src={PopupBanner}
           alt="Popup"
-          className="w-full rounded-lg shadow-lg"
+          className="w-full max-w-2xl rounded-lg shadow-lg"
         />
         <button
           className="absolute top-2 right-2 p-2 bg-gray-700 text-white rounded-full"
