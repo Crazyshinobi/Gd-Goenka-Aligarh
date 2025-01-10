@@ -4,7 +4,7 @@ import NavigationPages from "./NavigationPages";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import Bannerbg from "../assets/visionBanner.jpeg";
+import Bannerbg from "../assets/visionBanner1.jpeg";
 import vision from "../assets/vision.jpeg";
 import mission from "../assets/mission.jpeg";
 

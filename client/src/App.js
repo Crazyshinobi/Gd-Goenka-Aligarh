@@ -17,6 +17,7 @@ import Activities from "./pages/Activities";
 import ImageGallery from "./pages/ImageGallery";
 import ContactForm from "./pages/ContactForm";
 import MandatoryDisclosure from "./pages/MandatoryDisclosure";
+import PdfViewer from "./components/PdfViewer";
 import GoenkanPursuits from "./pages/GoenkanPursuits";
 // Admin Imports
 import { Dashboard } from "./admin/Dashboard";
@@ -99,6 +100,10 @@ function App() {
       <Route path={"/fee-payment/fees-structure"} element={<FeeStructure />} />
       <Route path={"/admission/application-form"} element={<AdmissionForm />} />
       {/* <Route path="/*" element={<StudentApplicationRoutes />} />  */}
+      <Route
+        path={"/mandatory-disclosure-link/:pdfName"}
+        element={<PdfViewer />}
+      />
       {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}
       {/* <Route path={"/payment-failure"} element={<PaymentFailure />} /> */}
       

@@ -1,18 +1,17 @@
-// utils/status.js
 
 export const setApplicationStatus = (status) => {
-    localStorage.setItem('applicationSubmitted', status);  // Track if the application was submitted
+    localStorage.setItem('applicationSubmitted', status); 
   };
   
   export const getApplicationStatus = () => {
-    return localStorage.getItem('applicationSubmitted') === 'true';  // Check if application is submitted
+    return localStorage.getItem('applicationSubmitted') === 'true'; 
   };
   
   export const setFormStep = (step) => {
-    localStorage.setItem('formStep', step);  // Track the current form step
+    localStorage.setItem('formStep', step);  
   };
   
   export const getFormStep = () => {
-    return parseInt(localStorage.getItem('formStep')) || 1;  // Return the current form step, default to 1 if not set
+    return parseInt(localStorage.getItem('formStep')) || 1;  
   };
   

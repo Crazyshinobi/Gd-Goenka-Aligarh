@@ -69,16 +69,12 @@ function Header1() {
               </li>
             </NavLink>
             <hr />
-            <a
-              href={"/about/mandatory-disclosure"}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <NavLink to={"/about/mandatory-disclosure"}>
               {" "}
               <li className="menu-item cursor-pointer hover:text-white mt-[-9px]">
                 MANDATORY DISCLOSURE
               </li>
-            </a>
+            </NavLink>
           </ul>
 
           <div className="relative peer">
@@ -394,16 +390,12 @@ function Header1() {
                   </li>
                 </NavLink>
                 <hr />
-                <a
-                  href={"/about/mandatory-disclosure"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <NavLink to={"/about/mandatory-disclosure"}>
                   {" "}
                   <li className="menu-item cursor-pointer mt-[-4px] ms-[-4px] leading-none uppercase">
                     mandatory disclosure
                   </li>
-                </a>
+                </NavLink>
               </ul>
             </AccordionDetails>
           </Accordion>
@@ -562,16 +554,8 @@ function Header1() {
                     payment link
                   </li>
                 </a>
-                <hr />
-                <a
-                  href="/fee-payment/fees-structure"  
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
-                    fees structure
-                  </li>
-                </a>
+               
+               
               </ul>
             </AccordionDetails>
           </Accordion>
@@ -620,10 +604,21 @@ function Header1() {
                   </li>
                 </NavLink>
                 <hr />
-                <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
+                <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
                   Admission schedule 2025-26
                 </li>
-              </ul>
+                <hr />
+           
+              <a
+                  href="/fee-payment/fees-structure"  
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
+                    fees structure
+                  </li>
+                </a>
+                </ul>
             </AccordionDetails>
           </Accordion>
 

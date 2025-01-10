@@ -12,28 +12,27 @@ import Preloader from "../components/Preloader";
 
 const Home = () => {
   document.title = "GDGPS Aligarh";
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const hasSeenPreloader = localStorage.getItem('hasSeenPreloader');
+  // useEffect(() => {
+  //   const hasSeenPreloader = localStorage.getItem('hasSeenPreloader');
 
-    if (!hasSeenPreloader) {
-      // If the user hasn't seen the preloader, show it for 3 seconds
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-        localStorage.setItem('hasSeenPreloader', 'true');
-      }, 3000);
+  //   if (!hasSeenPreloader) {
+  //     // If the user hasn't seen the preloader, show it for 3 seconds
+  //     const timer = setTimeout(() => {
+  //       setIsLoading(false);
+  //       localStorage.setItem('hasSeenPreloader', 'true');
+  //     }, 3000);
 
-      return () => clearTimeout(timer);
-    } else {
-      // If the user has seen the preloader before, don't show it
-      setIsLoading(false);
-    }
-  }, []);
+  //     return () => clearTimeout(timer);
+  //   } else {
+  //     setIsLoading(false);
+  //   }
+  // }, []);
 
-  if (isLoading) {
-    return <Preloader />;
-  }
+  // if (isLoading) {
+  //   return <Preloader />;
+  // }
 
   return (
     <Layout>
