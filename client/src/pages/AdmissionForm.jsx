@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { usePostRequest } from "../hooks/usePostRequest";
 import { Layout } from "../components/Layout";
-import AdmissionBanner from "../assets/AdmissionBanner.jpg";
+import AdmissionBanner from "../assets/AdmissionBanner.jpeg";
 import NavigationPages from "./NavigationPages";
 import bgdesign from "../assets/bgdesign3.jpg";
 import { useNavigate } from "react-router-dom";
