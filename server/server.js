@@ -39,11 +39,13 @@ app.use("/api/v1/content", contentRoutes);
 app.use("/api/v1/admission", admissionRoutes);
 app.use("/api/v1/job", jobRoutes);
 app.use("/api/v1/job-application", jobApplicationRoutes);
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log(`Server is running on port ${process.env.PORT || 4000}`);
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`Server is running on port ${process.env.PORT || 8080}`);
 });
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname) + "/src/views/index.html");
 });
+

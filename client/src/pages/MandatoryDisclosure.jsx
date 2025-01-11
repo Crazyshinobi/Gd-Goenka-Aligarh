@@ -7,7 +7,7 @@ import MandatoryDisclosurePdf from "../assets/Mandatory-Disclosure-SARAS-5.0.pdf
 
 const MandatoryDisclosure = () => {
   document.title = "Mandatory Disclosure - GDGPS Aligarh";
-  const apiURL = `${process.env.REACT_APP_BASE_URL}`;
+  const baseURL = `${process.env.REACT_APP_PDF_URL}`
   return (
     <Layout>
       <div className="relative bgImage">
@@ -42,7 +42,7 @@ const MandatoryDisclosure = () => {
         </a>
 
         <a
-          href={`${apiURL}/mandatory-disclosure-link/SocietyRegistration.pdf`}
+          href={`${baseURL}/mandatory-disclosure-link/SocietyRegistration.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
@@ -51,7 +51,7 @@ const MandatoryDisclosure = () => {
         </a>
 
         <a
-          href={`${apiURL}/mandatory-disclosure-link/NOC.pdf`}
+         href={`${baseURL}/mandatory-disclosure-link/NOC.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black  uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
@@ -60,7 +60,7 @@ const MandatoryDisclosure = () => {
         </a>
 
         <a
-          href={`${apiURL}/mandatory-disclosure-link/RecognitionApprovalLetter.pdf`}
+         href={`${baseURL}/mandatory-disclosure-link/RecognitionApprovalLetter.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
@@ -69,7 +69,7 @@ const MandatoryDisclosure = () => {
         </a>
 
         <a
-          href={`${apiURL}/mandatory-disclosure-link/2BUILDINGSAFETYCERTIFICATE.pdf`}
+         href={`${baseURL}/mandatory-disclosure-link/2BUILDINGSAFETYCERTIFICATE.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
@@ -78,7 +78,7 @@ const MandatoryDisclosure = () => {
         </a>
 
         <a
-          href={`${apiURL}/mandatory-disclosure-link/3FireNOC.pdf`}
+         href={`${baseURL}/mandatory-disclosure-link/3FireNOC.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
@@ -87,7 +87,7 @@ const MandatoryDisclosure = () => {
         </a>
 
         <a
-          href={`${apiURL}/mandatory-disclosure-link/AffiliationLetter.pdf`}
+          href={`${baseURL}/mandatory-disclosure-link/AffiliationLetter.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
@@ -96,7 +96,7 @@ const MandatoryDisclosure = () => {
         </a>
 
         <a
-          href={`${apiURL}/mandatory-disclosure-link/SELFCERTIFICATION.pdf`}
+          href={`${baseURL}/mandatory-disclosure-link/SELFCERTIFICATION.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
@@ -105,31 +105,41 @@ const MandatoryDisclosure = () => {
         </a>
 
         <a
-          href={`${apiURL}/mandatory-disclosure-link/GD-GOENKA-PUBLIC-SCHOOL.pdf`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
-        >
-          parent teacher association
-        </a>
-
-        <a
-          href={`${apiURL}/mandatory-disclosure-link/School-Management-Committee.pdf`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
-        >
-          School Management Committee(SMC)
-        </a>
-
-        <a
-          href={`${apiURL}/mandatory-disclosure-link/SafeDrinkingWaterNew.pdf`}
+         href={`${baseURL}/mandatory-disclosure-link/SafeDrinkingWaterNew.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
         >
           Water , health and sanitation certificates
         </a>
+        <a
+         href={`${baseURL}/mandatory-disclosure-link/School-Management-Committee.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
+        >
+           School Management Committee(SMC)
+        </a>
+
+        <a
+         href={`${baseURL}/mandatory-disclosure-link/SocietyRegistration.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
+        >
+          Society registration
+        </a>
+
+        <a
+         href={`${baseURL}/mandatory-disclosure-link/GD-GOENKA-PUBLIC-SCHOOL.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
+        >
+          GD GOENKA PUBLIC SCHOOL
+        </a>
+        
+        
       </section>
     </Layout>
   );
