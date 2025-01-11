@@ -91,9 +91,9 @@ const AdmissionForm = () => {
         setTimeout(() => {
           setLoading(false);
           toast.success("Form submitted successfully");
-          setApplicationStatus(true);
-        setFormStep(1);
-        navigate("/student-application/general-information");
+        //   setApplicationStatus(true);
+        // setFormStep(1);
+        // navigate("/student-application/general-information");
         });
         
       } else {

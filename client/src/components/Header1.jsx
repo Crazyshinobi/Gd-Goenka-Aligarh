@@ -210,42 +210,10 @@ function Header1() {
             </NavLink>
           </div>
 
-          <div className="relative peer">
-            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
-              Fee Payment
-            </li>
-
-            <ul
-              className="fee_payment_drop pt-3 top-[49px] font-extralight uppercase absolute hidden peer-hover:flex hover:flex w-[200px]
-                flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
-            >
-              <a
-                href="https://smartpay.easebuzz.in/75872/AdmissionFee"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {" "}
-                <li className="menu-item cursor-pointer ps-2 flex  hover:text-white">
-                  payment link
-                </li>
-              </a>
-             
-            </ul>
-          </div>
+          
 
 
-          <div className="relative peer">
-          <a
-                href="https://gdgaligarh.gdgoenka.com/Index"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
-              ERP LOGIN
-            </li>
-            </a>
-           
-          </div>
+       
 
           <div
             className="nav_toggler cursor-pointer text-xl text-red-400"
@@ -535,29 +503,20 @@ function Header1() {
 
           {/* FEE PAYMENT */}
           <Accordion>
+          <a
+                  href="https://smartpay.easebuzz.in/75872/AdmissionFee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2-content"
               id="panel2-header"
               className="uppercase"
             >
               fee payment
             </AccordionSummary>
-            <AccordionDetails>
-              <ul>
-                <a
-                  href="https://smartpay.easebuzz.in/75872/AdmissionFee"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
-                    payment link
-                  </li>
-                </a>
-               
-               
-              </ul>
-            </AccordionDetails>
+            </a>
+           
           </Accordion>
 
           {/* BEYOND ACADEMICS ACCORDIAN */}
@@ -622,43 +581,43 @@ function Header1() {
             </AccordionDetails>
           </Accordion>
 
-          {/* ASSEMBLIES ACCORDIAN */}
-          <Accordion>
-            <NavLink to={"/activities"}>
-              <AccordionSummary
-                aria-controls="panel2-content"
-                id="panel2-header"
-                className="uppercase"
-              >
-                activities
-              </AccordionSummary>
-            </NavLink>
-          </Accordion>
+     
 
           {/* IMAGE GALLERY ACCORDIAN */}
           <Accordion>
-            <NavLink to={"/gallery"}>
-              {" "}
+          
               <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2-content"
                 id="panel2-header"
                 className="uppercase"
               >
-                image gallery
+                gallery
               </AccordionSummary>{" "}
-            </NavLink>
+            <AccordionDetails>
+            <ul>
+            <NavLink to={"/activities"}>
+                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                    activities
+                  </li>
+                </NavLink>
+                <hr />
+                <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
+                  In-News
+                </li>
+                <hr />
+           
+                <NavLink to={"/gallery"}>
+                  <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
+                    View all gallery
+                  </li>
+                  </NavLink>
+                </ul>
+
+            </AccordionDetails>
           </Accordion>
 
-          {/* IN NEWS ACCORDIAN */}
-          <Accordion>
-            <AccordionSummary
-              aria-controls="panel2-content"
-              id="panel2-header"
-              className="uppercase"
-            >
-              in-news
-            </AccordionSummary>
-          </Accordion>
+         
 
           <Accordion>
             <NavLink to={"/contact-us"}>

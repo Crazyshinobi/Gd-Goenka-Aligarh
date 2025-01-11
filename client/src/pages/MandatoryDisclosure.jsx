@@ -3,7 +3,7 @@ import { Layout } from "../components/Layout";
 import { motion } from "framer-motion";
 import MandatoryBanner from "../assets/Mandatory-Disclosure1.jpeg";
 import NavigationPages from "./NavigationPages";
-import MandatoryDisclosurePdf from "../assets/Mandatory-Disclosure-SARAS-5.0.pdf";
+import MandatoryDisclosurePdf from "../assets/MandatoryDisclosureDetails.pdf";
 
 const MandatoryDisclosure = () => {
   document.title = "Mandatory Disclosure - GDGPS Aligarh";
@@ -31,7 +31,7 @@ const MandatoryDisclosure = () => {
 
       <NavigationPages />
 
-      <section className="container  max-w-7xl py-12  w-full  mx-auto gap-4  flex flex-col items-start ">
+      <section className="container  max-w-7xl py-12 w-full md:w-[80%]  mx-auto gap-4 items-start  flex flex-col lg:items-start">
         <a
           href={MandatoryDisclosurePdf}
           target="_blank"
