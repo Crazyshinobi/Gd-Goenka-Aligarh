@@ -103,15 +103,17 @@ const MandatoryDisclosure = () => {
         >
           self certification
         </a>
-
+        
         <a
-         href={`${baseURL}/mandatory-disclosure-link/SafeDrinkingWaterNew.pdf`}
+         href={`${baseURL}/mandatory-disclosure-link/GD-GOENKA-PUBLIC-SCHOOL.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
         >
-          Water , health and sanitation certificates
+          Parent teacher association
         </a>
+
+       
         <a
          href={`${baseURL}/mandatory-disclosure-link/School-Management-Committee.pdf`}
           target="_blank"
@@ -121,22 +123,15 @@ const MandatoryDisclosure = () => {
            School Management Committee(SMC)
         </a>
 
-        <a
-         href={`${baseURL}/mandatory-disclosure-link/SocietyRegistration.pdf`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
-        >
-          Society registration
-        </a>
+       
 
         <a
-         href={`${baseURL}/mandatory-disclosure-link/GD-GOENKA-PUBLIC-SCHOOL.pdf`}
+         href={`${baseURL}/mandatory-disclosure-link/SafeDrinkingWaterNew.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
         >
-          GD GOENKA PUBLIC SCHOOL
+          Water , health and sanitation certificates
         </a>
         
         
