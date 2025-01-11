@@ -5,7 +5,6 @@ import MandatoryBanner from "../assets/Mandatory-Disclosure1.jpeg";
 import NavigationPages from "./NavigationPages";
 import MandatoryDisclosurePdf from "../assets/Mandatory-Disclosure-SARAS-5.0.pdf";
 
-
 const MandatoryDisclosure = () => {
   document.title = "Mandatory Disclosure - GDGPS Aligarh";
   const baseURL = `${process.env.REACT_APP_PDF_URL}`
@@ -32,7 +31,7 @@ const MandatoryDisclosure = () => {
 
       <NavigationPages />
 
-      <section className="container  max-w-7xl py-12  w-full  mx-auto gap-3  flex flex-col items-start ">
+      <section className="container  max-w-7xl py-12  w-full  mx-auto gap-4  flex flex-col items-start ">
         <a
           href={MandatoryDisclosurePdf}
           target="_blank"
@@ -48,7 +47,7 @@ const MandatoryDisclosure = () => {
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
         >
-          societies/trust/company registration/renewal certificate
+          Society registration
         </a>
 
         <a
@@ -96,8 +95,6 @@ const MandatoryDisclosure = () => {
           Affiliation letter
         </a>
 
-       
-
         <a
           href={`${baseURL}/mandatory-disclosure-link/SELFCERTIFICATION.pdf`}
           target="_blank"
@@ -144,7 +141,6 @@ const MandatoryDisclosure = () => {
         
         
       </section>
-     
     </Layout>
   );
 };
