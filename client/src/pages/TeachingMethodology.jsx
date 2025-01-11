@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import TeachingBanner from "../assets/Teaching.jpg";
+import TeachingBanner from "../assets/Teaching1.jpeg";
 import { Layout } from "../components/Layout";
 import NavigationPages from "./NavigationPages";
 import Student1 from "../assets/Student1.JPG";
@@ -26,7 +26,7 @@ const TeachingMethodology = () => {
         <motion.img
           src={TeachingBanner}
           alt="Teaching Methodology"
-          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] w-full object-fill"
+          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] w-full object-cover"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -114,7 +114,6 @@ const TeachingMethodology = () => {
               infinite={true}
               autoPlay={true}
               autoPlaySpeed={5000}
-              showDots={true}
               arrows={false}
             >
               <motion.img

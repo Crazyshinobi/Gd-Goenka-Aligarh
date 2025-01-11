@@ -7,6 +7,7 @@ import MandatoryDisclosurePdf from "../assets/MandatoryDisclosureDetails.pdf";
 
 const MandatoryDisclosure = () => {
   document.title = "Mandatory Disclosure - GDGPS Aligarh";
+  
   const baseURL = `${process.env.REACT_APP_PDF_URL}`
   return (
     <Layout>
@@ -43,7 +44,7 @@ const MandatoryDisclosure = () => {
 
         <a
           href={`${baseURL}/mandatory-disclosure-link/SocietyRegistration.pdf`}
-          target="_blank"
+          target="_blank" 
           rel="noopener noreferrer"
           className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] py-2 px-4 rounded-lg  "
         >

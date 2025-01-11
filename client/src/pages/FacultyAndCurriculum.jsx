@@ -4,10 +4,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Academics from "../assets/academics.jpg";
 
-import nurseryStudentImage from '../assets/nurseryStudent.jpg'
-import fifthClassImage from '../assets/fifthClass.jpg'
-import eightClassImage from '../assets/eightClass.jpg'
-import ninthClassImage from '../assets/ninthClass.jpg'
+import nurseryStudentImage from "../assets/nurseryStudent.jpg";
+import fifthClassImage from "../assets/fifthClass.jpg";
+import eightClassImage from "../assets/eightClass.jpg";
+import ninthClassImage from "../assets/ninthClass.jpg";
 
 import { Layout } from "../components/Layout";
 import NavigationPages from "./NavigationPages";
@@ -29,20 +29,19 @@ import OutdoorActivity from "../assets/OutdoorActivity2.jpg";
 import Outdoor from "../assets/Outdoor.jpg";
 import IndoorGames from "../assets/IndoorGames.JPG";
 import TableTennis from "../assets/TableTennis.JPG";
-import bg1 from '../assets/bg2.jpg'
-import CricketGround from '../assets/Cricket.jpeg'
+import bg1 from "../assets/bg2.jpg";
+import CricketGround from "../assets/Cricket.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FacultyAndCurriculum = () => {
-  document.title = 'Faculty and Curriculum - GDGPS Aligarh'
+  document.title = "Faculty and Curriculum - GDGPS Aligarh";
   const bannerRef = useRef(null);
   const sectionRefs = useRef([]);
 
   useEffect(() => {
-
     // Banner animation
-   gsap.from(bannerRef.current, {
+    gsap.from(bannerRef.current, {
       opacity: 0,
       y: 50,
       duration: 1,
@@ -83,9 +82,9 @@ const FacultyAndCurriculum = () => {
   const sportsData = [
     {
       id: 1,
-      title: "Cricket Ground",
-      description: 
-        "Our Cricket Ground offers a spacious and well-maintained area for students to learn and play cricket. The ground is equipped with the appropriate pitch, boundary, and equipment, ensuring a safe and enjoyable environment for both practice and matches.",
+      title: "Basketball Ground",
+      description:
+        "Our Basketball Court offers a spacious and well-maintained area for students to learn and play basketball. The court is equipped with regulation-sized markings, high-quality hoops, and safety features, ensuring a safe and enjoyable environment for both practice and competitive matches.",
       image: CricketGround, // Keep the image as the existing one
     },
     {
@@ -95,7 +94,7 @@ const FacultyAndCurriculum = () => {
         "Our Badminton court provides a safe and well-maintained space for children to learn and play the game. The court is designed with kid-friendly dimensions and equipment, ensuring an exciting and enjoyable experience.",
       image: BadmintonCourt, // Keep the image as the existing one
     },
-   
+
     {
       id: 2,
       title: "Outdoor Games Area",
@@ -146,11 +145,11 @@ const FacultyAndCurriculum = () => {
       image: TableTennis, // This image can be used for the Table Tennis section
     },
   ];
-  
+
   return (
     <Layout>
       {/* Banner Section */}
-      <div className="relative bgImage" >
+      <div className="relative bgImage">
         <motion.img
           src={Academics}
           alt="Academics"
@@ -173,10 +172,10 @@ const FacultyAndCurriculum = () => {
       <NavigationPages />
 
       {/* Main Content */}
-      <motion.section 
+      <motion.section
         ref={(el) => (sectionRefs.current[0] = el)}
         className="container mx-auto py-12 w-full"
-        style={{backgroundImage : `url(${bg1})`}}
+        style={{ backgroundImage: `url(${bg1})` }}
       >
         <motion.h1
           className="text-xl lg:text-3xl mx-auto  lg:w-[60%]  mt-8 font-bold text-center mb-6 uppercase"
@@ -204,15 +203,14 @@ const FacultyAndCurriculum = () => {
                 host of values that kindle change and excellence.
               </p>
 
-              <p
-                className="text-lg leading-relaxed mb-4" >
+              <p className="text-lg leading-relaxed mb-4">
                 With an updated professional development of teachers, the
                 school's progressive pedagogy has reached new frontiers. An
                 updated think tank plans each activity and event with a
                 reciprocal, blended and interdisciplinary teaching strategy.
               </p>
 
-              <p className="text-lg leading-relaxed mb-4" >
+              <p className="text-lg leading-relaxed mb-4">
                 Differentiated instruction is a popular and effective mode that
                 involves reacting to the diverse learning styles in every
                 classroom with adjusted content and processes.

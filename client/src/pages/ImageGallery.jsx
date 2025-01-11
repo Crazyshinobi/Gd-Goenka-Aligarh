@@ -9,6 +9,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { useFetchData } from '../hooks/useFetchData';
 import bgDesign from "../assets/bgdesign3.jpg";
+import GalleryBanner from '../assets/GalleryBanner1.jpeg'
 import { IoIosClose } from "react-icons/io";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -112,7 +113,7 @@ const ImageGallery = () => {
         transition={{ duration: 1.5 }}
       >
         <motion.img
-          src={bgDesign}
+          src={GalleryBanner}
           alt="Gallery Banner"
           className="h-full w-full object-cover"
           initial={{ scale: 1.2 }}

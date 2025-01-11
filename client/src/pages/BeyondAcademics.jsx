@@ -304,7 +304,7 @@ The benefits of art education do not stop in the classroom or at the school. Art
                         <img
                           src={img}
                           alt={`${section.title} ${imgIndex + 1}`}
-                          className="w-full h-full object-fill"
+                          className="w-full h-full object-cover"
                         />
                         {/* Gradient overlay for images */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />

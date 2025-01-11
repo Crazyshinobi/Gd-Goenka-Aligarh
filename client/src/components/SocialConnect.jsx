@@ -12,34 +12,35 @@ const SocialConnect = () => {
         </p>
         <a href="tel:011-43060860">011-43060860,</a>{" "}
         <a href="tel:+91-9810054878"> +91-9810054878, </a>
-        <a href="tel:+91-8126747489"> 8126747489 </a>
+        <a href="tel:+91-8126747489"> 8126747489 |</a>
+        <div className="ml-2">
+          {" "}
+          <NavLink to={"/admission/application-form"}>
+            <p className="text-white  font-bold capitalize bg-blue-600 py-1 px-4 rounded-md" >Admission 2025-26</p>
+          </NavLink>
+        </div>
       </div>
 
       <div>
         <ul className="icons flex justify-center items-center">
-          
-      <div className="flex flex-row gap-4">
-      <NavLink to={"/admission/application-form"}>
-        <p className="text-blue-700 capitalize">Admission 2025-26</p>
-        </NavLink>
-        <p>|</p>
-        <a
-          href="https://smartpay.easebuzz.in/75872/AdmissionFee"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <p className="text-blue-700 capitalize">Fee Payment </p>
-        </a>
-        <p>|</p>
-        <a
-          href="https://gdgaligarh.gdgoenka.com/Index"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <p className="text-blue-700 ">ERP Login </p>
-        </a>
-        <p>|</p>
-      </div>
+          <div className="flex flex-row gap-4">
+            <a
+              href="https://smartpay.easebuzz.in/75872/AdmissionFee"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="text-blue-700 capitalize">Fee Payment </p>
+            </a>
+            <p>|</p>
+            <a
+              href="https://gdgaligarh.gdgoenka.com/Index"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p className="text-blue-700 ">ERP Login </p>
+            </a>
+            <p>|</p>
+          </div>
           <li className="icon-content">
             <a
               href="https://www.facebook.com/gdgpsaligarh"

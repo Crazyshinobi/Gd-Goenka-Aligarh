@@ -269,50 +269,40 @@ function Header1() {
               </AccordionDetails>
             </Accordion>
 
-            {/* ASSEMBLIES ACCORDIAN */}
-            <Accordion>
-              <NavLink to={"/activities"}>
-                {" "}
-                <AccordionSummary
-                  aria-controls="panel2-content"
-                  id="panel2-header"
-                  className="uppercase"
-                >
-                  Activities
-                </AccordionSummary>
-              </NavLink>
-            </Accordion>
-
-            
-
-            
-
             {/* IMAGE GALLERY ACCORDIAN */}
             <Accordion>
-              <NavLink to={"/gallery"}>
-                {" "}
-                <AccordionSummary
-                  aria-controls="panel2-content"
-                  id="panel2-header"
-                  className="uppercase"
-                >
-                  image gallery
-                </AccordionSummary>
+          
+          <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2-content"
+            id="panel2-header"
+            className="uppercase"
+          >
+            gallery
+          </AccordionSummary>{" "}
+        <AccordionDetails>
+        <ul>
+        <NavLink to={"/activities"}>
+              <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                activities
+              </li>
+            </NavLink>
+            <hr />
+            <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
+              In-News
+            </li>
+            <hr />
+       
+            <NavLink to={"/gallery"}>
+              <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
+                View all gallery
+              </li>
               </NavLink>
-            </Accordion>
+            </ul>
 
-           
-
-            {/* IN NEWS ACCORDIAN */}
-            <Accordion>
-              <AccordionSummary
-                aria-controls="panel2-content"
-                id="panel2-header"
-                className="uppercase"
-              >
-                in-news
-              </AccordionSummary>
-            </Accordion>
+        </AccordionDetails>
+      </Accordion>     
+         
           </div>
         </ul>
       </div>
