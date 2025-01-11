@@ -6,6 +6,7 @@ const {
 } = require("../common/commonDatabaseQueries");
 const { sendResponse } = require("../utils/responseUtils");
 const Contact = require("../models/Contact");
+const { sendAdmissionEmail } = require("../services/admissionEmailService");
 
 const createContact = async (req, res) => {
   const {
@@ -19,7 +20,7 @@ const createContact = async (req, res) => {
   } = req.body;
 
   try {
-    const newContact = await createRecord(Contact, {
+    const data = {
       parent_name,
       student_name,
       parent_email_address,
@@ -27,21 +28,27 @@ const createContact = async (req, res) => {
       state,
       city,
       grade,
-    });
+    };
 
-    if (newContact.status) {
-      sendResponse(
-        res,
-        201,
-        true,
-        "Message sent successfully",
-        newContact.data
-      );
+    const emailSent = await sendAdmissionEmail(data);
+    if (emailSent) {
+      const newContact = await createRecord(Contact, data);
+      if (newContact.status) {
+        sendResponse(
+          res,
+          201,
+          true,
+          "Message sent successfully",
+          newContact.data
+        );
+      } else {
+        sendResponse(res, 500, false, "Something went wrong", newContact);
+      }
     } else {
-      sendResponse(res, 500, false, "Something went wrong", newContact);
+      console.log("Email was not sent");
     }
   } catch (error) {
-    console.error(error);
+    console.error("Error in createContact:", error);
     sendResponse(res, 500, false, "Internal Server Error");
   }
 };
@@ -94,4 +101,4 @@ const countContact = async (req, res) => {
   }
 };
 
-module.exports = { createContact, getContact, deleteContact , countContact};
+module.exports = { createContact, getContact, deleteContact, countContact };
