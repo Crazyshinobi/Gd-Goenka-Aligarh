@@ -1,4 +1,4 @@
-import React, {  useRef } from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "../components/Layout";
 import NavigationPages from "./NavigationPages";
@@ -7,7 +7,7 @@ import OutdoorActivity from "../assets/OutdoorActivity.jpg";
 import FestivalImage from "../assets/Festival.JPG";
 import BadmintonImage from "../assets/BadmintonCourt.JPG";
 import Outdoor from "../assets/Outdoor.jpg";
-import Robotics from '../assets/Robotics.JPG';
+import Robotics from "../assets/Robotics.JPG";
 import Art from "../assets/Art.jpg";
 import HorseRiding from "../assets/HorseRiding.jpg";
 import bgDesign from "../assets/bgdesign3.jpg";
@@ -17,107 +17,115 @@ import DiwaliCelebrationImage from "../assets/Diwali.jpeg";
 import PoojaCeremonyImage from "../assets/Pooja.jpeg";
 import NationalSportsDayImage from "../assets/SportsDay.jpeg";
 import Trips from "../assets/Trips.jpeg";
-import Rakshabandhan from '../assets/Rakshabandhan.jpeg'
+import Rakshabandhan from "../assets/Rakshabandhan.jpeg";
+import LohriImage from "../assets/LohriImage.jpeg";
 
 
 const Activities = () => {
-  document.title = "Activities - GDGPS Aligarh"
+  document.title = "Activities - GDGPS Aligarh";
   const cardsRef = useRef([]);
 
   const activitiesData = [
     {
       id: 1,
+      title: "Lohri Celebration",
+      description:
+        "Festival of Lohri was celebrated at GD Goenka Public School, Aligarh with exuberance and fanfare. The entire atmosphere of the school was absorbed in the festive spirit and echoed the melodious vocals.",
+      image : LohriImage,
+      },
+    {
+      id: 2,
       title: "Festival Celebrations",
       description:
         "At G.D. Goenka Aligarh, we celebrate a variety of cultural festivals with great enthusiasm. These events bring students together to learn about different traditions, foster creativity, and enjoy moments of joy through music, dance, and food.",
       image: FestivalImage,
     },
     {
-      id: 1,
+      id: 3,
       title: "Christmas Celebration",
       description:
         "At G.D. Goenka Aligarh, Christmas is celebrated with joy and warmth. Students engage in various festive activities, including carol singing, decorating the school, and exchanging gifts. The event fosters a sense of togetherness and spreads the spirit of kindness and giving.",
       image: ChristmasCelebrationImage, // Replace with actual image import
     },
     {
-      id: 2,
+      id: 4,
       title: "Indoor Activities",
       description:
         "Our indoor activities provide a creative and engaging environment for students. From board games and art workshops to puzzle-solving and science experiments, these activities promote teamwork, critical thinking, and overall development, making learning fun and interactive.",
       image: IndoorActivityImage, // Replace with actual image import
     },
     {
-      id: 3,
+      id: 5,
       title: "Diwali Celebration",
       description:
         "Diwali at G.D. Goenka Aligarh is a festival of lights, celebrated with zeal and enthusiasm. The students participate in rangoli making, diya decorating, and traditional dance performances, creating a vibrant atmosphere that fosters cultural understanding and joy.",
       image: DiwaliCelebrationImage, // Replace with actual image import
     },
     {
-      id: 4,
+      id: 6,
       title: "Pooja Ceremony",
       description:
         "The Pooja ceremony at G.D. Goenka Aligarh is a significant event that brings the school community together in a spiritual celebration. Students, teachers, and parents join in to offer prayers, seek blessings, and celebrate the positive energy and harmony in the school.",
       image: PoojaCeremonyImage, // Replace with actual image import
     },
     {
-      id: 5,
+      id: 7,
       title: "National Sports Day",
       description:
         "National Sports Day is celebrated at G.D. Goenka Aligarh to encourage physical fitness and sportsmanship. Students participate in various sports events and activities, highlighting the importance of teamwork, discipline, and healthy competition.",
       image: NationalSportsDayImage, // Replace with actual image import
     },
     {
-      id: 6,
+      id: 8,
       title: "Rakshabandhan Celebration",
       description:
         "Rakshabandhan is a special celebration at G.D. Goenka Aligarh, where students honor the bond between siblings and express love and affection. The celebration includes the tying of rakhis, exchanging sweets, and creating memorable moments with friends and family.",
       image: Rakshabandhan, // Replace with actual image import
     },
     {
-      id: 7,
+      id: 9,
       title: "School Trips",
       description:
         "Educational trips at G.D. Goenka Aligarh offer students the opportunity to explore new places, learn beyond the classroom, and build stronger bonds with their peers. These trips are designed to provide enriching experiences that complement academic learning and encourage curiosity.",
       image: Trips, // Replace with actual image import
     },
     {
-      id: 2,
+      id: 10,
       title: "Badminton Playing",
       description:
         "Badminton is one of the popular indoor sports at G.D. Goenka Aligarh. With well-maintained courts and expert coaching, our students regularly participate in friendly matches and tournaments, developing their skills and teamwork.",
       image: BadmintonImage,
     },
     {
-      id: 3,
+      id: 11,
       title: "Outdoor Activities",
       description:
         "We encourage our students to engage in various outdoor activities such as nature walks, gardening, and adventure camps. These activities help students develop resilience, teamwork, and a deeper connection with nature.",
       image: OutdoorActivity,
     },
     {
-      id: 4,
+      id: 12,
       title: "Outdoor Games",
       description:
         "G.D. Goenka Aligarh offers a wide variety of outdoor games that help students stay active and energized. From relay races to obstacle courses, students enjoy these games, which promote teamwork, fitness, and leadership skills.",
       image: Outdoor,
     },
     {
-      id: 5,
+      id: 13,
       title: "Robotics",
       description:
         "Our Robotics program provides students with an exciting opportunity to explore STEM fields. By building and programming robots, students develop problem-solving, critical thinking, and teamwork skills, preparing them for future technological advancements.",
       image: Robotics,
     },
     {
-      id: 6,
+      id: 14,
       title: "Art and Craft",
       description:
         "The art and craft program at G.D. Goenka Aligarh fosters creativity and self-expression among students. Whether it's painting, sculpture, or craftwork, students are encouraged to explore different mediums and develop their artistic talents.",
       image: Art,
     },
     {
-      id: 7,
+      id: 15,
       title: "Horse Riding",
       description:
         "Horse riding is a unique activity offered at G.D. Goenka Aligarh. Our equestrian program allows students to develop confidence, discipline, and a sense of responsibility while interacting with horses in a safe and nurturing environment.",
@@ -165,7 +173,10 @@ const Activities = () => {
           Activities at G.D. Goenka Aligarh
         </h1>
         <p className="text-center mb-12 text-slate-600 max-w-7xl w-[90%] mx-auto">
-          At G.D. Goenka Aligarh, we believe in nurturing not just academic excellence but also physical prowess and creativity. Our diverse range of activities is designed to inspire and challenge students, helping them develop lifelong passions and skills.
+          At G.D. Goenka Aligarh, we believe in nurturing not just academic
+          excellence but also physical prowess and creativity. Our diverse range
+          of activities is designed to inspire and challenge students, helping
+          them develop lifelong passions and skills.
         </p>
 
         <div className="flex flex-wrap max-w-7xl w-full mx-auto items-center justify-center gap-8">

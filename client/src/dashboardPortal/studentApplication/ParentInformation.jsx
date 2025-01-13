@@ -12,7 +12,6 @@ const ParentInformationForm = () => {
       income : "",
       office_address : "",
       email : "",
-      image: null,
     },
     mother: {
       name: "",
@@ -29,8 +28,7 @@ const ParentInformationForm = () => {
   });
 
   const handleInputChange = (e, section, field) => {
-    const value =
-      field === "image" ? e.target.files[0] : e.target.value;
+    const value = e.target.value;
     setFormData((prevData) => ({
       ...prevData,
       [section]: {
@@ -201,19 +199,7 @@ const ParentInformationForm = () => {
                   required
                 />
               </div>
-              <div className="flex flex-col">
-                <label htmlFor="fatherImage" className="font-medium">
-                  Upload Father's Image:
-                </label>
-                <input
-                  type="file"
-                  id="fatherImage"
-                  className="p-2 border rounded-md"
-                  accept="image/*"
-                  onChange={(e) => handleInputChange(e, "father", "image")}
-                  required
-                />
-              </div>
+             
             </div>
 
             {/* Mother's Information */}
@@ -276,19 +262,7 @@ const ParentInformationForm = () => {
                   required
                 />
               </div>
-              <div className="flex flex-col">
-                <label htmlFor="motherImage" className="font-medium">
-                  Upload Mother's Image:
-                </label>
-                <input
-                  type="file"
-                  id="motherImage"
-                  className="p-2 border rounded-md"
-                  accept="image/*"
-                  onChange={(e) => handleInputChange(e, "mother", "image")}
-                  required
-                />
-              </div>
+             
             </div>
           </>
         )}

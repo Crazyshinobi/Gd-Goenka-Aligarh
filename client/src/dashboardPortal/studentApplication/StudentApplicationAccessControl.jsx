@@ -1,26 +1,58 @@
-// dashboard/studentApplication/StudentApplicationAccessControl.js
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getApplicationStatus, getFormStep } from "../../utils/status";  // Import status functions
+import { getFormStep, isNewForm } from "../../utils/status";
 
 const StudentApplicationAccessControl = ({ children }) => {
   const navigate = useNavigate();
-  const applicationSubmitted = getApplicationStatus();  // Check if the application has been submitted
-  const currentStep = getFormStep();  // Get the current form step
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // If the user hasn't submitted the application form, redirect to the admission form
-    if (!applicationSubmitted) {
-      navigate("/admission/application-form");  // Assuming '/form' is the route for the admission form
-    }
+    const checkApplicationStatus = () => {
+      const savedFormData = localStorage.getItem("admissionFormData");
+      const isNew = isNewForm();
 
-    // If the user is trying to access a form out of sequence, redirect to the appropriate form
-    if (currentStep < 1) {
-      navigate("/student-application/general-information");  // Redirect to the admission form if not authorized to access
-    }
-  }, [applicationSubmitted, currentStep, navigate]);
+      if (savedFormData) {
+        if (isNew) {
+          // New form submission, reset step and redirect to General Information
+          sessionStorage.removeItem("isNewForm");
+          navigate("/student-application/general-information");
+        } else {
+          // Redirect to the last saved step
+          const currentStep = getFormStep();
+          navigateToStep(currentStep);
+        }
+      } else {
+        // No form data, redirect to admission form
+        navigate("/admission");
+      }
+      setLoading(false);
+    };
 
-  return <>{children}</>;  // Render the children (form) if the user has access
+    checkApplicationStatus();
+  }, [navigate]);
+
+  const navigateToStep = (step) => {
+    const routes = [
+      "/student-application/general-information",
+      "/student-application/personal-details",
+      "/student-application/health-information",
+      "/student-application/educational-background",
+      "/student-application/parent-information",
+      "/student-application/other-relatives",
+    ];
+
+    if (step >= 0 && step < routes.length) {
+      navigate(routes[step]);
+    } else {
+      navigate("/admission");
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return <>{children}</>;
 };
 
 export default StudentApplicationAccessControl;

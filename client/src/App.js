@@ -98,7 +98,7 @@ function App() {
       <Route path={"/job-application-form"} element={<JobApplicationForm />} />
       <Route path={"/fee-payment/fees-structure"} element={<FeeStructure />} />
       <Route path={"/admission/application-form"} element={<AdmissionForm />} />
-      {/* <Route path="/*" element={<StudentApplicationRoutes />} />  */}
+      <Route path="/student-application/*" element={<StudentApplicationRoutes />} />
      
       {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}
       {/* <Route path={"/payment-failure"} element={<PaymentFailure />} /> */}

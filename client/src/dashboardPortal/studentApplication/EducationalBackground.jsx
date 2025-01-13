@@ -23,7 +23,7 @@ const EducationalBackground = () => {
   };
 
   const handleSubmit = (e)=>{
-    setFormStep(5)
+    setFormStep(4)
     navigate('/student-application/parent-information')
   }
   return (

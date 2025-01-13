@@ -10,15 +10,18 @@ import OtherRelatives from "./OtherRelatives";
 
 const StudentApplicationRoutes = () => {
   return (
-    <Routes>
-    <Route path={"/student-application/general-information"} element={<StudentApplicationAccessControl><GeneralInformation /></StudentApplicationAccessControl>} />
-      <Route path={"/student-application/personal-details"} element={<StudentApplicationAccessControl><PersonalDetails /></StudentApplicationAccessControl>} />
-      <Route path={"/student-application/health-information"} element={<StudentApplicationAccessControl><HealthInformation /></StudentApplicationAccessControl>} />
-      <Route path={"/student-application/educational-background"} element={<StudentApplicationAccessControl><EducationalBackground /></StudentApplicationAccessControl>} />
-      <Route path={"/student-application/parent-information"} element={<StudentApplicationAccessControl><ParentInformation /></StudentApplicationAccessControl>} />
-      <Route path={"/student-application/other-relatives"} element={<StudentApplicationAccessControl><OtherRelatives /></StudentApplicationAccessControl>} />
-
-    </Routes>
+    <StudentApplicationAccessControl>
+      <Routes>
+        <Route path="/general-information" element={<GeneralInformation />} />
+        <Route path="/personal-details" element={<PersonalDetails />} />
+        <Route path="/health-information" element={<HealthInformation />} />
+        <Route path="/educational-background" element={<EducationalBackground />} />
+        <Route path="/parent-information" element={<ParentInformation />} />
+        <Route path="/other-relatives" element={<OtherRelatives />} />
+        {/* Fallback route for invalid paths */}
+        <Route path="*" element={<GeneralInformation />} />
+      </Routes>
+    </StudentApplicationAccessControl>
   );
 };
 

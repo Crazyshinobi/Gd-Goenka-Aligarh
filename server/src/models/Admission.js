@@ -6,10 +6,7 @@ const admissionSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    board: {
-      type: String,
-      required: true,
-    },
+   
     grade: {
       type: String,
       required: true,

@@ -42,7 +42,7 @@ const sendAdmissionEmail = async (data) => {
 
   const mailOptions = {
     from: process.env.EMAIL,
-    to: "webdev.chetan@seglko.org", // Replace with the actual recipient email
+    to: "webdev.ayush@seglko.org", // Replace with the actual recipient email
     subject: "New Admission Application - GD Goenka Aligarh",
     html: htmlContent,
   };

@@ -48,7 +48,7 @@ function ToppersX() {
                 ></iframe>
                 <button
                   onClick={() => setShowVideo(false)}
-                  className="absolute -top-16 right-0 p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors"
+                  className="absolute lg:-top-0 lg:-right-12 -top-10 right-0 md:-top-0 p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors"
                   aria-label="Close video"
                 >
                   <RxCross1 className="w-6 h-6 text-white" />

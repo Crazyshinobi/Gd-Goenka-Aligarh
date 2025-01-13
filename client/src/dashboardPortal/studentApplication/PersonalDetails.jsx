@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { setFormStep } from "../../utils/status";  
+import { setFormStep, getFormStep, setApplicationStatus } from "../../utils/status";  
+import Timeline from "./Timeline";
 
 const PersonalDetails = () => {
   const navigate = useNavigate();
+  const currentStep = getFormStep();
+  const [submitted, setSubmitted] = useState(false); 
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -27,56 +30,56 @@ const PersonalDetails = () => {
       [name]: value,
     });
   };
+
   const handleSubmit = () => {
-    setFormStep(3);  // User is now on form 3
-    navigate("/student-application/health-information");  // Redirect to form 3
+    setFormStep(2);  
+    setSubmitted(true);
+    setApplicationStatus(true);
+    navigate("/student-application/health-information"); 
   };
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md">
+      <Timeline currentStep={currentStep} />
       <h2 className="text-3xl font-semibold text-center text-gray-700 mb-6">Personal Details</h2>
       <form>
-        {/* First Name */}
-        <div className="lg:flex lg:flex-row lg:justify-between  md:flex md:flex-row md:justify-between">
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700">First Name</label>
-          <input
-            type="text"
-            name="first_name"
-            value={formData.first_name}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
+        <div className="lg:flex lg:flex-row lg:justify-between md:flex md:flex-row md:justify-between">
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700">First Name</label>
+            <input
+              type="text"
+              name="first_name"
+              value={formData.first_name}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700">Middle Name</label>
+            <input
+              type="text"
+              name="middle_name"
+              value={formData.middle_name}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700">Last Name</label>
+            <input
+              type="text"
+              name="last_name"
+              value={formData.last_name}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
         </div>
 
-        {/* Middle Name */}
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700">Middle Name</label>
-          <input
-            type="text"
-            name="middle_name"
-            value={formData.middle_name}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        {/* Last Name */}
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700">Last Name</label>
-          <input
-            type="text"
-            name="last_name"
-            value={formData.last_name}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
-        </div>
-
-        {/* Date of Birth */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
           <input
@@ -89,7 +92,6 @@ const PersonalDetails = () => {
           />
         </div>
 
-        {/* Nationality */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700">Nationality</label>
           <input
@@ -102,7 +104,6 @@ const PersonalDetails = () => {
           />
         </div>
 
-        {/* Gender */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700">Gender</label>
           <div className="flex items-center space-x-6">
@@ -131,7 +132,6 @@ const PersonalDetails = () => {
           </div>
         </div>
 
-        {/* Address */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700">Address</label>
           <input
@@ -144,7 +144,6 @@ const PersonalDetails = () => {
           />
         </div>
 
-        {/* City */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700">City</label>
           <input
@@ -157,7 +156,6 @@ const PersonalDetails = () => {
           />
         </div>
 
-        {/* Pincode */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700">Pincode</label>
           <input
@@ -171,7 +169,6 @@ const PersonalDetails = () => {
           />
         </div>
 
-        {/* Email */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700">Email</label>
           <input
@@ -184,7 +181,6 @@ const PersonalDetails = () => {
           />
         </div>
 
-        {/* Mobile */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700">Mobile</label>
           <input
@@ -197,7 +193,6 @@ const PersonalDetails = () => {
           />
         </div>
 
-        {/* Emergency Mobile */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700">Emergency Mobile</label>
           <input
@@ -210,7 +205,6 @@ const PersonalDetails = () => {
           />
         </div>
 
-        {/* Submit Button */}
         <button onClick={handleSubmit} type="submit" className="w-full bg-blue-500 text-white py-3 rounded-full text-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
           Save
         </button>
@@ -220,3 +214,4 @@ const PersonalDetails = () => {
 };
 
 export default PersonalDetails;
+

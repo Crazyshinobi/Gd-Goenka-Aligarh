@@ -12,7 +12,6 @@ const createAdmission = async (req, res) => {
 
   if (
     !academic_year ||
-    !board ||
     !grade ||
     !name ||
     !dob ||
@@ -25,7 +24,6 @@ const createAdmission = async (req, res) => {
   try {
     const newAdmission = await createRecord(Admission, {
       academic_year,
-      board,
       grade,
       name,
       dob,
