@@ -24,8 +24,7 @@ export const ViewAddmission = () => {
       sortable: true,
       body: (rowData) =>
         `${rowData.academic_year} - ${rowData.academic_year + 1}`,
-    },
-    { field: "board", header: "Board" },
+    },  
     {
       field: "dob",
       header: "D.O.B",

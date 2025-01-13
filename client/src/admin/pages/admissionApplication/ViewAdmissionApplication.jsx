@@ -8,6 +8,12 @@ export const ViewAdmissionApplication = () => {
   const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/`;
   const { data, loading, error, refetch } = useFetchData(apiURL);
   const admissionApplication = data?.data || [];
+  const maxParents = Math.max(
+    ...admissionApplication.map((row) => row.parents_information?.length || 0)
+  );
+  const maxRelatives = Math.max(
+    ...admissionApplication.map((row) => row.other_relatives?.length || 0)
+  );
   const columns = [
     {
       header: "S.No",
@@ -18,17 +24,30 @@ export const ViewAdmissionApplication = () => {
     {
       // header: "General Information",
       separator: true,
-      body: (rowData) => <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">General Information</div>,
+      body: (rowData) => (
+        <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">
+          General Information
+        </div>
+      ),
     },
     { field: "general_information.grade", header: "Grade" },
-    { field: "general_information.applied_before", header: "Applied Before" },
+    {
+      field: "general_information.applied_before",
+      header: "Applied Before",
+      body: (rowData) =>
+        rowData.general_information.applied_before ? "Yes" : "No",
+    },
     { field: "general_information.applied_year", header: "Applied Year" },
     { field: "general_information.applied_grade", header: "Applied Grade" },
 
     // Personal Details
     {
       separator: true,
-      body: (rowData) => <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">Personal Details</div>,
+      body: (rowData) => (
+        <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">
+          Personal Details
+        </div>
+      ),
     },
     { field: "personal_details.first_name", header: "First Name" },
     { field: "personal_details.middle_name", header: "Middle Name" },
@@ -36,7 +55,8 @@ export const ViewAdmissionApplication = () => {
     {
       field: "personal_details.dob",
       header: "Date of Birth",
-      body: (rowData) => new Date(rowData.personal_details.dob).toLocaleDateString("en-GB"),
+      body: (rowData) =>
+        new Date(rowData.personal_details.dob).toLocaleDateString("en-GB"),
     },
     { field: "personal_details.nationality", header: "Nationality" },
     { field: "personal_details.gender", header: "Gender" },
@@ -50,7 +70,11 @@ export const ViewAdmissionApplication = () => {
     // Health Information
     {
       separator: true,
-      body: (rowData) => <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">Health Information</div>,
+      body: (rowData) => (
+        <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">
+          Health Information
+        </div>
+      ),
     },
     { field: "health_information.allergy", header: "Allergy" },
     {
@@ -62,7 +86,11 @@ export const ViewAdmissionApplication = () => {
     // Educational Background
     {
       separator: true,
-      body: (rowData) => <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">Educational Background</div>,
+      body: (rowData) => (
+        <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">
+          Educational Background
+        </div>
+      ),
     },
     {
       field: "educational_background.attended_school",
@@ -77,7 +105,12 @@ export const ViewAdmissionApplication = () => {
     { field: "educational_background.city", header: "City" },
     { field: "educational_background.from_grade", header: "From Grade" },
     { field: "educational_background.to_grade", header: "To Grade" },
-    { field: "educational_background.expelled", header: "Expelled" },
+    {
+      field: "educational_background.expelled",
+      header: "Expelled",
+      body: (rowData) =>
+        rowData.educational_background.expelled ? "Yes" : "No",
+    },
     {
       field: "educational_background.expelled_reason",
       header: "Expelled Reason",
@@ -86,13 +119,16 @@ export const ViewAdmissionApplication = () => {
           ? "N/A"
           : rowData.educational_background.expelled_reason,
     },
-
     // Parents Information
     {
       separator: true,
-      body: (rowData) => <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">Parents Information</div>,
+      body: (rowData) => (
+        <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">
+          Parents Information
+        </div>
+      ),
     },
-    ...Array.from({ length: 2 }).flatMap((_, parentIndex) => [
+    ...Array.from({ length: maxParents }).flatMap((_, parentIndex) => [
       {
         header: `Parent-${parentIndex + 1} Type`,
         body: (rowData) =>
@@ -136,9 +172,13 @@ export const ViewAdmissionApplication = () => {
     // Other Relatives
     {
       separator: true,
-      body: (rowData) => <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">Other Relatives</div>,
+      body: (rowData) => (
+        <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">
+          Other Relatives
+        </div>
+      ),
     },
-    ...Array.from({ length: 2 }).flatMap((_, relativeIndex) => [
+    ...Array.from({ length: maxRelatives }).flatMap((_, relativeIndex) => [
       {
         header: `Relative-${relativeIndex + 1} Relation`,
         body: (rowData) =>
