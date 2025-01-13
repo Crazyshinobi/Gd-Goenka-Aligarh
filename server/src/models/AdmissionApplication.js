@@ -75,10 +75,6 @@ const admissionApplicationSchema = new mongoose.Schema(
         type: Number,
         required: true,
       },
-      image: {
-        type: String,
-        required: true,
-      },
     },
     health_information: {
       allergy: {
@@ -176,10 +172,6 @@ const admissionApplicationSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
-        image: {
-          type: String,
-          required: true,
-        },
       },
     ],
     other_relatives: [
@@ -188,6 +180,10 @@ const admissionApplicationSchema = new mongoose.Schema(
           type: String,
           enum: ["brother", "sister"],
           required: true,
+        },
+        name: {
+          type: String,
+          required: true
         },
         age: {
           type: Number,

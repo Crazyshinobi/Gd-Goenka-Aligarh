@@ -4,7 +4,7 @@ import { useFetchData } from "../../../hooks/useFetchData";
 import { BasicTable } from "../../components/BasicTable";
 
 export const ViewAddmission = () => {
-  document.title = "Admin - View Admission Applications";
+  document.title = "Admin - View Admission";
 
   const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admission/`;
   const { data, loading, error, refetch } = useFetchData(apiURL);
@@ -48,7 +48,7 @@ export const ViewAddmission = () => {
       <div className="p-4 py-6 sm:ml-64 dark:bg-gray-700 min-h-screen">
         <div className="p-2 border-2 border-gray-200 rounded-lg dark:border-white mt-14">
           <h3 className="text-xl lg:text-2xl font-semibold text-center text-gray-900 dark:text-white py-5">
-            View Admission Applications
+            View Admissions
           </h3>
           <BasicTable
             data={admission}

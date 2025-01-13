@@ -29,6 +29,7 @@ import { AddJob } from "./admin/pages/job/AddJob";
 import { ViewJob } from "./admin/pages/job/ViewJob";
 import PrivateRoute from "./admin/components/PrivateRoute";
 import { ViewAddmission } from "./admin/pages/admission/ViewAddmission";
+import { ViewAdmissionApplication } from "./admin/pages/admissionApplication/ViewAdmissionApplication";
 import { AddGallery } from "./admin/pages/gallery/AddGallery";
 import { ViewGallery } from "./admin/pages/gallery/ViewGallery";
 import { ViewJobApplication } from "./admin/pages/jobApplication/ViewJobApplication";
@@ -166,12 +167,21 @@ function App() {
           </PrivateRoute>
         }
       />
-      {/* Admission Applications  */}
+      {/* Admission  */}
       <Route
         path={"/admin/view-admission"}
         element={
           <PrivateRoute>
             <ViewAddmission />
+          </PrivateRoute>
+        }
+      />
+      {/* Admission Application */}
+      <Route
+        path={"/admin/view-admission-application"}
+        element={
+          <PrivateRoute>
+            <ViewAdmissionApplication />
           </PrivateRoute>
         }
       />

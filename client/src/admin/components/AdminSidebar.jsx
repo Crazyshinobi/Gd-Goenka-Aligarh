@@ -323,10 +323,39 @@ export const AdminSidebar = ({ mobileMenu }) => {
               <span className="ms-3">Job Applications</span>
             </NavLink>
           </li>
-          {/* Admission Applications */}
+          {/* Admission */}
           <li>
             <NavLink
               to="/admin/view-admission"
+              className={({ isActive }) =>
+                `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
+                  isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                }`
+              }
+            >
+              <svg
+                className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M4 4a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2v14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2V5a1 1 0 0 1-1-1Zm5 2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-1Zm-5 4a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H9Zm5 0a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1h-1Zm-3 4a2 2 0 0 0-2 2v3h2v-3h2v3h2v-3a2 2 0 0 0-2-2h-2Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+
+              <span className="ms-3">Admission</span>
+            </NavLink>
+          </li>
+          {/* Admission Applications */}
+          <li>
+            <NavLink
+              to="/admin/view-admission-application"
               className={({ isActive }) =>
                 `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
                   isActive ? "bg-gray-200 dark:bg-gray-600" : ""
