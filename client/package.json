@@ -18,7 +18,6 @@
     "gsap": "^3.12.5",
     "js-cookie": "^3.0.5",
     "motion": "^11.15.0",
-    "pdfjs-dist": "^3.11.174",
     "primereact": "^10.8.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -65,7 +65,6 @@ const getAdmission = async (req, res) => {
 
 const deleteAdmission = async (req, res) => {
   const { id } = req.params;
-
   try {
     const deleteAdmission = await deleteRecord(Admission, { _id: id });
 
