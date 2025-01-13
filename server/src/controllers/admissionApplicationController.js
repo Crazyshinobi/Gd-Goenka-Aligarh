@@ -1,4 +1,4 @@
-const { createRecord, getRecord, deleteRecord } = require("../common/commonDatabaseQueries");
+const { createRecord, getRecord, deleteRecord, getCount } = require("../common/commonDatabaseQueries");
 const AdmissionApplication = require("../models/AdmissionApplication");
 const { sendResponse } = require("../utils/responseUtils");
 const fs = require("fs");
@@ -111,4 +111,15 @@ const deleteAdmissionApplication = async (req, res) => {
   }
 };
 
-module.exports = { createAdmissionApplication, getAdmissionApplication, deleteAdmissionApplication };
+const countAdmissionApplication = async (req, res) => {
+  try {
+    const response = await getCount(AdmissionApplication);
+    sendResponse(res, 200, true, "Count Successfully fetched", response.data);
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Internal server error", error);
+  }
+};
+
+
+module.exports = { createAdmissionApplication, getAdmissionApplication, deleteAdmissionApplication, countAdmissionApplication };
