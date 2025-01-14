@@ -19,6 +19,10 @@ export const ViewAdmin = () => {
       header: "Email",
     },
     {
+      field: "role",
+      header: "Role",
+    },
+    {
       field: "createdAt",
       header: "Date",
       sortable: true,
