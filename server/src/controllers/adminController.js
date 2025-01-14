@@ -78,7 +78,7 @@ const createAdmin = [
       });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
     const existingAdmin = await Admin.findOne({ email });
     if (existingAdmin) {
       console.log("Admin already exists!");
@@ -223,7 +223,7 @@ const resetPassword = [
 
 const getAdmins = async (req, res) => {
   try {
-    const options = { name: 1, email: 1, createdAt: 1 };
+    const options = { name: 1, email: 1, role: 1, createdAt: 1 };
     const admins = await getRecord(Admin, (query = {}), options);
     sendResponse(res, 200, true, "Data fetched successfully", admins.data);
   } catch (error) {

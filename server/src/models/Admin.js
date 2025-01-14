@@ -21,6 +21,11 @@ const adminSchema = new mongoose.Schema(
     otpExpires: {
       type: Date,
     },
+    role: {
+      type: String,
+      enum: ["admin", "user"],
+      required: true,
+    },
   },
   { timestamps: true }
 );
