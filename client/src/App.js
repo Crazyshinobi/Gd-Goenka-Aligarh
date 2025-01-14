@@ -18,6 +18,12 @@ import ImageGallery from "./pages/ImageGallery";
 import ContactForm from "./pages/ContactForm";
 import MandatoryDisclosure from "./pages/MandatoryDisclosure";
 import GoenkanPursuits from "./pages/GoenkanPursuits";
+import FeeStructure from "./pages/FeeStructure";
+import AdmissionForm from "./pages/AdmissionForm";
+import CurrentOpening from "./pages/CurrentOpening";
+import JobApplicationForm from "./pages/JobApplicationForm";
+import RecognisationCet from "./pages/Recognisation-Cet-Nur-to-8";
+import StudentApplicationRoutes from "./dashboardPortal/studentApplication/StudentApplicationRoutes";
 // Admin Imports
 import { Dashboard } from "./admin/Dashboard";
 import { AdminLogin } from "./admin/pages/auth/AdminLogin";
@@ -35,15 +41,9 @@ import { ViewGallery } from "./admin/pages/gallery/ViewGallery";
 import { ViewJobApplication } from "./admin/pages/jobApplication/ViewJobApplication";
 import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
-import CurrentOpening from "./pages/CurrentOpening";
-import JobApplicationForm from "./pages/JobApplicationForm";
 import { ViewAdmin } from "./admin/pages/admins/ViewAdmin";
-import FeeStructure from "./pages/FeeStructure";
-import AdmissionForm from "./pages/AdmissionForm";
-import PaymentSuccess from "./dashboardPortal/paymentPages/PaymentSuccess";
-import PaymentFailure from "./dashboardPortal/paymentPages/PaymentFailure";
-import RecognisationCet from "./pages/Recognisation-Cet-Nur-to-8";
-import StudentApplicationRoutes from "./dashboardPortal/studentApplication/StudentApplicationRoutes";
+import AdmissionSubmission from "./pages/AdmissionSubmission";
+
 
 function App() {
   return (
@@ -99,6 +99,7 @@ function App() {
       <Route path={"/job-application-form"} element={<JobApplicationForm />} />
       <Route path={"/fee-payment/fees-structure"} element={<FeeStructure />} />
       <Route path={"/admission/application-form"} element={<AdmissionForm />} />
+      <Route path={"/application-submission"} element={<AdmissionSubmission />} />
       <Route path="/student-application/*" element={<StudentApplicationRoutes />} />
      
       {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}
