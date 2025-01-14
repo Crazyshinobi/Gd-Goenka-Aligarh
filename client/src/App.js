@@ -29,7 +29,6 @@ import { Dashboard } from "./admin/Dashboard";
 import { AdminLogin } from "./admin/pages/auth/AdminLogin";
 import { ForgotPassword } from "./admin/pages/auth/ForgotPassword";
 import { Error404 } from "./pages/Error404";
-import { AddAdmin } from "./admin/pages/admins/AddAdmin";
 import { ViewContact } from "./admin/pages/contact/ViewContact";
 import { AddJob } from "./admin/pages/job/AddJob";
 import { ViewJob } from "./admin/pages/job/ViewJob";
@@ -41,11 +40,24 @@ import { ViewGallery } from "./admin/pages/gallery/ViewGallery";
 import { ViewJobApplication } from "./admin/pages/jobApplication/ViewJobApplication";
 import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
+<<<<<<< HEAD
 import { ViewAdmin } from "./admin/pages/admins/ViewAdmin";
 import AdmissionSubmission from "./pages/AdmissionSubmission";
 import UserPrivateRoute from "./user/components/UserPrivateRoute";
 import UserDashboard from "./user/UserDashboard";
 
+=======
+import CurrentOpening from "./pages/CurrentOpening";
+import JobApplicationForm from "./pages/JobApplicationForm";
+import FeeStructure from "./pages/FeeStructure";
+import AdmissionForm from "./pages/AdmissionForm";
+import PaymentSuccess from "./dashboardPortal/paymentPages/PaymentSuccess";
+import PaymentFailure from "./dashboardPortal/paymentPages/PaymentFailure";
+import RecognisationCet from "./pages/Recognisation-Cet-Nur-to-8";
+import StudentApplicationRoutes from "./dashboardPortal/studentApplication/StudentApplicationRoutes";
+import { ViewUser } from "./admin/pages/user/ViewUser";
+import { AddUser } from "./admin/pages/user/AddUser";
+>>>>>>> bb6a6bbf5b369ea9d176cb1bd81832396beb5195
 
 function App() {
   return (
@@ -134,18 +146,18 @@ function App() {
       />
       {/* Admin  */}
       <Route
-        path={"/admin/add-admin"}
+        path={"/admin/add-user"}
         element={
           <PrivateRoute>
-            <AddAdmin />
+            <AddUser />
           </PrivateRoute>
         }
       />
       <Route
-        path={"/admin/view-admin"}
+        path={"/admin/view-user"}
         element={
           <PrivateRoute>
-            <ViewAdmin />
+            <ViewUser />
           </PrivateRoute>
         }
       />

@@ -10,14 +10,14 @@ export const Dashboard = () => {
 
   // State to store counts of each item
   const [counts, setCounts] = useState({
-    admin: 0,
-    contact: 0,
-    gallery: 0,
-    content: 0,
-    admission: 0,
-    job: 0,
-    jobApplication: 0,
-    admissionApplication: 0,
+    admin: "Loading, please wait...",
+    contact: "Loading, please wait...",
+    gallery: "Loading, please wait...",
+    content: "Loading, please wait...",
+    admission: "Loading, please wait...",
+    job: "Loading, please wait...",
+    jobApplication: "Loading, please wait...",
+    admissionApplication: "Loading, please wait...",
   });
 
   const fetchCount = async () => {
@@ -99,7 +99,7 @@ export const Dashboard = () => {
               <p className="text-xl font-bold text-white dark:text-gray-200">
                 {counts.admin}
               </p>
-              <Link to="/admin/add-admin">
+              <Link to="/admin/view-admin">
                 <button className="mt-2 px-5 py-1.5 bg-white text-indigo-600 text-xs font-semibold rounded-lg shadow-md hover:bg-indigo-200 focus:outline-none dark:bg-indigo-600 dark:text-white dark:hover:bg-indigo-500">
                   View Details
                 </button>

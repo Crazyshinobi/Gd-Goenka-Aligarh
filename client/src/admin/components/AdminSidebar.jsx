@@ -399,7 +399,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
               >
                 <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM10 12a6.957 6.957 0 0 1-1.264-.931A6.432 6.432 0 0 1 9 9v-2A6.439 6.439 0 0 1 9 2v2a6.444 6.444 0 0 1 2-.3v-1a3.963 3.963 0 0 0-1.4.267A3.963 3.963 0 0 0 9.5 2c.95 0 2 .318 2.625.75 1.125-.748 3.03-.843 3.5-.675-.98-.6 5.036-1.635-.266-2.62Z" />
               </svg>
-              <span className="ms-3">Admin</span>
+              <span className="ms-3">Users</span>
               <svg
                 className="w-3 h-3 ml-2 transition-transform"
                 aria-hidden="true"
@@ -422,26 +422,26 @@ export const AdminSidebar = ({ mobileMenu }) => {
             >
               <li>
                 <NavLink
-                  to="/admin/add-admin"
+                  to="/admin/add-user"
                   className={({ isActive }) =>
                     `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
                       isActive ? "bg-gray-200 dark:bg-gray-600" : ""
                     }`
                   }
                 >
-                  Add Admin
+                  Add User
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  to="/admin/view-admin"
+                  to="/admin/view-user"
                   className={({ isActive }) =>
                     `flex items-center p-2 pl-11 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200 ${
                       isActive ? "bg-gray-200 dark:bg-gray-600" : ""
                     }`
                   }
                 >
-                  View Admins
+                  View User
                 </NavLink>
               </li>
             </ul>

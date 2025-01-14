@@ -4,11 +4,12 @@ import { Button } from "../../components/Button";
 import { usePostRequest } from "../../../hooks/usePostRequest";
 import toast, { Toaster } from "react-hot-toast";
 
-export const AddAdmin = () => {
-  document.title = "Admin - Add Admin";
+export const AddUser = () => {
+  document.title = "Admin - Add User";
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -22,6 +23,7 @@ export const AddAdmin = () => {
       name,
       email,
       password,
+      role,
     };
     const response = await postRequest(data);
 
@@ -29,6 +31,7 @@ export const AddAdmin = () => {
       toast.success("Admin added successfully!");
       setName("");
       setEmail("");
+      setRole("");
       setPassword("");
     } else if (error) {
       toast.error(error);
@@ -46,7 +49,7 @@ export const AddAdmin = () => {
             <div className="grid sm:grid-cols-12 gap-6">
               <div className="col-span-12">
                 <h3 className="text-xl lg:text-2xl font-semibold text-center text-gray-900 dark:text-white">
-                  Create Admin
+                  Create User
                 </h3>
               </div>
 
@@ -67,6 +70,25 @@ export const AddAdmin = () => {
                 />
               </div>
               <div className="col-span-12 lg:col-span-6">
+                <label
+                  htmlFor="content_type"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Select a role*
+                </label>
+                <select
+                  id="role"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className="bg-gray-50 outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required
+                >
+                  <option value="">Choose a Role*</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+              </div>
+              <div className="col-span-12">
                 <label
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"

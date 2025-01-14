@@ -90,7 +90,7 @@ export const AdminNavbar = ({ mobileMenu, setMobileMenu }) => {
             <Link to="/admin" className="flex items-center space-x-3">
               <span className="hidden lg:block text-2xl font-semibold text-black dark:text-white">
                 GD Goenka Aligarh
-              </span>
+              </span> 
             </Link>
           </div>
 
@@ -133,6 +133,9 @@ export const AdminNavbar = ({ mobileMenu, setMobileMenu }) => {
               </svg>
             </button>
 
+            <div>
+              <p>Welcome {localStorage.getItem("username").split(" ")[0] || "Guest"}! </p>
+            </div>
             {/* Profile Dropdown */}
             <div className="relative">
               <button
