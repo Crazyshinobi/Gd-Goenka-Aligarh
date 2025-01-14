@@ -253,7 +253,7 @@ const ImageGallery = () => {
           position: relative;
         }
         .gallery-image {
-          width: 100%;
+          width: 400px;
           height: 200px;
           object-fit: cover;
           border-radius: 15px;
@@ -286,8 +286,8 @@ const ImageGallery = () => {
           overflow: hidden;
         }
         .fullscreen-image {
-          width: 100%;
-          height: 100%;
+          width: 800px;
+          height: 600px;
           object-fit: cover;
         }
         .close-btn {

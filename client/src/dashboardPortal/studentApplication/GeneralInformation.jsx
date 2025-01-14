@@ -14,9 +14,8 @@ const GeneralInformation = () => {
   const [submitted, setSubmitted] = useState(false); 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const currentStep = getFormStep(); // Get the current form step
+  const currentStep = getFormStep(); 
 
-  // Handle form field changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -25,41 +24,48 @@ const GeneralInformation = () => {
     });
   };
 
+  // Validate form data
   const validateForm = () => {
     let newErrors = {};
-    
+
     if (!formData.grade) newErrors.grade = "Grade is required";
-    
+
     if (formData.applied_before) {
       if (!formData.applied_year) newErrors.applied_year = "Academic year is required";
       if (!formData.applied_grade) newErrors.applied_grade = "Applied grade/class is required";
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; 
+    return Object.keys(newErrors).length === 0;
   };
 
   const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/`;
   const { postRequest, error } = usePostRequest(apiURL);
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();  
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
     if (validateForm()) {
-      const response = await postRequest(formData);
-      if(response && response.success){
-      setFormStep(1);  
-      setSubmitted(true);  
-      console.log("General Information Form Submitted Successfully!")
-      navigate("/student-application/personal-details");
-      }else{
-        console.log('General Information form not submitted!')
+      try {
+        const response = await postRequest(formData);
+  
+        if (response && response.success) {
+          setFormStep(1);  
+          setSubmitted(true);  
+          console.log("General Information Form Submitted Successfully!");
+          navigate("/student-application/personal-details");
+        } else {
+          console.error("Form submission failed:", error);
+          alert(error); 
+        }
+      } catch (err) {
+        console.error("Error occurred during form submission:", err);
       }
     }
   };
-
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Timeline - Show only for current step on large screens */}
       <div className="w-full hidden sm:block">
         <Timeline currentStep={currentStep} />
       </div>
@@ -103,7 +109,7 @@ const GeneralInformation = () => {
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">Academic year</label>
                   <input
-                    type="text"
+                    type="number"
                     name="applied_year"
                     value={formData.applied_year}
                     onChange={handleChange}
@@ -117,7 +123,7 @@ const GeneralInformation = () => {
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">Which class</label>
                   <input
-                    type="text"
+                    type="number"
                     name="applied_grade"
                     value={formData.applied_grade}
                     onChange={handleChange}
