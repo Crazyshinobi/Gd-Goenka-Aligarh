@@ -42,6 +42,13 @@ const loginAdmin = [
           .json({ success: false, message: "Invalid credentials" });
       }
 
+      // Check role
+      const isAdmin = admin.role === "admin" ? true : false;
+      if (!isAdmin) {
+        return res
+          .status(401)
+          .json({ success: false, message: "Not allowed to access this portal" });
+      }
       // Generate a token
       const token = jwt.sign(
         { id: admin._id, email: admin.email },
@@ -54,6 +61,7 @@ const loginAdmin = [
       res.json({
         success: true,
         message: "Login successful",
+        name: admin.name,
         token,
       });
     } catch (error) {
@@ -93,6 +101,7 @@ const createAdmin = [
       name,
       email,
       password: hashedPassword,
+      role,
     });
 
     const admin = await newAdmin.save();
@@ -254,12 +263,7 @@ const deleteAdmin = async (req, res) => {
       _id: id,
     });
     if (deletedAdmin.status) {
-      sendResponse(
-        res,
-        200,
-        true,
-        "Admin deleted successfully",
-      );
+      sendResponse(res, 200, true, "Admin deleted successfully");
     } else {
       sendResponse(res, 500, false, "Something went wrong");
     }
@@ -277,5 +281,5 @@ module.exports = {
   resetPassword,
   countAdmin,
   getAdmins,
-  deleteAdmin
+  deleteAdmin,
 };

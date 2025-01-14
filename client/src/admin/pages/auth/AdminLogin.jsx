@@ -28,8 +28,8 @@ export const AdminLogin = () => {
     const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admin/login`;
     try {
       const response = await axios.post(apiURL, { email, password });
-
       if (response.data.success) {
+        localStorage.setItem("username", response?.data?.name);
         Cookies.set("token", response.data.token, {
           expires: 1,
           secure: true,
