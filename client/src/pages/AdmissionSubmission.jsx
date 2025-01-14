@@ -127,7 +127,7 @@ const AdmissionSubmission = () => {
             boxShadow: "0 10px 20px rgba(0,0,0,0.1)"
           }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/admission/application-form')}
           className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 w-full mb-4"
         >
           Back to Home

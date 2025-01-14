@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import NavigationPages from "./NavigationPages";
 import bgdesign from "../assets/bgdesign3.jpg";
 import AdmissionSideBanner from "../assets/AdmissionFormSideImg.png";
 import { usePostRequest } from "../hooks/usePostRequest";
+import Cookies from "js-cookie";
 
 const AdmissionForm = () => {
   document.title = "Admission - GDGPS Aligarh";
@@ -26,7 +27,8 @@ const AdmissionForm = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
+  // Register form validation
+  const handleRegisterChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -34,7 +36,7 @@ const AdmissionForm = () => {
     }));
   };
 
-  const validateForm = () => {
+  const RegistervalidateForm = () => {
     let newErrors = {};
     if (!formData.name) newErrors.name = "Name is required";
     if (!formData.dob) newErrors.dob = "Date of birth is required";
@@ -46,23 +48,20 @@ const AdmissionForm = () => {
     else if (!/^[0-9]{10}$/.test(formData.mobile)) {
       newErrors.mobile = "Mobile number must be 10 digits";
     }
-    if (!formData.academic_year)
-      newErrors.academic_year = "Academic year is required";
+    if (!formData.academic_year) newErrors.academic_year = "Academic year is required";
     if (!formData.grade) newErrors.grade = "Class is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admission/`;
-  const { postRequest, error } = usePostRequest(apiURL);
+  const { postRequest } = usePostRequest(apiURL);
 
-  const handleSubmit = async (e) => {
+  const handleRegisterSubmit = async (e) => {
     e.preventDefault();
-
-    if (validateForm()) {
+    if (RegistervalidateForm()) {
       setLoading(true);
       const response = await postRequest(formData);
-
       if (response && response.success) {
         setFormData({
           name: "",
@@ -74,6 +73,7 @@ const AdmissionForm = () => {
         });
         toast.success("Form submitted successfully");
         setLoading(false);
+        navigate("/admission/application-submission");
       } else {
         toast.error("Failed to submit the form.");
         setLoading(false);
@@ -81,9 +81,44 @@ const AdmissionForm = () => {
     }
   };
 
-  const handleLoginSubmit = (e) => {
+  // Login form Validation
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const LoginValidateForm = () => {
+    let newErrors = {};
+    if (!loginData.email) newErrors.email = "Username or email is required";
+    if (!loginData.password) newErrors.password = "Password is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    toast.success("Logged in successfully");
+    if (LoginValidateForm()) {
+      setLoading(true);
+      const loginUrl = `${process.env.REACT_APP_BASE_URL}/api/v1/login`; 
+      const response = await postRequest(loginUrl, loginData);
+      if (response && response.success) {
+        Cookies.set("userToken", response.data.token, {
+          expires: 1,
+          secure: true,
+          sameSite: "Strict",
+        });
+        toast.success("Login successful");
+        setLoading(false);
+        navigate("/user/dashboard");
+        setLoginData({
+          email: "",
+          password: "",
+        });
+      } else {
+        toast.error("Something went wrong. Please try again");
+        setLoading(false);
+      }
+    }
   };
 
   const handleToggleForm = () => {
@@ -143,9 +178,7 @@ const AdmissionForm = () => {
                 <button
                   onClick={handleToggleForm}
                   className={`py-2 px-4 text-sm font-medium ${
-                    !isLogin
-                      ? "bg-red-600 text-white"
-                      : "bg-gray-200 text-gray-700"
+                    !isLogin ? "bg-red-600 text-white" : "bg-gray-200 text-gray-700"
                   } rounded-md`}
                 >
                   Register
@@ -153,9 +186,7 @@ const AdmissionForm = () => {
                 <button
                   onClick={handleToggleForm}
                   className={`py-2 px-4 text-sm font-medium ${
-                    isLogin
-                      ? "bg-red-600 text-white"
-                      : "bg-gray-200 text-gray-700"
+                    isLogin ? "bg-red-600 text-white" : "bg-gray-200 text-gray-700"
                   } rounded-md`}
                 >
                   Login
@@ -179,9 +210,19 @@ const AdmissionForm = () => {
                       type="text"
                       id="email"
                       name="email"
+                      value={loginData.email}
+                      onChange={(e) =>
+                        setLoginData({
+                          ...loginData,
+                          email: e.target.value,
+                        })
+                      }
                       className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       placeholder="Enter email or username"
                     />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
@@ -195,9 +236,19 @@ const AdmissionForm = () => {
                       type="password"
                       id="password"
                       name="password"
+                      value={loginData.password}
+                      onChange={(e) =>
+                        setLoginData({
+                          ...loginData,
+                          password: e.target.value,
+                        })
+                      }
                       className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       placeholder="Enter your password"
                     />
+                    {errors.password && (
+                      <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+                    )}
                   </div>
 
                   <button
@@ -209,7 +260,7 @@ const AdmissionForm = () => {
                 </form>
               ) : (
                 <form
-                  onSubmit={handleSubmit}
+                  onSubmit={handleRegisterSubmit}
                   className="space-y-6 md:space-y-8"
                 >
                   {/* Registration Form Fields (Same as before) */}
@@ -226,14 +277,12 @@ const AdmissionForm = () => {
                         id="name"
                         name="name"
                         value={formData.name}
-                        onChange={handleChange}
+                        onChange={handleRegisterChange}
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                         placeholder="Enter full name"
                       />
                       {errors.name && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.name}
-                        </p>
+                        <p className="mt-1 text-sm text-red-600">{errors.name}</p>
                       )}
                     </div>
                     <div>
@@ -248,13 +297,11 @@ const AdmissionForm = () => {
                         id="dob"
                         name="dob"
                         value={formData.dob}
-                        onChange={handleChange}
+                        onChange={handleRegisterChange}
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       />
                       {errors.dob && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.dob}
-                        </p>
+                        <p className="mt-1 text-sm text-red-600">{errors.dob}</p>
                       )}
                     </div>
 
@@ -270,14 +317,12 @@ const AdmissionForm = () => {
                         id="email"
                         name="email"
                         value={formData.email}
-                        onChange={handleChange}
+                        onChange={handleRegisterChange}
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                         placeholder="Enter your email"
                       />
                       {errors.email && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.email}
-                        </p>
+                        <p className="mt-1 text-sm text-red-600">{errors.email}</p>
                       )}
                     </div>
 
@@ -293,14 +338,12 @@ const AdmissionForm = () => {
                         id="mobile"
                         name="mobile"
                         value={formData.mobile}
-                        onChange={handleChange}
+                        onChange={handleRegisterChange}
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                         placeholder="Enter 10-digit mobile number"
                       />
                       {errors.mobile && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.mobile}
-                        </p>
+                        <p className="mt-1 text-sm text-red-600">{errors.mobile}</p>
                       )}
                     </div>
 
@@ -315,16 +358,14 @@ const AdmissionForm = () => {
                         id="academic_year"
                         name="academic_year"
                         value={formData.academic_year}
-                        onChange={handleChange}
+                        onChange={handleRegisterChange}
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       >
                         <option value="">Select academic year</option>
                         <option value="2025">2025-26</option>
                       </select>
                       {errors.academic_year && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.academic_year}
-                        </p>
+                        <p className="mt-1 text-sm text-red-600">{errors.academic_year}</p>
                       )}
                     </div>
 
@@ -339,30 +380,28 @@ const AdmissionForm = () => {
                         id="grade"
                         name="grade"
                         value={formData.grade}
-                        onChange={handleChange}
+                        onChange={handleRegisterChange}
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       >
                         <option value="">Select Class</option>
-                        <option value="classI">Nursery</option>
-                        <option value="classI">LKG</option>
-                        <option value="classI">UKG</option>
-                        <option value="classI">Class I</option>
-                        <option value="classII">Class II</option>
-                        <option value="classIII">Class III</option>
-                        <option value="classIV">Class IV</option>
-                        <option value="classV">Class V</option>
-                        <option value="classVI">Class VI</option>
-                        <option value="classVII">Class VII</option>
-                        <option value="classVIII">Class VIII</option>
-                        <option value="classIX">Class IX</option>
-                        <option value="classX">Class X</option>
-                        <option value="classXI">Class XI</option>
-                        <option value="classXII">Class XII</option>
+                        <option value="Nursery">Nursery</option>
+                        <option value="LKG">LKG</option>
+                        <option value="UKG">UKG</option>
+                        <option value="Class I">Class I</option>
+                        <option value="Class II">Class II</option>
+                        <option value="Class III">Class III</option>
+                        <option value="Class IV">Class IV</option>
+                        <option value="Class V">Class V</option>
+                        <option value="Class VI">Class VI</option>
+                        <option value="Class VII">Class VII</option>
+                        <option value="Class VIII">Class VIII</option>
+                        <option value="Class IX">Class IX</option>
+                        <option value="Class X">Class X</option>
+                        <option value="Class XI">Class XI</option>
+                        <option value="Class XII">Class XII</option>
                       </select>
                       {errors.grade && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.grade}
-                        </p>
+                        <p className="mt-1 text-sm text-red-600">{errors.grade}</p>
                       )}
                     </div>
                   </div>

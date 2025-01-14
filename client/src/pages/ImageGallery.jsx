@@ -51,7 +51,7 @@ const ImageGallery = () => {
       const filtered = selectedCategory === 'ALL'
         ? images.data
         : images.data.filter((image) => image.category === selectedCategory);
-      setFilteredImages(filtered);
+      setFilteredImages(filtered.reverse());
     } else {
       setFilteredImages([]);
     }

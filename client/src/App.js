@@ -43,6 +43,8 @@ import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
 import { ViewAdmin } from "./admin/pages/admins/ViewAdmin";
 import AdmissionSubmission from "./pages/AdmissionSubmission";
+import UserPrivateRoute from "./user/components/UserPrivateRoute";
+import UserDashboard from "./user/UserDashboard";
 
 
 function App() {
@@ -99,8 +101,13 @@ function App() {
       <Route path={"/job-application-form"} element={<JobApplicationForm />} />
       <Route path={"/fee-payment/fees-structure"} element={<FeeStructure />} />
       <Route path={"/admission/application-form"} element={<AdmissionForm />} />
-      <Route path={"/application-submission"} element={<AdmissionSubmission />} />
+      <Route path={"/admission/application-submission"} element={<AdmissionSubmission />} />
       <Route path="/student-application/*" element={<StudentApplicationRoutes />} />
+
+      {/* User Protected Routes */}
+      <Route path={"/user/dashboard"} element={
+        <UserDashboard/>
+      }/>
      
       {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}
       {/* <Route path={"/payment-failure"} element={<PaymentFailure />} /> */}
