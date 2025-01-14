@@ -13,7 +13,6 @@ const AdmissionForm = () => {
   document.title = "Admission - GDGPS Aligarh";
   const navigate = useNavigate();
 
-
   const [isLogin, setIsLogin] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -26,7 +25,6 @@ const AdmissionForm = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,6 +64,14 @@ const AdmissionForm = () => {
       const response = await postRequest(formData);
 
       if (response && response.success) {
+        setFormData({
+          name: "",
+          dob: "",
+          email: "",
+          mobile: "",
+          academic_year: "",
+          grade: "",
+        });
         toast.success("Form submitted successfully");
         setLoading(false);
       } else {
@@ -81,7 +87,7 @@ const AdmissionForm = () => {
   };
 
   const handleToggleForm = () => {
-    setIsLogin(!isLogin); 
+    setIsLogin(!isLogin);
   };
 
   return (
@@ -359,29 +365,6 @@ const AdmissionForm = () => {
                         </p>
                       )}
                     </div>
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                        placeholder="Enter full name"
-                      />
-                      {errors.name && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.name}
-                        </p>
-                      )}
-                    </div>
-                    {/* Add the rest of the form fields here */}
                   </div>
 
                   <button
