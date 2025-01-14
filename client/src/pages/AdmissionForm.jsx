@@ -8,12 +8,13 @@ import NavigationPages from "./NavigationPages";
 import bgdesign from "../assets/bgdesign3.jpg";
 import AdmissionSideBanner from "../assets/AdmissionFormSideImg.png";
 import { usePostRequest } from "../hooks/usePostRequest";
-import { setFormStep, isNewForm, getFormStep } from "../utils/status";
 
 const AdmissionForm = () => {
   document.title = "Admission - GDGPS Aligarh";
   const navigate = useNavigate();
 
+
+  const [isLogin, setIsLogin] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     dob: "",
@@ -25,16 +26,7 @@ const AdmissionForm = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false); // Track form submission state
-  const [isFormFilled, setIsFormFilled] = useState(false); // Track if form is partially filled
-  
-  useEffect(() => {
-    const savedFormData = JSON.parse(localStorage.getItem("admissionFormData"));
-    if (savedFormData) {
-      setFormData(savedFormData);
-      setIsFormFilled(true); // Mark form as partially filled
-    }
-  }, []);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,7 +48,8 @@ const AdmissionForm = () => {
     else if (!/^[0-9]{10}$/.test(formData.mobile)) {
       newErrors.mobile = "Mobile number must be 10 digits";
     }
-    if (!formData.academic_year) newErrors.academic_year = "Academic year is required";
+    if (!formData.academic_year)
+      newErrors.academic_year = "Academic year is required";
     if (!formData.grade) newErrors.grade = "Class is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -73,11 +66,7 @@ const AdmissionForm = () => {
       const response = await postRequest(formData);
 
       if (response && response.success) {
-        // Save form data to localStorage after successful submission
-        localStorage.setItem("admissionFormData", JSON.stringify(formData));
-        setFormStep(0); 
         toast.success("Form submitted successfully");
-        navigate('/student-application/general-information')
         setLoading(false);
       } else {
         toast.error("Failed to submit the form.");
@@ -86,43 +75,13 @@ const AdmissionForm = () => {
     }
   };
 
-  const handleResumeForm = () => {
-    const currentStep = getFormStep();
-    navigateToStep(currentStep); 
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Logged in successfully");
   };
 
-  const handleNewForm = ()=>{
-    localStorage.removeItem("admissionFormData")
-    setFormData({
-      name: "",
-      dob: "",
-      email: "",
-      mobile: "",
-      academic_year: "",
-      grade: "",
-    });
-  
-    // Reset errors and form submission state
-    setErrors({});
-    setIsFormFilled(false);
-    navigate('/admission/application-form')
-  }
-
-  const navigateToStep = (step) => {
-    const routes = [
-      "/student-application/general-information",
-      "/student-application/personal-details",
-      "/student-application/health-information",
-      "/student-application/educational-background",
-      "/student-application/parent-information",
-      "/student-application/other-relatives",
-    ];
-
-    if (step >= 0 && step < routes.length) {
-      navigate(routes[step]);
-    } else {
-      navigate("/admission");
-    }
+  const handleToggleForm = () => {
+    setIsLogin(!isLogin); 
   };
 
   return (
@@ -164,36 +123,96 @@ const AdmissionForm = () => {
             <div className="w-full lg:flex-[55%] md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-red-500">
               <div className="mb-6 md:mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600">
-                  Admission Form
+                  {isLogin ? "Login" : "Admission Form"}
                 </h2>
                 <p className="text-center text-gray-600 mt-2">
-                  Fill out the form below to apply for admission
+                  {isLogin
+                    ? "Login to your account"
+                    : "Fill out the form below to apply for admission"}
                 </p>
               </div>
 
-              {/* If the form is already partially filled */}
-              {isFormFilled ? (
-                <div className="text-center space-y-4">
-                  <p className="text-lg font-medium text-gray-800">
-                    You have already filled some details.
-                  </p>
+              {/* Form Toggle Buttons */}
+              <div className="flex justify-center space-x-6 mb-6">
+                <button
+                  onClick={handleToggleForm}
+                  className={`py-2 px-4 text-sm font-medium ${
+                    !isLogin
+                      ? "bg-red-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                  } rounded-md`}
+                >
+                  Register
+                </button>
+                <button
+                  onClick={handleToggleForm}
+                  className={`py-2 px-4 text-sm font-medium ${
+                    isLogin
+                      ? "bg-red-600 text-white"
+                      : "bg-gray-200 text-gray-700"
+                  } rounded-md`}
+                >
+                  Login
+                </button>
+              </div>
+
+              {/* Conditional Rendering for Register or Login */}
+              {isLogin ? (
+                <form
+                  onSubmit={handleLoginSubmit}
+                  className="space-y-6 md:space-y-8"
+                >
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Email or Username
+                    </label>
+                    <input
+                      type="text"
+                      id="email"
+                      name="email"
+                      className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                      placeholder="Enter email or username"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                      placeholder="Enter your password"
+                    />
+                  </div>
+
                   <button
-                    onClick={handleResumeForm}
-                    className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+                    type="submit"
+                    className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out"
                   >
-                    Complete Your Application
+                    {loading ? <div className="loader"></div> : "Login"}
                   </button>
-                  <button
-                  onClick={handleNewForm} className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out">
-                    Start a New Form 
-                  </button>
-                </div>
+                </form>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-                  {/* Form Fields */}
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-6 md:space-y-8"
+                >
+                  {/* Registration Form Fields (Same as before) */}
                   <div className="grid grid-cols-1 gap-4 md:gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Name
                       </label>
                       <input
@@ -206,11 +225,16 @@ const AdmissionForm = () => {
                         placeholder="Enter full name"
                       />
                       {errors.name && (
-                        <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.name}
+                        </p>
                       )}
                     </div>
                     <div>
-                      <label htmlFor="dob" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="dob"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Date of Birth
                       </label>
                       <input
@@ -222,12 +246,17 @@ const AdmissionForm = () => {
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       />
                       {errors.dob && (
-                        <p className="mt-1 text-sm text-red-600">{errors.dob}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.dob}
+                        </p>
                       )}
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Email
                       </label>
                       <input
@@ -240,12 +269,17 @@ const AdmissionForm = () => {
                         placeholder="Enter your email"
                       />
                       {errors.email && (
-                        <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.email}
+                        </p>
                       )}
                     </div>
 
                     <div>
-                      <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="mobile"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Mobile No.
                       </label>
                       <input
@@ -258,12 +292,17 @@ const AdmissionForm = () => {
                         placeholder="Enter 10-digit mobile number"
                       />
                       {errors.mobile && (
-                        <p className="mt-1 text-sm text-red-600">{errors.mobile}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.mobile}
+                        </p>
                       )}
                     </div>
 
                     <div>
-                      <label htmlFor="academic_year" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="academic_year"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Academic Year
                       </label>
                       <select
@@ -277,12 +316,17 @@ const AdmissionForm = () => {
                         <option value="2025">2025-26</option>
                       </select>
                       {errors.academic_year && (
-                        <p className="mt-1 text-sm text-red-600">{errors.academic_year}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.academic_year}
+                        </p>
                       )}
                     </div>
 
                     <div>
-                      <label htmlFor="grade" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="grade"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Class
                       </label>
                       <select
@@ -310,9 +354,34 @@ const AdmissionForm = () => {
                         <option value="classXII">Class XII</option>
                       </select>
                       {errors.grade && (
-                        <p className="mt-1 text-sm text-red-600">{errors.grade}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.grade}
+                        </p>
                       )}
                     </div>
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                        placeholder="Enter full name"
+                      />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.name}
+                        </p>
+                      )}
+                    </div>
+                    {/* Add the rest of the form fields here */}
                   </div>
 
                   <button
