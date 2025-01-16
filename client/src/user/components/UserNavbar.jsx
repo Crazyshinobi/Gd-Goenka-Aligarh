@@ -51,8 +51,9 @@ export const Usernavbar = ({ mobileMenu, setMobileMenu }) => {
   };
 
   const signOut = () => {
-    Cookies.remove("token");
-    navigate("/admission/application-form");
+    Cookies.remove("userToken");
+    localStorage.removeItem("studentname")
+    navigate("/admission/application-form/login");
   };
 
   useEffect(() => {
@@ -87,7 +88,7 @@ export const Usernavbar = ({ mobileMenu, setMobileMenu }) => {
                 ></path>
               </svg>
             </button>
-            <Link to="/admin" className="flex items-center space-x-3">
+            <Link to="/user/dashboard" className="flex items-center space-x-3">
               <span className="hidden lg:block text-2xl font-semibold text-black dark:text-white">
                 GD Goenka Aligarh
               </span>
@@ -132,6 +133,10 @@ export const Usernavbar = ({ mobileMenu, setMobileMenu }) => {
                 />
               </svg>
             </button>
+
+            <div>
+              <p>Welcome {localStorage.getItem("studentname").split(" ")[0] || "Guest"}! </p>
+            </div>
 
             {/* Profile Dropdown */}
             <div className="relative">

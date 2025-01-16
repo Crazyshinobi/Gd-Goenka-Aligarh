@@ -15,6 +15,7 @@ const sendOtpEmail = async (email) => {
     throw new Error("Admin not found");
   }
 
+  const greeting = admin.role === "admin" ? "Dear Admin," : "Dear User," ;
   // Update admin with OTP and expiration
   admin.resetOtp = otp;
   admin.otpExpires = otpExpires;
@@ -34,7 +35,7 @@ const sendOtpEmail = async (email) => {
 <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
     <div style="max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
         <h1 style="color: #333; font-size: 24px; margin: 0;">OTP Verification</h1>
-        <p style="font-size: 16px; line-height: 1.5; color: #555; margin: 20px 0;">Dear Admin,</p>
+        <p style="font-size: 16px; line-height: 1.5; color: #555; margin: 20px 0;">${greeting}</p>
         <p style="font-size: 16px; line-height: 1.5; color: #555; margin: 20px 0;">Thank you for using our service. To reset your password, please use the following One-Time Password (OTP):</p>
         
         <div style="font-size: 24px; font-weight: bold; color: #007bff; margin: 20px 0;">${otp}</div>

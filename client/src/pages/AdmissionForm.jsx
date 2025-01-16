@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom"; // Add useLocation
 import { Layout } from "../components/Layout";
 import AdmissionBanner from "../assets/AdmissionBanner.jpeg";
 import NavigationPages from "./NavigationPages";
@@ -13,8 +13,22 @@ import Cookies from "js-cookie";
 const AdmissionForm = () => {
   document.title = "Admission - GDGPS Aligarh";
   const navigate = useNavigate();
+  const location = useLocation(); // Get the current location
+  const [loading, setLoading] = useState(false);
 
-  const [isLogin, setIsLogin] = useState(false);
+  const admissionApi = usePostRequest(
+    `${process.env.REACT_APP_BASE_URL}/api/v1/admission`
+  );
+  const registerApi = usePostRequest(
+    `${process.env.REACT_APP_BASE_URL}/api/v1/user/register`
+  );
+  const loginApi = usePostRequest(
+    `${process.env.REACT_APP_BASE_URL}/api/v1/user/login`
+  );
+
+  const [isLogin, setIsLogin] = useState(false); // State to toggle between login and register forms
+  const [showPassword, setShowPassword] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     dob: "",
@@ -24,68 +38,129 @@ const AdmissionForm = () => {
     grade: "",
   });
 
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
 
-  // Register form validation
-  const handleRegisterChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const RegistervalidateForm = () => {
-    let newErrors = {};
-    if (!formData.name) newErrors.name = "Name is required";
-    if (!formData.dob) newErrors.dob = "Date of birth is required";
-    if (!formData.email) newErrors.email = "Email is required";
-    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
-      newErrors.email = "Invalid email address";
+  // Sync the isLogin state with the current URL
+  useEffect(() => {
+    if (location.pathname === "/admission/application-form/login") {
+      setIsLogin(true); // Show the login form
+    } else {
+      setIsLogin(false); // Show the registration form
     }
-    if (!formData.mobile) newErrors.mobile = "Mobile number is required";
-    else if (!/^[0-9]{10}$/.test(formData.mobile)) {
-      newErrors.mobile = "Mobile number must be 10 digits";
-    }
-    if (!formData.academic_year) newErrors.academic_year = "Academic year is required";
-    if (!formData.grade) newErrors.grade = "Class is required";
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admission/`;
-  const { postRequest } = usePostRequest(apiURL);
+  }, [location.pathname]); // Re-run this effect when the URL changes
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
+
     if (RegistervalidateForm()) {
-      setLoading(true);
-      const response = await postRequest(formData);
-      if (response && response.success) {
-        setFormData({
-          name: "",
-          dob: "",
-          email: "",
-          mobile: "",
-          academic_year: "",
-          grade: "",
-        });
-        toast.success("Form submitted successfully");
+      setLoading(true); // Set loading to true when submitting
+
+      try {
+        // Submit admission form
+        const admissionResponse = await admissionApi.postRequest(formData);
+
+        if (admissionResponse?.success) {
+          // If admission successful, proceed with registration
+          const registerResponse = await registerApi.postRequest({
+            name: formData.name,
+            email: formData.email,
+          });
+
+          if (registerResponse?.success) {
+            setFormData({
+              name: "",
+              dob: "",
+              email: "",
+              mobile: "",
+              academic_year: "",
+              grade: "",
+            });
+
+            toast.success("Application submitted successfully!");
+            navigate("/admission/application-submission");
+          } else {
+            toast.error("Registration failed!");
+          }
+        } else {
+          toast.error("Admission submission failed!");
+        }
+      } catch (error) {
+        console.error("Error in form submission:", error);
+        toast.error("An error occurred. Please try again later.");
+      } finally {
         setLoading(false);
-        navigate("/admission/application-submission");
-      } else {
-        toast.error("Failed to submit the form.");
+      }
+    } else {
+      toast.error("Please fill in all required fields correctly.");
+    }
+  };
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log("Login form submitted");
+
+    if (LoginValidateForm()) {
+      setLoading(true);
+      console.log("Form validated successfully");
+      try {
+        const response = await loginApi.postRequest(loginData);
+        console.log("Response from login API:", response);
+
+        if (response?.success && response?.userToken) {
+          console.log("Login successful, setting token in cookies");
+          Cookies.set("userToken", response.userToken, {
+            expires: 1,
+            secure: true,
+            sameSite: "Strict",
+          });
+
+          if (response.name) {
+            // Access name directly from the response
+            localStorage.setItem("studentname", response.name); // Use the correct key
+          } else {
+            console.warn("User name not found in the response");
+          }
+
+          toast.success("Login successful");
+          setTimeout(() => {
+            navigate("/user/dashboard");
+          }, 1000);
+        } else {
+          toast.error("Login failed");
+        }
+      } catch (error) {
+        console.error("Login error:", error);
+        toast.error("An error occurred. Please try again later.");
+      } finally {
         setLoading(false);
       }
     }
   };
 
-  // Login form Validation
-  const [loginData, setLoginData] = useState({
-    email: "",
-    password: "",
-  });
+  const RegistervalidateForm = () => {
+    let newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.dob) newErrors.dob = "Date of birth is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
+      newErrors.email = "Invalid email address";
+    }
+    if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
+    else if (!/^[0-9]{10}$/.test(formData.mobile)) {
+      newErrors.mobile = "Mobile number must be 10 digits";
+    }
+    if (!formData.academic_year)
+      newErrors.academic_year = "Academic year is required";
+    if (!formData.grade) newErrors.grade = "Class is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const LoginValidateForm = () => {
     let newErrors = {};
@@ -95,34 +170,22 @@ const AdmissionForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleLoginSubmit = async (e) => {
-    e.preventDefault();
-    if (LoginValidateForm()) {
-      setLoading(true);
-      const loginUrl = `${process.env.REACT_APP_BASE_URL}/api/v1/login`; 
-      const response = await postRequest(loginUrl, loginData);
-      if (response && response.success) {
-        Cookies.set("userToken", response.data.token, {
-          expires: 1,
-          secure: true,
-          sameSite: "Strict",
-        });
-        toast.success("Login successful");
-        setLoading(false);
-        navigate("/user/dashboard");
-        setLoginData({
-          email: "",
-          password: "",
-        });
-      } else {
-        toast.error("Something went wrong. Please try again");
-        setLoading(false);
-      }
-    }
+  const handleRegisterChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
-  const handleToggleForm = () => {
-    setIsLogin(!isLogin);
+  const handleToggleForm = (isLogin) => {
+    setIsLogin(isLogin);
+    if (isLogin) {
+      navigate("/admission/application-form/login"); // Navigate to login route
+    } else {
+      navigate("/admission/application-form"); // Navigate back to the main form
+    }
   };
 
   return (
@@ -173,32 +236,35 @@ const AdmissionForm = () => {
                 </p>
               </div>
 
-              {/* Form Toggle Buttons */}
               <div className="flex justify-center space-x-6 mb-6">
                 <button
-                  onClick={handleToggleForm}
+                  onClick={() => handleToggleForm(false)} // Navigate to the main form
                   className={`py-2 px-4 text-sm font-medium ${
-                    !isLogin ? "bg-red-600 text-white" : "bg-gray-200 text-gray-700"
+                    !isLogin
+                      ? "bg-red-600 text-white"
+                      : "bg-gray-200 text-gray-700"
                   } rounded-md`}
                 >
                   Register
                 </button>
                 <button
-                  onClick={handleToggleForm}
+                  onClick={() => handleToggleForm(true)} // Navigate to the login route
                   className={`py-2 px-4 text-sm font-medium ${
-                    isLogin ? "bg-red-600 text-white" : "bg-gray-200 text-gray-700"
+                    isLogin
+                      ? "bg-red-600 text-white"
+                      : "bg-gray-200 text-gray-700"
                   } rounded-md`}
                 >
                   Login
                 </button>
               </div>
 
-              {/* Conditional Rendering for Register or Login */}
               {isLogin ? (
                 <form
                   onSubmit={handleLoginSubmit}
                   className="space-y-6 md:space-y-8"
                 >
+                  {/* Login form fields */}
                   <div>
                     <label
                       htmlFor="email"
@@ -221,7 +287,9 @@ const AdmissionForm = () => {
                       placeholder="Enter email or username"
                     />
                     {errors.email && (
-                      <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                      <p className="mt-1 text-sm text-red-600">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
 
@@ -232,23 +300,87 @@ const AdmissionForm = () => {
                     >
                       Password
                     </label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      value={loginData.password}
-                      onChange={(e) =>
-                        setLoginData({
-                          ...loginData,
-                          password: e.target.value,
-                        })
-                      }
-                      className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                      placeholder="Enter your password"
-                    />
-                    {errors.password && (
-                      <p className="mt-1 text-sm text-red-600">{errors.password}</p>
-                    )}
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        id="password"
+                        name="password"
+                        value={loginData.password}
+                        onChange={(e) =>
+                          setLoginData({
+                            ...loginData,
+                            password: e.target.value,
+                          })
+                        }
+                        className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                        placeholder="Enter your password"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-2 top-[50%] transform -translate-y-[50%] text-gray-600 focus:outline-none"
+                      >
+                        {showPassword ? (
+                          <span>
+                            <svg
+                              className="w-4 h-4 lg:w-6 lg:h-6 text-gray-800"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                              />
+                              <path
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                              />
+                            </svg>
+                          </span>
+                        ) : (
+                          <span>
+                            <svg
+                              className="w-4 h-4 lg:w-6 lg:h-6 text-gray-800"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                stroke="currentColor"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                              />
+                            </svg>
+                          </span>
+                        )}
+                      </button>
+                      {errors.password && (
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.password}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="col-span-12">
+                    <div className="flex justify-end">
+                      <Link to="/user/forgot-password">
+                        <p className="text-black hover:underline text-xs md:text-sm lg:text-lg">
+                          Forgot Password?
+                        </p>
+                      </Link>
+                    </div>
                   </div>
 
                   <button
@@ -263,7 +395,7 @@ const AdmissionForm = () => {
                   onSubmit={handleRegisterSubmit}
                   className="space-y-6 md:space-y-8"
                 >
-                  {/* Registration Form Fields (Same as before) */}
+                  {/* Registration form fields */}
                   <div className="grid grid-cols-1 gap-4 md:gap-6">
                     <div>
                       <label
@@ -282,7 +414,9 @@ const AdmissionForm = () => {
                         placeholder="Enter full name"
                       />
                       {errors.name && (
-                        <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.name}
+                        </p>
                       )}
                     </div>
                     <div>
@@ -301,7 +435,9 @@ const AdmissionForm = () => {
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       />
                       {errors.dob && (
-                        <p className="mt-1 text-sm text-red-600">{errors.dob}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.dob}
+                        </p>
                       )}
                     </div>
 
@@ -322,7 +458,9 @@ const AdmissionForm = () => {
                         placeholder="Enter your email"
                       />
                       {errors.email && (
-                        <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.email}
+                        </p>
                       )}
                     </div>
 
@@ -343,7 +481,9 @@ const AdmissionForm = () => {
                         placeholder="Enter 10-digit mobile number"
                       />
                       {errors.mobile && (
-                        <p className="mt-1 text-sm text-red-600">{errors.mobile}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.mobile}
+                        </p>
                       )}
                     </div>
 
@@ -365,7 +505,9 @@ const AdmissionForm = () => {
                         <option value="2025">2025-26</option>
                       </select>
                       {errors.academic_year && (
-                        <p className="mt-1 text-sm text-red-600">{errors.academic_year}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.academic_year}
+                        </p>
                       )}
                     </div>
 
@@ -401,7 +543,9 @@ const AdmissionForm = () => {
                         <option value="Class XII">Class XII</option>
                       </select>
                       {errors.grade && (
-                        <p className="mt-1 text-sm text-red-600">{errors.grade}</p>
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.grade}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -419,8 +563,8 @@ const AdmissionForm = () => {
         </div>
       </div>
 
-      <style>{`
-        .loader {
+      <style>{
+        `.loader {
           border: 4px solid rgba(255, 255, 255, 0.3);
           border-top: 4px solid #fff;
           border-radius: 50%;
@@ -437,8 +581,8 @@ const AdmissionForm = () => {
           100% {
             transform: rotate(360deg);
           }
-        }
-      `}</style>
+        }`
+      }</style>
     </Layout>
   );
 };

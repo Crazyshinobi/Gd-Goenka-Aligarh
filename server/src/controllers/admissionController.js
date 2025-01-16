@@ -8,7 +8,7 @@ const Admission = require("../models/Admission");
 const { sendResponse } = require("../utils/responseUtils");
 
 const createAdmission = async (req, res) => {
-  const { academic_year, board, grade, name, dob, mobile, email } = req.body;
+  const { academic_year, grade, name, dob, mobile, email } = req.body;
 
   if (
     !academic_year ||

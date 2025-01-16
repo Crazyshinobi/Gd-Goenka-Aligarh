@@ -40,24 +40,15 @@ import { ViewGallery } from "./admin/pages/gallery/ViewGallery";
 import { ViewJobApplication } from "./admin/pages/jobApplication/ViewJobApplication";
 import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
-<<<<<<< HEAD
-import { ViewAdmin } from "./admin/pages/admins/ViewAdmin";
 import AdmissionSubmission from "./pages/AdmissionSubmission";
 import UserPrivateRoute from "./user/components/UserPrivateRoute";
-import UserDashboard from "./user/UserDashboard";
 
-=======
-import CurrentOpening from "./pages/CurrentOpening";
-import JobApplicationForm from "./pages/JobApplicationForm";
-import FeeStructure from "./pages/FeeStructure";
-import AdmissionForm from "./pages/AdmissionForm";
 import PaymentSuccess from "./dashboardPortal/paymentPages/PaymentSuccess";
 import PaymentFailure from "./dashboardPortal/paymentPages/PaymentFailure";
-import RecognisationCet from "./pages/Recognisation-Cet-Nur-to-8";
-import StudentApplicationRoutes from "./dashboardPortal/studentApplication/StudentApplicationRoutes";
 import { ViewUser } from "./admin/pages/user/ViewUser";
 import { AddUser } from "./admin/pages/user/AddUser";
->>>>>>> bb6a6bbf5b369ea9d176cb1bd81832396beb5195
+import { UserDashboard } from "./user/UserDashboard";
+import { UserForgotPassword } from "./user/auth/UserForgetPassword";
 
 function App() {
   return (
@@ -113,22 +104,37 @@ function App() {
       <Route path={"/job-application-form"} element={<JobApplicationForm />} />
       <Route path={"/fee-payment/fees-structure"} element={<FeeStructure />} />
       <Route path={"/admission/application-form"} element={<AdmissionForm />} />
-      <Route path={"/admission/application-submission"} element={<AdmissionSubmission />} />
-      <Route path="/student-application/*" element={<StudentApplicationRoutes />} />
+      <Route path="/admission/application-form/login" element={<AdmissionForm />} />
+      <Route
+        path={"/admission/application-submission"}
+        element={<AdmissionSubmission />}
+      />
+      <Route
+        path="/student-application/*"
+        element={<StudentApplicationRoutes />}
+      />
+
+      <Route path={"/user/forgot-password"} element={<UserForgotPassword/>}/>
+
+      
 
       {/* User Protected Routes */}
-      <Route path={"/user/dashboard"} element={
-        <UserDashboard/>
-      }/>
-     
+      <Route
+        path={"/user/dashboard"}
+        element={
+          <UserPrivateRoute>
+            <UserDashboard/>
+          </UserPrivateRoute>
+        }
+      />
+
       {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}
       {/* <Route path={"/payment-failure"} element={<PaymentFailure />} /> */}
-      
+
       <Route
         path={"/about/mandatory-disclosure/RecognisationCet"}
         element={<RecognisationCet />}
       />
-      
 
       {/* Admin Routes */}
       <Route path={"/admin"} element={<AdminLogin />} />

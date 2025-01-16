@@ -9,7 +9,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { useFetchData } from '../hooks/useFetchData';
 import bgDesign from "../assets/bgdesign3.jpg";
-import GalleryBanner from '../assets/GalleryBanner1.jpeg'
+import GalleryBanner from '../assets/Family.jpg'
 import { IoIosClose } from "react-icons/io";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -313,6 +313,11 @@ const ImageGallery = () => {
           }
           .gallery-image {
             height: 150px;
+          }
+          .fullscreen-image {
+            width: 500px;
+            height: 400px;
+            object-fit: cover;
           }
         }
       `}</style>
