@@ -21,6 +21,8 @@ export const ViewUser = () => {
     {
       field: "role",
       header: "Role",
+      sortable: true,
+      body: (rowData) => (rowData.role === "admin" ? "Admin" : "User"),
     },
     {
       field: "createdAt",

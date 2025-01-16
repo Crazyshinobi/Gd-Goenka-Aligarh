@@ -134,7 +134,7 @@ export const AdminNavbar = ({ mobileMenu, setMobileMenu }) => {
             </button>
 
             <div>
-              <p>Welcome {localStorage.getItem("username").split(" ")[0] || "Guest"}! </p>
+              <p className="dark:text-white">Welcome {localStorage.getItem("username").split(" ")[0] || "Guest"}! </p>
             </div>
             {/* Profile Dropdown */}
             <div className="relative">
