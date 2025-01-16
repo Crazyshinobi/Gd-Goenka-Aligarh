@@ -42,7 +42,7 @@ import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
 import AdmissionSubmission from "./pages/AdmissionSubmission";
 import UserPrivateRoute from "./user/components/UserPrivateRoute";
-
+// import UserDashboard from "./user/UserDashboard";
 import PaymentSuccess from "./dashboardPortal/paymentPages/PaymentSuccess";
 import PaymentFailure from "./dashboardPortal/paymentPages/PaymentFailure";
 import { ViewUser } from "./admin/pages/user/ViewUser";
