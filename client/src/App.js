@@ -23,7 +23,6 @@ import AdmissionForm from "./pages/AdmissionForm";
 import CurrentOpening from "./pages/CurrentOpening";
 import JobApplicationForm from "./pages/JobApplicationForm";
 import RecognisationCet from "./pages/Recognisation-Cet-Nur-to-8";
-import StudentApplicationRoutes from "./dashboardPortal/studentApplication/StudentApplicationRoutes";
 // Admin Imports
 import { Dashboard } from "./admin/Dashboard";
 import { AdminLogin } from "./admin/pages/auth/AdminLogin";
@@ -40,235 +39,328 @@ import { ViewGallery } from "./admin/pages/gallery/ViewGallery";
 import { ViewJobApplication } from "./admin/pages/jobApplication/ViewJobApplication";
 import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
+import { ViewAdmissionApplicationQuery } from "./admin/pages/admissionApplicationQuery/ViewAdmissionApplicationQuery";
+
+// User Import
 import AdmissionSubmission from "./pages/AdmissionSubmission";
 import UserPrivateRoute from "./user/components/UserPrivateRoute";
-// import UserDashboard from "./user/UserDashboard";
-import PaymentSuccess from "./dashboardPortal/paymentPages/PaymentSuccess";
-import PaymentFailure from "./dashboardPortal/paymentPages/PaymentFailure";
 import { ViewUser } from "./admin/pages/user/ViewUser";
 import { AddUser } from "./admin/pages/user/AddUser";
 import { UserDashboard } from "./user/UserDashboard";
 import { UserForgotPassword } from "./user/auth/UserForgetPassword";
-import { ViewAdmissionApplicationQuery } from "./admin/pages/admissionApplicationQuery/ViewAdmissionApplicationQuery";
+import { GeneralInformation } from "./user/forms/GeneralInformation";
+import { PersonalDetails } from "./user/forms/PersonalDetails";
+import { FormProvider } from "./user/forms/FormContext";
+import { HealthInformation } from "./user/forms/HealthInformation";
+import { EducationalBackground } from "./user/forms/EducationalBackground";
+import { ParentInformation } from "./user/forms/ParentInformation";
+import { OtherRelatives } from "./user/forms/OtherRelatives";
+import { SuccessPage } from "./user/forms/SuccessPage";
+import { TransportFacility } from "./user/forms/TransportFacility";
+
 
 function App() {
   return (
-    <Routes>
-      <Route path={"/"} element={<Home />} />
-      <Route path={"/about/principal-message"} element={<PrincipalMessage />} />
-      <Route path={"/about/Management"} element={<ManagementPage />} />
-      <Route
-        path={"/about/vision-and-mission"}
-        element={<VisionAndMission />}
-      />
-      <Route
-        path={"/about/mandatory-disclosure"}
-        element={<MandatoryDisclosure />}
-      />
-      <Route
-        path={"/academics/faculty-&-curriculum"}
-        element={<FacultyAndCurriculum />}
-      />
-      <Route
-        path={"/academics/teaching-methodology"}
-        element={<TeachingMethodology />}
-      />
-      <Route
-        path={"/academics/igniting-minds"}
-        element={<IgnitingMindsPage />}
-      />
-      <Route
-        path={"/academics/competition-&-awards"}
-        element={<CompetitionAwards />}
-      />
-      <Route
-        path={"/academics/authorised-book-seller"}
-        element={<BookSeller />}
-      />
-      <Route path={"/beyond-academics"} element={<BeyondAcademics />} />
-      <Route
-        path={"/our-campus/class-infrastructure"}
-        element={<ClassInfrastructure />}
-      />
-      <Route
-        path={"/our-campus/labs-and-library"}
-        element={<LabsAndLibrary />}
-      />
-      <Route path={"/activities"} element={<Activities />} />
-      <Route path={"/gallery"} element={<ImageGallery />} />
-      <Route path={"/contact-us"} element={<ContactForm />} />
-      <Route
-        path={"/academics/goenkan-pursuits"}
-        element={<GoenkanPursuits />}
-      />
-      <Route path={"/career/current-openings"} element={<CurrentOpening />} />
-      <Route path={"/job-application-form"} element={<JobApplicationForm />} />
-      <Route path={"/fee-payment/fees-structure"} element={<FeeStructure />} />
-      <Route path={"/admission/application-form"} element={<AdmissionForm />} />
-      <Route
-        path="/admission/application-form/login"
-        element={<AdmissionForm />}
-      />
-      <Route
-        path={"/admission/application-submission"}
-        element={<AdmissionSubmission />}
-      />
-      <Route
-        path="/student-application/*"
-        element={<StudentApplicationRoutes />}
-      />
+    <FormProvider>
+      <Routes>
+        <Route path={"/"} element={<Home />} />
+        <Route
+          path={"/about/principal-message"}
+          element={<PrincipalMessage />}
+        />
+        <Route path={"/about/Management"} element={<ManagementPage />} />
+        <Route
+          path={"/about/vision-and-mission"}
+          element={<VisionAndMission />}
+        />
+        <Route
+          path={"/about/mandatory-disclosure"}
+          element={<MandatoryDisclosure />}
+        />
+        <Route
+          path={"/academics/faculty-&-curriculum"}
+          element={<FacultyAndCurriculum />}
+        />
+        <Route
+          path={"/academics/teaching-methodology"}
+          element={<TeachingMethodology />}
+        />
+        <Route
+          path={"/academics/igniting-minds"}
+          element={<IgnitingMindsPage />}
+        />
+        <Route
+          path={"/academics/competition-&-awards"}
+          element={<CompetitionAwards />}
+        />
+        <Route
+          path={"/academics/authorised-book-seller"}
+          element={<BookSeller />}
+        />
+        <Route path={"/beyond-academics"} element={<BeyondAcademics />} />
+        <Route
+          path={"/our-campus/class-infrastructure"}
+          element={<ClassInfrastructure />}
+        />
+        <Route
+          path={"/our-campus/labs-and-library"}
+          element={<LabsAndLibrary />}
+        />
+        <Route path={"/activities"} element={<Activities />} />
+        <Route path={"/gallery"} element={<ImageGallery />} />
+        <Route path={"/contact-us"} element={<ContactForm />} />
+        <Route
+          path={"/academics/goenkan-pursuits"}
+          element={<GoenkanPursuits />}
+        />
+        <Route path={"/career/current-openings"} element={<CurrentOpening />} />
+        <Route
+          path={"/job-application-form"}
+          element={<JobApplicationForm />}
+        />
+        <Route
+          path={"/fee-payment/fees-structure"}
+          element={<FeeStructure />}
+        />
+        <Route
+          path={"/admission/application-form"}
+          element={<AdmissionForm />}
+        />
+        <Route
+          path="/admission/application-form/login"
+          element={<AdmissionForm />}
+        />
+        <Route
+          path={"/admission/application-submission"}
+          element={<AdmissionSubmission />}
+        />
 
-      <Route path={"/user/forgot-password"} element={<UserForgotPassword />} />
+        <Route
+          path={"/user/forgot-password"}
+          element={<UserForgotPassword />}
+        />
 
-      {/* User Protected Routes */}
-      <Route
-        path={"/user/dashboard"}
-        element={
-          <UserPrivateRoute>
-            <UserDashboard />
-          </UserPrivateRoute>
-        }
-      />
+        {/* User Protected Routes */}
 
-      {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}
-      {/* <Route path={"/payment-failure"} element={<PaymentFailure />} /> */}
+        <Route
+          path={"/user/dashboard"}
+          element={
+            <UserPrivateRoute>
+              <UserDashboard />
+            </UserPrivateRoute>
+          }
+        />
+        {/* GeneralInformation */}
+        <Route
+          path={"/user/general-information"}
+          element={
+            <UserPrivateRoute>
+              <GeneralInformation />
+            </UserPrivateRoute>
+          }
+        />
 
-      <Route
-        path={"/about/mandatory-disclosure/RecognisationCet"}
-        element={<RecognisationCet />}
-      />
+        {/* Personal Details */}
+        <Route
+          path={"/user/personal-details"}
+          element={
+            <UserPrivateRoute>
+              <PersonalDetails />
+            </UserPrivateRoute>
+          }
+        />
 
-      {/* Admin Routes */}
-      <Route path={"/admin"} element={<AdminLogin />} />
-      <Route path={"/admin/forgot-password"} element={<ForgotPassword />} />
+        {/* Health Information */}
+        <Route
+          path={"/user/health-information"}
+          element={
+            <UserPrivateRoute>
+              <HealthInformation />
+            </UserPrivateRoute>
+          }
+        />
 
-      {/* Admin Protected Routes */}
-      {/* Dashboard */}
-      <Route
-        path={"/admin/dashboard"}
-        element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        }
-      />
-      {/* Admin  */}
-      <Route
-        path={"/admin/add-user"}
-        element={
-          <PrivateRoute>
-            <AddUser />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={"/admin/view-user"}
-        element={
-          <PrivateRoute>
-            <ViewUser />
-          </PrivateRoute>
-        }
-      />
-      {/* Contact */}
-      <Route
-        path={"/admin/view-contact"}
-        element={
-          <PrivateRoute>
-            <ViewContact />
-          </PrivateRoute>
-        }
-      />
-      {/* Job  */}
-      <Route
-        path={"/admin/add-job"}
-        element={
-          <PrivateRoute>
-            <AddJob />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={"/admin/view-job"}
-        element={
-          <PrivateRoute>
-            <ViewJob />
-          </PrivateRoute>
-        }
-      />
-      {/* Admission  */}
-      <Route
-        path={"/admin/view-admission"}
-        element={
-          <PrivateRoute>
-            <ViewAddmission />
-          </PrivateRoute>
-        }
-      />
-      {/* Admission Application */}
-      <Route
-        path={"/admin/view-admission-application"}
-        element={
-          <PrivateRoute>
-            <ViewAdmissionApplication />
-          </PrivateRoute>
-        }
-      />
-      {/* Admission Application Query*/}
-      <Route
-        path={"/admin/view-admission-application-query"}
-        element={
-          <PrivateRoute>
-            <ViewAdmissionApplicationQuery />
-          </PrivateRoute>
-        }
-      />
-      {/* Gallery  */}
-      <Route
-        path={"/admin/add-gallery"}
-        element={
-          <PrivateRoute>
-            <AddGallery />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={"/admin/view-gallery"}
-        element={
-          <PrivateRoute>
-            <ViewGallery />
-          </PrivateRoute>
-        }
-      />
-      {/* Content  */}
-      <Route
-        path={"/admin/add-content"}
-        element={
-          <PrivateRoute>
-            <AddContent />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={"/admin/view-content"}
-        element={
-          <PrivateRoute>
-            <ViewContent />
-          </PrivateRoute>
-        }
-      />
+        {/* Educational Background */}
+        <Route
+          path={"/user/educational-background"}
+          element={
+            <UserPrivateRoute>
+              <EducationalBackground />
+            </UserPrivateRoute>
+          }
+        />
 
-      {/* Job Applications  */}
-      <Route
-        path={"/admin/view-job-applications"}
-        element={
-          <PrivateRoute>
-            <ViewJobApplication />
-          </PrivateRoute>
-        }
-      />
+        {/* Parent Information */}
+        <Route
+          path={"/user/parent-information"}
+          element={
+            <UserPrivateRoute>
+              <ParentInformation />
+            </UserPrivateRoute>
+          }
+        />
 
-      <Route path="/*" element={<Error404 />} />
-    </Routes>
+        {/* Other Relatives */}
+        <Route
+          path={"/user/other-relatives"}
+          element={
+            <UserPrivateRoute>
+              <OtherRelatives />
+            </UserPrivateRoute>
+          }
+        />
+
+        {/* transport faciility */}
+        <Route
+          path={"/user/transport-facility"}
+          element={<UserPrivateRoute>{<TransportFacility/>}</UserPrivateRoute>}
+        />
+
+        <Route
+          path={"/user/success"}
+          element={<UserPrivateRoute>{<SuccessPage/>}</UserPrivateRoute>}
+        />
+
+        {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}
+        {/* <Route path={"/payment-failure"} element={<PaymentFailure />} /> */}
+
+        <Route
+          path={"/about/mandatory-disclosure/RecognisationCet"}
+          element={<RecognisationCet />}
+        />
+
+        {/* Admin Routes */}
+        <Route path={"/admin"} element={<AdminLogin />} />
+        <Route path={"/admin/forgot-password"} element={<ForgotPassword />} />
+
+        {/* Admin Protected Routes */}
+        {/* Dashboard */}
+        <Route
+          path={"/admin/dashboard"}
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        {/* Admin  */}
+        <Route
+          path={"/admin/add-user"}
+          element={
+            <PrivateRoute>
+              <AddUser />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/admin/view-user"}
+          element={
+            <PrivateRoute>
+              <ViewUser />
+            </PrivateRoute>
+          }
+        />
+        {/* Contact */}
+        <Route
+          path={"/admin/view-contact"}
+          element={
+            <PrivateRoute>
+              <ViewContact />
+            </PrivateRoute>
+          }
+        />
+        {/* Job  */}
+        <Route
+          path={"/admin/add-job"}
+          element={
+            <PrivateRoute>
+              <AddJob />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/admin/view-job"}
+          element={
+            <PrivateRoute>
+              <ViewJob />
+            </PrivateRoute>
+          }
+        />
+        {/* Admission  */}
+        <Route
+          path={"/admin/view-admission"}
+          element={
+            <PrivateRoute>
+              <ViewAddmission />
+            </PrivateRoute>
+          }
+        />
+        {/* Admission Application */}
+        <Route
+          path={"/admin/view-admission-application"}
+          element={
+            <PrivateRoute>
+              <ViewAdmissionApplication />
+            </PrivateRoute>
+          }
+        />
+        {/* Admission Application */}
+        <Route
+          path={"/admin/view-admission-application-query"}
+          element={
+            <PrivateRoute>
+              <ViewAdmissionApplicationQuery />
+            </PrivateRoute>
+          }
+        />
+        {/* Gallery  */}
+        <Route
+          path={"/admin/add-gallery"}
+          element={
+            <PrivateRoute>
+              <AddGallery />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/admin/view-gallery"}
+          element={
+            <PrivateRoute>
+              <ViewGallery />
+            </PrivateRoute>
+          }
+        />
+        {/* Content  */}
+        <Route
+          path={"/admin/add-content"}
+          element={
+            <PrivateRoute>
+              <AddContent />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/admin/view-content"}
+          element={
+            <PrivateRoute>
+              <ViewContent />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Job Applications  */}
+        <Route
+          path={"/admin/view-job-applications"}
+          element={
+            <PrivateRoute>
+              <ViewJobApplication />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="/*" element={<Error404 />} />
+      </Routes>
+    </FormProvider>
   );
 }
 
