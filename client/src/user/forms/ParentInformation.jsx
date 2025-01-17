@@ -23,125 +23,91 @@ export const ParentInformation = () => {
 
     let isValid = true;
 
-    // Validate father's fields if parentType is "father"
     if (parentType === "father") {
-      const fatherData = formData.parents_information.father;
-
-      if (!fatherData.name) {
+      // Validate father's fields
+      const fatherData = formData.parents_information.find(
+        (parent) => parent.parent_type === "father"
+      );
+      if (!fatherData?.name) {
         newErrors.father.name = "Father's name is required";
         isValid = false;
       }
-      if (!fatherData.age || fatherData.age <= 0) {
+      if (!fatherData?.age || fatherData.age <= 0) {
         newErrors.father.age = "Father's age must be a positive number";
         isValid = false;
       }
-      if (!fatherData.nationality) {
+      if (!fatherData?.nationality) {
         newErrors.father.nationality = "Father's nationality is required";
         isValid = false;
       }
-      if (!fatherData.education) {
+      if (!fatherData?.education) {
         newErrors.father.education = "Father's education is required";
         isValid = false;
       }
-      if (!fatherData.profession) {
+      if (!fatherData?.profession) {
         newErrors.father.profession = "Father's profession is required";
         isValid = false;
       }
-      if (!fatherData.income || fatherData.income <= 0) {
+      if (!fatherData?.income || fatherData.income <= 0) {
         newErrors.father.income = "Father's income must be a positive number";
         isValid = false;
       }
-      if (!fatherData.office_address) {
+      if (!fatherData?.office_address) {
         newErrors.father.office_address = "Father's office address is required";
         isValid = false;
       }
-      if (!fatherData.email || !/\S+@\S+\.\S+/.test(fatherData.email)) {
-        newErrors.father.email = "Invalid email address";
+      if (!fatherData?.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fatherData.email)) {
+        newErrors.father.email = "Father's email is invalid";
         isValid = false;
       }
 
-      // Validate mother's fields as well when parentType is "father"
-      const motherData = formData.parents_information.mother;
-
-      if (!motherData.name) {
+      // Validate mother's fields
+      const motherData = formData.parents_information.find(
+        (parent) => parent.parent_type === "mother"
+      );
+      if (!motherData?.name) {
         newErrors.mother.name = "Mother's name is required";
         isValid = false;
       }
-      if (!motherData.age || motherData.age <= 0) {
+      if (!motherData?.age || motherData.age <= 0) {
         newErrors.mother.age = "Mother's age must be a positive number";
         isValid = false;
       }
-      if (!motherData.nationality) {
+      if (!motherData?.nationality) {
         newErrors.mother.nationality = "Mother's nationality is required";
         isValid = false;
       }
-      if (!motherData.education) {
+      if (!motherData?.education) {
         newErrors.mother.education = "Mother's education is required";
         isValid = false;
       }
-      if (!motherData.profession) {
+      if (!motherData?.profession) {
         newErrors.mother.profession = "Mother's profession is required";
         isValid = false;
       }
-      if (!motherData.income || motherData.income <= 0) {
-        newErrors.mother.income = "Mother's income must be a positive number";
-        isValid = false;
-      }
-      if (!motherData.office_address) {
-        newErrors.mother.office_address = "Mother's office address is required";
-        isValid = false;
-      }
-      if (!motherData.email || !/\S+@\S+\.\S+/.test(motherData.email)) {
-        newErrors.mother.email = "Invalid email address";
+      
+      
+      if (!motherData?.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(motherData.email)) {
+        newErrors.mother.email = "Mother's email is invalid";
         isValid = false;
       }
     }
 
-    // Validate mother's fields if parentType is "mother"
-    if (parentType === "mother") {
-      const motherData = formData.parents_information.mother;
-
-      if (!motherData.name) {
-        newErrors.mother.name = "Mother's name is required";
-        isValid = false;
-      }
-      if (!motherData.age || motherData.age <= 0) {
-        newErrors.mother.age = "Mother's age must be a positive number";
-        isValid = false;
-      }
-      if (!motherData.nationality) {
-        newErrors.mother.nationality = "Mother's nationality is required";
-        isValid = false;
-      }
-      if (!motherData.education) {
-        newErrors.mother.education = "Mother's education is required";
-        isValid = false;
-      }
-      if (!motherData.profession) {
-        newErrors.mother.profession = "Mother's profession is required";
-        isValid = false;
-      }
-   
-      if (!motherData.email || !/\S+@\S+\.\S+/.test(motherData.email)) {
-        newErrors.mother.email = "Invalid email address";
-        isValid = false;
-      }
-    }
-
-    // Validate guardian's fields if parentType is "guardian"
     if (parentType === "guardian") {
-      const guardianData = formData.parents_information.guardian;
-
-      if (!guardianData.name) {
+      // Validate guardian's fields
+      const guardianData = formData.parents_information.find(
+        (parent) => parent.parent_type === "guardian"
+      );
+      if (!guardianData?.name) {
         newErrors.guardian.name = "Guardian's name is required";
         isValid = false;
       }
-      if (!guardianData.age || guardianData.age <= 0) {
+      if (!guardianData?.age || guardianData.age <= 0) {
         newErrors.guardian.age = "Guardian's age must be a positive number";
         isValid = false;
       }
-      if (!guardianData.relationshipWithChild) {
-        newErrors.guardian.relationshipWithChild =
+      if (!guardianData?.relationship_with_child) {
+        newErrors.guardian.relationship_with_child =
           "Relationship with child is required";
         isValid = false;
       }
@@ -155,24 +121,67 @@ export const ParentInformation = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Reset the error state if the form is valid
       setErrors({
         father: {},
         mother: {},
         guardian: {},
       });
 
-      console.log(
-        `${parentType} data submitted`,
-        formData.parents_information[parentType]
-      );
+      // let submittedData = { parents_information : [] }
+      // if (parentType === "father") {
+      //   submittedData = {
+      //     father: formData.parents_information.find(
+      //       (parent) => parent.parent_type === "father"
+      //     ),
+      //     mother: formData.parents_information.find(
+      //       (parent) => parent.parent_type === "mother"
+      //     ),
+      //   };
+      // } else if (parentType === "guardian") {
+      //   submittedData = {
+      //     guardian: formData.parents_information.find(
+      //       (parent) => parent.parent_type === "guardian"
+      //     ),
+      //   };
+      // }
+      const submittedData = formData.parents_information.filter((parent)=>{
+        if(parentType === "father"){
+          return parent.parent_type === "father" || parent.parent_type === "mother"
+        }else if(parentType === "guardian"){
+          return parent.parent_type === "guardian"
+        }
+      }
+        
+      )
+
+      console.log("Parents information submitted", submittedData);
       navigate("/user/other-relatives");
     }
   };
 
-  const handleInputChange = (e, field, subsection = null) => {
+  const handleInputChange = (e, field, parentType) => {
     const value = e.target.value;
-    handleChange("parents_information", field, value, subsection || parentType);
+
+    // Find the index of the selected parent type in the parents_information array
+    const parentIndex = formData.parents_information.findIndex(
+      (parent) => parent.parent_type === parentType
+    );
+
+    // Update the specific parent object in the parents_information array
+    handleChange("parents_information", field, value, parentIndex);
+  };
+
+  const handleParentTypeChange = (selectedParentType) => {
+    setParentType(selectedParentType);
+  
+    // Add the selected parent type to the form data if it doesn't exist
+    const parentExists = formData.parents_information.some(
+      (parent) => parent.parent_type === selectedParentType
+    );  
+  
+    if (!parentExists) {
+      handleChange("parents_information", selectedParentType);
+    }
   };
 
   return (
@@ -192,17 +201,18 @@ export const ParentInformation = () => {
                   name="parentType"
                   value="father"
                   checked={parentType === "father"}
-                  onChange={() => setParentType("father")}
+                  onChange={() => handleParentTypeChange("father")}
                   className="mr-2"
                 />
-                Father
+                Father and Mother
               </label>
               <label className="flex items-center">
                 <input
                   type="radio"
                   name="parentType"
                   value="guardian"
-                  onChange={() => setParentType("guardian")}
+                  checked={parentType === "guardian"}
+                  onChange={() => handleParentTypeChange("guardian")}
                   className="mr-2"
                 />
                 Guardian
@@ -215,7 +225,6 @@ export const ParentInformation = () => {
                 {/* Father's Information */}
                 <h2 className="text-2xl text-blue-600">Father's Information</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  
                   <div className="flex flex-col">
                     <label htmlFor="fatherName" className="font-medium">
                       Father's Name:
@@ -225,8 +234,12 @@ export const ParentInformation = () => {
                       id="fatherName"
                       className="p-2 border rounded-md"
                       placeholder="Enter name"
-                      value={formData.parents_information.father.name}
-                      onChange={(e) => handleInputChange(e, "name")}
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "father"
+                        )?.name || ""
+                      }
+                      onChange={(e) => handleInputChange(e, "name", "father")}
                     />
                     {errors.father.name && (
                       <span className="text-red-500 text-sm">
@@ -243,8 +256,12 @@ export const ParentInformation = () => {
                       id="fatherAge"
                       className="p-2 border rounded-md"
                       placeholder="Enter age"
-                      value={formData.parents_information.father.age}
-                      onChange={(e) => handleInputChange(e, "age")}
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "father"
+                        )?.age || ""
+                      }
+                      onChange={(e) => handleInputChange(e, "age", "father")}
                     />
                     {errors.father.age && (
                       <span className="text-red-500 text-sm">
@@ -254,15 +271,19 @@ export const ParentInformation = () => {
                   </div>
                   <div className="flex flex-col">
                     <label htmlFor="fatherNationality" className="font-medium">
-                      Nationality:
+                      Father's Nationality:
                     </label>
                     <input
                       type="text"
                       id="fatherNationality"
                       className="p-2 border rounded-md"
                       placeholder="Enter nationality"
-                      value={formData.parents_information.father.nationality}
-                      onChange={(e) => handleInputChange(e, "nationality")}
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "father"
+                        )?.nationality || ""
+                      }
+                      onChange={(e) => handleInputChange(e, "nationality", "father")}
                     />
                     {errors.father.nationality && (
                       <span className="text-red-500 text-sm">
@@ -272,15 +293,19 @@ export const ParentInformation = () => {
                   </div>
                   <div className="flex flex-col">
                     <label htmlFor="fatherEducation" className="font-medium">
-                      Education/University:
+                      Father's Education:
                     </label>
                     <input
                       type="text"
                       id="fatherEducation"
                       className="p-2 border rounded-md"
-                      placeholder="Enter education/university"
-                      value={formData.parents_information.father.education}
-                      onChange={(e) => handleInputChange(e, "education")}
+                      placeholder="Enter education"
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "father"
+                        )?.education || ""
+                      }
+                      onChange={(e) => handleInputChange(e, "education", "father")}
                     />
                     {errors.father.education && (
                       <span className="text-red-500 text-sm">
@@ -296,9 +321,13 @@ export const ParentInformation = () => {
                       type="text"
                       id="fatherProfession"
                       className="p-2 border rounded-md"
-                      placeholder="Enter father's profession"
-                      value={formData.parents_information.father.profession}
-                      onChange={(e) => handleInputChange(e, "profession")}
+                      placeholder="Enter profession"
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "father"
+                        )?.profession || ""
+                      }
+                      onChange={(e) => handleInputChange(e, "profession", "father")}
                     />
                     {errors.father.profession && (
                       <span className="text-red-500 text-sm">
@@ -308,15 +337,19 @@ export const ParentInformation = () => {
                   </div>
                   <div className="flex flex-col">
                     <label htmlFor="fatherIncome" className="font-medium">
-                      Father's Annual Income:
+                      Father's Income:
                     </label>
                     <input
                       type="number"
                       id="fatherIncome"
                       className="p-2 border rounded-md"
-                      placeholder="Enter father's income"
-                      value={formData.parents_information.father.income}
-                      onChange={(e) => handleInputChange(e, "income")}
+                      placeholder="Enter income"
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "father"
+                        )?.income || ""
+                      }
+                      onChange={(e) => handleInputChange(e, "income", "father")}
                     />
                     {errors.father.income && (
                       <span className="text-red-500 text-sm">
@@ -325,19 +358,20 @@ export const ParentInformation = () => {
                     )}
                   </div>
                   <div className="flex flex-col">
-                    <label
-                      htmlFor="fatherOfficeAddress"
-                      className="font-medium"
-                    >
-                      Office Address:
+                    <label htmlFor="fatherOfficeAddress" className="font-medium">
+                      Father's Office Address:
                     </label>
                     <input
                       type="text"
                       id="fatherOfficeAddress"
                       className="p-2 border rounded-md"
                       placeholder="Enter office address"
-                      value={formData.parents_information.father.office_address}
-                      onChange={(e) => handleInputChange(e, "office_address")}
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "father"
+                        )?.office_address || ""
+                      }
+                      onChange={(e) => handleInputChange(e, "office_address", "father")}
                     />
                     {errors.father.office_address && (
                       <span className="text-red-500 text-sm">
@@ -354,8 +388,12 @@ export const ParentInformation = () => {
                       id="fatherEmail"
                       className="p-2 border rounded-md"
                       placeholder="Enter email"
-                      value={formData.parents_information.father.email}
-                      onChange={(e) => handleInputChange(e, "email")}
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "father"
+                        )?.email || ""
+                      }
+                      onChange={(e) => handleInputChange(e, "email", "father")}
                     />
                     {errors.father.email && (
                       <span className="text-red-500 text-sm">
@@ -366,8 +404,8 @@ export const ParentInformation = () => {
                 </div>
 
                 {/* Mother's Information */}
-                <h2 className="text-2xl text-blue-600">Mother's Information </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                <h2 className="text-2xl text-blue-600 mt-6">Mother's Information</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col">
                     <label htmlFor="motherName" className="font-medium">
                       Mother's Name:
@@ -377,7 +415,11 @@ export const ParentInformation = () => {
                       id="motherName"
                       className="p-2 border rounded-md"
                       placeholder="Enter name"
-                      value={formData.parents_information.mother.name}
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "mother"
+                        )?.name || ""
+                      }
                       onChange={(e) => handleInputChange(e, "name", "mother")}
                     />
                     {errors.mother.name && (
@@ -395,7 +437,11 @@ export const ParentInformation = () => {
                       id="motherAge"
                       className="p-2 border rounded-md"
                       placeholder="Enter age"
-                      value={formData.parents_information.mother.age}
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "mother"
+                        )?.age || ""
+                      }
                       onChange={(e) => handleInputChange(e, "age", "mother")}
                     />
                     {errors.mother.age && (
@@ -406,17 +452,19 @@ export const ParentInformation = () => {
                   </div>
                   <div className="flex flex-col">
                     <label htmlFor="motherNationality" className="font-medium">
-                      Nationality:
+                      Mother's Nationality:
                     </label>
                     <input
                       type="text"
                       id="motherNationality"
                       className="p-2 border rounded-md"
                       placeholder="Enter nationality"
-                      value={formData.parents_information.mother.nationality}
-                      onChange={(e) =>
-                        handleInputChange(e, "nationality", "mother")
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "mother"
+                        )?.nationality || ""
                       }
+                      onChange={(e) => handleInputChange(e, "nationality", "mother")}
                     />
                     {errors.mother.nationality && (
                       <span className="text-red-500 text-sm">
@@ -426,17 +474,19 @@ export const ParentInformation = () => {
                   </div>
                   <div className="flex flex-col">
                     <label htmlFor="motherEducation" className="font-medium">
-                      Education/University:
+                      Mother's Education:
                     </label>
                     <input
                       type="text"
                       id="motherEducation"
                       className="p-2 border rounded-md"
-                      placeholder="Enter education/university"
-                      value={formData.parents_information.mother.education}
-                      onChange={(e) =>
-                        handleInputChange(e, "education", "mother")
+                      placeholder="Enter education"
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "mother"
+                        )?.education || ""
                       }
+                      onChange={(e) => handleInputChange(e, "education", "mother")}
                     />
                     {errors.mother.education && (
                       <span className="text-red-500 text-sm">
@@ -452,11 +502,13 @@ export const ParentInformation = () => {
                       type="text"
                       id="motherProfession"
                       className="p-2 border rounded-md"
-                      placeholder="Enter mother's profession"
-                      value={formData.parents_information.mother.profession}
-                      onChange={(e) =>
-                        handleInputChange(e, "profession", "mother")
+                      placeholder="Enter profession"
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "mother"
+                        )?.profession || ""
                       }
+                      onChange={(e) => handleInputChange(e, "profession", "mother")}
                     />
                     {errors.mother.profession && (
                       <span className="text-red-500 text-sm">
@@ -466,36 +518,39 @@ export const ParentInformation = () => {
                   </div>
                   <div className="flex flex-col">
                     <label htmlFor="motherIncome" className="font-medium">
-                      Mother's Annual Income:
+                      Mother's Income:
                     </label>
                     <input
                       type="number"
                       id="motherIncome"
                       className="p-2 border rounded-md"
-                      placeholder="Enter mother's income"
-                      value={formData.parents_information.mother.income}
+                      placeholder="Enter income"
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "mother"
+                        )?.income || ""
+                      }
                       onChange={(e) => handleInputChange(e, "income", "mother")}
                     />
-                  
+                   
                   </div>
                   <div className="flex flex-col">
-                    <label
-                      htmlFor="motherOfficeAddress"
-                      className="font-medium"
-                    >
-                      Office Address:
+                    <label htmlFor="motherOfficeAddress" className="font-medium">
+                      Mother's Office Address:
                     </label>
                     <input
                       type="text"
                       id="motherOfficeAddress"
                       className="p-2 border rounded-md"
                       placeholder="Enter office address"
-                      value={formData.parents_information.mother.office_address}
-                      onChange={(e) =>
-                        handleInputChange(e, "office_address", "mother")
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "mother"
+                        )?.office_address || ""
                       }
+                      onChange={(e) => handleInputChange(e, "office_address", "mother")}
                     />
-                 
+                   
                   </div>
                   <div className="flex flex-col">
                     <label htmlFor="motherEmail" className="font-medium">
@@ -506,7 +561,11 @@ export const ParentInformation = () => {
                       id="motherEmail"
                       className="p-2 border rounded-md"
                       placeholder="Enter email"
-                      value={formData.parents_information.mother.email}
+                      value={
+                        formData.parents_information.find(
+                          (parent) => parent.parent_type === "mother"
+                        )?.email || ""
+                      }
                       onChange={(e) => handleInputChange(e, "email", "mother")}
                     />
                     {errors.mother.email && (
@@ -518,6 +577,7 @@ export const ParentInformation = () => {
                 </div>
               </>
             )}
+
             {/* Guardian's Fields */}
             {parentType === "guardian" && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -530,8 +590,12 @@ export const ParentInformation = () => {
                     id="guardianName"
                     className="p-2 border rounded-md"
                     placeholder="Enter guardian's name"
-                    value={formData.parents_information.guardian.name}
-                    onChange={(e) => handleInputChange(e, "name")}
+                    value={
+                      formData.parents_information.find(
+                        (parent) => parent.parent_type === "guardian"
+                      )?.name || ""
+                    }
+                    onChange={(e) => handleInputChange(e, "name", "guardian")}
                   />
                   {errors.guardian.name && (
                     <span className="text-red-500 text-sm">
@@ -548,8 +612,12 @@ export const ParentInformation = () => {
                     id="guardianAge"
                     className="p-2 border rounded-md"
                     placeholder="Enter guardian's age"
-                    value={formData.parents_information.guardian.age}
-                    onChange={(e) => handleInputChange(e, "age")}
+                    value={
+                      formData.parents_information.find(
+                        (parent) => parent.parent_type === "guardian"
+                      )?.age || ""
+                    }
+                    onChange={(e) => handleInputChange(e, "age", "guardian")}
                   />
                   {errors.guardian.age && (
                     <span className="text-red-500 text-sm">
@@ -565,18 +633,19 @@ export const ParentInformation = () => {
                     type="text"
                     id="guardianRelationship"
                     className="p-2 border rounded-md"
-                    placeholder="Enter relationship"
+                    placeholder="Enter relationship with child"
                     value={
-                      formData.parents_information.guardian
-                        .relationshipWithChild
+                      formData.parents_information.find(
+                        (parent) => parent.parent_type === "guardian"
+                      )?.relationship_with_child || ""
                     }
                     onChange={(e) =>
-                      handleInputChange(e, "relationshipWithChild")
+                      handleInputChange(e, "relationship_with_child", "guardian")
                     }
                   />
-                  {errors.guardian.relationshipWithChild && (
+                  {errors.guardian.relationship_with_child && (
                     <span className="text-red-500 text-sm">
-                      {errors.guardian.relationshipWithChild}
+                      {errors.guardian.relationship_with_child}
                     </span>
                   )}
                 </div>

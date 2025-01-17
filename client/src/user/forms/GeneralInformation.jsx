@@ -28,7 +28,7 @@ export const GeneralInformation = () => {
 
     if (validateForm()) {
       try {
-        console.log("General Information Form Submitted Successfully!");
+        console.log("General information data : " , formData.general_information)
         navigate("/user/personal-details");
       } catch (err) {
         alert("Error occurred. Please try again.");

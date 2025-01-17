@@ -10,7 +10,7 @@ export const PersonalDetails = () => {
 
   const validateForm = () => {
     let newErrors = {};
-    const { first_name, last_name, dob, nationality, gender, address, city, pincode, email, mobile } = formData.personal_details;
+    const { first_name, last_name, dob, nationality, gender, address, city, pincode, email, mobile, emergency_mobile } = formData.personal_details;
 
     if (!first_name) newErrors.first_name = "First name is required";
     if (!last_name) newErrors.last_name = "Last name is required";
@@ -19,9 +19,14 @@ export const PersonalDetails = () => {
     if (!gender) newErrors.gender = "Gender is required";
     if (!address) newErrors.address = "Address is required";
     if (!city) newErrors.city = "City is required";
-    if (!pincode) newErrors.pincode = "Pincode is required";
+    if (!pincode) {
+      newErrors.pincode = "Pincode is required";
+    } else if (pincode.length !== 6) {
+      newErrors.pincode = "Pincode must be exactly 6 digits";
+    }
     if (!email) newErrors.email = "Email is required";
     if (!mobile) newErrors.mobile = "Mobile number is required";
+    if (!emergency_mobile) newErrors.emergency_mobile = "Emergency Mobile number is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -31,6 +36,7 @@ export const PersonalDetails = () => {
     e.preventDefault();
 
     if (validateForm()) {
+      console.log("Personal data : " , formData.personal_details)
       navigate("/user/health-information");
     }
   };
@@ -209,6 +215,7 @@ export const PersonalDetails = () => {
                 }
                 className="w-full p-2 border rounded"
               />
+               {errors.emergency_mobile && <p className="text-red-500">{errors.emergency_mobile}</p>}
             </div>
 
             <button

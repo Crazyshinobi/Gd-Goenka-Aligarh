@@ -10,7 +10,7 @@ export const HealthInformation = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-
+       console.log("Health information :" , formData.health_information)
       navigate("/user/educational-background");
   };
 

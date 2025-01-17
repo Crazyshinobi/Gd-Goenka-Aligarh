@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext"; // Accessing form data and handleChange from context
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 export const OtherRelatives = () => {
   const { formData, handleChange } = useForm(); // Accessing form context
-  const [errors, setErrors] = useState([]); // Error state for form validation
+  const [errors, setErrors] = useState({}); // Error state for form validation
   const [showAddRelativeForm, setShowAddRelativeForm] = useState(false); // Toggle for showing the form
   const [newRelative, setNewRelative] = useState({
     relation: "",
@@ -54,7 +55,7 @@ export const OtherRelatives = () => {
     if (validateForm()) {
       // Add the new relative to the list
       const updatedRelatives = [...relatives, newRelative];
-      handleChange("other_relatives", updatedRelatives); // Update the form context with the new relative
+      handleChange("other_relatives", null, updatedRelatives); // Update the form context with the new relative
 
       // Clear the form and hide it
       setNewRelative({
@@ -66,8 +67,11 @@ export const OtherRelatives = () => {
       });
       setShowAddRelativeForm(false); // Hide the form after submission
       setErrors({});
+      toast.success("Relative added successfully!");
 
       console.log("Relative added successfully:", newRelative);
+      console.log("Updated Relatives:", updatedRelatives);
+      console.log("Relatives:", formData.other_relatives);
     }
   };
 
@@ -86,26 +90,8 @@ export const OtherRelatives = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate the form before submission
     if (validateForm()) {
-      // If the add relative form is visible, add the new relative first
-      if (showAddRelativeForm) {
-        const updatedRelatives = [...relatives, newRelative];
-        handleChange("other_relatives", updatedRelatives); // Update the form context with the new relative
-
-        // Clear the form and hide it
-        setNewRelative({
-          relation: "",
-          name: "",
-          age: "",
-          school: "",
-          grade: "",
-        });
-        setShowAddRelativeForm(false);
-        setErrors({});
-      }
-
-      console.log("Relatives Added:", formData.other_relatives);
+      console.log("Relatives Added:", formData.other_relatives); // Log the updated relatives
       navigate("/user/transport-facility"); // Navigate to the next page
     }
   };
@@ -113,6 +99,7 @@ export const OtherRelatives = () => {
   return (
     <>
       <UserLayout />
+      <Toaster />
       <div className="lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-2xl font-bold mb-6 text-center">
@@ -131,17 +118,19 @@ export const OtherRelatives = () => {
             {/* Show form for adding relative when 'showAddRelativeForm' is true */}
             {showAddRelativeForm && (
               <div className="space-y-4 mt-6">
-                {/* Relation */}
+                {/* Relation (Dropdown for Brother/Sister) */}
                 <div className="flex flex-col">
                   <label className="font-medium">Relation:</label>
-                  <input
-                    type="text"
+                  <select
                     name="relation"
                     value={newRelative.relation}
                     onChange={handleInputChange}
                     className="p-2 border rounded-md"
-                    placeholder="Enter relation (e.g., Brother)"
-                  />
+                  >
+                    <option value="">Select Relation</option>
+                    <option value="brother">Brother</option>
+                    <option value="sister">Sister</option>
+                  </select>
                   {errors.relation && (
                     <span className="text-red-500 text-sm">{errors.relation}</span>
                   )}

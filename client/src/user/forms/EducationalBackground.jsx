@@ -26,6 +26,7 @@ export const EducationalBackground = () => {
     e.preventDefault();
 
     if (validateForm()) {
+      console.log("Educational background : " , formData.educational_background)
       navigate("/user/parent-information");
     }
   };
