@@ -17,13 +17,18 @@ const admissionRoutes = require("./src/routes/admissionRoutes");
 const jobRoutes = require("./src/routes/jobRoutes");
 const jobApplicationRoutes = require("./src/routes/jobApplicationRoutes");
 const admissionApplicationRoutes = require("./src/routes/admissionApplicationRoutes");
+const admissionApplicationQueryRoutes = require("./src/routes/admissionApplicationQueryRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 
 // Middleware
 const corsOptions = {
   origin: "*",
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],  
-  allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],  
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Access-Control-Allow-Origin",
+  ],
 };
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -42,6 +47,7 @@ app.use("/api/v1/admission", admissionRoutes);
 app.use("/api/v1/job", jobRoutes);
 app.use("/api/v1/job-application", jobApplicationRoutes);
 app.use("/api/v1/admission-application", admissionApplicationRoutes);
+app.use("/api/v1/admission-application-query", admissionApplicationQueryRoutes);
 app.use("/api/v1/user", userRoutes);
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 

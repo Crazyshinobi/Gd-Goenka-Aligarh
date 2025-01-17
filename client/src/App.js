@@ -39,11 +39,11 @@ import { ViewGallery } from "./admin/pages/gallery/ViewGallery";
 import { ViewJobApplication } from "./admin/pages/jobApplication/ViewJobApplication";
 import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
+import { ViewAdmissionApplicationQuery } from "./admin/pages/admissionApplicationQuery/ViewAdmissionApplicationQuery";
 
 // User Import
 import AdmissionSubmission from "./pages/AdmissionSubmission";
 import UserPrivateRoute from "./user/components/UserPrivateRoute";
-
 import { ViewUser } from "./admin/pages/user/ViewUser";
 import { AddUser } from "./admin/pages/user/AddUser";
 import { UserDashboard } from "./user/UserDashboard";
@@ -57,6 +57,7 @@ import { ParentInformation } from "./user/forms/ParentInformation";
 import { OtherRelatives } from "./user/forms/OtherRelatives";
 import { SuccessPage } from "./user/forms/SuccessPage";
 import { TransportFacility } from "./user/forms/TransportFacility";
+
 
 function App() {
   return (
@@ -300,6 +301,15 @@ function App() {
           element={
             <PrivateRoute>
               <ViewAdmissionApplication />
+            </PrivateRoute>
+          }
+        />
+        {/* Admission Application */}
+        <Route
+          path={"/admin/view-admission-application-query"}
+          element={
+            <PrivateRoute>
+              <ViewAdmissionApplicationQuery />
             </PrivateRoute>
           }
         />

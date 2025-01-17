@@ -79,33 +79,32 @@ export const TransportFacility = () => {
       <UserLayout />
       <div className="lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
-          <h2 className="text-2xl font-bold mb-6 text-center">
-            Transport Facility and Declaration
-          </h2>
+          <h2 className="text-2xl font-bold mb-6 text-center dark:text-white">Transport Facility and Declaration</h2>
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Transport Facility (Radio Buttons mapped to Boolean) */}
             <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
                 Do you require bus facility?
               </label>
               <div className="flex items-center space-x-4">
-                <label className="flex items-center">
+                <label className="flex items-center dark:text-white">
                   <input
                     type="radio"
                     name="transport_facility"
                     value={true} // Set value as boolean true
-                    onChange={() => handleChange("transport_facility",null, true)} // Update directly
-                    className="mr-2"
+                    onChange={() => handleChange(null, "transport_facility", true)} // Update directly
+                    className="mr-2 dark:text-white"
                   />
                   Yes
                 </label>
-                <label className="flex items-center">
+                <label className="flex items-center dark:text-white">
                   <input
                     type="radio"
                     name="transport_facility"
                     value={false} // Set value as boolean false
-                    onChange={() => handleChange("transport_facility",null, false)} 
-                    className="mr-2"
+                    
+                    onChange={() => handleChange(null, "transport_facility", false)} // Update directly
+                    className="mr-2 dark:text-white"
                   />
                   No
                 </label>
@@ -119,14 +118,12 @@ export const TransportFacility = () => {
 
             {/* Declaration */}
             <div className="space-y-4">
-              <label className="flex items-center">
+              <label className="flex items-center dark:text-white">
                 <input
                   type="checkbox"
                   name="declaration"
-                  onChange={(e) =>
-                    handleChange("declaration",null, e.target.checked)
-                  } // Update directly
-                  className="mr-2"
+                  onChange={(e) => handleChange("declaration", e.target.checked)} // Update directly
+                  className="mr-2 dark:text-white"
                 />
                 I agree to the terms and conditions.
               </label>

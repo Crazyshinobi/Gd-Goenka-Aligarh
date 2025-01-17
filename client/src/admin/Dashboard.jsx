@@ -30,6 +30,7 @@ export const Dashboard = () => {
       "job",
       "job-application",
       "admission-application",
+      "admission-application-query",
     ];
 
     // Fetch the count data for each item
@@ -44,6 +45,8 @@ export const Dashboard = () => {
           countData.jobApplication = response.data.data; // Assign to camelCase key
         } else if (item === "admission-application") {
           countData.admissionApplication = response.data.data;
+        } else if (item === "admission-application-query") {
+          countData.admissionApplicationQuery = response.data.data;
         } else {
           countData[item] = response.data.data;
         }
@@ -139,12 +142,12 @@ export const Dashboard = () => {
             {/* Card 4 */}
             <div className="flex flex-col gap-2 items-center justify-center rounded-lg bg-gradient-to-r from-red-500 via-red-600 to-red-700 dark:bg-gradient-to-r dark:from-red-400 dark:via-red-500 dark:to-red-600 shadow-md p-4 transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
               <h2 className="text-sm font-semibold text-white dark:text-gray-100">
-                Total Content
+                Total Admission Application Query
               </h2>
               <p className="text-xl font-bold text-white dark:text-gray-200">
-                {counts.content}
+                {counts.admissionApplicationQuery}
               </p>
-              <Link to="/admin/view-content">
+              <Link to="/admin/view-admission-application-query">
                 <button className="mt-2 px-5 py-1.5 bg-white text-red-600 text-xs font-semibold rounded-lg shadow-md hover:bg-red-200 focus:outline-none dark:bg-red-600 dark:text-white dark:hover:bg-red-500">
                   View Details
                 </button>

@@ -16,17 +16,23 @@ const createAdmissionApplication = async (req, res) => {
     declaration,
   } = req.body;
 
-  if (
-    !general_information ||
-    !personal_details ||
-    !health_information ||
-    !educational_background ||
-    !parents_information ||
-    !other_relatives ||
-    !transport_facility ||
-    !declaration
-  ) {
-    return sendResponse(res, 400, false, "All fields are required");
+  const errors = [];
+
+  // Validate each field and add specific error messages
+  if (!general_information) errors.push("General information is required");
+  if (!personal_details) errors.push("Personal details are required");
+  if (!health_information) errors.push("Health information is required");
+  if (!educational_background)
+    errors.push("Educational background is required");
+  if (!parents_information) errors.push("Parents' information is required");
+  if (!other_relatives) errors.push("Other relatives information is required");
+  if (transport_facility === undefined)
+    errors.push("Transport facility selection is required");
+  if (!declaration) errors.push("Declaration agreement is required");
+
+  // If there are errors, send a response with all errors
+  if (errors.length > 0) {
+    return sendResponse(res, 400, false, "Validation failed", { errors });
   }
 
   try {
