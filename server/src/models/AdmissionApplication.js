@@ -152,8 +152,14 @@ const admissionApplicationSchema = new mongoose.Schema(
         },
         relationship_with_child: {
           type: String,
-          required: function () {
-            return this.parent_type === "guardian";
+          validate: {
+            validator: function () {
+              return (
+                this.parent_type !== "guardian" ||
+                !!this.relationship_with_child
+              );
+            },
+            message: "Relationship with child is required for guardians.",
           },
         },
         profession: {
@@ -162,11 +168,21 @@ const admissionApplicationSchema = new mongoose.Schema(
         },
         income: {
           type: String,
-          required: true,
+          validate: {
+            validator: function () {
+              return this.parent_type === "mother" || !!this.income;
+            },
+            message: "Income is required for fathers and guardians.",
+          },
         },
         office_address: {
           type: String,
-          required: true,
+          validate: {
+            validator: function () {
+              return this.parent_type === "mother" || !!this.office_address;
+            },
+            message: "Office address is required for fathers and guardians.",
+          },
         },
         email: {
           type: String,
@@ -183,7 +199,7 @@ const admissionApplicationSchema = new mongoose.Schema(
         },
         name: {
           type: String,
-          required: true
+          required: true,
         },
         age: {
           type: Number,

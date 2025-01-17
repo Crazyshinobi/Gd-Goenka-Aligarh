@@ -49,6 +49,7 @@ import { ViewUser } from "./admin/pages/user/ViewUser";
 import { AddUser } from "./admin/pages/user/AddUser";
 import { UserDashboard } from "./user/UserDashboard";
 import { UserForgotPassword } from "./user/auth/UserForgetPassword";
+import { ViewAdmissionApplicationQuery } from "./admin/pages/admissionApplicationQuery/ViewAdmissionApplicationQuery";
 
 function App() {
   return (
@@ -104,7 +105,10 @@ function App() {
       <Route path={"/job-application-form"} element={<JobApplicationForm />} />
       <Route path={"/fee-payment/fees-structure"} element={<FeeStructure />} />
       <Route path={"/admission/application-form"} element={<AdmissionForm />} />
-      <Route path="/admission/application-form/login" element={<AdmissionForm />} />
+      <Route
+        path="/admission/application-form/login"
+        element={<AdmissionForm />}
+      />
       <Route
         path={"/admission/application-submission"}
         element={<AdmissionSubmission />}
@@ -114,16 +118,14 @@ function App() {
         element={<StudentApplicationRoutes />}
       />
 
-      <Route path={"/user/forgot-password"} element={<UserForgotPassword/>}/>
-
-      
+      <Route path={"/user/forgot-password"} element={<UserForgotPassword />} />
 
       {/* User Protected Routes */}
       <Route
         path={"/user/dashboard"}
         element={
           <UserPrivateRoute>
-            <UserDashboard/>
+            <UserDashboard />
           </UserPrivateRoute>
         }
       />
@@ -208,6 +210,15 @@ function App() {
         element={
           <PrivateRoute>
             <ViewAdmissionApplication />
+          </PrivateRoute>
+        }
+      />
+      {/* Admission Application Query*/}
+      <Route
+        path={"/admin/view-admission-application-query"}
+        element={
+          <PrivateRoute>
+            <ViewAdmissionApplicationQuery />
           </PrivateRoute>
         }
       />
