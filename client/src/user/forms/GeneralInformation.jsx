@@ -1,0 +1,123 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserLayout } from "../components/UserLayout";
+import { useForm } from "./FormContext";
+
+export const GeneralInformation = () => {
+  const { formData, handleChange } = useForm();
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+
+  // Validate form data
+  const validateForm = () => {
+    let newErrors = {};
+    const { grade, applied_before, applied_year, applied_grade } = formData.general_information;
+
+    if (!grade) newErrors.grade = "Grade is required";
+    if (applied_before) {
+      if (!applied_year) newErrors.applied_year = "Academic year is required";
+      if (!applied_grade) newErrors.applied_grade = "Applied grade/class is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      try {
+        console.log("General Information Form Submitted Successfully!");
+        navigate("/user/personal-details");
+      } catch (err) {
+        alert("Error occurred. Please try again.");
+      }
+    }
+  };
+
+  return (
+    <>
+      <UserLayout />
+      <div className="p-4 py-6 sm:ml-64 dark:bg-gray-700 min-h-screen">
+        <div className="p-2 border-2 border-gray-200 rounded-lg dark:border-white mt-14">
+          <div className="flex-grow flex items-center justify-center py-8">
+            <div className="w-full max-w-4xl sm:max-w-2xl lg:max-w-3xl bg-white rounded-lg shadow-md p-6 sm:px-4 md:px-6">
+              <h2 className="text-3xl font-semibold text-center text-gray-800 mb-8">General Information</h2>
+              <form onSubmit={handleSubmit}>
+                {/* Grade/Class Input */}
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">We are considering enrollment in Grade/Class</label>
+                  <input
+                    type="text"
+                    name="grade"
+                    value={formData.general_information.grade}
+                    onChange={(e) => handleChange('general_information', 'grade', e.target.value)}
+                    className={`w-full p-3 border ${errors.grade ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
+                    placeholder="Enter grade/class"
+                  />
+                  {errors.grade && <p className="text-red-500 text-sm mt-2">{errors.grade}</p>}
+                </div>
+
+                {/* Applied Before Checkbox */}
+                <div className="mb-6 flex items-center">
+                  <input
+                    type="checkbox"
+                    name="applied_before"
+                    checked={formData.general_information.applied_before}
+                    onChange={(e) => handleChange('general_information', 'applied_before', e.target.checked)}
+                    className="mr-3 h-5 w-5 text-blue-500 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                  <label className="text-sm text-gray-700">Have you ever applied for admission at G.D. Goenka Schools?</label>
+                </div>
+
+                {/* Conditional Inputs for Previous Application */}
+                {formData.general_information.applied_before && (
+                  <div className="space-y-6">
+                    {/* Academic Year Input */}
+                    <div className="mb-6">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Academic year</label>
+                      <input
+                        type="number"
+                        name="applied_year"
+                        value={formData.general_information.applied_year}
+                        onChange={(e) => handleChange('general_information', 'applied_year', e.target.value)}
+                        className={`w-full p-3 border ${errors.applied_year ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
+                        placeholder="Enter academic year"
+                      />
+                      {errors.applied_year && <p className="text-red-500 text-sm mt-2">{errors.applied_year}</p>}
+                    </div>
+
+                    {/* Applied Grade/Class Input */}
+                    <div className="mb-6">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Which class</label>
+                      <input
+                        type="number"
+                        name="applied_grade"
+                        value={formData.general_information.applied_grade}
+                        onChange={(e) => handleChange('general_information', 'applied_grade', e.target.value)}
+                        className={`w-full p-3 border ${errors.applied_grade ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
+                        placeholder="Enter applied grade/class"
+                      />
+                      {errors.applied_grade && <p className="text-red-500 text-sm mt-2">{errors.applied_grade}</p>}
+                    </div>
+                  </div>
+                )}
+
+                {/* Submit Button */}
+                <div className="flex justify-center mt-6">
+                  <button
+                    type="submit"
+                    className="bg-blue-500 text-white py-3 px-8 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                  >
+                    Next
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
