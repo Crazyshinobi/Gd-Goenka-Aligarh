@@ -8,7 +8,9 @@ export const SummaryPage = () => {
   const navigate = useNavigate();
 
   const handleGoToPayment = () => {
-    navigate("/user/payment");
+    const data = {
+      
+    }
   };
 
   const handleGoBack = () => {
@@ -163,7 +165,7 @@ export const SummaryPage = () => {
                   </p>
                 </>
               )}
-              <p className="dark:text-white text-lg text-blue-600 dark:text-blue-300">
+              <p className="dark:text-white text-lg text-blue-600">
                 <strong>Expelled/Restricted:</strong>{" "}
                 {formData.educational_background?.expelled ? "YES" : "NO"}
               </p>

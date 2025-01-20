@@ -59,6 +59,8 @@ import { SuccessPage } from "./user/forms/SuccessPage";
 import { TransportFacility } from "./user/forms/TransportFacility";
 import { SummaryPage } from "./user/submittedData/SummaryPage";
 import QueryForm from "./user/forms/QueryForm";
+import PaymentFailure from "./user/payment/PaymentFailure";
+import PaymentSuccess from "./user/payment/PaymentSuccess";
 
 function App() {
   return (
@@ -144,7 +146,7 @@ function App() {
         {/* User Protected Routes */}
 
         <Route
-          path={"/user/dashboard"}
+          path={"/user/dashboard/:id"}
           element={
             <UserPrivateRoute>
               <UserDashboard />
@@ -232,7 +234,7 @@ function App() {
         {/* Query Form */}
         <Route
           path={"/user/admission-query"}
-          element={<UserPrivateRoute>{<QueryForm/>}</UserPrivateRoute>}
+          element={<UserPrivateRoute>{<QueryForm />}</UserPrivateRoute>}
         />
 
         <Route path={"/payment-success"} element={<PaymentSuccess />} />
