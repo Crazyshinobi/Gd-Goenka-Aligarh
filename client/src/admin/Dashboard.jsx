@@ -18,6 +18,7 @@ export const Dashboard = () => {
     job: "Loading, please wait...",
     jobApplication: "Loading, please wait...",
     admissionApplication: "Loading, please wait...",
+    admissionApplicationQuery: "Loading, please wait...",
   });
 
   const fetchCount = async () => {
@@ -97,12 +98,12 @@ export const Dashboard = () => {
             {/* Card 1 */}
             <div className="flex flex-col gap-2 items-center justify-center rounded-lg bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 dark:bg-gradient-to-r dark:from-indigo-400 dark:via-indigo-500 dark:to-indigo-600 shadow-md p-4 transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
               <h2 className="text-sm font-semibold text-white dark:text-gray-100">
-                Total Admin
+                Total User
               </h2>
               <p className="text-xl font-bold text-white dark:text-gray-200">
                 {counts.admin}
               </p>
-              <Link to="/admin/view-admin">
+              <Link to="/admin/view-user">
                 <button className="mt-2 px-5 py-1.5 bg-white text-indigo-600 text-xs font-semibold rounded-lg shadow-md hover:bg-indigo-200 focus:outline-none dark:bg-indigo-600 dark:text-white dark:hover:bg-indigo-500">
                   View Details
                 </button>
