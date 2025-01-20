@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
-
 const admissionApplicationSchema = new mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Admin",
+      required: true,
+    },
     general_information: {
       grade: {
         type: String,

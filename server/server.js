@@ -7,6 +7,7 @@ const cors = require("cors");
 const connectDb = require("./src/config/connectDb");
 const app = express();
 const path = require("path");
+const bodyParser = require("body-parser");
 
 // Router
 const adminRoutes = require("./src/routes/adminRoutes");
@@ -19,6 +20,7 @@ const jobApplicationRoutes = require("./src/routes/jobApplicationRoutes");
 const admissionApplicationRoutes = require("./src/routes/admissionApplicationRoutes");
 const admissionApplicationQueryRoutes = require("./src/routes/admissionApplicationQueryRoutes");
 const userRoutes = require("./src/routes/userRoutes");
+const paymentRoutes = require("./src/routes/paymentRoutes");
 
 // Middleware
 const corsOptions = {
@@ -34,6 +36,11 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/src/uploads", express.static(path.join(__dirname, "src/uploads")));
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser());
+app.use("/static", express.static(path.join(__dirname, "src/assets")));
+app.use("/view", express.static(path.join(__dirname, "src/views")));
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "ejs");
 
 // Database Connection
 connectDb();
@@ -49,6 +56,7 @@ app.use("/api/v1/job-application", jobApplicationRoutes);
 app.use("/api/v1/admission-application", admissionApplicationRoutes);
 app.use("/api/v1/admission-application-query", admissionApplicationQueryRoutes);
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/payment", paymentRoutes);
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 app.listen(process.env.PORT || 8080, () => {

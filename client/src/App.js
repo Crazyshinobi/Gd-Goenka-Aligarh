@@ -235,8 +235,8 @@ function App() {
           element={<UserPrivateRoute>{<QueryForm/>}</UserPrivateRoute>}
         />
 
-        {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}
-        {/* <Route path={"/payment-failure"} element={<PaymentFailure />} /> */}
+        <Route path={"/payment-success"} element={<PaymentSuccess />} />
+        <Route path={"/payment-failure"} element={<PaymentFailure />} />
 
         <Route
           path={"/about/mandatory-disclosure/RecognisationCet"}

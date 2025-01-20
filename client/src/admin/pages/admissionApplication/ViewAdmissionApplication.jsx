@@ -20,6 +20,18 @@ export const ViewAdmissionApplication = () => {
       body: (rowData, { rowIndex }) => rowIndex + 1,
       style: { width: "50px" },
     },
+     // User Information
+     {
+      // header: "General Information",
+      separator: true,
+      body: (rowData) => (
+        <div className="rounded-lg font-bold bg-[#f9f9f9] text-[#555] px-3 py-2">
+          User Information
+        </div>
+      ),
+    },
+    { field: "user.name", header: "User Name" },
+    { field: "user.email", header: "User Email Address" },
     // General Information
     {
       // header: "General Information",
