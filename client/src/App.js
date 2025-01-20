@@ -58,7 +58,7 @@ import { OtherRelatives } from "./user/forms/OtherRelatives";
 import { SuccessPage } from "./user/forms/SuccessPage";
 import { TransportFacility } from "./user/forms/TransportFacility";
 import { SummaryPage } from "./user/submittedData/SummaryPage";
-
+import QueryForm from "./user/forms/QueryForm";
 
 function App() {
   return (
@@ -214,16 +214,25 @@ function App() {
         {/* transport faciility */}
         <Route
           path={"/user/transport-facility"}
-          element={<UserPrivateRoute>{<TransportFacility/>}</UserPrivateRoute>}
-        />
-          <Route
-          path={"/user/summary"}
-          element={<UserPrivateRoute>{<SummaryPage/>}</UserPrivateRoute>}
+          element={<UserPrivateRoute>{<TransportFacility />}</UserPrivateRoute>}
         />
 
+        {/* Summary Page */}
+        <Route
+          path={"/user/summary"}
+          element={<UserPrivateRoute>{<SummaryPage />}</UserPrivateRoute>}
+        />
+
+        {/* SuccessPage */}
         <Route
           path={"/user/success"}
-          element={<UserPrivateRoute>{<SuccessPage/>}</UserPrivateRoute>}
+          element={<UserPrivateRoute>{<SuccessPage />}</UserPrivateRoute>}
+        />
+
+        {/* Query Form */}
+        <Route
+          path={"/user/admission-query"}
+          element={<UserPrivateRoute>{<QueryForm/>}</UserPrivateRoute>}
         />
 
         {/* <Route path={"/payment-success"} element={<PaymentSuccess />} /> */}

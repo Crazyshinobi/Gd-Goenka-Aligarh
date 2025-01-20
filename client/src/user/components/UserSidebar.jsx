@@ -48,7 +48,7 @@ export const UserSidebar = ({ mobileMenu }) => {
           {/* Contact Form  */}
           <li>
             <NavLink
-              to="/skdsj"
+              to="/user/admission-query"
               className={({ isActive }) =>
                 `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
                   isActive ? "bg-gray-200 dark:bg-gray-600" : ""
