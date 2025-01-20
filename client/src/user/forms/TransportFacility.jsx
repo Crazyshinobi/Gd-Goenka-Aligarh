@@ -16,50 +16,39 @@ export const TransportFacility = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate the form
+    console.log("Form Data Before Submission: ", formData); // Debug log before submit
+
     const newErrors = {};
-    if (
-      formData.transport_facility === null ||
-      formData.transport_facility === undefined
-    ) {
-      newErrors.transport_facility =
-        "Please select an option for transport facility";
+
+    if (formData.transport_facility === null || formData.transport_facility === undefined) {
+      newErrors.transport_facility = "Please select an option for transport facility";
     }
+
     if (!formData.declaration) {
       newErrors.declaration = "You must agree to the declaration";
     }
 
     setErrors(newErrors);
 
-    // If no errors, proceed to the next step
     if (Object.keys(newErrors).length === 0) {
-      console.log(
-        "Transport Facility and Declaration Form Submitted Successfully!",
-        formData
-      );
+      console.log("Transport Facility and Declaration Form Submitted Successfully!", formData);
+      navigate("/user/summary");
 
-      console.log("Transport facility : " ,formData.transport_facility);
-      console.log("Declaration : " ,formData.declaration);
-
-
-      // Ensure all fields are defined before submission
+      // Uncomment the following code if you want to submit the form data to an API
+      /*
       const allFormData = {
         general_information: formData.general_information || {},
         personal_details: formData.personal_details || {},
         health_information: formData.health_information || {},
         educational_background: formData.educational_background || {},
-        parents_information: formData.parents_information || {},
-        other_relatives: formData.other_relatives || [], // Ensure this is an array
+        parents_information: formData.parents_information || [],
+        other_relatives: formData.other_relatives || [],
         transport_facility: formData.transport_facility,
         declaration: formData.declaration,
       };
 
-      console.log("All form data submitted", allFormData);
-
       try {
-        const admissionApplicationResponse = await apiUrl.postRequest(
-          allFormData
-        );
+        const admissionApplicationResponse = await apiUrl.postRequest(allFormData);
 
         if (admissionApplicationResponse?.success) {
           console.log("Application submitted successfully! Thank You!");
@@ -71,7 +60,12 @@ export const TransportFacility = () => {
           form: "There was an error submitting the form. Please try again!",
         });
       }
+      */
     }
+  };
+
+  const handleGoBack = () => {
+    navigate("/user/other-relatives"); // Navigate to the previous page
   };
 
   return (
@@ -79,9 +73,10 @@ export const TransportFacility = () => {
       <UserLayout />
       <div className="lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
-          <h2 className="text-2xl font-bold mb-6 text-center dark:text-white">Transport Facility and Declaration</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center dark:text-white">
+            Transport Facility and Declaration
+          </h2>
           <form className="space-y-6" onSubmit={handleSubmit}>
-            {/* Transport Facility (Radio Buttons mapped to Boolean) */}
             <div className="space-y-4">
               <label className="block text-sm font-medium text-gray-700 dark:text-white">
                 Do you require bus facility?
@@ -91,8 +86,8 @@ export const TransportFacility = () => {
                   <input
                     type="radio"
                     name="transport_facility"
-                    value={true} // Set value as boolean true
-                    onChange={() => handleChange(null, "transport_facility", true)} // Update directly
+                    value={true}
+                    onChange={() => handleChange("transport_facility", "transport_facility", true)}
                     className="mr-2 dark:text-white"
                   />
                   Yes
@@ -101,9 +96,8 @@ export const TransportFacility = () => {
                   <input
                     type="radio"
                     name="transport_facility"
-                    value={false} // Set value as boolean false
-                    
-                    onChange={() => handleChange(null, "transport_facility", false)} // Update directly
+                    value={false}
+                    onChange={() => handleChange("transport_facility", "transport_facility", false)}
                     className="mr-2 dark:text-white"
                   />
                   No
@@ -116,13 +110,13 @@ export const TransportFacility = () => {
               )}
             </div>
 
-            {/* Declaration */}
             <div className="space-y-4">
               <label className="flex items-center dark:text-white">
                 <input
                   type="checkbox"
                   name="declaration"
-                  onChange={(e) => handleChange("declaration", e.target.checked)} // Update directly
+                  checked={formData.declaration}
+                  onChange={(e) => handleChange("declaration", "declaration", e.target.checked)}
                   className="mr-2 dark:text-white"
                 />
                 I agree to the terms and conditions.
@@ -134,13 +128,22 @@ export const TransportFacility = () => {
               )}
             </div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700"
-            >
-              Submit
-            </button>
+            {/* Buttons */}
+            <div className="flex justify-between mt-6">
+              <button
+                type="button"
+                onClick={handleGoBack}
+                className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+              >
+                Go Back
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>

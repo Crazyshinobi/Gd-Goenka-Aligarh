@@ -7,11 +7,14 @@ export const HealthInformation = () => {
   const { formData, handleChange } = useForm();
   const navigate = useNavigate();
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
-       console.log("Health information :" , formData.health_information)
-      navigate("/user/educational-background");
+    console.log("Health information :", formData.health_information);
+    navigate("/user/educational-background");
+  };
+
+  const handleGoBack = () => {
+    navigate("/user/personal-details"); // Navigate to the previous page
   };
 
   return (
@@ -23,7 +26,9 @@ export const HealthInformation = () => {
           <form onSubmit={handleSubmit}>
             {/* Allergy */}
             <div className="mb-4">
-              <label className="block mb-2">Allergy/Chronic ailment <span className="text-gray-400">(if any)</span></label>
+              <label className="block mb-2">
+                Allergy/Chronic ailment <span className="text-gray-400">(if any)</span>
+              </label>
               <input
                 type="text"
                 name="allergy"
@@ -37,7 +42,9 @@ export const HealthInformation = () => {
 
             {/* Physical Handicap */}
             <div className="mb-4">
-              <label className="block mb-2">Physical Handicap/Disability <span className="text-gray-400">(if any)</span></label>
+              <label className="block mb-2">
+                Physical Handicap/Disability <span className="text-gray-400">(if any)</span>
+              </label>
               <input
                 type="text"
                 name="physical_handicap"
@@ -47,7 +54,6 @@ export const HealthInformation = () => {
                 }
                 className="w-full p-2 border rounded"
               />
-           
             </div>
 
             {/* Other Health Conditions */}
@@ -62,15 +68,24 @@ export const HealthInformation = () => {
                 className="w-full p-2 border rounded"
                 rows="4"
               />
-             
             </div>
 
-            <button
-              type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Next
-            </button>
+            {/* Buttons */}
+            <div className="flex justify-between mt-6">
+              <button
+                type="button"
+                onClick={handleGoBack}
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+              >
+                Go Back
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                Next
+              </button>
+            </div>
           </form>
         </div>
       </div>

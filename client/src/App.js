@@ -57,6 +57,7 @@ import { ParentInformation } from "./user/forms/ParentInformation";
 import { OtherRelatives } from "./user/forms/OtherRelatives";
 import { SuccessPage } from "./user/forms/SuccessPage";
 import { TransportFacility } from "./user/forms/TransportFacility";
+import { SummaryPage } from "./user/submittedData/SummaryPage";
 
 
 function App() {
@@ -214,6 +215,10 @@ function App() {
         <Route
           path={"/user/transport-facility"}
           element={<UserPrivateRoute>{<TransportFacility/>}</UserPrivateRoute>}
+        />
+          <Route
+          path={"/user/summary"}
+          element={<UserPrivateRoute>{<SummaryPage/>}</UserPrivateRoute>}
         />
 
         <Route
