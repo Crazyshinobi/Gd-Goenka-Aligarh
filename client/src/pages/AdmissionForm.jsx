@@ -38,14 +38,7 @@ const AdmissionForm = () => {
     grade: "",
   });
 
-  useEffect(() => {
-    // Fire the conversion event when the homepage loads
-    window.gtag('event', 'conversion', {
-      'send_to': 'AW-11435073187/config', // Replace with your actual conversion label
-      'value': 1.0, // You can set this to any value depending on the value of the conversion
-      'currency': 'USD', // Adjust this according to your business
-    });
-  }, []); 
+  
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -70,6 +63,11 @@ const AdmissionForm = () => {
       setLoading(true);
 
       try {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-11435073187/mTffCPbYoYwaEKO91cwq',
+          'value': 1.0,
+          'currency': 'INR',
+        });
         // Submit admission form
         const admissionResponse = await admissionApi.postRequest(formData);
 
