@@ -38,6 +38,15 @@ const AdmissionForm = () => {
     grade: "",
   });
 
+  useEffect(() => {
+    // Fire the conversion event when the homepage loads
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-11435073187/config', // Replace with your actual conversion label
+      'value': 1.0, // You can set this to any value depending on the value of the conversion
+      'currency': 'USD', // Adjust this according to your business
+    });
+  }, []); 
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -58,7 +67,7 @@ const AdmissionForm = () => {
     e.preventDefault();
 
     if (RegistervalidateForm()) {
-      setLoading(true); // Set loading to true when submitting
+      setLoading(true);
 
       try {
         // Submit admission form
@@ -402,7 +411,7 @@ const AdmissionForm = () => {
                         htmlFor="name"
                         className="block text-sm font-medium text-gray-700 mb-1"
                       >
-                        Name
+                       Student Name
                       </label>
                       <input
                         type="text"
@@ -411,7 +420,7 @@ const AdmissionForm = () => {
                         value={formData.name}
                         onChange={handleRegisterChange}
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                        placeholder="Enter full name"
+                        placeholder="Enter Student full name"
                       />
                       {errors.name && (
                         <p className="mt-1 text-sm text-red-600">
@@ -563,8 +572,7 @@ const AdmissionForm = () => {
         </div>
       </div>
 
-      <style>{
-        `.loader {
+      <style>{`.loader {
           border: 4px solid rgba(255, 255, 255, 0.3);
           border-top: 4px solid #fff;
           border-radius: 50%;
@@ -581,8 +589,7 @@ const AdmissionForm = () => {
           100% {
             transform: rotate(360deg);
           }
-        }`
-      }</style>
+        }`}</style>
     </Layout>
   );
 };

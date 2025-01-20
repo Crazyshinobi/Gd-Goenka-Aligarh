@@ -28,13 +28,32 @@ export const GeneralInformation = () => {
 
     if (validateForm()) {
       try {
-        console.log("General information data : " , formData.general_information)
+        console.log("General information data : ", formData.general_information);
         navigate("/user/personal-details");
       } catch (err) {
         alert("Error occurred. Please try again.");
       }
     }
   };
+
+  // List of grades/classes
+  const grades = [
+    "Nursery",
+    "LKG",
+    "UKG",
+    "Class I",
+    "Class II",
+    "Class III",
+    "Class IV",
+    "Class V",
+    "Class VI",
+    "Class VII",
+    "Class VIII",
+    "Class IX",
+    "Class X",
+    "Class XI",
+    "Class XII",
+  ];
 
   return (
     <>
@@ -45,17 +64,22 @@ export const GeneralInformation = () => {
             <div className="w-full max-w-4xl sm:max-w-2xl lg:max-w-3xl bg-white rounded-lg shadow-md p-6 sm:px-4 md:px-6">
               <h2 className="text-3xl font-semibold text-center text-gray-800 mb-8">General Information</h2>
               <form onSubmit={handleSubmit}>
-                {/* Grade/Class Input */}
+                {/* Grade/Class Dropdown */}
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">We are considering enrollment in Grade/Class</label>
-                  <input
-                    type="text"
+                  <select
                     name="grade"
                     value={formData.general_information.grade}
                     onChange={(e) => handleChange('general_information', 'grade', e.target.value)}
                     className={`w-full p-3 border ${errors.grade ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
-                    placeholder="Enter grade/class"
-                  />
+                  >
+                    <option value="">Select Grade/Class</option>
+                    {grades.map((grade, index) => (
+                      <option key={index} value={grade}>
+                        {grade}
+                      </option>
+                    ))}
+                  </select>
                   {errors.grade && <p className="text-red-500 text-sm mt-2">{errors.grade}</p>}
                 </div>
 

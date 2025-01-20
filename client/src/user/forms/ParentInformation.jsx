@@ -193,7 +193,7 @@ export const ParentInformation = () => {
             {parentType === "father_mother" ? (
               <div className="space-y-6">
                 {/* Father's Information */}
-                <div className="bg-gray-100 p-4 rounded-lg">
+                <div className="dark:bg-gray-100 dark:text-black p-4 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">Father's Information</h3>
                   <div className="space-y-4">
                     <div>
@@ -204,7 +204,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "name", e.target.value, 0)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.father_name && (
                         <p className="text-red-500 text-sm">{errors.father_name}</p>
@@ -218,7 +218,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "age", e.target.value, 0)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded  dark:bg-white dark:border-black"
                       />
                       {errors.father_age && (
                         <p className="text-red-500 text-sm">{errors.father_age}</p>
@@ -232,7 +232,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "nationality", e.target.value, 0)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.father_nationality && (
                         <p className="text-red-500 text-sm">{errors.father_nationality}</p>
@@ -246,7 +246,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "education", e.target.value, 0)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.father_education && (
                         <p className="text-red-500 text-sm">{errors.father_education}</p>
@@ -260,7 +260,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "profession", e.target.value, 0)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.father_profession && (
                         <p className="text-red-500 text-sm">{errors.father_profession}</p>
@@ -274,7 +274,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "income", e.target.value, 0)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                     </div>
                     <div>
@@ -285,7 +285,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "office_address", e.target.value, 0)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                     </div>
                     <div>
@@ -296,7 +296,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "email", e.target.value, 0)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.father_email && (
                         <p className="text-red-500 text-sm">{errors.father_email}</p>
@@ -306,7 +306,7 @@ export const ParentInformation = () => {
                 </div>
 
                 {/* Mother's Information */}
-                <div className="bg-gray-100 p-4 rounded-lg">
+                <div className="dark:bg-gray-100 dark:text-black  p-4 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">Mother's Information</h3>
                   <div className="space-y-4">
                     <div>
@@ -317,7 +317,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "name", e.target.value, 1)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.mother_name && (
                         <p className="text-red-500 text-sm">{errors.mother_name}</p>
@@ -331,7 +331,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "age", e.target.value, 1)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.mother_age && (
                         <p className="text-red-500 text-sm">{errors.mother_age}</p>
@@ -345,7 +345,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "nationality", e.target.value, 1)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.mother_nationality && (
                         <p className="text-red-500 text-sm">{errors.mother_nationality}</p>
@@ -359,7 +359,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "education", e.target.value, 1)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.mother_education && (
                         <p className="text-red-500 text-sm">{errors.mother_education}</p>
@@ -373,7 +373,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "profession", e.target.value, 1)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.mother_profession && (
                         <p className="text-red-500 text-sm">{errors.mother_profession}</p>
@@ -387,7 +387,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "income", e.target.value, 1)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                     </div>
                     <div>
@@ -398,7 +398,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "office_address", e.target.value, 1)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                     </div>
                     <div>
@@ -409,7 +409,7 @@ export const ParentInformation = () => {
                         onChange={(e) =>
                           handleChange("parents_information", "email", e.target.value, 1)
                         }
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
                       />
                       {errors.mother_email && (
                         <p className="text-red-500 text-sm">{errors.mother_email}</p>
@@ -419,7 +419,7 @@ export const ParentInformation = () => {
                 </div>
               </div>
             ) : (
-              <div className="bg-gray-100 p-4 rounded-lg">
+              <div className="p-4 rounded-lg dark:bg-gray-100 dark:text-black ">
                 <h3 className="text-xl font-bold mb-4">Guardian's Information</h3>
                 <div className="space-y-4">
                   <div>
@@ -430,7 +430,7 @@ export const ParentInformation = () => {
                       onChange={(e) =>
                         handleChange("parents_information", "name", e.target.value, 0)
                       }
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2 border rounded dark:bg-white dark:border-black"
                     />
                     {errors.guardian_name && (
                       <p className="text-red-500 text-sm">{errors.guardian_name}</p>
@@ -444,7 +444,7 @@ export const ParentInformation = () => {
                       onChange={(e) =>
                         handleChange("parents_information", "age", e.target.value, 0)
                       }
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2 border rounded dark:bg-white dark:border-black"
                     />
                     {errors.guardian_age && (
                       <p className="text-red-500 text-sm">{errors.guardian_age}</p>
@@ -458,7 +458,7 @@ export const ParentInformation = () => {
                       onChange={(e) =>
                         handleChange("parents_information", "relationship_with_child", e.target.value, 0)
                       }
-                      className="w-full p-2 border rounded"
+                      className="w-full p-2 border rounded dark:bg-white dark:border-black"
                     />
                     {errors.guardian_relationship && (
                       <p className="text-red-500 text-sm">{errors.guardian_relationship}</p>

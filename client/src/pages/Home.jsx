@@ -34,6 +34,14 @@ const Home = () => {
   //   return <Preloader />;
   // }
 
+  useEffect(() => {
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-11435073187/config', 
+      'value': 1.0,
+      'currency': 'USD',
+    });
+  }, []); 
+
   return (
     <Layout>
       <ModalBox />
