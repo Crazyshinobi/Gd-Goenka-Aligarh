@@ -1,4 +1,4 @@
-const { createRecord, getRecord, deleteRecord, getCount } = require("../common/commonDatabaseQueries");
+const { createRecord, deleteRecord, getCount } = require("../common/commonDatabaseQueries");
 const AdmissionApplication = require("../models/AdmissionApplication");
 const { sendResponse } = require("../utils/responseUtils");
 const fs = require("fs");
@@ -6,6 +6,7 @@ const path = require("path");
 
 const createAdmissionApplication = async (req, res) => {
   const {
+    user,
     general_information,
     personal_details,
     health_information,
@@ -19,6 +20,7 @@ const createAdmissionApplication = async (req, res) => {
   const errors = [];
 
   // Validate each field and add specific error messages
+  if (!user) errors.push("User Id is required");
   if (!general_information) errors.push("General information is required");
   if (!personal_details) errors.push("Personal details are required");
   if (!health_information) errors.push("Health information is required");
@@ -37,6 +39,7 @@ const createAdmissionApplication = async (req, res) => {
 
   try {
     const newAdmissionApplication = await createRecord(AdmissionApplication, {
+      user,
       general_information,
       personal_details,
       health_information,
@@ -72,14 +75,16 @@ const createAdmissionApplication = async (req, res) => {
 
 const getAdmissionApplication = async (req, res) => {
   try {
-    const admissionApplications = await getRecord(AdmissionApplication);
-    if (admissionApplications.status) {
+    const admissionApplications = await AdmissionApplication.find()
+    .populate("user", "name email") // Populate user field with specific fields (name and email)
+    .exec();
+    if (admissionApplications) {
       sendResponse(
         res,
         200,
         true,
         "Data fetched successfully",
-        admissionApplications.data
+        admissionApplications
       );
     } else {
       sendResponse(
