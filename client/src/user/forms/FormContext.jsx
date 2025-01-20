@@ -38,31 +38,8 @@ export const FormProvider = ({ children }) => {
       expelled: false,
       expelled_reason: "",
     },
-    parents_information: [
-      {
-        parent_type: "father",
-        name: "",
-        age: "",
-        nationality: "",
-        education: "",
-        profession: "",
-        income: "",
-        office_address: "",
-        email: "",
-      },
-      {
-        parent_type: "mother",
-        name: "",
-        age: "",
-        nationality: "",
-        education: "",
-        profession: "",
-        income: "",
-        office_address: "",
-        email: "",
-      },
-    ],
-    other_relatives: [], // This is the array we need to update
+    parents_information: [], // Initialize as an empty array
+    other_relatives: [],
     transport_facility: false,
     declaration: false,
   });
@@ -70,47 +47,18 @@ export const FormProvider = ({ children }) => {
   const handleChange = (section, field, value, index = null) => {
     setFormData((prevData) => {
       if (section === "parents_information" && index !== null) {
-        // Update a specific parent object in the array
+        const updatedParents = [...prevData.parents_information];
+        updatedParents[index] = { ...updatedParents[index], [field]: value };
+        return { ...prevData, parents_information: updatedParents };
+      } else if (section === "father" || section === "mother" || section === "guardian") {
         return {
           ...prevData,
-          [section]: prevData[section].map((parent, i) =>
-            i === index ? { ...parent, [field]: value } : parent
-          ),
+          [section]: {
+            ...prevData[section],
+            [field]: value,
+          },
         };
-      } else if (section === "parents_information") {
-        // Check if the field is a parentType (e.g., "father", "mother", "guardian")
-        const parentTypes = ["father", "mother", "guardian"];
-        if (parentTypes.includes(field)) {
-          // Add a new parent object if it doesn't exist
-          const parentExists = prevData[section].some(
-            (parent) => parent.parent_type === field
-          );
-
-          if (!parentExists) {
-            const newParent = {
-              parent_type: field,
-              name: "",
-              age: "",
-              nationality: "",
-              education: "",
-              profession: "",
-              income: "",
-              office_address: "",
-              email: "",
-            };
-
-            if (field === "guardian") {
-              newParent.relationship_with_child = "";
-            }
-
-            return {
-              ...prevData,
-              [section]: [...prevData[section], newParent],
-            };
-          }
-        }
-      }
-      else if (section === "transport_facility" || section === "declaration") {
+      }  else if (section === "transport_facility" || section === "declaration") {
         return {
           ...prevData,
           [section]: value, // Directly update the boolean value
@@ -122,7 +70,7 @@ export const FormProvider = ({ children }) => {
           [section]: value, // Directly update the array
         };
       } else {
-        // Handle regular fields 
+        // Handle regular fields
         return {
           ...prevData,
           [section]: {
@@ -131,11 +79,14 @@ export const FormProvider = ({ children }) => {
           },
         };
       }
+      return prevData; // Fallback to prevent undefined state
     });
   };
 
+  console.log("FormProvider Context Value:", { formData, setFormData, handleChange });
+
   return (
-    <FormContext.Provider value={{ formData, handleChange }}>
+    <FormContext.Provider value={{ formData,setFormData, handleChange }}>
       {children}
     </FormContext.Provider>
   );

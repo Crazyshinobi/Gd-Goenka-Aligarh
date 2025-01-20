@@ -96,6 +96,11 @@ export const OtherRelatives = () => {
     }
   };
 
+  // Function to handle the "Go Back" button click
+  const handleGoBack = () => {
+    navigate('/user/parent-information'); // Navigate to the previous page
+  };
+
   return (
     <>
       <UserLayout />
@@ -242,6 +247,15 @@ export const OtherRelatives = () => {
               className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
             >
               Submit
+            </button>
+
+            {/* Go Back Button */}
+            <button
+              type="button"
+              onClick={handleGoBack}
+              className="w-full bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700 mt-4"
+            >
+              Go Back
             </button>
           </form>
         </div>

@@ -36,14 +36,18 @@ export const PersonalDetails = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log("Personal data : " , formData.personal_details)
+      console.log("Personal data : ", formData.personal_details);
       navigate("/user/health-information");
     }
   };
 
+  const handleGoBack = () => {
+    navigate("/user/general-information"); // Navigate to the previous page
+  };
+
   return (
     <>
-      <UserLayout/>
+      <UserLayout />
       <div className="lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-2xl font-bold mb-4">Personal Details</h2>
@@ -215,19 +219,28 @@ export const PersonalDetails = () => {
                 }
                 className="w-full p-2 border rounded"
               />
-               {errors.emergency_mobile && <p className="text-red-500">{errors.emergency_mobile}</p>}
+              {errors.emergency_mobile && <p className="text-red-500">{errors.emergency_mobile}</p>}
             </div>
 
-            <button
-              type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Next
-            </button>
+            {/* Buttons */}
+            <div className="flex justify-between mt-6">
+              <button
+                type="button"
+                onClick={handleGoBack}
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+              >
+                Go Back
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                Next
+              </button>
+            </div>
           </form>
         </div>
       </div>
     </>
   );
 };
-

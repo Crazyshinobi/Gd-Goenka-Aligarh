@@ -26,9 +26,13 @@ export const EducationalBackground = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log("Educational background : " , formData.educational_background)
+      console.log("Educational background : ", formData.educational_background);
       navigate("/user/parent-information");
     }
+  };
+
+  const handleGoBack = () => {
+    navigate("/user/health-information"); // Navigate to the previous page
   };
 
   return (
@@ -132,7 +136,7 @@ export const EducationalBackground = () => {
 
             {/* Expelled */}
             <div className="mb-4">
-              <label className="block mb-2">Has the child ever been expelled/resticated/not promoted to the next class by any school?</label>
+              <label className="block mb-2">Has the child ever been expelled/restricted/not promoted to the next class by any school?</label>
               <div className="flex items-center space-x-4">
                 <label className="flex items-center">
                   <input
@@ -179,12 +183,22 @@ export const EducationalBackground = () => {
               </div>
             )}
 
-            <button
-              type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Next
-            </button>
+            {/* Buttons */}
+            <div className="flex justify-between mt-6">
+              <button
+                type="button"
+                onClick={handleGoBack}
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+              >
+                Go Back
+              </button>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                Next
+              </button>
+            </div>
           </form>
         </div>
       </div>
