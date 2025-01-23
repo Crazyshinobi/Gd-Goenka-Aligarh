@@ -124,6 +124,11 @@ const AdmissionForm = () => {
             secure: true,
             sameSite: "Strict",
           });
+          Cookies.set("userId", response.userID, {
+            expires: 1,
+            secure: true,
+            sameSite: "Strict",
+          });
 
           if (response.name) {
             // Access name directly from the response
@@ -134,7 +139,7 @@ const AdmissionForm = () => {
 
           toast.success("Login successful");
           setTimeout(() => {
-            navigate(`/user/dashboard/${response.userID}`);
+            navigate(`/user/dashboard/`);
           }, 1000);
         } else {
           toast.error("Login failed");

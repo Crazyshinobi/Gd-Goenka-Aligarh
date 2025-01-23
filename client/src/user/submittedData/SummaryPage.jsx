@@ -1,28 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "../forms/FormContext";
 import { useNavigate } from "react-router-dom";
 import { UserLayout } from "../components/UserLayout";
+import axios from "axios";
 
 export const SummaryPage = () => {
   const { formData } = useForm();
   const navigate = useNavigate();
+  const [FormData, setFormData] = useState({
+    txnid: "",
+    amount: "",
+    name:  formData.personal_details.first_name + ' ' + formData.personal_details.last_name,
+    email: formData.personal_details.email,
+    phone: formData.personal_details.mobile,
+    productinfo: formData.general_information.grade ,
+    udf1: "",
+    udf2: "",
+    udf3: "",
+    udf4: "",
+    udf5: "",
+    udf6: "",
+    udf7: "",
+    udf8: "",
+    udf9: "",
+    udf10: "",
+    surl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
+    furl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
+  });
 
-  const handleGoToPayment = () => {
-    const data = {
-      
+  const handleGoToPayment = async () => {
+    const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/payment/initiate_payment`;
+    try {
+      const response = await axios.post(apiURL, FormData);
+      console.log(response)
+
+      if (response?.data?.url) {
+        window.location.href = response.data.url;
+      } else {
+        navigate("/payment-failure");
+      }
+    } catch (error) {
+      console.error("Payment initiation failed:", error);
+      navigate("/payment-failure");
     }
   };
 
   const handleGoBack = () => {
-    navigate("/user/transport-facility"); // Adjust the route as needed
+    navigate("/user/transport-facility"); 
   };
 
   return (
     <>
       <UserLayout />
-      <div className="lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
+      <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
-          <h2 className="text-2xl font-bold mb-8 text-center dark:text-white">
+          <h2 className="text-xl lg:text-2xl font-bold mb-8 text-center dark:text-white">
             Please Verify the Details Below
           </h2>
 
@@ -36,7 +68,7 @@ export const SummaryPage = () => {
                 <strong>Grade:</strong>{" "}
                 {formData.general_information?.grade || "N/A"}
               </p>
-              <p className="dark:text-white text-lg text-blue-600 dark:text-blue-300">
+              <p className="dark:text-white text-lg text-blue-600">
                 <strong>Applied Before:</strong>{" "}
                 {formData.general_information?.applied_before ? "YES" : "NO"}
               </p>
@@ -165,7 +197,7 @@ export const SummaryPage = () => {
                   </p>
                 </>
               )}
-              <p className="dark:text-white text-lg text-blue-600">
+              <p className="dark:text-white text-lg text-blue-600 ">
                 <strong>Expelled/Restricted:</strong>{" "}
                 {formData.educational_background?.expelled ? "YES" : "NO"}
               </p>
@@ -183,10 +215,14 @@ export const SummaryPage = () => {
             <h3 className="text-xl font-semibold dark:text-white mb-4 border-b pb-2">
               Parents Information
             </h3>
-            {formData.parents_information && formData.parents_information.length > 0 ? (
+            {formData.parents_information &&
+            formData.parents_information.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {formData.parents_information.map((parent, index) => (
-                  <div key={index} className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                  <div
+                    key={index}
+                    className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm"
+                  >
                     <p className="dark:text-white font-semibold mb-2">
                       Parent {index + 1}
                     </p>
@@ -201,13 +237,15 @@ export const SummaryPage = () => {
                         <strong>Age:</strong> {parent.age || "N/A"}
                       </p>
                       <p className="dark:text-white">
-                        <strong>Nationality:</strong> {parent.nationality || "N/A"}
+                        <strong>Nationality:</strong>{" "}
+                        {parent.nationality || "N/A"}
                       </p>
                       <p className="dark:text-white">
                         <strong>Education:</strong> {parent.education || "N/A"}
                       </p>
                       <p className="dark:text-white">
-                        <strong>Profession:</strong> {parent.profession || "N/A"}
+                        <strong>Profession:</strong>{" "}
+                        {parent.profession || "N/A"}
                       </p>
                       <p className="dark:text-white">
                         <strong>Income:</strong> {parent.income || "N/A"}
@@ -242,7 +280,10 @@ export const SummaryPage = () => {
             {formData.other_relatives && formData.other_relatives.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {formData.other_relatives.map((relative, index) => (
-                  <div key={index} className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                  <div
+                    key={index}
+                    className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm"
+                  >
                     <p className="dark:text-white font-semibold mb-2">
                       Relative {index + 1}
                     </p>
@@ -251,7 +292,8 @@ export const SummaryPage = () => {
                         <strong>Name:</strong> {relative.name || "N/A"}
                       </p>
                       <p className="dark:text-white">
-                        <strong>Relationship:</strong> {relative.relation || "N/A"}
+                        <strong>Relationship:</strong>{" "}
+                        {relative.relation || "N/A"}
                       </p>
                       <p className="dark:text-white">
                         <strong>Age:</strong> {relative.age || "N/A"}
@@ -267,7 +309,9 @@ export const SummaryPage = () => {
                 ))}
               </div>
             ) : (
-              <p className="dark:text-white">No relatives information provided.</p>
+              <p className="dark:text-white">
+                No relatives information provided.
+              </p>
             )}
           </div>
 

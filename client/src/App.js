@@ -61,7 +61,6 @@ import { SummaryPage } from "./user/submittedData/SummaryPage";
 import QueryForm from "./user/forms/QueryForm";
 import PaymentFailure from "./user/payment/PaymentFailure";
 import PaymentSuccess from "./user/payment/PaymentSuccess";
-
 function App() {
   return (
     <FormProvider>
@@ -146,7 +145,7 @@ function App() {
         {/* User Protected Routes */}
 
         <Route
-          path={"/user/dashboard/:id"}
+          path={"/user/dashboard"}
           element={
             <UserPrivateRoute>
               <UserDashboard />

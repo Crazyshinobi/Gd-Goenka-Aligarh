@@ -20,12 +20,13 @@ const jobApplicationRoutes = require("./src/routes/jobApplicationRoutes");
 const admissionApplicationRoutes = require("./src/routes/admissionApplicationRoutes");
 const admissionApplicationQueryRoutes = require("./src/routes/admissionApplicationQueryRoutes");
 const userRoutes = require("./src/routes/userRoutes");
-const paymentRoutes = require("./src/routes/paymentRoutes");
+const paymentRoutes = require("./src/routes/paymentRoutes.js");
 
 // Middleware
 const corsOptions = {
   origin: "*",
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true,
   allowedHeaders: [
     "Content-Type",
     "Authorization",
@@ -37,10 +38,6 @@ app.use(express.json());
 app.use("/src/uploads", express.static(path.join(__dirname, "src/uploads")));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser());
-app.use("/static", express.static(path.join(__dirname, "src/assets")));
-app.use("/view", express.static(path.join(__dirname, "src/views")));
-app.engine("html", require("ejs").renderFile);
-app.set("view engine", "ejs");
 
 // Database Connection
 connectDb();

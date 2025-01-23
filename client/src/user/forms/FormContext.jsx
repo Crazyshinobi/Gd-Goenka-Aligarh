@@ -1,12 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const FormContext = createContext();
 
 export const FormProvider = ({ children }) => {
-  const { id } = useParams();
   const [formData, setFormData] = useState({
-    user: id,
+    user: "",
     general_information: {
       grade: "",
       applied_before: false,
@@ -67,7 +66,8 @@ export const FormProvider = ({ children }) => {
         };
       } else if (
         section === "transport_facility" ||
-        section === "declaration"
+        section === "declaration" ||
+        section === "user"
       ) {
         return {
           ...prevData,

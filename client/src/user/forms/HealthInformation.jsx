@@ -20,9 +20,9 @@ export const HealthInformation = () => {
   return (
     <>
       <UserLayout />
-      <div className="lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
+      <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
-          <h2 className="text-2xl font-bold mb-4">Health Information</h2>
+          <h2 className="text-center lg:text-left text-2xl font-bold mb-4">Health Information</h2>
           <form onSubmit={handleSubmit}>
             {/* Allergy */}
             <div className="mb-4">
