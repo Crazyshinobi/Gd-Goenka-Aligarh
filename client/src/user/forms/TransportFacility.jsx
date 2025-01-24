@@ -79,7 +79,7 @@ export const TransportFacility = () => {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-4">
               <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                Do you require bus facility?
+                Do you require bus facility?<span className="text-red-500 text-2xl">*</span>
               </label>
               <div className="flex items-center space-x-4">
                 <label className="flex items-center dark:text-white">
@@ -119,7 +119,7 @@ export const TransportFacility = () => {
                   onChange={(e) => handleChange("declaration", "declaration", e.target.checked)}
                   className="mr-2 dark:text-white"
                 />
-                I agree to the terms and conditions.
+                I agree to the terms and conditions.<span className="text-red-500 text-2xl">*</span>
               </label>
               {errors.declaration && (
                 <span className="text-red-500 text-sm">

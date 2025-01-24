@@ -125,7 +125,7 @@ export const OtherRelatives = () => {
               <div className="space-y-4 mt-6">
                 {/* Relation (Dropdown for Brother/Sister) */}
                 <div className="flex flex-col">
-                  <label className="font-medium">Relation:</label>
+                  <label className="font-medium">Relation:<span className="text-red-500 text-2xl">*</span></label>
                   <select
                     name="relation"
                     value={newRelative.relation}
@@ -143,7 +143,7 @@ export const OtherRelatives = () => {
 
                 {/* Name */}
                 <div className="flex flex-col">
-                  <label className="font-medium">Name:</label>
+                  <label className="font-medium">Name:<span className="text-red-500 text-2xl">*</span></label>
                   <input
                     type="text"
                     name="name"
@@ -159,7 +159,7 @@ export const OtherRelatives = () => {
 
                 {/* Age */}
                 <div className="flex flex-col">
-                  <label className="font-medium">Age:</label>
+                  <label className="font-medium">Age:<span className="text-red-500 text-2xl">*</span></label>
                   <input
                     type="number"
                     name="age"
@@ -175,7 +175,7 @@ export const OtherRelatives = () => {
 
                 {/* School */}
                 <div className="flex flex-col">
-                  <label className="font-medium">School:</label>
+                  <label className="font-medium">School:<span className="text-red-500 text-2xl">*</span></label>
                   <input
                     type="text"
                     name="school"
@@ -191,7 +191,7 @@ export const OtherRelatives = () => {
 
                 {/* Grade */}
                 <div className="flex flex-col">
-                  <label className="font-medium">Grade:</label>
+                  <label className="font-medium">Grade:<span className="text-red-500 text-2xl">*</span></label>
                   <input
                     type="text"
                     name="grade"

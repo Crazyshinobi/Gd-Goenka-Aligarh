@@ -164,11 +164,12 @@ export const ParentInformation = () => {
   return (
     <>
       <UserLayout />
-      <div className="lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
+      <div className="lg:p-6 sm:ml-64 pt-8 p-2 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
           <form onSubmit={handleSubmit} noValidate className="space-y-6">
-            <div className="flex space-x-4">
-              <label className="flex items-center">
+            {/* Parent Type Selection */}
+            <div className="flex flex-col sm:flex-row sm:space-x-4">
+              <label className="flex items-center mb-2 sm:mb-0">
                 <input
                   type="radio"
                   value="father_mother"
@@ -196,234 +197,304 @@ export const ParentInformation = () => {
                 <div className="dark:bg-gray-100 dark:text-black p-4 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">Father's Information</h3>
                   <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium">Name:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[0]?.name || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "name", e.target.value, 0)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.father_name && (
-                        <p className="text-red-500 text-sm">{errors.father_name}</p>
-                      )}
+                    {/* First Row: Name, Age, Nationality */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Name<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[0]?.name || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "name", e.target.value, 0)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.father_name && (
+                          <p className="text-red-500 text-sm">{errors.father_name}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Age<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="number"
+                          value={formData.parents_information[0]?.age || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "age", e.target.value, 0)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.father_age && (
+                          <p className="text-red-500 text-sm">{errors.father_age}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Nationality<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[0]?.nationality || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "nationality", e.target.value, 0)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.father_nationality && (
+                          <p className="text-red-500 text-sm">{errors.father_nationality}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium">Age:</label>
-                      <input
-                        type="number"
-                        value={formData.parents_information[0]?.age || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "age", e.target.value, 0)
-                        }
-                        className="w-full p-2 border rounded  dark:bg-white dark:border-black"
-                      />
-                      {errors.father_age && (
-                        <p className="text-red-500 text-sm">{errors.father_age}</p>
-                      )}
+
+                    {/* Second Row: Education, Profession, Income */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Education<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[0]?.education || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "education", e.target.value, 0)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.father_education && (
+                          <p className="text-red-500 text-sm">{errors.father_education}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Profession<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[0]?.profession || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "profession", e.target.value, 0)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.father_profession && (
+                          <p className="text-red-500 text-sm">{errors.father_profession}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Income per year<span className="text-gray-400"> (must be in number)</span>
+                          <span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[0]?.income || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "income", e.target.value, 0)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.father_income && (
+                          <p className="text-red-500 text-sm">{errors.father_income}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium">Nationality:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[0]?.nationality || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "nationality", e.target.value, 0)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.father_nationality && (
-                        <p className="text-red-500 text-sm">{errors.father_nationality}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Education:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[0]?.education || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "education", e.target.value, 0)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.father_education && (
-                        <p className="text-red-500 text-sm">{errors.father_education}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Profession:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[0]?.profession || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "profession", e.target.value, 0)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.father_profession && (
-                        <p className="text-red-500 text-sm">{errors.father_profession}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Income per year: <span className="text-gray-400">(must be in number)</span></label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[0]?.income || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "income", e.target.value, 0)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Office Address:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[0]?.office_address || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "office_address", e.target.value, 0)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Email:</label>
-                      <input
-                        type="email"
-                        value={formData.parents_information[0]?.email || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "email", e.target.value, 0)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.father_email && (
-                        <p className="text-red-500 text-sm">{errors.father_email}</p>
-                      )}
+
+                    {/* Third Row: Office Address, Email */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Office Address<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[0]?.office_address || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "office_address", e.target.value, 0)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.father_office_address && (
+                          <p className="text-red-500 text-sm">{errors.father_office_address}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Email<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          value={formData.parents_information[0]?.email || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "email", e.target.value, 0)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.father_email && (
+                          <p className="text-red-500 text-sm">{errors.father_email}</p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Mother's Information */}
-                <div className="dark:bg-gray-100 dark:text-black  p-4 rounded-lg">
+                <div className="dark:bg-gray-100 dark:text-black p-4 rounded-lg">
                   <h3 className="text-xl font-bold mb-4">Mother's Information</h3>
                   <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium">Name:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[1]?.name || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "name", e.target.value, 1)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.mother_name && (
-                        <p className="text-red-500 text-sm">{errors.mother_name}</p>
-                      )}
+                    {/* First Row: Name, Age, Nationality */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Name<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[1]?.name || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "name", e.target.value, 1)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.mother_name && (
+                          <p className="text-red-500 text-sm">{errors.mother_name}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Age<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="number"
+                          value={formData.parents_information[1]?.age || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "age", e.target.value, 1)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.mother_age && (
+                          <p className="text-red-500 text-sm">{errors.mother_age}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Nationality<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[1]?.nationality || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "nationality", e.target.value, 1)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.mother_nationality && (
+                          <p className="text-red-500 text-sm">{errors.mother_nationality}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium">Age:</label>
-                      <input
-                        type="number"
-                        value={formData.parents_information[1]?.age || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "age", e.target.value, 1)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.mother_age && (
-                        <p className="text-red-500 text-sm">{errors.mother_age}</p>
-                      )}
+
+                    {/* Second Row: Education, Profession, Income */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Education<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[1]?.education || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "education", e.target.value, 1)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.mother_education && (
+                          <p className="text-red-500 text-sm">{errors.mother_education}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Profession<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[1]?.profession || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "profession", e.target.value, 1)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.mother_profession && (
+                          <p className="text-red-500 text-sm">{errors.mother_profession}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Income per year<span className="text-gray-400"> (must be in number)</span>
+                          <span className="text-red-500 text-2xl"></span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[1]?.income || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "income", e.target.value, 1)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.mother_income && (
+                          <p className="text-red-500 text-sm">{errors.mother_income}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium">Nationality:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[1]?.nationality || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "nationality", e.target.value, 1)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.mother_nationality && (
-                        <p className="text-red-500 text-sm">{errors.mother_nationality}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Education:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[1]?.education || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "education", e.target.value, 1)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.mother_education && (
-                        <p className="text-red-500 text-sm">{errors.mother_education}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Profession:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[1]?.profession || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "profession", e.target.value, 1)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.mother_profession && (
-                        <p className="text-red-500 text-sm">{errors.mother_profession}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Income per year: <span className="text-gray-400">(must be in number)</span></label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[1]?.income || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "income", e.target.value, 1)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Office Address:</label>
-                      <input
-                        type="text"
-                        value={formData.parents_information[1]?.office_address || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "office_address", e.target.value, 1)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium">Email:</label>
-                      <input
-                        type="email"
-                        value={formData.parents_information[1]?.email || ""}
-                        onChange={(e) =>
-                          handleChange("parents_information", "email", e.target.value, 1)
-                        }
-                        className="w-full p-2 border rounded dark:bg-white dark:border-black"
-                      />
-                      {errors.mother_email && (
-                        <p className="text-red-500 text-sm">{errors.mother_email}</p>
-                      )}
+
+                    {/* Third Row: Office Address, Email */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Office Address<span className="text-red-500 text-2xl "></span>
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.parents_information[1]?.office_address || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "office_address", e.target.value, 1)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.mother_office_address && (
+                          <p className="text-red-500 text-sm">{errors.mother_office_address}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Email<span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          value={formData.parents_information[1]?.email || ""}
+                          onChange={(e) =>
+                            handleChange("parents_information", "email", e.target.value, 1)
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.mother_email && (
+                          <p className="text-red-500 text-sm">{errors.mother_email}</p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="p-4 rounded-lg dark:bg-gray-100 dark:text-black ">
+              <div className="p-4 rounded-lg dark:bg-gray-100 dark:text-black">
                 <h3 className="text-xl font-bold mb-4">Guardian's Information</h3>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium">Name:</label>
+                    <label className="block text-sm font-medium">
+                      Name<span className="text-red-500 text-2xl">*</span>
+                    </label>
                     <input
                       type="text"
                       value={formData.parents_information[0]?.name || ""}
@@ -437,7 +508,9 @@ export const ParentInformation = () => {
                     )}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium">Age:</label>
+                    <label className="block text-sm font-medium">
+                      Age<span className="text-red-500 text-2xl">*</span>
+                    </label>
                     <input
                       type="number"
                       value={formData.parents_information[0]?.age || ""}
@@ -451,7 +524,9 @@ export const ParentInformation = () => {
                     )}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium">Relationship with Child:</label>
+                    <label className="block text-sm font-medium">
+                      Relationship with Child<span className="text-red-500 text-2xl">*</span>
+                    </label>
                     <input
                       type="text"
                       value={formData.parents_information[0]?.relationship_with_child || ""}
@@ -469,17 +544,17 @@ export const ParentInformation = () => {
             )}
 
             {/* Buttons */}
-            <div className="flex justify-between mt-6">
+            <div className="flex flex-col sm:flex-row justify-between mt-6 space-y-4 sm:space-y-0 sm:space-x-4">
               <button
                 type="button"
                 onClick={handleGoBack}
-                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
               >
                 Go Back
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full sm:w-auto"
               >
                 Submit and Next
               </button>

@@ -14,7 +14,7 @@ function Header1() {
   const [isSidebar, setIsSidebar] = useState(false);
 
   const sideToggle = () => {
-    setIsSmallSidebar(!isSmallSidebar); // Toggle sidebar open/close
+    setIsSmallSidebar(!isSmallSidebar); 
   };
 
   const sideBar = () => {

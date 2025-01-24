@@ -66,7 +66,7 @@ export const GeneralInformation = () => {
               <form onSubmit={handleSubmit}>
                 {/* Grade/Class Dropdown */}
                 <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">We are considering enrollment in Grade/Class</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">We are considering enrollment in Grade/Class <span className="text-red-500 text-2xl">*</span></label>
                   <select
                     name="grade"
                     value={formData.general_information.grade}
@@ -100,7 +100,7 @@ export const GeneralInformation = () => {
                   <div className="space-y-6">
                     {/* Academic Year Input */}
                     <div className="mb-6">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Academic year</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Academic year<span className="text-red-500 text-2xl">*</span></label>
                       <input
                         type="number"
                         name="applied_year"
@@ -114,7 +114,7 @@ export const GeneralInformation = () => {
 
                     {/* Applied Grade/Class Input */}
                     <div className="mb-6">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Which class</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Which class<span className="text-red-500 text-2xl">*</span></label>
                       <input
                         type="number"
                         name="applied_grade"

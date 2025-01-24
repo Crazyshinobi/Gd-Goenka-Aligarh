@@ -59,6 +59,7 @@ import { SuccessPage } from "./user/forms/SuccessPage";
 import { TransportFacility } from "./user/forms/TransportFacility";
 import { SummaryPage } from "./user/submittedData/SummaryPage";
 import QueryForm from "./user/forms/QueryForm";
+import PaymentSummary from "./user/payment/PaymentSummary";
 
 function App() {
   return (
@@ -235,8 +236,16 @@ function App() {
           element={<UserPrivateRoute>{<QueryForm/>}</UserPrivateRoute>}
         />
 
-        <Route path={"/payment-success"} element={<PaymentSuccess />} />
-        <Route path={"/payment-failure"} element={<PaymentFailure />} />
+         {/* Payment summary */}
+         <Route
+          path={"/user/payment-summary"}
+          element={<UserPrivateRoute>{<PaymentSummary/>}</UserPrivateRoute>}
+        />
+
+        
+
+        {/* `<Route path={"/payment-success"} element={<PaymentSuccess />} />
+        <Route path={"/payment-failure"} element={<PaymentFailure />} />` */}
 
         <Route
           path={"/about/mandatory-disclosure/RecognisationCet"}

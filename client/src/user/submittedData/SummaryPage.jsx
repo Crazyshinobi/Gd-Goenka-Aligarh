@@ -8,7 +8,7 @@ export const SummaryPage = () => {
   const navigate = useNavigate();
 
   const handleGoToPayment = () => {
-    navigate("/user/payment");
+    navigate("/user/payment-summary");
   };
 
   const handleGoBack = () => {

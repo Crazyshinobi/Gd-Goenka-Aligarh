@@ -13,6 +13,8 @@ export const EducationalBackground = () => {
     const { attended_school, previous_school, city, from_grade, to_grade, expelled, expelled_reason } = formData.educational_background;
 
     if (attended_school && !previous_school) newErrors.previous_school = "Previous school name is required.";
+    else if (!/^[A-Za-z\s]+$/.test(attended_school && previous_school))
+    newErrors.previous_school = "School name must only contain alphabets";
     if (attended_school && !city) newErrors.city = "City of school is required.";
     if (attended_school && !from_grade) newErrors.from_grade = "From grade is required.";
     if (attended_school && !to_grade) newErrors.to_grade = "To grade is required.";
@@ -77,21 +79,27 @@ export const EducationalBackground = () => {
             {formData.educational_background.attended_school && (
               <>
                 <div className="mb-4">
-                  <label className="block mb-2">Name(s) of previous and present School(s) attended</label>
+                  <label className="block mb-2">Name(s) of previous and present School(s) attended<span className="text-red-500 text-2xl">*</span></label>
                   <input
                     type="text"
                     name="previous_school"
                     value={formData.educational_background.previous_school}
-                    onChange={(e) =>
-                      handleChange("educational_background", "previous_school", e.target.value)
-                    }
+                    onChange={(e) => {
+                      const regex = /^[A-Za-z\s]*$/;
+                      const value = e.target.value;
+    
+                      if (regex.test(value) || value === "") {
+                        handleChange("educational_background", "previous_school", e.target.value)
+                      }
+                      
+                    }}
                     className="w-full p-2 border rounded"
                   />
                   {errors.previous_school && <p className="text-red-500">{errors.previous_school}</p>}
                 </div>
 
                 <div className="mb-4">
-                  <label className="block mb-2">City of School</label>
+                  <label className="block mb-2">City of School<span className="text-red-500 text-2xl">*</span></label>
                   <input
                     type="text"
                     name="city"
@@ -105,7 +113,7 @@ export const EducationalBackground = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label className="block mb-2">From Grade</label>
+                  <label className="block mb-2">From Grade<span className="text-red-500 text-2xl">*</span></label>
                   <input
                     type="text"
                     name="from_grade"
@@ -119,7 +127,7 @@ export const EducationalBackground = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label className="block mb-2">To Grade</label>
+                  <label className="block mb-2">To Grade<span className="text-red-500 text-2xl">*</span></label>
                   <input
                     type="text"
                     name="to_grade"
@@ -169,7 +177,7 @@ export const EducationalBackground = () => {
             {/* Expelled Reason (only shown if expelled is true) */}
             {formData.educational_background.expelled && (
               <div className="mb-4">
-                <label className="block mb-2">Please provide details:</label>
+                <label className="block mb-2">Please provide details:<span className="text-red-500 text-2xl">*</span></label>
                 <textarea
                   name="expelled_reason"
                   value={formData.educational_background.expelled_reason}
