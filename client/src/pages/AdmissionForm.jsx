@@ -117,11 +117,14 @@ const AdmissionForm = () => {
       console.log("Form validated successfully");
       try {
         const response = await loginApi.postRequest(loginData);
-        console.log("Response from login API:", response);
-
         if (response?.success && response?.userToken) {
           console.log("Login successful, setting token in cookies");
           Cookies.set("userToken", response.userToken, {
+            expires: 1,
+            secure: true,
+            sameSite: "Strict",
+          });
+          Cookies.set("userId", response.userID, {
             expires: 1,
             secure: true,
             sameSite: "Strict",
@@ -136,7 +139,7 @@ const AdmissionForm = () => {
 
           toast.success("Login successful");
           setTimeout(() => {
-            navigate("/user/dashboard");
+            navigate(`/user/dashboard/`);
           }, 1000);
         } else {
           toast.error("Login failed");

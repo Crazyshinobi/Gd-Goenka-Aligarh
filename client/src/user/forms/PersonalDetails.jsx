@@ -97,9 +97,13 @@ export const PersonalDetails = () => {
   return (
     <>
       <UserLayout />
-      <div className="lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
+      <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
+<<<<<<< HEAD
           <h2 className="text-2xl font-bold mb-6">Personal Details</h2>
+=======
+          <h2 className="text-center lg:text-left text-2xl font-bold mb-4">Personal Details</h2>
+>>>>>>> 7d91b13cbf1c4cd1ef83e527c1550311eb76bd37
           <form onSubmit={handleSubmit}>
             {/* First Row: First Name, Middle Name, Last Name */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">

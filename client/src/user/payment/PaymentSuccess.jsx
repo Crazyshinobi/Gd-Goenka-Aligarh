@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { Link } from "react-router-dom";
 
 const PaymentSuccess = () => {
   const containerRef = useRef(null);
@@ -12,19 +13,20 @@ const PaymentSuccess = () => {
     const message = messageRef.current;
     const button = buttonRef.current;
     const checkmark = checkmarkRef.current;
-    const checkmarkPath = checkmark.querySelector('path');
+    const checkmarkPath = checkmark.querySelector("path");
 
     if (checkmarkPath) {
       const pathLength = checkmarkPath.getTotalLength();
 
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9d56e', '#ff8e72'];
+      const colors = ["#ff6b6b", "#4ecdc4", "#45b7d1", "#f9d56e", "#ff8e72"];
 
       for (let i = 0; i < 150; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'absolute w-3 h-3 rounded-full';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        const confetti = document.createElement("div");
+        confetti.className = "absolute w-3 h-3 rounded-full";
+        confetti.style.backgroundColor =
+          colors[Math.floor(Math.random() * colors.length)];
         container.appendChild(confetti);
 
         gsap.set(confetti, {
@@ -43,7 +45,7 @@ const PaymentSuccess = () => {
           autoAlpha: 1,
           duration: Math.random() * 3 + 2,
           delay: Math.random() * 2,
-          ease: 'power1.out',
+          ease: "power1.out",
           onComplete: () => container.removeChild(confetti),
         });
       }
@@ -53,14 +55,17 @@ const PaymentSuccess = () => {
         strokeDashoffset: pathLength,
       });
 
-      tl.to(checkmarkPath, { strokeDashoffset: 0, duration: 1.5 })
-        .to(message, { autoAlpha: 1, y: 0, duration: 1 });
+      tl.to(checkmarkPath, { strokeDashoffset: 0, duration: 1.5 }).to(message, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+      });
 
       gsap.set([message, button], { autoAlpha: 0, y: 50 });
 
-      tl.to(container, { backgroundColor: '#4ade80', duration: 1 })
+      tl.to(container, { backgroundColor: "#4ade80", duration: 1 })
         .to(message, { autoAlpha: 1, y: 0, duration: 1 })
-        .to(button, { autoAlpha: 1, y: 0, duration: 0.3 }, '-=0.4');
+        .to(button, { autoAlpha: 1, y: 0, duration: 0.3 }, "-=0.4");
 
       gsap.fromTo(
         button,
@@ -70,7 +75,7 @@ const PaymentSuccess = () => {
           repeat: -1,
           yoyo: true,
           duration: 0.3,
-          ease: 'power2.inOut',
+          ease: "power2.inOut",
         }
       );
     }
@@ -103,13 +108,13 @@ const PaymentSuccess = () => {
         <p className="text-xl">Your transaction has been completed.</p>
       </div>
 
-      <button
+      <Link
+        to="/"
         ref={buttonRef}
         className="bg-white text-green-500 font-bold py-3 px-8 rounded-full hover:bg-green-100 transition duration-300 transform hover:scale-110"
-        onClick={() => alert('Redirecting to Home...')}
       >
         Go to Home
-      </button>
+      </Link>
     </div>
   );
 };

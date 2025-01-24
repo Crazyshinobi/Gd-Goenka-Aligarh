@@ -30,11 +30,11 @@ let validate_email = function (mail) {
 }
 
 let validate_phone = function (number) {
-  if ((number.length === 10)) {
-    return false;
+  if ((number.length === 10) ) {
+    return true;
   }
 
-  return true;
+  return false;
 }
 let generateHash = function (data, config) {
 

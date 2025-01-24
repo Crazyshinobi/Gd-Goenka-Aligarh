@@ -62,7 +62,7 @@ export const GeneralInformation = () => {
         <div className="p-2 border-2 border-gray-200 rounded-lg dark:border-white mt-14">
           <div className="flex-grow flex items-center justify-center py-8">
             <div className="w-full max-w-4xl sm:max-w-2xl lg:max-w-3xl bg-white rounded-lg shadow-md p-6 sm:px-4 md:px-6">
-              <h2 className="text-3xl font-semibold text-center text-gray-800 mb-8">General Information</h2>
+              <h2 className="text-2xl lg:text-3xl font-semibold text-center text-gray-800 mb-8">General Information</h2>
               <form onSubmit={handleSubmit}>
                 {/* Grade/Class Dropdown */}
                 <div className="mb-6">

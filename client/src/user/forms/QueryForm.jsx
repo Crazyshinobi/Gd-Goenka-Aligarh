@@ -110,7 +110,7 @@ const QueryForm = () => {
       <h2 className="text-2xl font-bold mb-6 text-center">Query Form</h2>
       <form onSubmit={handleSubmit} noValidate>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700" htmlFor="name">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white" htmlFor="name">
             Name
           </label>
           <input
@@ -128,7 +128,7 @@ const QueryForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white" htmlFor="email">
             Email
           </label>
           <input
@@ -146,7 +146,7 @@ const QueryForm = () => {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700" htmlFor="message">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white" htmlFor="message">
             Message
           </label>
           <textarea

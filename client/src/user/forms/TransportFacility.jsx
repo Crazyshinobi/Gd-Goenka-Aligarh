@@ -35,32 +35,33 @@ export const TransportFacility = () => {
       navigate("/user/summary");
 
       // Uncomment the following code if you want to submit the form data to an API
-      /*
-      const allFormData = {
-        general_information: formData.general_information || {},
-        personal_details: formData.personal_details || {},
-        health_information: formData.health_information || {},
-        educational_background: formData.educational_background || {},
-        parents_information: formData.parents_information || [],
-        other_relatives: formData.other_relatives || [],
-        transport_facility: formData.transport_facility,
-        declaration: formData.declaration,
-      };
+  
+      // const allFormData = {
+      //   user: formData.user,
+      //   general_information: formData.general_information || {},
+      //   personal_details: formData.personal_details || {},
+      //   health_information: formData.health_information || {},
+      //   educational_background: formData.educational_background || {},
+      //   parents_information: formData.parents_information || [],
+      //   other_relatives: formData.other_relatives || [],
+      //   transport_facility: formData.transport_facility,
+      //   declaration: formData.declaration,
+      // };
 
-      try {
-        const admissionApplicationResponse = await apiUrl.postRequest(allFormData);
+      // try {
+      //   const admissionApplicationResponse = await apiUrl.postRequest(allFormData);
 
-        if (admissionApplicationResponse?.success) {
-          console.log("Application submitted successfully! Thank You!");
-          navigate("/user/success");
-        }
-      } catch (error) {
-        console.log("Error Submitting the Form", error);
-        setErrors({
-          form: "There was an error submitting the form. Please try again!",
-        });
-      }
-      */
+      //   if (admissionApplicationResponse?.success) {
+      //     console.log("Application submitted successfully! Thank You!");
+      //     navigate("/user/success");
+      //   }
+      // } catch (error) {
+      //   console.log("Error Submitting the Form", error);
+      //   setErrors({
+      //     form: "There was an error submitting the form. Please try again!",
+      //   });
+      // }
+     
     }
   };
 
@@ -71,9 +72,9 @@ export const TransportFacility = () => {
   return (
     <>
       <UserLayout />
-      <div className="lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
+      <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
-          <h2 className="text-2xl font-bold mb-6 text-center dark:text-white">
+          <h2 className="text-xl lg:text-2xl font-bold mb-6 text-center dark:text-white">
             Transport Facility and Declaration
           </h2>
           <form className="space-y-6" onSubmit={handleSubmit}>

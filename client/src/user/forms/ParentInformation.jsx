@@ -164,7 +164,11 @@ export const ParentInformation = () => {
   return (
     <>
       <UserLayout />
+<<<<<<< HEAD
       <div className="lg:p-6 sm:ml-64 pt-8 p-2 dark:bg-gray-800 min-h-screen">
+=======
+      <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
+>>>>>>> 7d91b13cbf1c4cd1ef83e527c1550311eb76bd37
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
           <form onSubmit={handleSubmit} noValidate className="space-y-6">
             {/* Parent Type Selection */}

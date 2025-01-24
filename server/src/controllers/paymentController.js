@@ -6,7 +6,55 @@ const config = {
   enable_iframe: process.env.EASEBUZZ_IFRAME,
 };
 
-const response = (req, res) => {
+function generateTransactionID() {
+  const randomDigits1 = Math.floor(Math.random() * 90 + 10).toString();
+  const randomLetters1 = Array(2)
+    .fill(0)
+    .map(() => String.fromCharCode(65 + Math.floor(Math.random() * 26)))
+    .join("");
+  const randomDigit2 = Math.floor(Math.random() * 10).toString();
+  const randomLetters2 = Array(2)
+    .fill(0)
+    .map(() => String.fromCharCode(65 + Math.floor(Math.random() * 26)))
+    .join("");
+  const randomDigits3 = Math.floor(Math.random() * 90 + 10).toString();
+  const transactionID = `T${randomDigits1}${randomLetters1}${randomDigit2}${randomLetters2}${randomDigits3}`;
+  return transactionID;
+}
+
+const initiatePayment = async (req, res) => {
+  data = req.body;
+  if (
+    data.productinfo === "Nursery" ||
+    data.productinfo === "LKG" ||
+    data.productinfo === "UKG" ||
+    data.productinfo === "Class I" ||
+    data.productinfo === "Class II" ||
+    data.productinfo === "Class III" ||
+    data.productinfo === "Class IV" ||
+    data.productinfo === "Class V"
+  ) {
+    data.amount = "10500.00";
+  } else if (
+    data.productinfo === "Class VI" ||
+    data.productinfo === "Class VII" ||
+    data.productinfo === "Class VIII"
+  ) {
+    data.amount = "10750.00";
+  } else if (
+    data.productinfo === "Class IX" ||
+    data.productinfo === "Class X"
+  ) {
+    data.amount = "13500.00";
+  } else {
+    data.amount = "13750.00";
+  }
+  data.txnid = generateTransactionID();
+  var initiate_payment = require("../Easebuzz/initiate_payment");
+  initiate_payment.initiate_payment(data, config, res);
+};
+
+const paymentResponse = async (req, res) => {
   function checkReverseHash(response) {
     var hashstring =
       config.salt +
@@ -49,46 +97,16 @@ const response = (req, res) => {
     else return false;
   }
   if (checkReverseHash(req.body)) {
-    res.send(req.body);
+    const data = req.body;
+    console.log(data);
+    if (data.success) {
+      return res.redirect("http://localhost:3000/payment-success");
+    } else {
+      return res.redirect("http://localhost:3000/payment-failure");
+    }
+    // res.status(200).json({ success: true, data });
   }
-  res.send("false, check the hash value ");
+  res.send("false, check the hash value");
 };
 
-const initiatePayment = (req, res) => {
-  data = req.body;
-  var initiate_payment = require("../Easebuzz/initiate_payment.js");
-  initiate_payment.initiate_payment(data, config, res);
-};
-
-const transaction = (req, res) => {
-  data = req.body;
-  var transaction = require("../Easebuzz/transaction.js");
-  transaction.transaction(data, config, res);
-};
-
-const transactionDate = (req, res) => {
-  data = req.body;
-  var transaction_date = require("../Easebuzz/tranaction_date.js");
-  transaction_date.tranaction_date(data, config, res);
-};
-
-const payout = (req, res) => {
-  data = req.body;
-  var payout = require("../Easebuzz/payout.js");
-  payout.payout(data, config, res);
-};
-
-const refund = (req, res) => {
-  data = req.body;
-  var refund = require("../Easebuzz/refund.js");
-  refund.refund(data, config, res);
-};
-
-module.exports = {
-  response,
-  initiatePayment,
-  transaction,
-  transactionDate,
-  payout,
-  refund,
-};
+module.exports = { initiatePayment, paymentResponse };

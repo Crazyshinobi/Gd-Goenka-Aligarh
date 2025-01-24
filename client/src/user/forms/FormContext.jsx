@@ -1,9 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
+import Cookies from "js-cookie";
 
 const FormContext = createContext();
 
 export const FormProvider = ({ children }) => {
   const [formData, setFormData] = useState({
+    user: "",
     general_information: {
       grade: "",
       applied_before: false,
@@ -50,7 +52,11 @@ export const FormProvider = ({ children }) => {
         const updatedParents = [...prevData.parents_information];
         updatedParents[index] = { ...updatedParents[index], [field]: value };
         return { ...prevData, parents_information: updatedParents };
-      } else if (section === "father" || section === "mother" || section === "guardian") {
+      } else if (
+        section === "father" ||
+        section === "mother" ||
+        section === "guardian"
+      ) {
         return {
           ...prevData,
           [section]: {
@@ -58,7 +64,11 @@ export const FormProvider = ({ children }) => {
             [field]: value,
           },
         };
-      }  else if (section === "transport_facility" || section === "declaration") {
+      } else if (
+        section === "transport_facility" ||
+        section === "declaration" ||
+        section === "user"
+      ) {
         return {
           ...prevData,
           [section]: value, // Directly update the boolean value
@@ -83,10 +93,14 @@ export const FormProvider = ({ children }) => {
     });
   };
 
-  console.log("FormProvider Context Value:", { formData, setFormData, handleChange });
+  console.log("FormProvider Context Value:", {
+    formData,
+    setFormData,
+    handleChange,
+  });
 
   return (
-    <FormContext.Provider value={{ formData,setFormData, handleChange }}>
+    <FormContext.Provider value={{ formData, setFormData, handleChange }}>
       {children}
     </FormContext.Provider>
   );
