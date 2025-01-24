@@ -24,7 +24,6 @@ function generateTransactionID() {
 
 const initiatePayment = async (req, res) => {
   data = req.body;
-
   if (
     data.productinfo === "Nursery" ||
     data.productinfo === "LKG" ||
@@ -35,20 +34,20 @@ const initiatePayment = async (req, res) => {
     data.productinfo === "Class IV" ||
     data.productinfo === "Class V"
   ) {
-    data.amount = "500.00";
+    data.amount = "10500.00";
   } else if (
     data.productinfo === "Class VI" ||
     data.productinfo === "Class VII" ||
     data.productinfo === "Class VIII"
   ) {
-    data.amount = "750.00";
+    data.amount = "10750.00";
   } else if (
     data.productinfo === "Class IX" ||
     data.productinfo === "Class X"
   ) {
-    data.amount = "1000.00";
+    data.amount = "13500.00";
   } else {
-    data.amount = "1250.00";
+    data.amount = "13750.00";
   }
   data.txnid = generateTransactionID();
   var initiate_payment = require("../Easebuzz/initiate_payment");
@@ -98,7 +97,14 @@ const paymentResponse = async (req, res) => {
     else return false;
   }
   if (checkReverseHash(req.body)) {
-    res.send(req.body);
+    const data = req.body;
+    console.log(data);
+    if (data.success) {
+      return res.redirect("http://localhost:3000/payment-success");
+    } else {
+      return res.redirect("http://localhost:3000/payment-failure");
+    }
+    // res.status(200).json({ success: true, data });
   }
   res.send("false, check the hash value");
 };
