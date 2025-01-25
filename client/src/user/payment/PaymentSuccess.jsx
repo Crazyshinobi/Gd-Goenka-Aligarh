@@ -65,7 +65,7 @@ const PaymentSuccess = () => {
 
       tl.to(container, { backgroundColor: "#4ade80", duration: 1 })
         .to(message, { autoAlpha: 1, y: 0, duration: 1 })
-        .to(button, { autoAlpha: 1, y: 0, duration: 0.3 }, "-=0.4");
+        .to(button, { autoAlpha: 1, y: 0, duration: 0.1 }, "-=2");
 
       gsap.fromTo(
         button,
@@ -74,7 +74,7 @@ const PaymentSuccess = () => {
           scale: 1.1,
           repeat: -1,
           yoyo: true,
-          duration: 0.3,
+          duration: 0.9,
           ease: "power2.inOut",
         }
       );

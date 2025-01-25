@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { usePostRequest } from "../../hooks/usePostRequest";
 
 export const TransportFacility = () => {
@@ -65,9 +65,7 @@ export const TransportFacility = () => {
     }
   };
 
-  const handleGoBack = () => {
-    navigate("/user/other-relatives"); // Navigate to the previous page
-  };
+  
 
   return (
     <>
@@ -131,13 +129,11 @@ export const TransportFacility = () => {
 
             {/* Buttons */}
             <div className="flex justify-between mt-6">
-              <button
-                type="button"
-                onClick={handleGoBack}
+              <Link to={'/user/other-relatives'}
                 className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
               >
                 Go Back
-              </button>
+              </Link>
               <button
                 type="submit"
                 className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"

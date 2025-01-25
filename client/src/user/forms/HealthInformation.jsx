@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
 
@@ -13,9 +13,7 @@ export const HealthInformation = () => {
     navigate("/user/educational-background");
   };
 
-  const handleGoBack = () => {
-    navigate("/user/personal-details"); // Navigate to the previous page
-  };
+ 
 
   return (
     <>
@@ -72,18 +70,16 @@ export const HealthInformation = () => {
 
             {/* Buttons */}
             <div className="flex justify-between mt-6">
-              <button
-                type="button"
-                onClick={handleGoBack}
-                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+            <Link to={'/user/personal-details'}
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
               >
                 Go Back
-              </button>
+              </Link>
               <button
                 type="submit"
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               >
-                Next
+              Save & Next
               </button>
             </div>
           </form>

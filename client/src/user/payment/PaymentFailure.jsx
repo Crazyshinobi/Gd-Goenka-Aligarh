@@ -42,8 +42,8 @@ const PaymentFailure = () => {
 
       tl.to(container, { backgroundColor: "#f44336", duration: 1 })
         .to(errorIcon, { autoAlpha: 1, y: 0, duration: 1 })
-        .to(message, { autoAlpha: 1, y: 0, duration: 0.5 }, "-=0.5")
-        .to(button, { autoAlpha: 1, y: 0, duration: 0.3 }, "-=0.4");
+        .to(message, { autoAlpha: 1, y: 0, duration: 0.5 }, "-=2")
+        .to(button, { autoAlpha: 1, y: 0, duration: 0.3 }, "-=2");
 
       // Button Hover Animation
       gsap.fromTo(
@@ -53,7 +53,7 @@ const PaymentFailure = () => {
           scale: 1.1,
           repeat: -1,
           yoyo: true,
-          duration: 0.3,
+          duration: 0.9,
           ease: "power2.inOut",
         }
       );

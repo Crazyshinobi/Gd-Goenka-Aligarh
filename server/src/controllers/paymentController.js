@@ -99,7 +99,7 @@ const paymentResponse = async (req, res) => {
   if (checkReverseHash(req.body)) {
     const data = req.body;
     console.log(data);
-    if (data.success) {
+    if (data.status === 'success') {
       return res.redirect("http://localhost:3000/payment-success");
     } else {
       return res.redirect("http://localhost:3000/payment-failure");

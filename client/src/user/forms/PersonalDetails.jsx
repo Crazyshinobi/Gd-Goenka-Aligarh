@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
 
@@ -86,24 +86,25 @@ export const PersonalDetails = () => {
 
     if (validateForm()) {
       console.log("Personal data : ", formData.personal_details);
+      // nextStep()
       navigate("/user/health-information");
     }
   };
 
-  const handleGoBack = () => {
-    navigate("/user/general-information"); // Navigate to the previous page
-  };
+
 
   return (
     <>
       <UserLayout />
-      <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
-<<<<<<< HEAD
-          <h2 className="text-2xl font-bold mb-6">Personal Details</h2>
-=======
+
+      <div className="p-4 py-6 lg:p-6 sm:ml-64 mt-10 dark:bg-gray-800 min-h-screen">
+      {/* <div>
+         <FormStepper currentStep={2}/>
+         </div> */}
+         
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-6 bg-white dark:bg-gray-700 shadow-lg">
+        
           <h2 className="text-center lg:text-left text-2xl font-bold mb-4">Personal Details</h2>
->>>>>>> 7d91b13cbf1c4cd1ef83e527c1550311eb76bd37
           <form onSubmit={handleSubmit}>
             {/* First Row: First Name, Middle Name, Last Name */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -365,13 +366,11 @@ export const PersonalDetails = () => {
 
             {/* Buttons */}
             <div className="flex justify-between mt-6">
-              <button
-                type="button"
-                onClick={handleGoBack}
-                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+            <Link to={'/user/general-information'}
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
               >
                 Go Back
-              </button>
+              </Link>
               <button
                 type="submit"
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"

@@ -28,10 +28,10 @@ export const SummaryPage = () => {
     furl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
   });
 
-<<<<<<< HEAD
-  const handleGoToPayment = () => {
-    navigate("/user/payment-summary");
-=======
+  // const handleGoToPayment = () => {
+  //   navigate("/user/payment-summary");
+  // }
+
   const handleGoToPayment = async () => {
     const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/payment/initiate_payment`;
     try {
@@ -47,7 +47,6 @@ export const SummaryPage = () => {
       console.error("Payment initiation failed:", error);
       navigate("/payment-failure");
     }
->>>>>>> 7d91b13cbf1c4cd1ef83e527c1550311eb76bd37
   };
 
   const handleGoBack = () => {
