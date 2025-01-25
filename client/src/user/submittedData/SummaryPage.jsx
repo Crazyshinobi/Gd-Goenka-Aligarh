@@ -1,57 +1,15 @@
 import React, { useState } from "react";
 import { useForm } from "../forms/FormContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserLayout } from "../components/UserLayout";
-import axios from "axios";
 
 export const SummaryPage = () => {
   const { formData } = useForm();
   const navigate = useNavigate();
-  const [FormData, setFormData] = useState({
-    txnid: "",
-    amount: "",
-    name:  formData.personal_details.first_name + ' ' + formData.personal_details.last_name,
-    email: formData.personal_details.email,
-    phone: formData.personal_details.mobile,
-    productinfo: formData.general_information.grade ,
-    udf1: "",
-    udf2: "",
-    udf3: "",
-    udf4: "",
-    udf5: "",
-    udf6: "",
-    udf7: "",
-    udf8: "",
-    udf9: "",
-    udf10: "",
-    surl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
-    furl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
-  });
 
-<<<<<<< HEAD
-  const handleGoToPayment = () => {
-    navigate("/user/payment-summary");
-=======
-  const handleGoToPayment = async () => {
-    const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/payment/initiate_payment`;
-    try {
-      const response = await axios.post(apiURL, FormData);
-      console.log(response)
-
-      if (response?.data?.url) {
-        window.location.href = response.data.url;
-      } else {
-        navigate("/payment-failure");
-      }
-    } catch (error) {
-      console.error("Payment initiation failed:", error);
-      navigate("/payment-failure");
-    }
->>>>>>> 7d91b13cbf1c4cd1ef83e527c1550311eb76bd37
-  };
 
   const handleGoBack = () => {
-    navigate("/user/transport-facility"); 
+    navigate("/user/transport-facility");
   };
 
   return (
@@ -350,12 +308,12 @@ export const SummaryPage = () => {
             >
               Back
             </button>
-            <button
-              onClick={handleGoToPayment}
+            <Link
+              to={"/user/payment-summary"}
               className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300"
             >
               Go to Payment
-            </button>
+            </Link>
           </div>
         </div>
       </div>

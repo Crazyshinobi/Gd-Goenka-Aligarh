@@ -21,6 +21,7 @@ const admissionApplicationRoutes = require("./src/routes/admissionApplicationRou
 const admissionApplicationQueryRoutes = require("./src/routes/admissionApplicationQueryRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const paymentRoutes = require("./src/routes/paymentRoutes.js");
+const paymentTransactionRoutes = require("./src/routes/paymentTransactionRoutes.js");
 
 // Middleware
 const corsOptions = {
@@ -54,6 +55,8 @@ app.use("/api/v1/admission-application", admissionApplicationRoutes);
 app.use("/api/v1/admission-application-query", admissionApplicationQueryRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/payment", paymentRoutes);
+app.use("/api/v1/payment-transaction", paymentTransactionRoutes);
+
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 app.listen(process.env.PORT || 8080, () => {
