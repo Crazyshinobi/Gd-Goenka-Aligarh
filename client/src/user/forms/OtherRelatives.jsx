@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext"; // Accessing form data and handleChange from context
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 export const OtherRelatives = () => {
@@ -96,10 +96,7 @@ export const OtherRelatives = () => {
     }
   };
 
-  // Function to handle the "Go Back" button click
-  const handleGoBack = () => {
-    navigate('/user/parent-information'); // Navigate to the previous page
-  };
+
 
   return (
     <>
@@ -242,21 +239,19 @@ export const OtherRelatives = () => {
             </div>
 
             {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
-            >
-              Submit
-            </button>
-
-            {/* Go Back Button */}
-            <button
-              type="button"
-              onClick={handleGoBack}
-              className="w-full bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700 mt-4"
-            >
-              Go Back
-            </button>
+            <div className="flex justify-between mt-6">
+              <Link to={'/user/parent-information'}
+                className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+              >
+                Go Back
+              </Link>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+              >
+                Save & Next
+              </button>
+            </div>
           </form>
         </div>
       </div>

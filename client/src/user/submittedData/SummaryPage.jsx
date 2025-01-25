@@ -2,11 +2,32 @@ import React, { useState } from "react";
 import { useForm } from "../forms/FormContext";
 import { Link, useNavigate } from "react-router-dom";
 import { UserLayout } from "../components/UserLayout";
+import axios from "axios";
 
 export const SummaryPage = () => {
   const { formData } = useForm();
   const navigate = useNavigate();
 
+  // const handleGoToPayment = () => {
+  //   navigate("/user/payment-summary");
+  // }
+
+  const handleGoToPayment = async () => {
+    const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/payment/initiate_payment`;
+    try {
+      const response = await axios.post(apiURL, FormData);
+      console.log(response)
+
+      if (response?.data?.url) {
+        window.location.href = response.data.url;
+      } else {
+        navigate("/payment-failure");
+      }
+    } catch (error) {
+      console.error("Payment initiation failed:", error);
+      navigate("/payment-failure");
+    }
+  };
 
   const handleGoBack = () => {
     navigate("/user/transport-facility");

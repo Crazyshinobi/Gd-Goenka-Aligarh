@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const ParentInformation = () => {
   const { formData, setFormData, handleChange } = useForm();
@@ -157,9 +157,7 @@ export const ParentInformation = () => {
     navigate("/user/other-relatives"); // Redirect only if there are no errors
   };
 
-  const handleGoBack = () => {
-    navigate("/user/educational-background"); // Navigate to the previous page
-  };
+ 
 
   return (
     <>
@@ -545,18 +543,16 @@ export const ParentInformation = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row justify-between mt-6 space-y-4 sm:space-y-0 sm:space-x-4">
-              <button
-                type="button"
-                onClick={handleGoBack}
+              <Link to={'/user/educational-background'}
                 className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
               >
                 Go Back
-              </button>
+              </Link>
               <button
                 type="submit"
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full sm:w-auto"
               >
-                Submit and Next
+                Save & Next
               </button>
             </div>
           </form>
