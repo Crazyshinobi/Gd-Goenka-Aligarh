@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext";
-import { Link, useNavigate } from "react-router-dom";
 import { usePostRequest } from "../../hooks/usePostRequest";
 
-export const TransportFacility = () => {
+export const TransportFacility = ({onNext ,onBack}) => {
   const { formData, handleChange } = useForm();
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
 
   const apiUrl = usePostRequest(
     `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/`
@@ -16,7 +14,6 @@ export const TransportFacility = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Form Data Before Submission: ", formData); // Debug log before submit
 
     const newErrors = {};
 
@@ -31,9 +28,7 @@ export const TransportFacility = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Transport Facility and Declaration Form Submitted Successfully!", formData);
-      navigate("/user/summary");
-
+     onNext()
       // Uncomment the following code if you want to submit the form data to an API
   
       // const allFormData = {
@@ -71,7 +66,7 @@ export const TransportFacility = () => {
     <>
       <UserLayout />
       <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-xl lg:text-2xl font-bold mb-6 text-center dark:text-white">
             Transport Facility and Declaration
           </h2>
@@ -129,11 +124,11 @@ export const TransportFacility = () => {
 
             {/* Buttons */}
             <div className="flex justify-between mt-6">
-              <Link to={'/user/other-relatives'}
+              <button onClick={onBack} 
                 className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
               >
                 Go Back
-              </Link>
+              </button>
               <button
                 type="submit"
                 className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext"; // Accessing form data and handleChange from context
-import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
-export const OtherRelatives = () => {
+export const OtherRelatives = ({onNext , onBack}) => {
   const { formData, handleChange } = useForm(); // Accessing form context
   const [errors, setErrors] = useState({}); // Error state for form validation
   const [showAddRelativeForm, setShowAddRelativeForm] = useState(false); // Toggle for showing the form
@@ -16,7 +15,6 @@ export const OtherRelatives = () => {
     grade: "",
   }); // State for the new relative's form data
 
-  const navigate = useNavigate();
 
   // Ensure the relatives state is an array
   const relatives = Array.isArray(formData.other_relatives)
@@ -68,10 +66,6 @@ export const OtherRelatives = () => {
       setShowAddRelativeForm(false); // Hide the form after submission
       setErrors({});
       toast.success("Relative added successfully!");
-
-      console.log("Relative added successfully:", newRelative);
-      console.log("Updated Relatives:", updatedRelatives);
-      console.log("Relatives:", formData.other_relatives);
     }
   };
 
@@ -91,8 +85,7 @@ export const OtherRelatives = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log("Relatives Added:", formData.other_relatives); // Log the updated relatives
-      navigate("/user/transport-facility"); // Navigate to the next page
+      onNext()
     }
   };
 
@@ -103,7 +96,7 @@ export const OtherRelatives = () => {
       <UserLayout />
       <Toaster />
       <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-2xl font-bold mb-6 text-center">
             Other Relatives Information
           </h2>
@@ -240,11 +233,11 @@ export const OtherRelatives = () => {
 
             {/* Submit Button */}
             <div className="flex justify-between mt-6">
-              <Link to={'/user/parent-information'}
+              <button onClick={onBack}
                 className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
               >
                 Go Back
-              </Link>
+              </button>
               <button
                 type="submit"
                 className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"

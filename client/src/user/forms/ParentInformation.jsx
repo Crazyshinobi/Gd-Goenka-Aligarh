@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext";
-import { Link, useNavigate } from "react-router-dom";
 
-export const ParentInformation = () => {
+export const ParentInformation = ({onBack , onNext}) => {
   const { formData, setFormData, handleChange } = useForm();
   const [parentType, setParentType] = useState("father_mother"); // Default to "Father and Mother"
-  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
 
@@ -128,6 +126,7 @@ export const ParentInformation = () => {
         ...updatedFormData,
         parents_information: [father, mother],
       };
+     
     } else if (parentType === "guardian") {
       const guardian = {
         parent_type: "guardian",
@@ -145,16 +144,15 @@ export const ParentInformation = () => {
       updatedFormData = {
         ...updatedFormData,
         parents_information: [guardian],
+        
       };
+     
     }
-
-    console.log("Submitted Data:", updatedFormData); // Debugging line
-    setFormData(updatedFormData); // Update form data
-
-    // Reset form fields after successful submission
+    setFormData(updatedFormData); 
     setParentType("father_mother");
     setErrors({});
-    navigate("/user/other-relatives"); // Redirect only if there are no errors
+    onNext()
+   
   };
 
  
@@ -163,7 +161,7 @@ export const ParentInformation = () => {
     <>
       <UserLayout />
       <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
           <form onSubmit={handleSubmit} noValidate className="space-y-6">
             {/* Parent Type Selection */}
             <div className="flex flex-col sm:flex-row sm:space-x-4">
@@ -543,11 +541,11 @@ export const ParentInformation = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row justify-between mt-6 space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link to={'/user/educational-background'}
+              <button onClick={onBack}
                 className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
               >
                 Go Back
-              </Link>
+              </button>
               <button
                 type="submit"
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full sm:w-auto"

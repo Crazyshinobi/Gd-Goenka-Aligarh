@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
 
-export const PersonalDetails = () => {
+export const PersonalDetails = ({ onNext, onBack }) => {
   const { formData, handleChange } = useForm();
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
 
   const validateForm = () => {
     let newErrors = {};
@@ -85,9 +83,7 @@ export const PersonalDetails = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log("Personal data : ", formData.personal_details);
-      // nextStep()
-      navigate("/user/health-information");
+      onNext(); 
     }
   };
 
@@ -97,13 +93,8 @@ export const PersonalDetails = () => {
     <>
       <UserLayout />
 
-      <div className="p-4 py-6 lg:p-6 sm:ml-64 mt-10 dark:bg-gray-800 min-h-screen">
-      {/* <div>
-         <FormStepper currentStep={2}/>
-         </div> */}
-         
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-6 bg-white dark:bg-gray-700 shadow-lg">
-        
+      <div className="p-4 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-center lg:text-left text-2xl font-bold mb-4">Personal Details</h2>
           <form onSubmit={handleSubmit}>
             {/* First Row: First Name, Middle Name, Last Name */}
@@ -366,11 +357,11 @@ export const PersonalDetails = () => {
 
             {/* Buttons */}
             <div className="flex justify-between mt-6">
-            <Link to={'/user/general-information'}
+            <button  onClick={onBack}
                 className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
               >
                 Go Back
-              </Link>
+              </button>
               <button
                 type="submit"
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"

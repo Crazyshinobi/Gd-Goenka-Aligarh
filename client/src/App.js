@@ -61,6 +61,10 @@ import { SummaryPage } from "./user/submittedData/SummaryPage";
 import QueryForm from "./user/forms/QueryForm";
 import PaymentFailure from "./user/payment/PaymentFailure";
 import PaymentSuccess from "./user/payment/PaymentSuccess";
+import { MultiStepForm } from "./user/route/MultStepForm";
+import ThankYouPage from "./user/forms/ThankYouPage";
+
+
 import PaymentSummary from "./user/payment/PaymentSummary";
 import { ViewPaymentTransaction } from "./admin/pages/paymentTransaction/ViewPaymentTransaction";
 
@@ -144,6 +148,12 @@ function App() {
           path={"/user/forgot-password"}
           element={<UserForgotPassword />}
         />
+        
+        <Route
+          path={"/user/thank-you"}
+          element={<ThankYouPage/>}
+        />
+
 
         {/* User Protected Routes */}
 
@@ -155,77 +165,7 @@ function App() {
             </UserPrivateRoute>
           }
         />
-        {/* GeneralInformation */}
-        <Route
-          path={"/user/general-information"}
-          element={
-            <UserPrivateRoute>
-              <GeneralInformation />
-            </UserPrivateRoute>
-          }
-        />
-
-        {/* Personal Details */}
-        <Route
-          path={"/user/personal-details"}
-          element={
-            <UserPrivateRoute>
-              <PersonalDetails />
-            </UserPrivateRoute>
-          }
-        />
-
-        {/* Health Information */}
-        <Route
-          path={"/user/health-information"}
-          element={
-            <UserPrivateRoute>
-              <HealthInformation />
-            </UserPrivateRoute>
-          }
-        />
-
-        {/* Educational Background */}
-        <Route
-          path={"/user/educational-background"}
-          element={
-            <UserPrivateRoute>
-              <EducationalBackground />
-            </UserPrivateRoute>
-          }
-        />
-
-        {/* Parent Information */}
-        <Route
-          path={"/user/parent-information"}
-          element={
-            <UserPrivateRoute>
-              <ParentInformation />
-            </UserPrivateRoute>
-          }
-        />
-
-        {/* Other Relatives */}
-        <Route
-          path={"/user/other-relatives"}
-          element={
-            <UserPrivateRoute>
-              <OtherRelatives />
-            </UserPrivateRoute>
-          }
-        />
-
-        {/* transport faciility */}
-        <Route
-          path={"/user/transport-facility"}
-          element={<UserPrivateRoute>{<TransportFacility />}</UserPrivateRoute>}
-        />
-
-        {/* Summary Page */}
-        <Route
-          path={"/user/summary"}
-          element={<UserPrivateRoute>{<SummaryPage />}</UserPrivateRoute>}
-        />
+       
 
         {/* SuccessPage */}
         <Route
@@ -242,9 +182,9 @@ function App() {
         {/* Payment summary */}
         <Route
           path={"/user/payment-summary"}
-          element={<UserPrivateRoute>{<PaymentSummary />}</UserPrivateRoute>}
-        />
-
+          element={<UserPrivateRoute>{<PaymentSummary/>}</UserPrivateRoute>}
+        /> 
+        <Route path="/user/steps"   element={<UserPrivateRoute>{<MultiStepForm/>}</UserPrivateRoute>}/>
         <Route path={"/payment-success"} element={<PaymentSuccess />} />
         <Route path={"/payment-failure"} element={<PaymentFailure />} />
 

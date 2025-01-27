@@ -93,11 +93,7 @@ export const FormProvider = ({ children }) => {
     });
   };
 
-  console.log("FormProvider Context Value:", {
-    formData,
-    setFormData,
-    handleChange,
-  });
+  
 
   return (
     <FormContext.Provider value={{ formData, setFormData, handleChange }}>

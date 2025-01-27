@@ -4,10 +4,30 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserLayout } from "../components/UserLayout";
 import axios from "axios";
 
-export const SummaryPage = () => {
+export const SummaryPage = ({onBack}) => {
   const { formData } = useForm();
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
+  const [FormData, setFormData] = useState({
+    txnid: "",
+    amount: "",
+    name:  formData.personal_details.first_name + ' ' + formData.personal_details.last_name,
+    email: formData.personal_details.email,
+    phone: formData.personal_details.mobile,
+    productinfo: formData.general_information.grade ,
+    udf1: "",
+    udf2: "",
+    udf3: "",
+    udf4: "",
+    udf5: "",
+    udf6: "",
+    udf7: "",
+    udf8: "",
+    udf9: "",
+    udf10: "",
+    surl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
+    furl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
+  });
+  
   // const handleGoToPayment = () => {
   //   navigate("/user/payment-summary");
   // }
@@ -29,15 +49,12 @@ export const SummaryPage = () => {
     }
   };
 
-  const handleGoBack = () => {
-    navigate("/user/transport-facility");
-  };
 
   return (
     <>
       <UserLayout />
-      <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
+      <div className="p-4  lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-xl lg:text-2xl font-bold mb-8 text-center dark:text-white">
             Please Verify the Details Below
           </h2>
@@ -324,7 +341,7 @@ export const SummaryPage = () => {
           {/* Buttons */}
           <div className="flex justify-between mt-6">
             <button
-              onClick={handleGoBack}
+              onClick={onBack}
               className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-300"
             >
               Back
