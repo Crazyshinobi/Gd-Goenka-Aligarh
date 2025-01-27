@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
 
-export const EducationalBackground = () => {
+export const EducationalBackground = ({ onNext , onBack}) => {
   const { formData, handleChange } = useForm();
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
 
   const validateForm = () => {
     let newErrors = {};
@@ -28,20 +26,17 @@ export const EducationalBackground = () => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log("Educational background : ", formData.educational_background);
-      navigate("/user/parent-information");
+      onNext()
     }
   };
 
-  const handleGoBack = () => {
-    navigate("/user/health-information"); // Navigate to the previous page
-  };
+
 
   return (
     <>
       <UserLayout />
       <div className="p-4 py-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-center lg:text-lg text-2xl font-bold mb-4">Educational Background</h2>
           <form onSubmit={handleSubmit}>
             {/* Attended School */}
@@ -195,7 +190,7 @@ export const EducationalBackground = () => {
             <div className="flex justify-between mt-6">
               <button
                 type="button"
-                onClick={handleGoBack}
+                onClick={onBack}
                 className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
               >
                 Go Back

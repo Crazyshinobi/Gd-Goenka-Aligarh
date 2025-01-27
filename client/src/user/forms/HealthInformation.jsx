@@ -1,16 +1,13 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React  from "react";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
 
-export const HealthInformation = () => {
+export const HealthInformation = ({ onNext, onBack }) => {
   const { formData, handleChange } = useForm();
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Health information :", formData.health_information);
-    navigate("/user/educational-background");
+    onNext();
   };
 
  
@@ -19,7 +16,7 @@ export const HealthInformation = () => {
     <>
       <UserLayout />
       <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-center lg:text-left text-2xl font-bold mb-4">Health Information</h2>
           <form onSubmit={handleSubmit}>
             {/* Allergy */}
@@ -70,11 +67,11 @@ export const HealthInformation = () => {
 
             {/* Buttons */}
             <div className="flex justify-between mt-6">
-            <Link to={'/user/personal-details'}
+            <button  onClick={onBack}
                 className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
               >
                 Go Back
-              </Link>
+              </button>
               <button
                 type="submit"
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"

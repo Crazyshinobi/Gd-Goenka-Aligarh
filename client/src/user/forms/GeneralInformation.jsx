@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext";
-// import { FormStepper } from "../route/FormStepper";
-// import FormList from "../route/FormList";
 
-export const GeneralInformation = () => {
+export const GeneralInformation = ({ onNext }) => {
   const { formData, handleChange } = useForm();
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
 
   // Validate form data
   const validateForm = () => {
@@ -32,12 +28,9 @@ export const GeneralInformation = () => {
 
     if (validateForm()) {
       try {
-        console.log(
-          "General information data : ",
-          formData.general_information
-        );
-        // nextStep();
-        navigate("/user/personal-details");
+      
+        onNext();
+        // navigate("/user/personal-details");
       } catch (err) {
         console.error("Error during form submission:", err);  // Log t
         alert("Error occurred. Please try again.");
@@ -67,12 +60,8 @@ export const GeneralInformation = () => {
   return (
     <>
       <UserLayout />
-
-      <div className="p-4 py-6 sm:ml-64 mt-10 dark:bg-gray-700 min-h-screen">
-      
-        <div className="p-2 border-2 border-gray-200 rounded-lg dark:border-white mt-6">
-        
-          <div className="flex-grow flex items-center justify-center py-8">
+      <div className=" sm:ml-64 dark:bg-gray-700 min-h-screen">
+          <div className="flex-grow flex items-center justify-center ">
             <div className="w-full max-w-4xl sm:max-w-2xl lg:max-w-3xl bg-white rounded-lg shadow-md p-6 sm:px-4 md:px-6">
               <h2 className="text-2xl lg:text-3xl font-semibold text-center text-gray-800 mb-8">
                 General Information
@@ -210,7 +199,6 @@ export const GeneralInformation = () => {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };
