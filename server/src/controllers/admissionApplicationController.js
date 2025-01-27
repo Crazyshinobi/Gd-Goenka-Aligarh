@@ -154,10 +154,88 @@ const checkUserhaveSubmitted = async (req, res) => {
   }
 };
 
+const saveProgress = async (req, res) => {
+  try {
+    const { user, ...newProgress } = req.body;
+
+    // Check if an application already exists for the user
+    let application = await AdmissionApplication.findOne({ user });
+
+    if (!application) {
+      // Create a new application if not found
+      application = new AdmissionApplication({
+        user,
+        progress: newProgress, // Save the initial progress
+        isSubmitted: false,
+      });
+    } else {
+      // Merge existing progress with the new progress data
+      application.progress = {
+        ...application.progress, // Merge existing data
+        ...newProgress, // Merge new data
+        parents_information: [
+          ...(application.progress.parents_information || []), // Retain existing data
+          ...(newProgress.parents_information || []), // Add new data if present
+        ],
+        other_relatives: [
+          ...(application.progress.other_relatives || []),
+          ...(newProgress.other_relatives || []),
+        ],
+      };
+    }
+
+    // Save the application
+    await application.save();
+
+    sendResponse(res, 200, true, "Progress saved successfully", application);
+  } catch (error) {
+    console.error(error);
+    sendResponse(res, 500, false, "Something went wrong while saving progress");
+  }
+};
+
+const submitAdmissionForm = async (req, res) => {
+  try {
+    const { user } = req.body;
+
+    // Find the application for the user
+    let application = await AdmissionApplication.findOne({ user });
+
+    if (!application) {
+      return sendResponse(res, 404, false, "No application found for the user");
+    }
+
+    if (application.isSubmitted) {
+      return sendResponse(res, 400, false, "Application is already submitted");
+    }
+
+    // Move data from `progress` to the main fields
+    Object.assign(application, application.progress);
+    application.progress = {}; // Clear the progress field
+    application.isSubmitted = true;
+
+    console.log(application);
+    // Save the fully submitted application
+    await application.save();
+
+    sendResponse(res, 200, true, "Form submitted successfully", application);
+  } catch (error) {
+    console.error(error);
+    sendResponse(
+      res,
+      500,
+      false,
+      "Something went wrong while submitting the form"
+    );
+  }
+};
+
 module.exports = {
   createAdmissionApplication,
   getAdmissionApplication,
   deleteAdmissionApplication,
   countAdmissionApplication,
   checkUserhaveSubmitted,
+  saveProgress,
+  submitAdmissionForm,
 };
