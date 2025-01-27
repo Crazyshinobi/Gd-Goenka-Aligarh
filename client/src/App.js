@@ -65,6 +65,8 @@ import { MultiStepForm } from "./user/route/MultStepForm";
 import ThankYouPage from "./user/forms/ThankYouPage";
 
 
+import PaymentSummary from "./user/payment/PaymentSummary";
+import { ViewPaymentTransaction } from "./admin/pages/paymentTransaction/ViewPaymentTransaction";
 
 function App() {
   return (
@@ -177,17 +179,12 @@ function App() {
           element={<UserPrivateRoute>{<QueryForm />}</UserPrivateRoute>}
         />
 
-         {/* Payment summary */}
-         {/* <Route
+        {/* Payment summary */}
+        <Route
           path={"/user/payment-summary"}
           element={<UserPrivateRoute>{<PaymentSummary/>}</UserPrivateRoute>}
-        /> */}
+        /> 
         <Route path="/user/steps"   element={<UserPrivateRoute>{<MultiStepForm/>}</UserPrivateRoute>}/>
-         
-        
-
-        
-
         <Route path={"/payment-success"} element={<PaymentSuccess />} />
         <Route path={"/payment-failure"} element={<PaymentFailure />} />
 
@@ -253,7 +250,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* Admission  */}
+        {/* Admission Enquiry */}
         <Route
           path={"/admin/view-admission"}
           element={
@@ -271,12 +268,21 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* Admission Application */}
+        {/* Admission Application Query */}
         <Route
           path={"/admin/view-admission-application-query"}
           element={
             <PrivateRoute>
               <ViewAdmissionApplicationQuery />
+            </PrivateRoute>
+          }
+        />
+        {/* Admission Application Payment Transaction */}
+        <Route
+          path={"/admin/view-payment-transaction"}
+          element={
+            <PrivateRoute>
+              <ViewPaymentTransaction />
             </PrivateRoute>
           }
         />

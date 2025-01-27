@@ -1,4 +1,7 @@
 const sha512 = require("js-sha512");
+const PaymentTransaction = require("../models/PaymentTransaction");
+const { createRecord } = require("../common/commonDatabaseQueries");
+
 const config = {
   key: process.env.EASEBUZZ_KEY,
   salt: process.env.EASEBUZZ_SALT,
@@ -98,13 +101,17 @@ const paymentResponse = async (req, res) => {
   }
   if (checkReverseHash(req.body)) {
     const data = req.body;
-    console.log(data);
-    if (data.status === 'success') {
+    const newTransaction = await createRecord(PaymentTransaction, data);
+    if (newTransaction.status) {
+      console.log("New Transaction recorded successfully");
+    } else {
+      console.log("failed to store transaction data");
+    }
+    if (data.status === "success") {
       return res.redirect("http://localhost:3000/payment-success");
     } else {
       return res.redirect("http://localhost:3000/payment-failure");
     }
-    // res.status(200).json({ success: true, data });
   }
   res.send("false, check the hash value");
 };

@@ -26,7 +26,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
       }`}
       aria-label="Sidebar"
     >
-      <div className="h-full px-4 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+      <div className="h-full px-4 pb-4 overflow-y-auto bg-white dark:bg-gray-800" id="side-menu">
         {/* Sidebar Links */}
         <ul className="space-y-4 font-medium">
           {/* Dashboard  */}
@@ -404,6 +404,40 @@ export const AdminSidebar = ({ mobileMenu }) => {
                 />
               </svg>
               <span className="ms-3">Admission Query</span>
+            </NavLink>
+          </li>
+          {/* Admission Application Payment */}
+          <li>
+            <NavLink
+              to="/admin/view-payment-transaction"
+              className={({ isActive }) =>
+                `flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition duration-200 ${
+                  isActive ? "bg-gray-200 dark:bg-gray-600" : ""
+                }`
+              }
+            >
+              <svg
+                class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-transform"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7 6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v-4a3 3 0 0 0-3-3H7V6Z"
+                  clip-rule="evenodd"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M2 11a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7Zm7.5 1a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"
+                  clip-rule="evenodd"
+                />
+                <path d="M10.5 14.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
+              </svg>
+              <span className="ms-3">Payment Transactions</span>
             </NavLink>
           </li>
           {/* Admin Section */}

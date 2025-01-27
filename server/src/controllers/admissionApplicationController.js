@@ -1,4 +1,8 @@
-const { createRecord, deleteRecord, getCount } = require("../common/commonDatabaseQueries");
+const {
+  createRecord,
+  deleteRecord,
+  getCount,
+} = require("../common/commonDatabaseQueries");
 const AdmissionApplication = require("../models/AdmissionApplication");
 const { sendResponse } = require("../utils/responseUtils");
 const fs = require("fs");
@@ -76,8 +80,8 @@ const createAdmissionApplication = async (req, res) => {
 const getAdmissionApplication = async (req, res) => {
   try {
     const admissionApplications = await AdmissionApplication.find()
-    .populate("user", "name email") // Populate user field with specific fields (name and email)
-    .exec();
+      .populate("user", "name email") // Populate user field with specific fields (name and email)
+      .exec();
     if (admissionApplications) {
       sendResponse(
         res,
@@ -104,18 +108,21 @@ const getAdmissionApplication = async (req, res) => {
 const deleteAdmissionApplication = async (req, res) => {
   const { id } = req.params;
   try {
-    const deleteAdmissionApplication = await deleteRecord(AdmissionApplication, { _id: id });
+    const deleteAdmissionApplication = await deleteRecord(
+      AdmissionApplication,
+      { _id: id }
+    );
     if (deleteAdmissionApplication.status) {
-        sendResponse(
-          res,
-          200,
-          true,
-          "Admission Application deleted successfully",
-          deleteAdmissionApplication
-        );
-      } else {
-        sendResponse(res, 404, false, "Record not found");
-      }
+      sendResponse(
+        res,
+        200,
+        true,
+        "Admission Application deleted successfully",
+        deleteAdmissionApplication
+      );
+    } else {
+      sendResponse(res, 404, false, "Record not found");
+    }
   } catch (error) {
     console.error(error);
     sendResponse(res, 500, false, "Internal Server Error", error);
@@ -132,5 +139,25 @@ const countAdmissionApplication = async (req, res) => {
   }
 };
 
+const checkUserhaveSubmitted = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const application = await AdmissionApplication.findOne({ user: id });
+    if (application) {
+      sendResponse(res, 200, false, "User already submitted Application");
+    } else {
+      sendResponse(res, 200, true, "User did not submitted Application");
+    }
+  } catch (error) {
+    console.log(error);
+    sendResponse(res, 500, false, "something went wrong");
+  }
+};
 
-module.exports = { createAdmissionApplication, getAdmissionApplication, deleteAdmissionApplication, countAdmissionApplication };
+module.exports = {
+  createAdmissionApplication,
+  getAdmissionApplication,
+  deleteAdmissionApplication,
+  countAdmissionApplication,
+  checkUserhaveSubmitted,
+};

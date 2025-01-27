@@ -8,6 +8,54 @@
   @tailwind components;
   @tailwind utilities;
 }
+
 html,body{
   scroll-behavior: smooth;
+}
+
+/* Webkit browsers (Chrome, Edge, Safari) */
+#side-menu::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+#side-menu::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color) !important;
+  border-radius: 8px !important;
+}
+
+#side-menu::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color) !important;
+  border-radius: 8px !important;
+  border: 1px solid transparent !important;
+  background-clip: content-box !important;
+}
+
+#side-menu::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color) !important;
+}
+
+#side-menu::-webkit-scrollbar-thumb:active {
+  background: var(--scrollbar-thumb-active-color) !important;
+}
+
+/* Hide scrollbar buttons */
+#side-menu::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+/* Firefox support */
+#side-menu {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color) !important;
+}
+
+/* Ensure smooth scrolling */
+#side-menu {
+  scroll-behavior: smooth !important;
+}
+
+/* Subtle transition for color changes */
+#side-menu::-webkit-scrollbar-thumb,
+#side-menu::-webkit-scrollbar-track {
+  transition: background-color 0.3s ease !important;
 }

@@ -1,0 +1,82 @@
+const mongoose = require("mongoose");
+
+const paymentTransactionSchema = new mongoose.Schema({
+  deduction_percentage: {
+    type: String,
+  },
+  net_amount_debit: {
+    type: String,
+  },
+  cardCategory: {
+    type: String,
+  },
+  m_country: {
+    type: String,
+  },
+  unmappedstatus: {
+    type: String,
+  },
+  addedon: { type: String },
+  cash_back_percentage: { type: String },
+  m_address2: { type: String },
+  m_product_info: { type: String },
+  m_address1: { type: String },
+  bank_ref_num: { type: String },
+  error_Message: { type: String },
+  phone: { type: String },
+  easepayid: { type: String },
+  cardnum: { type: String },
+  response_code: { type: String },
+  payment_source: { type: String },
+  card_type: { type: String },
+  mode: { type: String },
+  error: { type: String },
+  bankcode: { type: String },
+  error_code: { type: String },
+  upi_va: { type: String },
+  name_on_card: { type: String },
+  m_udf2: { type: String },
+  bank_name: { type: String },
+  m_udf7: { type: String },
+  m_phone: { type: String },
+  issuing_bank: { type: String },
+  m_city: { type: String },
+  PG_TYPE: { type: String },
+  m_name: { type: String },
+  auth_reference_number: { type: String },
+  amount: { type: String },
+  furl: { type: String },
+  productinfo: { type: String },
+  auth_code: { type: String },
+  email: { type: String },
+  status: { type: String },
+  hash: { type: String },
+  firstname: { type: String },
+  surl: { type: String },
+  key: { type: String },
+  m_state: { type: String },
+  merchant_logo: { type: String },
+  m_udf3: { type: String },
+  udf10: { type: String },
+  m_udf1: { type: String },
+  txnid: { type: String },
+  m_udf6: { type: String },
+  m_udf5: { type: String },
+  m_udf4: { type: String },
+  udf1: { type: String },
+  udf3: { type: String },
+  udf2: { type: String },
+  udf5: { type: String },
+  udf4: { type: String },
+  udf7: { type: String },
+  udf6: { type: String },
+  udf9: { type: String },
+  udf8: { type: String },
+});
+
+const PaymentTransaction = mongoose.model(
+  "PaymentTransaction",
+  paymentTransactionSchema
+);
+
+module.exports = PaymentTransaction;

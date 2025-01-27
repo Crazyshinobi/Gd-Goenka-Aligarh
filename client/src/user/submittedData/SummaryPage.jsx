@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "../forms/FormContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserLayout } from "../components/UserLayout";
 import axios from "axios";
 
@@ -27,7 +27,7 @@ export const SummaryPage = ({onBack}) => {
     surl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
     furl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
   });
-
+  
   // const handleGoToPayment = () => {
   //   navigate("/user/payment-summary");
   // }
@@ -48,7 +48,6 @@ export const SummaryPage = ({onBack}) => {
       navigate("/payment-failure");
     }
   };
-
 
 
   return (
@@ -347,12 +346,12 @@ export const SummaryPage = ({onBack}) => {
             >
               Back
             </button>
-            <button
-              onClick={handleGoToPayment}
+            <Link
+              to={"/user/payment-summary"}
               className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300"
             >
               Go to Payment
-            </button>
+            </Link>
           </div>
         </div>
       </div>

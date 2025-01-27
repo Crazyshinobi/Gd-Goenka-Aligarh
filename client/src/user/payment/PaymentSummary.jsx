@@ -1,16 +1,91 @@
 import React, { useState } from "react";
+import { useForm } from "../forms/FormContext";
 import { motion } from "framer-motion";
 import { UserLayout } from "../components/UserLayout";
-import { FaSchool, FaMoneyBillWave, FaWallet } from "react-icons/fa";
+import { FaSchool, FaMoneyBillWave, FaWallet, FaSpinner } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const PaymentSummary = () => {
-  // Dummy data for fees
-  const registrationFees = 5000;
-  const admissionFees = 10000;
-  const totalFees = registrationFees + admissionFees;
-  const grade = "Grade 10"; // Example grade
+  const { formData } = useForm();
+  const [loading, setLoading] = useState(false); // Loading state
+  const [FormData, setFormData] = useState({
+    txnid: "",
+    amount: "",
+    name:
+      formData.personal_details.first_name +
+      " " +
+      formData.personal_details.last_name,
+    email: formData.personal_details.email,
+    phone: formData.personal_details.mobile,
+    productinfo: formData.general_information.grade,
+    udf1: "",
+    udf2: "",
+    udf3: "",
+    udf4: "",
+    udf5: "",
+    udf6: "",
+    udf7: "",
+    udf8: "",
+    udf9: "",
+    udf10: "",
+    surl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
+    furl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
+  });
+  const navigate = useNavigate();
 
-  // State for confetti animation
+  const handleGoToPayment = async () => {
+    setLoading(true); // Start loading
+    const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/payment/initiate_payment`;
+    try {
+      const response = await axios.post(apiURL, FormData);
+      if (response?.data?.url) {
+        window.location.href = response.data.url; // Redirect to payment gateway
+      } else {
+        navigate("/payment-failure");
+      }
+    } catch (error) {
+      console.error("Payment initiation failed:", error);
+      navigate("/payment-failure");
+    } finally {
+      setLoading(false); // Stop loading if redirection fails
+    }
+  };
+
+  let registrationFees, admissionFees;
+
+  if (
+    formData.general_information.grade === "Nursery" ||
+    formData.general_information.grade === "LKG" ||
+    formData.general_information.grade === "UKG" ||
+    formData.general_information.grade === "Class I" ||
+    formData.general_information.grade === "Class II" ||
+    formData.general_information.grade === "Class III" ||
+    formData.general_information.grade === "Class IV" ||
+    formData.general_information.grade === "Class V"
+  ) {
+    registrationFees = 500.0;
+    admissionFees = 10000.0;
+  } else if (
+    formData.general_information.grade === "Class VI" ||
+    formData.general_information.grade === "Class VII" ||
+    formData.general_information.grade === "Class VIII"
+  ) {
+    registrationFees = 750.0;
+    admissionFees = 10000.0;
+  } else if (
+    formData.general_information.grade === "Class IX" ||
+    formData.general_information.grade === "Class X"
+  ) {
+    registrationFees = 1000.0;
+    admissionFees = 12500.0;
+  } else {
+    registrationFees = 1250.0;
+    admissionFees = 12500.0;
+  }
+
+  const totalFees = registrationFees + admissionFees;
+  const grade = formData.general_information.grade;
 
   // Animation variants for Framer Motion
   const containerVariants = {
@@ -28,17 +103,11 @@ const PaymentSummary = () => {
     tap: { scale: 0.95 },
   };
 
-  // Handle payment submission
-  const handlePayment = () => {
-  
-  };
-
   return (
     <>
       <UserLayout />
       <div className="lg:p-6 sm:ml-64 dark:bg-gray-900 min-h-screen">
         <div className="min-h-screen bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-6 dark:from-gray-800 dark:to-gray-900">
-
           <motion.div
             className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full dark:bg-gray-800 border-2 border-transparent hover:border-gradient relative"
             variants={containerVariants}
@@ -123,19 +192,30 @@ const PaymentSummary = () => {
             </motion.div>
 
             {/* Payment Button */}
-            <motion.div
-              className="mt-8"
-              variants={itemVariants}
-            >
+            <motion.div className="mt-8" variants={itemVariants}>
               <motion.button
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center"
+                className={`w-full py-3 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
+                }`}
                 variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
-                onClick={handlePayment}
+                whileHover={!loading && "hover"}
+                whileTap={!loading && "tap"}
+                onClick={!loading ? handleGoToPayment : null} // Disable click when loading
+                disabled={loading} // Disable button while loading
               >
-                <FaWallet className="mr-2" />
-                Proceed to Payment
+                {loading ? (
+                  <>
+                    <FaSpinner className="animate-spin mr-2" />
+                    Processing...
+                  </>
+                ) : (
+                  <>
+                    <FaWallet className="mr-2" />
+                    Proceed to Payment
+                  </>
+                )}
               </motion.button>
             </motion.div>
           </motion.div>
