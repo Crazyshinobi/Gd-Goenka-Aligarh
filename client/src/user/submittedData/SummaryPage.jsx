@@ -33,19 +33,17 @@ export const SummaryPage = ({ onBack }) => {
 
   const handleAdmissionForm = async () => {
     const userId = formData.user;
-    const applicationCheck = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/check-user/${userId}`;
-
-    if (applicationCheck.success) {
+    const applicationCheckUrl = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/check-user/${userId}`;
+    const applicationCheck = await axios.get(applicationCheckUrl);
+    if (applicationCheck?.data?.success) {
       const apiUrl = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/`;
       const response = await axios.post(apiUrl, formData);
-
       if (response.success) {
         navigate("/user/payment-summary");
       } else {
-        console.log(response);
+        console.error(response);
       }
-    }
-    else{
+    } else {
       navigate("/user/payment-summary");
     }
   };
