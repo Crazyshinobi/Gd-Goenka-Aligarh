@@ -1,3 +1,4 @@
+require('dotenv');
 const sha512 = require("js-sha512");
 const PaymentTransaction = require("../models/PaymentTransaction");
 const AdmissionApplication = require("../models/AdmissionApplication");
@@ -114,9 +115,9 @@ const paymentResponse = async (req, res) => {
         { $set: { feesPaid: true } }
       );
       console.log("User feesPaid updated successfully");
-      return res.redirect("http://localhost:3000/payment-success");
+      return res.redirect(`${process.env.BASE_URL}/payment-success`);
     } else {
-      return res.redirect("http://localhost:3000/payment-failure");
+      return res.redirect(`${process.env.BASE_URL}/payment-failure`);
     }
   }
   res.send("false, check the hash value");
