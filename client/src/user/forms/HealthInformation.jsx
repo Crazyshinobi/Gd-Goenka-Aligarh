@@ -1,28 +1,30 @@
-import React  from "react";
+import React from "react";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
+import axios from "axios";
 
 export const HealthInformation = ({ onNext, onBack }) => {
   const { formData, handleChange } = useForm();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     onNext();
   };
-
- 
 
   return (
     <>
       <UserLayout />
       <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
-          <h2 className="text-center lg:text-left text-2xl font-bold mb-4">Health Information</h2>
+          <h2 className="text-center lg:text-left text-2xl font-bold mb-4">
+            Health Information
+          </h2>
           <form onSubmit={handleSubmit}>
             {/* Allergy */}
             <div className="mb-4">
               <label className="block mb-2">
-                Allergy/Chronic ailment <span className="text-gray-400">(if any)</span>
+                Allergy/Chronic ailment{" "}
+                <span className="text-gray-400">(if any)</span>
               </label>
               <input
                 type="text"
@@ -38,14 +40,19 @@ export const HealthInformation = ({ onNext, onBack }) => {
             {/* Physical Handicap */}
             <div className="mb-4">
               <label className="block mb-2">
-                Physical Handicap/Disability <span className="text-gray-400">(if any)</span>
+                Physical Handicap/Disability{" "}
+                <span className="text-gray-400">(if any)</span>
               </label>
               <input
                 type="text"
                 name="physical_handicap"
                 value={formData.health_information.physical_handicap}
                 onChange={(e) =>
-                  handleChange("health_information", "physical_handicap", e.target.value)
+                  handleChange(
+                    "health_information",
+                    "physical_handicap",
+                    e.target.value
+                  )
                 }
                 className="w-full p-2 border rounded"
               />
@@ -67,17 +74,22 @@ export const HealthInformation = ({ onNext, onBack }) => {
 
             {/* Buttons */}
             <div className="flex justify-between mt-6">
-            <button  onClick={onBack}
-                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
-              >
-                Go Back
-              </button>
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-              >
-              Save & Next
-              </button>
+              <div>
+                <button
+                  onClick={onBack}
+                  className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
+                >
+                  Go Back
+                </button>
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                >
+                  Save & Next
+                </button>
+              </div>
             </div>
           </form>
         </div>

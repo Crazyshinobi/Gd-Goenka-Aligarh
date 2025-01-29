@@ -227,6 +227,10 @@ const admissionApplicationSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    feesPaid: {
+      type: Boolean,
+      default: false
+    }
   },
   { timestamps: true }
 );

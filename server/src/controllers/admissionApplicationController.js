@@ -139,6 +139,21 @@ const countAdmissionApplication = async (req, res) => {
   }
 };
 
+const checkUserhaveSubmittedAndPaid = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const application = await AdmissionApplication.findOne({ user: id });
+    if (application && application.feesPaid === true) {
+      sendResponse(res, 200, false, "User already submitted Application");
+    } else {
+      sendResponse(res, 200, true, "User did not submitted Application");
+    }
+  } catch (error) {
+    console.log(error);
+    sendResponse(res, 500, false, "something went wrong");
+  }
+};
+
 const checkUserhaveSubmitted = async (req, res) => {
   try {
     const { id } = req.params;
@@ -154,10 +169,12 @@ const checkUserhaveSubmitted = async (req, res) => {
   }
 };
 
+
 module.exports = {
   createAdmissionApplication,
   getAdmissionApplication,
   deleteAdmissionApplication,
   countAdmissionApplication,
   checkUserhaveSubmitted,
+  checkUserhaveSubmittedAndPaid
 };

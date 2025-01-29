@@ -1,5 +1,7 @@
+require('dotenv');
 const sha512 = require("js-sha512");
 const PaymentTransaction = require("../models/PaymentTransaction");
+const AdmissionApplication = require("../models/AdmissionApplication");
 const { createRecord } = require("../common/commonDatabaseQueries");
 
 const config = {
@@ -108,9 +110,14 @@ const paymentResponse = async (req, res) => {
       console.log("failed to store transaction data");
     }
     if (data.status === "success") {
-      return res.redirect("http://localhost:3000/payment-success");
+      const app = await AdmissionApplication.updateOne(
+        { "personal_details.email": data.email },
+        { $set: { feesPaid: true } }
+      );
+      console.log("User feesPaid updated successfully");
+      return res.redirect(`${process.env.BASE_URL}/payment-success`);
     } else {
-      return res.redirect("http://localhost:3000/payment-failure");
+      return res.redirect(`${process.env.BASE_URL}/payment-failure`);
     }
   }
   res.send("false, check the hash value");
