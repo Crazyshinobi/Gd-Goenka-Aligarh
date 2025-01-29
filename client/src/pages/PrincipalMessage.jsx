@@ -16,7 +16,7 @@ const PrincipalMessage = () => {
         <motion.img
           src={School}
           alt="GD Goenka School"
-          className="h-[50vh] md:h-[40vh] lg:h-[60vh] w-full object-cover"
+          className="h-[35vh] md:h-[40vh] lg:h-[60vh] w-full object-cover"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}

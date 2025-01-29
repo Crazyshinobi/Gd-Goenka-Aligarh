@@ -47,7 +47,7 @@ const FacultyAndCurriculum = () => {
       duration: 1,
       ease: "power3.out",
     });
-
+  
     // Sections animation with ScrollTrigger
     sectionRefs.current.forEach((section, index) => {
       gsap.from(section, {
@@ -56,14 +56,15 @@ const FacultyAndCurriculum = () => {
         duration: 1,
         scrollTrigger: {
           trigger: section,
-          start: "top 80%", // Trigger animation when the top of the section hits 80% of the viewport
-          end: "bottom 20%", // End when the bottom of the section reaches 20% of the viewport
-          toggleActions: "play none none reverse", // Play the animation when entering, reverse when leaving
+          start: "top 90%", 
+          end: "bottom 10%", 
+          toggleActions: "play none none reverse", 
         },
         delay: index * 0.2, // Stagger the animations by 0.2 seconds
       });
     });
   }, []);
+  
 
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
@@ -88,7 +89,7 @@ const FacultyAndCurriculum = () => {
       image: CricketGround, // Keep the image as the existing one
     },
     {
-      id: 1,
+      id: 2,
       title: "Badminton Court",
       description:
         "Our Badminton court provides a safe and well-maintained space for children to learn and play the game. The court is designed with kid-friendly dimensions and equipment, ensuring an exciting and enjoyable experience.",
@@ -96,49 +97,49 @@ const FacultyAndCurriculum = () => {
     },
 
     {
-      id: 2,
+      id: 3,
       title: "Outdoor Games Area",
       description:
         "Our outdoor games area features a variety of activities. It’s designed to give children the opportunity to engage in fun games that improve their agility, balance, and coordination.",
       image: Outdoor, // You can keep the same image or change it
     },
     {
-      id: 3,
+      id: 4,
       title: "Horse Riding",
       description:
         "Children can experience the joy and thrill of horse riding in a safe and supervised environment. Our horse riding program is designed to introduce kids to equestrian skills and help them build confidence, balance, and coordination.",
       image: HorseRiding, // You can change the image if needed
     },
     {
-      id: 4,
+      id: 5,
       title: "Outdoor Activity Zone",
       description:
         "The outdoor activity zone offers kids the chance to participate in a variety of physical activities such as obstacle courses, rock climbing, and team-building games. These activities encourage teamwork, problem-solving, and physical fitness.",
       image: OutdoorActivity, // Keep the same image or swap for something more fitting
     },
     {
-      id: 5,
+      id: 6,
       title: "Indoor Games Area",
       description:
         "Our indoor games area features fun and interactive games such as chess, carrom, and table tennis. These games help children develop strategic thinking, hand-eye coordination, and social skills in a relaxed indoor environment.",
       image: IndoorGames,
     },
     {
-      id: 6,
+      id: 7,
       title: "Robotics for Kids",
       description:
         "Our robotics program introduces children to the exciting world of technology and engineering. Kids learn how to build and program robots, which helps improve problem-solving skills, creativity, and teamwork while fostering an interest in STEM fields.",
       image: Robotics, // You can change the image for something more relevant to Robotics
     },
     {
-      id: 7,
+      id: 8,
       title: "Gymnastics for Kids",
       description:
         "Gymnastics classes for children are designed to improve balance, coordination, and flexibility through fun activities. The kids are taught basic gymnastics moves that enhance their motor skills and build strength.",
       image: Gymnastics,
     },
     {
-      id: 8,
+      id: 9,
       title: "Table Tennis for Kids",
       description:
         "Our Table Tennis section offers a fun, fast-paced environment for children to learn and play the game. It helps improve hand-eye coordination, reflexes, and focus while allowing kids to enjoy friendly competition.",
@@ -153,7 +154,7 @@ const FacultyAndCurriculum = () => {
         <motion.img
           src={Academics}
           alt="Academics"
-          className="h-[50vh] md:h-[40vh] lg:h-[60vh] w-full object-fill"
+          className="h-[35vh] md:h-[40vh] lg:h-[60vh] w-full object-fill"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}

@@ -113,16 +113,14 @@ function Header1() {
                 </li>
               </NavLink>
               <hr />
-              <a
-                href={"/academics/goenkan-pursuits"}
-                target="_blank"
-                rel="noopener noreferrer"
+              <NavLink
+                to={"/academics/goenkan-pursuits"}
               >
                 {" "}
                 <li className="menu-item cursor-pointer ps-2 hover:text-white flex mt-[-16px] mb-[-16px]">
                   GOENKAN PURSUITS
                 </li>
-              </a>
+              </NavLink>
               <hr />
               <a
                 href={"/academics/authorised-book-seller"}
@@ -389,15 +387,13 @@ function Header1() {
                   </li>
                 </NavLink>
                 <hr />
-                <a
-                  href={"/academics/goenkan-pursuits"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <NavLink
+                to={"/academics/goenkan-pursuits"}
+              >
                   <li className="menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase">
                     GOENKAN PURSUIT
                   </li>
-                </a>
+                </NavLink>
                 <hr />
                 <a
                   href={"/academics/authorised-book-seller"}
@@ -514,7 +510,6 @@ function Header1() {
           {/* ALUMNI ACCORDIAN */}
           <Accordion>
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1-content"
               id="panel1-header"
               className="uppercase"

@@ -205,7 +205,7 @@ const AdmissionForm = () => {
         <motion.img
           src={AdmissionBanner}
           alt="Admission Banner"
-          className="h-[50vh] md:h-[40vh] lg:h-[55vh] w-full object-cover"
+          className="h-[35vh] md:h-[40vh] lg:h-[55vh] w-full object-cover"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}

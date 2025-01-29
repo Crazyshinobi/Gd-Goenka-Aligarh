@@ -68,7 +68,7 @@ const ClassInfrastructure = () => {
     <Layout>
       {/* Banner Section with Framer Motion */}
       <motion.div
-        className="relative h-[50vh] md:h-[60vh] lg:h-[60vh] overflow-hidden"
+        className="relative h-[35vh] md:h-[60vh] lg:h-[60vh] overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}

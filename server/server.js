@@ -9,7 +9,7 @@ const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
 
-// Router
+// Router 
 const adminRoutes = require("./src/routes/adminRoutes");
 const contactRoutes = require("./src/routes/contactRoutes");
 const galleryRoutes = require("./src/routes/galleryRoutes");

@@ -99,7 +99,7 @@ const ContactForm = () => {
         <motion.img
           src={ContactBanner}
           alt="Contact Us Banner"
-          className="h-[50vh] md:h-[40vh] lg:h-[55vh] w-full object-fill"
+          className="h-[35vh] md:h-[40vh] lg:h-[55vh] w-full object-fill"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}

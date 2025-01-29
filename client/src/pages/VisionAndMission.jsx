@@ -65,7 +65,7 @@ const VisionAndMission = () => {
         <motion.img
           src={Bannerbg}
           alt="Vision And Mission"
-          className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[62vh] w-full object-fill"
+          className="h-[35vh] sm:h-[40vh] md:h-[50vh] lg:h-[62vh] w-full object-fill"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
