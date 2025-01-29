@@ -26,21 +26,32 @@ const getPaymentTransaction = async (req, res) => {
 const deletePaymentTransaction = async (req, res) => {
   const { id } = req.params;
   try {
-    const deletedPaymentTransaction = await deleteRecord(PaymentTransaction, { _id: id });
+    const deletedPaymentTransaction = await deleteRecord(PaymentTransaction, {
+      _id: id,
+    });
     if (deletedPaymentTransaction.status) {
-        sendResponse(
-          res,
-          200,
-          true,
-          "Payment Transaction deleted successfully",
-          deletedPaymentTransaction
-        );
-      } else {
-        sendResponse(res, 404, false, "Record not found");
-      }
+      sendResponse(
+        res,
+        200,
+        true,
+        "Payment Transaction deleted successfully",
+        deletedPaymentTransaction
+      );
+    } else {
+      sendResponse(res, 404, false, "Record not found");
+    }
   } catch (error) {
     console.log(error);
     sendResponse(res, 500, false, "Internal Server Error", error);
   }
 };
+
+const checkStatusPayment = async (req, res) => {
+  try {
+    
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = { getPaymentTransaction, deletePaymentTransaction };

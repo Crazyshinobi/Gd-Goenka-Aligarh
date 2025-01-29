@@ -55,16 +55,12 @@ import { HealthInformation } from "./user/forms/HealthInformation";
 import { EducationalBackground } from "./user/forms/EducationalBackground";
 import { ParentInformation } from "./user/forms/ParentInformation";
 import { OtherRelatives } from "./user/forms/OtherRelatives";
-import { SuccessPage } from "./user/forms/SuccessPage";
 import { TransportFacility } from "./user/forms/TransportFacility";
 import { SummaryPage } from "./user/submittedData/SummaryPage";
 import QueryForm from "./user/forms/QueryForm";
 import PaymentFailure from "./user/payment/PaymentFailure";
 import PaymentSuccess from "./user/payment/PaymentSuccess";
 import { MultiStepForm } from "./user/route/MultStepForm";
-import ThankYouPage from "./user/forms/ThankYouPage";
-
-
 import PaymentSummary from "./user/payment/PaymentSummary";
 import { ViewPaymentTransaction } from "./admin/pages/paymentTransaction/ViewPaymentTransaction";
 
@@ -148,12 +144,6 @@ function App() {
           path={"/user/forgot-password"}
           element={<UserForgotPassword />}
         />
-        
-        <Route
-          path={"/user/thank-you"}
-          element={<ThankYouPage/>}
-        />
-
 
         {/* User Protected Routes */}
 
@@ -166,12 +156,6 @@ function App() {
           }
         />
        
-
-        {/* SuccessPage */}
-        <Route
-          path={"/user/success"}
-          element={<UserPrivateRoute>{<SuccessPage />}</UserPrivateRoute>}
-        />
 
         {/* Query Form */}
         <Route

@@ -5,14 +5,12 @@ const {
   deleteAdmissionApplication,
   countAdmissionApplication,
   checkUserhaveSubmitted,
-  saveProgress,
-  submitAdmissionForm,
+  checkUserhaveSubmittedAndPaid,
 } = require("../controllers/admissionApplicationController");
 const router = express.Router();
 
 router.route("/").post(createAdmissionApplication).get(getAdmissionApplication);
-router.route("/save-progress").post(saveProgress);
-router.route("/submit-application").post(submitAdmissionForm);
+router.route("/check-user-paid/:id").get(checkUserhaveSubmittedAndPaid);
 router.route("/check-user/:id").get(checkUserhaveSubmitted);
 router.route("/count").get(countAdmissionApplication);
 router.route("/:id").delete(deleteAdmissionApplication);

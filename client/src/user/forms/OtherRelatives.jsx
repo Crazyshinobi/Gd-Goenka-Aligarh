@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext"; // Accessing form data and handleChange from context
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 export const OtherRelatives = ({onNext , onBack}) => {
   const { formData, handleChange } = useForm(); // Accessing form context
@@ -81,9 +82,8 @@ export const OtherRelatives = ({onNext , onBack}) => {
     setErrors({});
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (validateForm()) {
       onNext()
     }

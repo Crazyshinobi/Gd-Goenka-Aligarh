@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
+import axios from "axios";
 
 export const PersonalDetails = ({ onNext, onBack }) => {
   const { formData, handleChange } = useForm();
@@ -79,23 +80,22 @@ export const PersonalDetails = ({ onNext, onBack }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (validateForm()) {
-      onNext(); 
+      onNext();
     }
   };
-
-
 
   return (
     <>
       <UserLayout />
 
       <div className="p-4 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
-          <h2 className="text-center lg:text-left text-2xl font-bold mb-4">Personal Details</h2>
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white bg-white dark:bg-gray-700 shadow-lg">
+          <h2 className="text-center lg:text-left text-2xl font-bold mb-4">
+            Personal Details
+          </h2>
           <form onSubmit={handleSubmit}>
             {/* First Row: First Name, Middle Name, Last Name */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -123,7 +123,9 @@ export const PersonalDetails = ({ onNext, onBack }) => {
               </div>
 
               <div>
-                <label className="block mb-2">Middle Name<span className="text-red-500 text-2xl"></span></label>
+                <label className="block mb-2">
+                  Middle Name<span className="text-red-500 text-2xl"></span>
+                </label>
                 <input
                   type="text"
                   name="middle_name"
@@ -301,9 +303,7 @@ export const PersonalDetails = ({ onNext, onBack }) => {
                   }
                   className="w-full p-2 border rounded"
                 />
-                {errors.email && (
-                  <p className="text-red-500">{errors.email}</p>
-                )}
+                {errors.email && <p className="text-red-500">{errors.email}</p>}
               </div>
 
               <div>
@@ -330,7 +330,8 @@ export const PersonalDetails = ({ onNext, onBack }) => {
 
               <div>
                 <label className="block mb-2">
-                  Emergency Mobile<span className="text-red-500 text-2xl">*</span>
+                  Emergency Mobile
+                  <span className="text-red-500 text-2xl">*</span>
                 </label>
                 <input
                   type="tel"
@@ -356,18 +357,23 @@ export const PersonalDetails = ({ onNext, onBack }) => {
             </div>
 
             {/* Buttons */}
-            <div className="flex justify-between mt-6">
-            <button  onClick={onBack}
-                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
-              >
-                Go Back
-              </button>
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-              >
-                Save & Next
-              </button>
+            <div className="flex items-center justify-between mt-6">
+              <div>
+                <button
+                  onClick={onBack}
+                  className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 w-full sm:w-auto"
+                >
+                  Go Back
+                </button>
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                >
+                  Save & Next
+                </button>
+              </div>
             </div>
           </form>
         </div>

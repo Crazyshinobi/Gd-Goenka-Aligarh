@@ -1,105 +1,83 @@
 const mongoose = require("mongoose");
-
 const admissionApplicationSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Admin",
-      required: true, // User is always required
+      required: true,
     },
     general_information: {
       grade: {
         type: String,
-        required: function () {
-          return this.isSubmitted; // Required only if the form is submitted
-        },
+        required: true,
       },
       applied_before: {
         type: Boolean,
-        required: function () {
-          return this.isSubmitted; // Required only if the form is submitted
-        },
+        required: true,
       },
       applied_year: {
         type: String,
         required: function () {
-          return this.isSubmitted && this.general_information.applied_before;
+          return this.general_information.applied_before === true;
         },
       },
       applied_grade: {
         type: String,
         required: function () {
-          return this.isSubmitted && this.general_information.applied_before;
+          return this.general_information.applied_before === true;
         },
       },
     },
     personal_details: {
       first_name: {
         type: String,
-        required: function () {
-          return this.isSubmitted; // Required only if the form is submitted
-        },
+        required: true,
+      },
+      middle_name: {
+        type: String,
       },
       last_name: {
         type: String,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       dob: {
         type: Date,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       nationality: {
         type: String,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       gender: {
         type: String,
         enum: ["male", "female"],
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       address: {
         type: String,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       city: {
         type: String,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       pincode: {
         type: String,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
+        maxLength: 6,
+        minLength: 6,
       },
       email: {
         type: String,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       mobile: {
         type: Number,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       emergency_mobile: {
         type: Number,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
     },
     health_information: {
@@ -116,44 +94,40 @@ const admissionApplicationSchema = new mongoose.Schema(
     educational_background: {
       attended_school: {
         type: Boolean,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       previous_school: {
         type: String,
         required: function () {
-          return this.isSubmitted && this.educational_background.attended_school;
+          return this.educational_background.attended_school === true;
         },
       },
       city: {
         type: String,
         required: function () {
-          return this.isSubmitted && this.educational_background.attended_school;
+          return this.educational_background.attended_school === true;
         },
       },
       from_grade: {
         type: String,
         required: function () {
-          return this.isSubmitted && this.educational_background.attended_school;
+          return this.educational_background.attended_school === true;
         },
       },
       to_grade: {
         type: String,
         required: function () {
-          return this.isSubmitted && this.educational_background.attended_school;
+          return this.educational_background.attended_school === true;
         },
       },
       expelled: {
         type: Boolean,
-        required: function () {
-          return this.isSubmitted;
-        },
+        required: true,
       },
       expelled_reason: {
         type: String,
         required: function () {
-          return this.isSubmitted && this.educational_background.expelled;
+          return this.educational_background.expelled === true;
         },
       },
     },
@@ -161,41 +135,32 @@ const admissionApplicationSchema = new mongoose.Schema(
       {
         parent_type: {
           type: String,
-          required: function () {
-            return this.isSubmitted; // Required only for submitted applications
-          },
+          required: true,
           enum: ["father", "mother", "guardian"],
         },
         name: {
           type: String,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
         age: {
           type: Number,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
         nationality: {
           type: String,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
         education: {
           type: String,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
         relationship_with_child: {
           type: String,
           validate: {
             validator: function () {
               return (
-                this.parent_type !== "guardian" || !!this.relationship_with_child
+                this.parent_type !== "guardian" ||
+                !!this.relationship_with_child
               );
             },
             message: "Relationship with child is required for guardians.",
@@ -203,9 +168,7 @@ const admissionApplicationSchema = new mongoose.Schema(
         },
         profession: {
           type: String,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
         income: {
           type: String,
@@ -227,9 +190,7 @@ const admissionApplicationSchema = new mongoose.Schema(
         },
         email: {
           type: String,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
       },
     ],
@@ -238,56 +199,38 @@ const admissionApplicationSchema = new mongoose.Schema(
         relation: {
           type: String,
           enum: ["brother", "sister"],
-          required: function () {
-            return this.isSubmitted; // Required only if the form is submitted
-          },
+          required: true,
         },
         name: {
           type: String,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
         age: {
           type: Number,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
         school: {
           type: String,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
         grade: {
           type: String,
-          required: function () {
-            return this.isSubmitted;
-          },
+          required: true,
         },
       },
     ],
     transport_facility: {
       type: Boolean,
-      required: function () {
-        return this.isSubmitted; // Required only if the form is submitted
-      },
+      required: true,
     },
     declaration: {
       type: Boolean,
-      required: function () {
-        return this.isSubmitted; // Required only if the form is submitted
-      },
+      required: true,
     },
-    isSubmitted: {
+    feesPaid: {
       type: Boolean,
-      default: false, // Tracks whether the form is fully submitted
-    },
-    progress: {
-      type: Object, // Stores partial form data for Save and Exit
-      default: {},
-    },
+      default: false
+    }
   },
   { timestamps: true }
 );
