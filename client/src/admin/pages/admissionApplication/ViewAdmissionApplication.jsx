@@ -226,6 +226,12 @@ export const ViewAdmissionApplication = () => {
       header: "Declaration",
       body: (rowData) => (rowData.declaration ? "Yes" : "No"),
     },
+    // Declaration
+    {
+      field: "feesPaid",
+      header: "Fees Paid",
+      body: (rowData) => (rowData.feesPaid ? "Yes" : "No"),
+    },
 
     {
       field: "createdAt",
