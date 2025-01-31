@@ -4,7 +4,7 @@ import { Layout } from "../components/Layout";
 import { usePostRequest } from "../hooks/usePostRequest";
 import { toast, Toaster } from "react-hot-toast";
 import NavigationPages from "./NavigationPages";
-import JobBanner from "../assets/JobBanner.jpg";
+import JobBanner from "../assets/JobBanner1.jpeg";
 import bgdesign from "../assets/bgdesign3.jpg";
 import { Button } from "../admin/components/Button";
 
@@ -178,7 +178,7 @@ export default function JobApplicationForm() {
           <img
             src={JobBanner}
             alt="Job Application Banner"
-            className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[40vh] w-full object-fill"
+            className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[40vh] w-full object-cover"
           />
         </div>
 

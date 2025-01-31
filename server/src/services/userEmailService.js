@@ -14,11 +14,11 @@ const userEmailService = async ({ name, email, password }) => {
                 <h1 style="color: #007bff; margin: 0; font-size: 24px; font-weight: bold;">New Admission Application</h1>
             </header>
             <p style="font-size: 16px; line-height: 1.6; color: #333; margin: 15px 0;">Dear ${name},</p>
-            <p style="font-size: 16px; line-height: 1.6; color: #333; margin: 15px 0;">Thank you for applying at GD Goenka Aligarh.</p>
+            <p style="font-size: 16px; line-height: 1.6; color: #333; margin: 15px 0;">Thank you for applying at GD Goenka Public School, Aligarh.</p>
             <p style="font-size: 16px; line-height: 1.6; color: #333; margin: 15px 0;">You may now directly log in and start filling your application by clicking the button below.</p>
             
             <div style="text-align: center; margin: 30px 0;">
-                <a href="https://gdgpsaligarh.com/admission/application-form" 
+                <a href="https://gdgpsaligarh.com/admission/application-form/login" 
                    style="background-color: #007bff; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold; display: inline-block;">
                    Login to Application
                 </a>
@@ -27,9 +27,9 @@ const userEmailService = async ({ name, email, password }) => {
             <p style="font-size: 16px; line-height: 1.6; color: #333; margin: 15px 0;">If clicking the link doesn't work, you can copy and paste the link into your browser's address window:</p>
             
             <p style="font-size: 14px; color: #007bff; word-wrap: break-word; margin: 15px 0;">
-                <a href="https://gdgpsaligarh.com/admission/application-form" 
+                <a href="https://gdgpsaligarh.com/admission/application-form/login" 
                    style="color: #007bff; text-decoration: none;">
-                   https://gdgpsaligarh.com/admission/application-form
+                   https://gdgpsaligarh.com/admission/application-form/login
                 </a>
             </p>
     
@@ -39,8 +39,8 @@ const userEmailService = async ({ name, email, password }) => {
             </div>
     
             <footer style="text-align: center; margin-top: 30px; font-size: 14px; color: #6c757d;">
-                <p>Admission Office,<br>GD Goenka Aligarh Team</p>
-                <p style="margin-top: 10px; font-size: 12px;">&copy; ${new Date().getFullYear()} GD Goenka Aligarh. All rights reserved.</p>
+                <p>Admission Office,<br>GD Goenka Public School Aligarh Team</p>
+                <p style="margin-top: 10px; font-size: 12px;">&copy; ${new Date().getFullYear()} GD Goenka Public School, Aligarh. All rights reserved.</p>
             </footer>
         </div>
     </body>
@@ -58,7 +58,7 @@ const userEmailService = async ({ name, email, password }) => {
   const mailOptions = {
     from: process.env.EMAIL,
     to: email,
-    subject: "Account Details - Gd Goenka Aligarh Team",
+    subject: "Account Details - Gd Goenka Public School Aligarh Team",
     html: htmlContent,
   };
 

@@ -45,7 +45,7 @@ const sendOtpEmail = async (email) => {
         <p style="font-size: 16px; line-height: 1.5; color: #555; margin: 20px 0;">If you did not request this, please ignore this email.</p>
 
         <div style="margin-top: 20px; font-size: 14px; color: #777;">
-            <p>Thank you,<br>Saroj Education Group - Gd Goenka Aligarh Team</p>
+            <p>Thank you,<br>Saroj Education Group - Gd Goenka Public School Aligarh Team</p>
         </div>
     </div>
 </body>
@@ -64,7 +64,7 @@ const sendOtpEmail = async (email) => {
   const mailOptions = {
     from: process.env.EMAIL,
     to: email,
-    subject: "GD Goenka Aligarh Password Reset OTP",
+    subject: "GD Goenka Public School Aligarh Password Reset OTP",
     html: htmlContent,
   };
 

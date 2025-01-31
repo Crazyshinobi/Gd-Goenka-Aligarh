@@ -119,9 +119,9 @@ function VisionSection() {
             </div>
           </div>
           <div className="text-center mt-4">
-            <a href="/academics/goenkan-pursuits" target='_blank'  rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            <NavLink to={"/academics/goenkan-pursuits"}  className="text-blue-500 hover:underline">
               Read more
-            </a>
+            </NavLink>
           </div>
         </motion.div>
       </div>

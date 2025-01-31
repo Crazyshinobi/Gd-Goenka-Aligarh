@@ -94,7 +94,7 @@ export const PersonalDetails = ({ onNext, onBack }) => {
       <div className="p-4 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-center lg:text-left text-2xl font-bold mb-4">
-            Personal Details
+            Student Details
           </h2>
           <form onSubmit={handleSubmit}>
             {/* First Row: First Name, Middle Name, Last Name */}
