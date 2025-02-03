@@ -89,7 +89,7 @@ export const AdminNavbar = ({ mobileMenu, setMobileMenu }) => {
             </button>
             <Link to="/admin" className="flex items-center space-x-3">
               <span className="hidden lg:block text-2xl font-semibold text-black dark:text-white">
-                GD Goenka Aligarh
+                GD Goenka Public School Aligarh
               </span> 
             </Link>
           </div>

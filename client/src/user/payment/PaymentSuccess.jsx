@@ -109,7 +109,7 @@ const PaymentSuccess = () => {
       </div>
 
       <Link
-        to="/"
+        to="/user/dashboard"
         ref={buttonRef}
         className="bg-white text-green-500 font-bold py-3 px-8 rounded-full hover:bg-green-100 transition duration-300 transform hover:scale-110"
       >
