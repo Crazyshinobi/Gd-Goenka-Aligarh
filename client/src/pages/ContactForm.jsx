@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "../components/Layout";
 import NavigationPages from "./NavigationPages";
-import ContactBanner from "../assets/ContactBanner.jpg";
+import ContactBanner from "../assets/ContactUsBanner.jpeg";
 import { motion } from "framer-motion";
 import bgdesign from "../assets/bgdesign3.jpg";
 import toast, { Toaster } from "react-hot-toast";
@@ -99,13 +99,13 @@ const ContactForm = () => {
         <motion.img
           src={ContactBanner}
           alt="Contact Us Banner"
-          className="h-[35vh] md:h-[40vh] lg:h-[55vh] w-full object-fill"
+          className="md:h-[40vh] lg:h-[55vh] w-full h-[26vh] object-fill"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         />
         <motion.h1
-          className="absolute uppercase bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded shadow-md"
+          className="absolute uppercase bottom-4 md:bottom-6 left-4 md:left-8 text-xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded shadow-md"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}

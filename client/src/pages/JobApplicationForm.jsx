@@ -4,7 +4,7 @@ import { Layout } from "../components/Layout";
 import { usePostRequest } from "../hooks/usePostRequest";
 import { toast, Toaster } from "react-hot-toast";
 import NavigationPages from "./NavigationPages";
-import JobBanner from "../assets/JobBanner1.jpeg";
+import JobBanner from "../assets/JobBanner.jpeg";
 import bgdesign from "../assets/bgdesign3.jpg";
 import { Button } from "../admin/components/Button";
 

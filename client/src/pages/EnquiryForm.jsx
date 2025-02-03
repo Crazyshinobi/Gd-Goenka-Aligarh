@@ -36,7 +36,7 @@ const EnquiryForm = () => {
     else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.parent_email_address)) {
       newErrors.parent_email_address = "Invalid email address";
     }
-    if (!formData.mobile) newErrors.mobile = "Student mobile number is required";
+    if (!formData.mobile) newErrors.mobile = "Parent mobile number is required";
     else if (!/^[0-9]{10}$/.test(formData.mobile)) {
       newErrors.mobile = "Invalid mobile number";
     }
@@ -106,49 +106,49 @@ const EnquiryForm = () => {
   }, [formData.state]);
 
   return (
-    <div className="w-full bg-gradient-to-r p-6 from-blue-500 to-indigo-600 rounded-lg shadow-lg">
+    <div className="w-full bg-gradient-to-r p-6 from-red-500 to-red-600 rounded-lg shadow-lg">
       <div className="mb-2 text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">Get In Touch</h2>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-1 sm:space-y-1">
         <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 mb-4">
-          {/* Parent Name */}
-          <div className="col-span-1 sm:col-span-2">
-            <label htmlFor="parentName" className="block text-sm font-semibold text-white mb-1">
-              Parent Name
-            </label>
-            <input
-              type="text"
-              id="parentName"
-              name="parent_name"
-              value={formData.parent_name}
-              onChange={handleChange}
-              className="mt-1 p-2 sm:p-3 block w-full rounded-lg border-2 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50"
-              placeholder="Enter parent's full name"
-            />
-            {errors.parent_name && <p className="mt-1 text-sm text-red-300">{errors.parent_name}</p>}
-          </div>
-
-          {/* Student Name */}
-          <div>
-            <label htmlFor="studentName" className="block text-sm font-semibold text-white mb-1">
-              Student Name
-            </label>
-            <input
-              type="text"
-              id="studentName"
-              name="student_name"
-              value={formData.student_name}
-              onChange={handleChange}
-              className="mt-1 p-2 sm:p-3 block w-full rounded-lg border-2 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50"
-              placeholder="Enter student's full name"
-            />
-            {errors.student_name && <p className="mt-1 text-sm text-red-300">{errors.student_name}</p>}
+          {/* Parent Name and Student Name */}
+          <div className="col-span-1 sm:col-span-2 grid grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="parentName" className="block text-sm font-semibold text-white mb-1">
+                Parent Name
+              </label>
+              <input
+                type="text"
+                id="parentName"
+                name="parent_name"
+                value={formData.parent_name}
+                onChange={handleChange}
+                className="mt-1 p-2 sm:p-3 block w-full rounded-lg border-2 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50"
+                placeholder="Enter parent's full name"
+              />
+              {errors.parent_name && <p className="mt-1 text-sm text-red-300">{errors.parent_name}</p>}
+            </div>
+            <div>
+              <label htmlFor="studentName" className="block text-sm font-semibold text-white mb-1">
+                Student Name
+              </label>
+              <input
+                type="text"
+                id="studentName"
+                name="student_name"
+                value={formData.student_name}
+                onChange={handleChange}
+                className="mt-1 p-2 sm:p-3 block w-full rounded-lg border-2 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50"
+                placeholder="Enter student's full name"
+              />
+              {errors.student_name && <p className="mt-1 text-sm text-red-300">{errors.student_name}</p>}
+            </div>
           </div>
 
           {/* Parent Email */}
-          <div>
+          <div className="col-span-1 sm:col-span-2">
             <label htmlFor="parent_email_address" className="block text-sm font-semibold text-white mb-1">
               Parent Email
             </label>
@@ -164,10 +164,45 @@ const EnquiryForm = () => {
             {errors.parent_email_address && <p className="mt-1 text-sm text-red-300">{errors.parent_email_address}</p>}
           </div>
 
+          {/* State and City */}
+          <div className="col-span-1 sm:col-span-2 grid grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="state" className="block text-sm font-semibold text-white mb-1">
+                State
+              </label>
+              <Select
+                id="state"
+                name="state"
+                options={states}
+                value={formData.state}
+                onChange={(selectedOption) => setFormData({ ...formData, state: selectedOption, city: null })}
+                className="react-select-container"
+                classNamePrefix="react-select"
+              />
+              {errors.state && <p className="mt-1 text-sm text-red-300">{errors.state}</p>}
+            </div>
+            <div>
+              <label htmlFor="city" className="block text-sm font-semibold text-white mb-1">
+                City
+              </label>
+              <Select
+                id="city"
+                name="city"
+                options={cities}
+                value={formData.city}
+                onChange={(selectedOption) => setFormData({ ...formData, city: selectedOption })}
+                isDisabled={!formData.state}
+                className="react-select-container"
+                classNamePrefix="react-select"
+              />
+              {errors.city && <p className="mt-1 text-sm text-red-300">{errors.city}</p>}
+            </div>
+          </div>
+
           {/* Mobile */}
           <div>
             <label htmlFor="studentMobile" className="block text-sm font-semibold text-white mb-1">
-              Student Mobile No.
+              Parent Mobile No.
             </label>
             <input
               type="tel"
@@ -179,41 +214,6 @@ const EnquiryForm = () => {
               placeholder="Enter 10-digit mobile number"
             />
             {errors.mobile && <p className="mt-1 text-sm text-red-300">{errors.mobile}</p>}
-          </div>
-
-          {/* State */}
-          <div>
-            <label htmlFor="state" className="block text-sm font-semibold text-white mb-1">
-              State
-            </label>
-            <Select
-              id="state"
-              name="state"
-              options={states}
-              value={formData.state}
-              onChange={(selectedOption) => setFormData({ ...formData, state: selectedOption, city: null })}
-              className="react-select-container"
-              classNamePrefix="react-select"
-            />
-            {errors.state && <p className="mt-1 text-sm text-red-300">{errors.state}</p>}
-          </div>
-
-          {/* City */}
-          <div>
-            <label htmlFor="city" className="block text-sm font-semibold text-white mb-1">
-              City
-            </label>
-            <Select
-              id="city"
-              name="city"
-              options={cities}
-              value={formData.city}
-              onChange={(selectedOption) => setFormData({ ...formData, city: selectedOption })}
-              isDisabled={!formData.state}
-              className="react-select-container"
-              classNamePrefix="react-select"
-            />
-            {errors.city && <p className="mt-1 text-sm text-red-300">{errors.city}</p>}
           </div>
 
           {/* Grade/Class */}
@@ -249,7 +249,7 @@ const EnquiryForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full py-3 px-4 border border-green-600 rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 ease-in-out transform hover:scale-105"
+          className="w-full py-3 px-4 border border-red-600 rounded-md shadow-lg text-sm font-medium text-white bg-blue-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 ease-in-out transform hover:scale-105"
         >
           {loading ? <div className="loader1"></div> : "Enquire now"}
         </button>

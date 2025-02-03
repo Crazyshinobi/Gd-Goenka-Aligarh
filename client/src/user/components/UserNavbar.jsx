@@ -90,7 +90,7 @@ export const Usernavbar = ({ mobileMenu, setMobileMenu }) => {
             </button>
             <Link to="/user/dashboard" className="flex items-center space-x-3">
               <span className="hidden lg:block text-2xl font-semibold text-black dark:text-white">
-                GD Goenka Aligarh
+                GD Goenka Public School Aligarh
               </span>
             </Link>
           </div>

@@ -19,6 +19,7 @@ export const PersonalDetails = ({ onNext, onBack }) => {
       city,
       pincode,
       email,
+      permanent_education_number,
       mobile,
       emergency_mobile,
     } = formData.personal_details;
@@ -51,6 +52,8 @@ export const PersonalDetails = ({ onNext, onBack }) => {
         newErrors.email = "Please provide a valid email.";
       }
     }
+
+    
 
     if (!mobile) {
       newErrors.mobile = "Mobile number is required";
@@ -288,8 +291,8 @@ export const PersonalDetails = ({ onNext, onBack }) => {
               </div>
             </div>
 
-            {/* Fourth Row: Email, Mobile, Emergency Mobile */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            {/* Fourth Row: Email, PEN */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
                 <label className="block mb-2">
                   Email<span className="text-red-500 text-2xl">*</span>
@@ -306,6 +309,35 @@ export const PersonalDetails = ({ onNext, onBack }) => {
                 {errors.email && <p className="text-red-500">{errors.email}</p>}
               </div>
 
+              <div>
+                <label className="block mb-2">
+                  Permanent Education Numbers(PEN)<span className="text-red-500 text-2xl"></span>
+                </label>
+                <input
+                  type="tel"
+                  name="permanent_education_number"
+                  value={formData.personal_details.permanent_education_number}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    const numericValue = value.replace(/[^0-9]/g, "");
+                    if (numericValue.length <= 12) {
+                      handleChange("personal_details", "permanent_education_number", numericValue);
+                    }
+                  }}
+                  className="w-full p-2 border rounded"
+                />
+                {errors.permanent_education_number && (
+                  <p className="text-red-500">{errors.permanent_education_number}</p>
+                )}
+              </div>
+
+           
+            </div>
+
+           
+             {/*  Fifth row :  Mobile, Emergency Mobile */}
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            
               <div>
                 <label className="block mb-2">
                   Mobile<span className="text-red-500 text-2xl">*</span>

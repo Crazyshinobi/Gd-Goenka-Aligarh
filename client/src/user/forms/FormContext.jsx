@@ -23,6 +23,7 @@ export const FormProvider = ({ children }) => {
       city: "",
       pincode: "",
       email: "",
+      permanent_education_number : "",
       mobile: "",
       emergency_mobile: "",
     },
