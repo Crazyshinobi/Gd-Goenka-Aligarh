@@ -3,7 +3,7 @@ import { Layout } from "../components/Layout";
 import { useFetchData } from "../hooks/useFetchData";
 import { useNavigate } from "react-router-dom";
 import NavigationPages from "./NavigationPages";
-import careerBanner from '../assets/careerBanner.jpg'
+import careerBanner from '../assets/CareerBanner1.jpeg'
 
 const CurrentOpening = () => {
   const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/job/`;

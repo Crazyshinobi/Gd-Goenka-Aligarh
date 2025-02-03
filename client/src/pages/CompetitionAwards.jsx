@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Layout } from "../components/Layout";
 import NavigationPages from "./NavigationPages";
-import AwardBanner from "../assets/Awards.jpg";
+import AwardBanner from "../assets/Awards.PNG";
 import Student2 from "../assets/Student2.JPG";
 import Carousel from "react-multi-carousel";
 import { motion } from "framer-motion";

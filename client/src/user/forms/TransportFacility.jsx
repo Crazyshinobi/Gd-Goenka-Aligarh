@@ -1,28 +1,33 @@
 import React, { useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext";
-import { usePostRequest } from "../../hooks/usePostRequest";
-import axios from "axios";
 
 export const TransportFacility = ({ onNext, onBack }) => {
   const { formData, handleChange } = useForm();
   const [errors, setErrors] = useState({});
-
-  const apiUrl = usePostRequest(
-    `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/`
+  const [showDropdown, setShowDropdown] = useState(
+    formData.transport_facility === true
   );
+
+  const handleTransportChange = (value) => {
+    handleChange("transport_facility", "transport_facility", value);
+    setShowDropdown(value);
+    if (!value) {
+      handleChange("bus_stop", "bus_stop", ""); // Reset bus stop if "No" is selected
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErrors = {};
 
-    if (
-      formData.transport_facility === null ||
-      formData.transport_facility === undefined
-    ) {
-      newErrors.transport_facility =
-        "Please select an option for transport facility";
+    if (formData.transport_facility === null || formData.transport_facility === undefined) {
+      newErrors.transport_facility = "Please select an option for transport facility";
+    }
+
+    if (formData.transport_facility && !formData.bus_stop) {
+      newErrors.bus_stop = "Please select a bus stop";
     }
 
     if (!formData.declaration) {
@@ -33,33 +38,6 @@ export const TransportFacility = ({ onNext, onBack }) => {
 
     if (Object.keys(newErrors).length === 0) {
       onNext();
-      // Uncomment the following code if you want to submit the form data to an API
-
-      // const allFormData = {
-      //   user: formData.user,
-      //   general_information: formData.general_information || {},
-      //   personal_details: formData.personal_details || {},
-      //   health_information: formData.health_information || {},
-      //   educational_background: formData.educational_background || {},
-      //   parents_information: formData.parents_information || [],
-      //   other_relatives: formData.other_relatives || [],
-      //   transport_facility: formData.transport_facility,
-      //   declaration: formData.declaration,
-      // };
-
-      // try {
-      //   const admissionApplicationResponse = await apiUrl.postRequest(allFormData);
-
-      //   if (admissionApplicationResponse?.success) {
-      //     console.log("Application submitted successfully! Thank You!");
-      //     navigate("/user/success");
-      //   }
-      // } catch (error) {
-      //   console.log("Error Submitting the Form", error);
-      //   setErrors({
-      //     form: "There was an error submitting the form. Please try again!",
-      //   });
-      // }
     }
   };
 
@@ -67,7 +45,7 @@ export const TransportFacility = ({ onNext, onBack }) => {
     <>
       <UserLayout />
       <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
-        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white  bg-white dark:bg-gray-700 shadow-lg">
+        <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-xl lg:text-2xl font-bold mb-6 text-center dark:text-white">
             Transport Facility and Declaration
           </h2>
@@ -82,15 +60,10 @@ export const TransportFacility = ({ onNext, onBack }) => {
                   <input
                     type="radio"
                     name="transport_facility"
-                    value={true}
-                    onChange={() =>
-                      handleChange(
-                        "transport_facility",
-                        "transport_facility",
-                        true
-                      )
-                    }
-                    className="mr-2 dark:text-white"
+                    value="yes"
+                    checked={formData.transport_facility === true}
+                    onChange={() => handleTransportChange(true)}
+                    className="mr-2"
                   />
                   Yes
                 </label>
@@ -98,44 +71,60 @@ export const TransportFacility = ({ onNext, onBack }) => {
                   <input
                     type="radio"
                     name="transport_facility"
-                    value={false}
-                    onChange={() =>
-                      handleChange(
-                        "transport_facility",
-                        "transport_facility",
-                        false
-                      )
-                    }
-                    className="mr-2 dark:text-white"
+                    value="no"
+                    checked={formData.transport_facility === false}
+                    onChange={() => handleTransportChange(false)}
+                    className="mr-2"
                   />
                   No
                 </label>
               </div>
               {errors.transport_facility && (
-                <span className="text-red-500 text-sm">
-                  {errors.transport_facility}
-                </span>
+                <span className="text-red-500 text-sm">{errors.transport_facility}</span>
               )}
             </div>
 
+            {/* Bus Stop Selection (Shown if "Yes" is selected) */}
+            {showDropdown && (
+              <div className="space-y-4">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Select your bus stop:
+                  <span className="text-red-500 text-2xl">*</span>
+                </label>
+                <select
+                  name="bus_stop"
+                  value={formData.bus_stop || ""}
+                  onChange={(e) => handleChange("bus_stop", "bus_stop", e.target.value)}
+                  className="w-full p-2 border rounded-md dark:bg-gray-600 dark:text-white"
+                >
+                  <option value="" disabled>Select your bus stop</option>
+                  <option value="Sasni Gate">Sasni Gate and the Area Around</option>
+                  <option value="Ramghat Road">Ramghat Road and the Area Around</option>
+                  <option value="Sootmill Crossing">Sootmill Crossing and the Area Around</option>
+                  <option value="Khereshwar Crossing">Khereshwar Crossing and the Area Around</option>
+                  <option value="Suburban Areas">Suburban Areas as Khair, Panethi, etc.</option>
+                </select>
+                {errors.bus_stop && (
+                  <span className="text-red-500 text-sm">{errors.bus_stop}</span>
+                )}
+              </div>
+            )}
+
+            {/* Declaration Checkbox */}
             <div className="space-y-4">
               <label className="flex items-center dark:text-white">
                 <input
                   type="checkbox"
                   name="declaration"
                   checked={formData.declaration}
-                  onChange={(e) =>
-                    handleChange("declaration", "declaration", e.target.checked)
-                  }
-                  className="mr-2 dark:text-white"
+                  onChange={(e) => handleChange("declaration", "declaration", e.target.checked)}
+                  className="mr-2"
                 />
                 I agree to the terms and conditions.
                 <span className="text-red-500 text-2xl">*</span>
               </label>
               {errors.declaration && (
-                <span className="text-red-500 text-sm">
-                  {errors.declaration}
-                </span>
+                <span className="text-red-500 text-sm">{errors.declaration}</span>
               )}
             </div>
 
