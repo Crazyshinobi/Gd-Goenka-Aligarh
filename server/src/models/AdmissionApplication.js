@@ -40,6 +40,9 @@ const admissionApplicationSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
+      permanent_education_number: {
+        type: Number,
+      },
       dob: {
         type: Date,
         required: true,
@@ -146,12 +149,12 @@ const admissionApplicationSchema = new mongoose.Schema(
           type: Number,
           required: true,
         },
-        nationality: {
+        education: {
           type: String,
           required: true,
         },
-        education: {
-          type: String,
+        adhaar_number: {
+          type: Number,
           required: true,
         },
         relationship_with_child: {
@@ -187,10 +190,6 @@ const admissionApplicationSchema = new mongoose.Schema(
             },
             message: "Office address is required for fathers and guardians.",
           },
-        },
-        email: {
-          type: String,
-          required: true,
         },
       },
     ],
@@ -229,8 +228,13 @@ const admissionApplicationSchema = new mongoose.Schema(
     },
     feesPaid: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
+    status: {
+      type: String,
+      enum: ["pending", "approved"],
+      default: "pending",
+    },
   },
   { timestamps: true }
 );

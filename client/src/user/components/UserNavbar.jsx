@@ -52,7 +52,7 @@ export const Usernavbar = ({ mobileMenu, setMobileMenu }) => {
 
   const signOut = () => {
     Cookies.remove("userToken");
-    localStorage.removeItem("studentname")
+    localStorage.removeItem("studentname");
     navigate("/admission/application-form/login");
   };
 
@@ -135,7 +135,10 @@ export const Usernavbar = ({ mobileMenu, setMobileMenu }) => {
             </button>
 
             <div>
-              <p className="dark:text-white">Welcome {localStorage.getItem("studentname").split(" ")[0] || "Guest"}! </p>
+              <p className="dark:text-white">
+                Welcome{" "}
+                {localStorage.getItem("studentname").split(" ")[0] || "Guest"}!{" "}
+              </p>
             </div>
 
             {/* Profile Dropdown */}
