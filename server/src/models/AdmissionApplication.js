@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const admissionApplicationSchema = new mongoose.Schema(
   {
     user: {
@@ -7,14 +8,8 @@ const admissionApplicationSchema = new mongoose.Schema(
       required: true,
     },
     general_information: {
-      grade: {
-        type: String,
-        required: true,
-      },
-      applied_before: {
-        type: Boolean,
-        required: true,
-      },
+      grade: { type: String },
+      applied_before: { type: Boolean },
       applied_year: {
         type: String,
         required: function () {
@@ -29,76 +24,28 @@ const admissionApplicationSchema = new mongoose.Schema(
       },
     },
     personal_details: {
-      first_name: {
-        type: String,
-        required: true,
-      },
-      middle_name: {
-        type: String,
-      },
-      last_name: {
-        type: String,
-        required: true,
-      },
-      permanent_education_number: {
-        type: Number,
-      },
-      dob: {
-        type: Date,
-        required: true,
-      },
-      nationality: {
-        type: String,
-        required: true,
-      },
-      gender: {
-        type: String,
-        enum: ["male", "female"],
-        required: true,
-      },
-      address: {
-        type: String,
-        required: true,
-      },
-      city: {
-        type: String,
-        required: true,
-      },
-      pincode: {
-        type: String,
-        required: true,
-        maxLength: 6,
-        minLength: 6,
-      },
-      email: {
-        type: String,
-        required: true,
-      },
-      mobile: {
-        type: Number,
-        required: true,
-      },
-      emergency_mobile: {
-        type: Number,
-        required: true,
-      },
+      first_name: { type: String },
+      middle_name: { type: String },
+      last_name: { type: String },
+      permanent_education_number: { type: Number },
+      dob: { type: Date },
+      nationality: { type: String },
+      gender: { type: String, enum: ["male", "female"] },
+      address: { type: String },
+      city: { type: String },
+      pincode: { type: String, maxLength: 6, minLength: 6 },
+      email: { type: String },
+      mobile: { type: Number },
+      emergency_mobile: { type: Number },
+      image: { type: String },
     },
     health_information: {
-      allergy: {
-        type: String,
-      },
-      physical_handicap: {
-        type: String,
-      },
-      other: {
-        type: String,
-      },
+      allergy: { type: String },
+      physical_handicap: { type: String },
+      other: { type: String },
     },
     educational_background: {
-      attended_school: {
-        type: Boolean,
-        required: true,
-      },
+      attended_school: { type: Boolean },
       previous_school: {
         type: String,
         required: function () {
@@ -123,10 +70,14 @@ const admissionApplicationSchema = new mongoose.Schema(
           return this.educational_background.attended_school === true;
         },
       },
-      expelled: {
-        type: Boolean,
-        required: true,
+      transfer_certificate: { type: Boolean },
+      image: {
+        type: String,
       },
+      transfer_certificate_date: {
+        type: String,
+      },
+      expelled: { type: Boolean },
       expelled_reason: {
         type: String,
         required: function () {
@@ -138,25 +89,13 @@ const admissionApplicationSchema = new mongoose.Schema(
       {
         parent_type: {
           type: String,
-          required: true,
           enum: ["father", "mother", "guardian"],
         },
-        name: {
-          type: String,
-          required: true,
-        },
-        age: {
-          type: Number,
-          required: true,
-        },
-        education: {
-          type: String,
-          required: true,
-        },
-        adhaar_number: {
-          type: Number,
-          required: true,
-        },
+        name: { type: String },
+        age: { type: Number },
+        education: { type: String },
+        adhaar_number: { type: Number },
+        image: { type: String },
         relationship_with_child: {
           type: String,
           validate: {
@@ -169,10 +108,7 @@ const admissionApplicationSchema = new mongoose.Schema(
             message: "Relationship with child is required for guardians.",
           },
         },
-        profession: {
-          type: String,
-          required: true,
-        },
+        profession: { type: String },
         income: {
           type: String,
           validate: {
@@ -195,46 +131,24 @@ const admissionApplicationSchema = new mongoose.Schema(
     ],
     other_relatives: [
       {
-        relation: {
-          type: String,
-          enum: ["brother", "sister"],
-          required: true,
-        },
-        name: {
-          type: String,
-          required: true,
-        },
-        age: {
-          type: Number,
-          required: true,
-        },
-        school: {
-          type: String,
-          required: true,
-        },
-        grade: {
-          type: String,
-          required: true,
-        },
+        relation: { type: String, enum: ["brother", "sister"], required: true },
+        name: { type: String, required: true },
+        age: { type: Number, required: true },
+        school: { type: String, required: true },
+        grade: { type: String, required: true },
       },
     ],
-    transport_facility: {
-      type: Boolean,
-      required: true,
-    },
-    declaration: {
-      type: Boolean,
-      required: true,
-    },
-    feesPaid: {
-      type: Boolean,
-      default: false,
-    },
+    transport_facility: { type: Boolean },
+    transport_area: { type: String },
+    declaration: { type: Boolean },
+    formCompleted: { type: Boolean },
+    feesPaid: { type: Boolean, default: false },
     status: {
       type: String,
-      enum: ["pending", "approved"],
+      enum: ["pending", "under review", "approved"],
       default: "pending",
     },
+    current_step: { type: Number, default: 0 },
   },
   { timestamps: true }
 );

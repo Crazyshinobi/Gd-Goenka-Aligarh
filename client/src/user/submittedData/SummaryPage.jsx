@@ -1,52 +1,48 @@
-import React, { useState } from "react";
-import { useForm } from "../forms/FormContext";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserLayout } from "../components/UserLayout";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const SummaryPage = ({ onBack }) => {
-  const { formData } = useForm();
   const navigate = useNavigate();
-  const [FormData, setFormData] = useState({
-    txnid: "",
-    amount: "",
-    name:
-      formData.personal_details.first_name +
-      " " +
-      formData.personal_details.last_name,
-    email: formData.personal_details.email,
-    phone: formData.personal_details.mobile,
-    productinfo: formData.general_information.grade,
-    udf1: "",
-    udf2: "",
-    udf3: "",
-    udf4: "",
-    udf5: "",
-    udf6: "",
-    udf7: "",
-    udf8: "",
-    udf9: "",
-    udf10: "",
-    surl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
-    furl: `${process.env.REACT_APP_BASE_URL}/api/v1/payment/response`,
-  });
+  const [admission, setAdmission] = useState({});
 
   const handleAdmissionForm = async () => {
-    const userId = formData.user;
-    const applicationCheckUrl = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/check-user/${userId}`;
-    const applicationCheck = await axios.get(applicationCheckUrl);
-    if (applicationCheck?.data?.success) {
-      const apiUrl = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/`;
-      const response = await axios.post(apiUrl, formData);
-      if (response.success) {
-        navigate("/user/payment-summary");
-      } else {
-        console.error(response);
-      }
-    } else {
+    if (admission.formCompleted) {
       navigate("/user/payment-summary");
+    } else {
+      alert("Complete the form");
     }
   };
+
+  const fetchDetails = async () => {
+    const user = Cookies.get("userId");
+    if (!user) {
+      alert("User is not logged in.");
+      return;
+    }
+
+    try {
+      const apiUrl = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/get-admission-form/7`;
+
+      const response = await axios.post(apiUrl, { user });
+
+      if (response?.data?.success) {
+        const fetchedAdmission = response.data.admission;
+        setAdmission(fetchedAdmission);
+      } else {
+        alert("Something went wrong");
+      }
+    } catch (error) {
+      console.error("Error fetching admission details:", error);
+      alert("There was an issue fetching the admission details.");
+    }
+  };
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
 
   return (
     <>
@@ -65,81 +61,104 @@ export const SummaryPage = ({ onBack }) => {
             <div className="space-y-3">
               <p className="dark:text-white">
                 <strong>Grade:</strong>{" "}
-                {formData.general_information?.grade || "N/A"}
+                {admission.general_information?.grade || "N/A"}
               </p>
               <p className="dark:text-white text-lg text-blue-600">
                 <strong>Applied Before:</strong>{" "}
-                {formData.general_information?.applied_before ? "YES" : "NO"}
+                {admission.general_information?.applied_before ? "YES" : "NO"}
               </p>
-              {formData.general_information?.applied_before && (
+              {admission.general_information?.applied_before && (
                 <>
                   <p className="dark:text-white">
                     <strong>Academic Year:</strong>{" "}
-                    {formData.general_information?.applied_year || "N/A"}
+                    {admission.general_information?.applied_year || "N/A"}
                   </p>
                   <p className="dark:text-white">
                     <strong>Class:</strong>{" "}
-                    {formData.general_information?.applied_grade || "N/A"}
+                    {admission.general_information?.applied_grade || "N/A"}
                   </p>
                 </>
               )}
             </div>
           </div>
 
-          {/* Personal Details */}
-          <div className="mb-8 bg-gray-50 dark:bg-gray-600 p-6 rounded-lg shadow-sm">
-            <h3 className="text-xl font-semibold dark:text-white mb-4 border-b pb-2">
-              Personal Details
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <p className="dark:text-white">
-                <strong>First Name:</strong>{" "}
-                {formData.personal_details?.first_name || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Middle Name:</strong>{" "}
-                {formData.personal_details?.middle_name || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Last Name:</strong>{" "}
-                {formData.personal_details?.last_name || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Date of Birth:</strong>{" "}
-                {formData.personal_details?.dob || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Nationality:</strong>{" "}
-                {formData.personal_details?.nationality || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Gender:</strong>{" "}
-                {formData.personal_details?.gender || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Address:</strong>{" "}
-                {formData.personal_details?.address || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>City:</strong>{" "}
-                {formData.personal_details?.city || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Pincode:</strong>{" "}
-                {formData.personal_details?.pincode || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Email:</strong>{" "}
-                {formData.personal_details?.email || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Mobile:</strong>{" "}
-                {formData.personal_details?.mobile || "N/A"}
-              </p>
-              <p className="dark:text-white">
-                <strong>Emergency Number:</strong>{" "}
-                {formData.personal_details?.emergency_mobile || "N/A"}
-              </p>
+          {/* Student Details */}
+          <div className="lg:flex mb-8 bg-gray-50 dark:bg-gray-600 p-6 rounded-lg shadow-sm">
+            <div className="basis-[30%]">
+              <h3 className="text-xl font-semibold dark:text-white mb-4 border-b pb-2">
+                Student's Image
+              </h3>
+              <div className="mb-3">
+                <img
+                  src={`${process.env.REACT_APP_BASE_URL}/${admission?.personal_details?.image}`}
+                  className="h-[200px] w-[200px] object-cover"
+                  alt="Student Image"
+                />
+              </div>
+            </div>
+            <div className="basis-[70%]">
+              <h3 className="text-xl font-semibold dark:text-white mb-4 border-b pb-2">
+                Student Details
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <p className="dark:text-white">
+                  <strong>First Name:</strong>{" "}
+                  {admission.personal_details?.first_name || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Middle Name:</strong>{" "}
+                  {admission.personal_details?.middle_name || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Last Name:</strong>{" "}
+                  {admission.personal_details?.last_name || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Date of Birth:</strong>{" "}
+                  {(admission.personal_details?.dob &&
+                    new Date(admission.personal_details?.dob)
+                      .toISOString()
+                      .split("T")[0]) ||
+                    "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Nationality:</strong>{" "}
+                  {admission.personal_details?.nationality || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Gender:</strong>{" "}
+                  {admission.personal_details?.gender || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Address:</strong>{" "}
+                  {admission.personal_details?.address || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>City:</strong>{" "}
+                  {admission.personal_details?.city || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Pincode:</strong>{" "}
+                  {admission.personal_details?.pincode || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Email:</strong>{" "}
+                  {admission.personal_details?.email || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Mobile:</strong>{" "}
+                  {admission.personal_details?.mobile || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Emergency Number:</strong>{" "}
+                  {admission.personal_details?.emergency_mobile || "N/A"}
+                </p>
+                <p className="dark:text-white">
+                  <strong>Permanent Education Number (PEN):</strong>{" "}
+                  {admission.personal_details?.permanent_education_number ||
+                    "N/A"}
+                </p>
+              </div>
             </div>
           </div>
 
@@ -151,15 +170,15 @@ export const SummaryPage = ({ onBack }) => {
             <div className="space-y-3">
               <p className="dark:text-white">
                 <strong>Allergies:</strong>{" "}
-                {formData.health_information?.allergy || "N/A"}
+                {admission.health_information?.allergy || "N/A"}
               </p>
               <p className="dark:text-white">
                 <strong>Physical Handicap:</strong>{" "}
-                {formData.health_information?.physical_handicap || "N/A"}
+                {admission.health_information?.physical_handicap || "N/A"}
               </p>
               <p className="dark:text-white">
                 <strong>Other Health Problems:</strong>{" "}
-                {formData.health_information?.other || "N/A"}
+                {admission.health_information?.other || "N/A"}
               </p>
             </div>
           </div>
@@ -172,38 +191,70 @@ export const SummaryPage = ({ onBack }) => {
             <div className="space-y-3">
               <p className="dark:text-white">
                 <strong>Last School Attended:</strong>{" "}
-                {formData.educational_background?.attended_school
+                {admission.educational_background?.attended_school
                   ? "YES"
                   : "NO"}
               </p>
-              {formData.educational_background?.attended_school && (
+              {admission.educational_background?.attended_school && (
                 <>
                   <p className="dark:text-white">
                     <strong>Last School Name:</strong>{" "}
-                    {formData.educational_background?.previous_school || "N/A"}
+                    {admission.educational_background?.previous_school || "N/A"}
                   </p>
                   <p className="dark:text-white">
                     <strong>City:</strong>{" "}
-                    {formData.educational_background?.city || "N/A"}
+                    {admission.educational_background?.city || "N/A"}
                   </p>
                   <p className="dark:text-white">
                     <strong>From Grade:</strong>{" "}
-                    {formData.educational_background?.from_grade || "N/A"}
+                    {admission.educational_background?.from_grade || "N/A"}
                   </p>
                   <p className="dark:text-white">
                     <strong>To Grade:</strong>{" "}
-                    {formData.educational_background?.to_grade || "N/A"}
+                    {admission.educational_background?.to_grade || "N/A"}
+                  </p>
+                </>
+              )}
+              {admission.educational_background?.transfer_certificate ? (
+                <>
+                  <p className="dark:text-white">
+                    <strong>Do you have Transfer Certificate?:</strong>{" "}
+                    {admission.educational_background?.transfer_certificate
+                      ? "Yes"
+                      : "No" || "N/A"}
+                  </p>
+                  <p className="dark:text-white">
+                    <strong>Transfer Certificate:</strong>
+                  </p>
+                  <img
+                    src={`${process.env.REACT_APP_BASE_URL}/${admission?.educational_background?.image}`}
+                    className="h-[150px] w-[200px]"
+                    alt="Transfer Certficate"
+                  />
+                </>
+              ) : (
+                <>
+                  <p className="dark:text-white">
+                    <strong>Transfer Certificate:</strong>{" "}
+                    {admission.educational_background?.transfer_certificate
+                      ? "Yes"
+                      : "No" || "N/A"}
+                  </p>
+                  <p className="dark:text-white">
+                    <strong>Transfer Certificate Date:</strong>{" "}
+                    {admission.educational_background
+                      ?.transfer_certificate_date || "N/A"}
                   </p>
                 </>
               )}
               <p className="dark:text-white text-lg text-blue-600 ">
                 <strong>Expelled/Restricted:</strong>{" "}
-                {formData.educational_background?.expelled ? "YES" : "NO"}
+                {admission.educational_background?.expelled ? "YES" : "NO"}
               </p>
-              {formData.educational_background?.expelled && (
+              {admission.educational_background?.expelled && (
                 <p className="dark:text-white">
                   <strong>Details of Expulsion:</strong>{" "}
-                  {formData.educational_background?.expelled_reason || "N/A"}
+                  {admission.educational_background?.expelled_reason || "N/A"}
                 </p>
               )}
             </div>
@@ -214,10 +265,10 @@ export const SummaryPage = ({ onBack }) => {
             <h3 className="text-xl font-semibold dark:text-white mb-4 border-b pb-2">
               Parents Information
             </h3>
-            {formData.parents_information &&
-            formData.parents_information.length > 0 ? (
+            {admission.parents_information &&
+            admission.parents_information.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {formData.parents_information.map((parent, index) => (
+                {admission.parents_information.map((parent, index) => (
                   <div
                     key={index}
                     className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm"
@@ -236,11 +287,11 @@ export const SummaryPage = ({ onBack }) => {
                         <strong>Age:</strong> {parent.age || "N/A"}
                       </p>
                       <p className="dark:text-white">
-                        <strong>Nationality:</strong>{" "}
-                        {parent.nationality || "N/A"}
+                        <strong>Education:</strong> {parent.education || "N/A"}
                       </p>
                       <p className="dark:text-white">
-                        <strong>Education:</strong> {parent.education || "N/A"}
+                        <strong>Adhaar Number:</strong>{" "}
+                        {parent.adhaar_number || "N/A"}
                       </p>
                       <p className="dark:text-white">
                         <strong>Profession:</strong>{" "}
@@ -254,8 +305,13 @@ export const SummaryPage = ({ onBack }) => {
                         {parent.office_address || "N/A"}
                       </p>
                       <p className="dark:text-white">
-                        <strong>Email:</strong> {parent.email || "N/A"}
+                        <strong>Parent's Image:</strong>{" "}
                       </p>
+                      <img
+                        src={`${process.env.REACT_APP_BASE_URL}/${parent.image}`}
+                        alt="Parent Image"
+                        className="h-[150px] w-[150px]"
+                      />
                       {parent.parent_type === "guardian" && (
                         <p className="dark:text-white">
                           <strong>Relationship with Child:</strong>{" "}
@@ -276,9 +332,10 @@ export const SummaryPage = ({ onBack }) => {
             <h3 className="text-xl font-semibold dark:text-white mb-4 border-b pb-2">
               Other Relatives
             </h3>
-            {formData.other_relatives && formData.other_relatives.length > 0 ? (
+            {admission.other_relatives &&
+            admission.other_relatives.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {formData.other_relatives.map((relative, index) => (
+                {admission.other_relatives.map((relative, index) => (
                   <div
                     key={index}
                     className="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm"
@@ -321,7 +378,18 @@ export const SummaryPage = ({ onBack }) => {
             </h3>
             <p className="dark:text-white">
               <strong>Requires Bus Facility:</strong>{" "}
-              {formData.transport_facility ? "Yes" : "No"}
+              {admission.transport_facility ? "Yes" : "No"}
+            </p>
+          </div>
+
+          {/* Transport Area */}
+          <div className="mb-8 bg-gray-50 dark:bg-gray-600 p-6 rounded-lg shadow-sm">
+            <h3 className="text-xl font-semibold dark:text-white mb-4 border-b pb-2">
+              Transport Area
+            </h3>
+            <p className="dark:text-white">
+              <strong>Selected Bus Stop:</strong>{" "}
+              {admission.transport_area || "N/A"}
             </p>
           </div>
 
@@ -332,7 +400,7 @@ export const SummaryPage = ({ onBack }) => {
             </h3>
             <p className="dark:text-white">
               <strong>Agreed to Terms:</strong>{" "}
-              {formData.declaration ? "Yes" : "No"}
+              {admission.declaration ? "Yes" : "No"}
             </p>
           </div>
 

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const EducationalBackground = ({ onNext, onBack }) => {
   const { formData, handleChange } = useForm();
@@ -15,20 +16,30 @@ export const EducationalBackground = ({ onNext, onBack }) => {
       city,
       from_grade,
       to_grade,
+      transfer_certificate,
+      image,
+      transfer_certificate_date,
       expelled,
       expelled_reason,
     } = formData.educational_background;
 
     if (attended_school && !previous_school)
       newErrors.previous_school = "Previous school name is required.";
-    else if (!/^[A-Za-z\s]+$/.test(attended_school && previous_school))
-      newErrors.previous_school = "School name must only contain alphabets";
+    else if (!/^[A-Za-z\s]+$/.test(previous_school))
+      newErrors.previous_school = "School name must only contain alphabets.";
     if (attended_school && !city)
       newErrors.city = "City of school is required.";
     if (attended_school && !from_grade)
       newErrors.from_grade = "From grade is required.";
     if (attended_school && !to_grade)
       newErrors.to_grade = "To grade is required.";
+    if (transfer_certificate && !image) {
+      newErrors.image = "Transfer Certificate Image is required.";
+    }
+    if (!transfer_certificate && !transfer_certificate_date) {
+      newErrors.transfer_certificate_date =
+        "Transfer Certificate date is required.";
+    }
     if (expelled && !expelled_reason)
       newErrors.expelled_reason = "Reason for expulsion is required.";
 
@@ -36,12 +47,94 @@ export const EducationalBackground = ({ onNext, onBack }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_BASE_URL}/api/v1/upload`, // Your file upload endpoint
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        if (response.data.success) {
+          // Save the file path or URL in the form data
+          handleChange(
+            "educational_background",
+            "image",
+            response.data.filePath
+          );
+        } else {
+          console.error("Failed to upload file:", response.data.message);
+        }
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
+    }
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
       onNext();
     }
   };
+
+  const fetchDetails = async () => {
+    const user = Cookies.get("userId");
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/get-admission-form/3`,
+        { user }
+      );
+      if (response?.data?.success) {
+        const admissionData = response?.data?.admission;
+        const fields = [
+          "attended_school",
+          "previous_school",
+          "city",
+          "from_grade",
+          "to_grade",
+          "transfer_certificate",
+          "image",
+          "transfer_certificate_date",
+          "expelled",
+          "expelled_reason",
+        ];
+
+        fields.forEach((field) => {
+          if (admissionData.educational_background[field]) {
+            let value = admissionData.educational_background[field];
+
+            if (field === "transfer_certificate_date") {
+              value = new Date(value).toISOString().split("T")[0]; // Format date
+            }
+
+            handleChange(
+              "educational_background",
+              field,
+              admissionData.educational_background[field]
+            );
+          }
+        });
+      } else {
+        console.log("Failed to fetch details:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Error fetching details:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
 
   return (
     <>
@@ -103,18 +196,13 @@ export const EducationalBackground = ({ onNext, onBack }) => {
                     type="text"
                     name="previous_school"
                     value={formData.educational_background.previous_school}
-                    onChange={(e) => {
-                      const regex = /^[A-Za-z\s]*$/;
-                      const value = e.target.value;
-
-                      if (regex.test(value) || value === "") {
-                        handleChange(
-                          "educational_background",
-                          "previous_school",
-                          e.target.value
-                        );
-                      }
-                    }}
+                    onChange={(e) =>
+                      handleChange(
+                        "educational_background",
+                        "previous_school",
+                        e.target.value
+                      )
+                    }
                     className="w-full p-2 border rounded"
                   />
                   {errors.previous_school && (
@@ -186,6 +274,111 @@ export const EducationalBackground = ({ onNext, onBack }) => {
                     <p className="text-red-500">{errors.to_grade}</p>
                   )}
                 </div>
+
+                <div className="mb-4">
+                  <label className="block mb-2">
+                    Do you have Transfer Certificate?
+                    <span className="text-red-500 text-2xl">*</span>
+                  </label>
+                  <div className="flex items-center space-x-4">
+                    <label className="flex items-center">
+                      <input
+                        type="checkbox"
+                        name="transfer_certificate"
+                        checked={
+                          formData.educational_background.transfer_certificate
+                        }
+                        onChange={(e) =>
+                          handleChange(
+                            "educational_background",
+                            "transfer_certificate",
+                            e.target.checked
+                          )
+                        }
+                        className="mr-2"
+                      />
+                      Yes
+                    </label>
+                    <label className="flex items-center">
+                      <input
+                        type="checkbox"
+                        name="transfer_certificate"
+                        checked={
+                          !formData.educational_background.transfer_certificate
+                        }
+                        onChange={(e) =>
+                          handleChange(
+                            "educational_background",
+                            "transfer_certificate",
+                            !e.target.checked
+                          )
+                        }
+                        className="mr-2"
+                      />
+                      No
+                    </label>
+                  </div>
+                </div>
+
+                {formData.educational_background.transfer_certificate ? (
+                  <>
+                    {/* Upload TC */}
+                    <div className="mb-4">
+                      <label className="block mb-2">
+                        Upload Transfer Certificate
+                        <span className="text-red-500 text-2xl">*</span>
+                      </label>
+                      <div className="flex items-center space-x-4">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileChange}
+                        />
+                        {errors.image && (
+                          <p className="text-red-500">{errors.image}</p>
+                        )}
+                      </div>
+                      {formData.educational_background.image && (
+                        <div>
+                          <h3>Uploaded Image:</h3>
+                          <img
+                            src={`${process.env.REACT_APP_BASE_URL}/${formData.educational_background.image}`}
+                            alt="Educational background"
+                            style={{ width: "100px", height: "auto" }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="mb-4">
+                      <label className="block mb-2">
+                        When will you get the transfer certificate?
+                        <span className="text-red-500 text-2xl">*</span>
+                      </label>
+                      <input
+                        type="date"
+                        name="transfer_certificate_date"
+                        value={
+                          formData.educational_background
+                            .transfer_certificate_date
+                        }
+                        onChange={(e) =>
+                          handleChange(
+                            "educational_background",
+                            "transfer_certificate_date",
+                            e.target.value
+                          )
+                        }
+                        className="w-full p-2 border rounded"
+                      />
+                      {errors.transfer_certificate_date && (
+                        <p className="text-red-500">{errors.transfer_certificate_date}</p>
+                      )}
+                    </div>
+                  </>
+                )}
               </>
             )}
 

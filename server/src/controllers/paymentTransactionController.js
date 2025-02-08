@@ -1,4 +1,5 @@
 const { getRecord, deleteRecord } = require("../common/commonDatabaseQueries");
+const Admin = require("../models/Admin");
 const PaymentTransaction = require("../models/PaymentTransaction");
 const { sendResponse } = require("../utils/responseUtils");
 
@@ -46,12 +47,39 @@ const deletePaymentTransaction = async (req, res) => {
   }
 };
 
-const checkStatusPayment = async (req, res) => {
+const getPaymentTransactionbyUserId = async (req, res) => {
   try {
-    
+    const { id } = req.params;
+
+    const user = await Admin.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const userEmail = user.email;
+
+    const paymentTransactions = await PaymentTransaction.find({
+      email: userEmail,
+    });
+
+    if (paymentTransactions.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No payment transactions found for this user" });
+    }
+
+    return res.status(200).json({ success: true, paymentTransactions });
   } catch (error) {
     console.error(error);
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred while fetching payment transactions",
+    });
   }
 };
 
-module.exports = { getPaymentTransaction, deletePaymentTransaction };
+module.exports = {
+  getPaymentTransaction,
+  deletePaymentTransaction,
+  getPaymentTransactionbyUserId,
+};

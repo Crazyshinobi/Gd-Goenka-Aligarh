@@ -1,11 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const PersonalDetails = ({ onNext, onBack }) => {
   const { formData, handleChange } = useForm();
   const [errors, setErrors] = useState({});
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_BASE_URL}/api/v1/upload`, // Your file upload endpoint
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        if (response.data.success) {
+          // Save the file path or URL in the form data
+          handleChange("personal_details", "image", response.data.filePath);
+        } else {
+          console.error("Failed to upload file:", response.data.message);
+        }
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
+    }
+  };
 
   const validateForm = () => {
     let newErrors = {};
@@ -19,8 +49,10 @@ export const PersonalDetails = ({ onNext, onBack }) => {
       city,
       pincode,
       email,
+      permanent_education_number,
       mobile,
       emergency_mobile,
+      image
     } = formData.personal_details;
 
     if (!first_name) newErrors.first_name = "First name is required";
@@ -52,11 +84,22 @@ export const PersonalDetails = ({ onNext, onBack }) => {
       }
     }
 
+    if (!image) {
+      newErrors.image = "Please provide student image.";
+    }
+
+    if (permanent_education_number) {
+      if (permanent_education_number.toString().length !== 12) {
+        newErrors.permanent_education_number =
+          "Permanent Education Number must be exactly 12 digits";
+      }
+    }
+
     if (!mobile) {
       newErrors.mobile = "Mobile number is required";
     } else {
       const mobileRegex = /^[9876]{1}[0-9]{9}$/;
-      if (mobile.length !== 10) {
+      if (mobile.toString().length !== 10) {
         newErrors.mobile = "Mobile number must be exactly 10 digits";
       } else if (!mobileRegex.test(mobile)) {
         newErrors.mobile =
@@ -68,7 +111,7 @@ export const PersonalDetails = ({ onNext, onBack }) => {
       newErrors.emergency_mobile = "Emergency Mobile number is required";
     } else {
       const emergency_mobileRegex = /^[9876]{1}[0-9]{9}$/;
-      if (emergency_mobile.length !== 10) {
+      if (emergency_mobile.toString().length !== 10) {
         newErrors.emergency_mobile = "Mobile number must be exactly 10 digits";
       } else if (!emergency_mobileRegex.test(emergency_mobile)) {
         newErrors.emergency_mobile =
@@ -87,10 +130,52 @@ export const PersonalDetails = ({ onNext, onBack }) => {
     }
   };
 
+  const fetchDetails = async () => {
+    const user = Cookies.get("userId");
+    const response = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/get-admission-form/2`,
+      { user }
+    );
+
+    if (response?.data?.success) {
+      const fields = [
+        "first_name",
+        "middle_name",
+        "last_name",
+        "dob",
+        "nationality",
+        "gender",
+        "address",
+        "city",
+        "pincode",
+        "email",
+        "permanent_education_number",
+        "mobile",
+        "emergency_mobile",
+        "image",
+      ];
+
+      fields.forEach((field) => {
+        if (response.data.admission.personal_details[field]) {
+          let value = response.data.admission.personal_details[field];
+
+          if (field === "dob") {
+            value = new Date(value).toISOString().split("T")[0]; // Format date
+          }
+
+          handleChange("personal_details", field, value);
+        }
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
+
   return (
     <>
       <UserLayout />
-
       <div className="p-4 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
         <div className="p-6 border-2 border-gray-200 rounded-lg dark:border-white bg-white dark:bg-gray-700 shadow-lg">
           <h2 className="text-center lg:text-left text-2xl font-bold mb-4">
@@ -288,10 +373,10 @@ export const PersonalDetails = ({ onNext, onBack }) => {
               </div>
             </div>
 
-            {/* Fourth Row: Email, Mobile, Emergency Mobile */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            {/* Fourth Row: Email, Permanent Education Number, Mobile, Emergency Mobile */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
-                <label className="block mb-2">
+                <label className="block">
                   Email<span className="text-red-500 text-2xl">*</span>
                 </label>
                 <input
@@ -304,6 +389,29 @@ export const PersonalDetails = ({ onNext, onBack }) => {
                   className="w-full p-2 border rounded"
                 />
                 {errors.email && <p className="text-red-500">{errors.email}</p>}
+              </div>
+              <div>
+                <label className="block mb-2">
+                  Permanent Education Number (PEN)
+                </label>
+                <input
+                  type="number"
+                  name="permanent_education_number"
+                  value={formData.personal_details.permanent_education_number}
+                  onChange={(e) =>
+                    handleChange(
+                      "personal_details",
+                      "permanent_education_number",
+                      e.target.value
+                    )
+                  }
+                  className="w-full p-2 border rounded"
+                />
+                {errors.permanent_education_number && (
+                  <p className="text-red-500">
+                    {errors.permanent_education_number}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -352,6 +460,38 @@ export const PersonalDetails = ({ onNext, onBack }) => {
                 />
                 {errors.emergency_mobile && (
                   <p className="text-red-500">{errors.emergency_mobile}</p>
+                )}
+              </div>
+            </div>
+
+            {/* Fourth Row: Email, Permanent Education Number, Mobile, Emergency Mobile */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="mb-4">
+                <label className="block mb-2">
+                  Upload Student Image
+                  <span className="text-red-500 text-2xl">*</span>
+                </label>
+                <div className="flex items-center space-x-4">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                  />
+                  {errors.image && (
+                    <p className="text-red-500">{errors.image}</p>
+                  )}
+                </div>
+              </div>
+              <div className="mb-4">
+                {formData.personal_details.image && (
+                  <div>
+                    <h3>Uploaded Image:</h3>
+                    <img
+                      src={`${process.env.REACT_APP_BASE_URL}/${formData.personal_details.image}`}
+                      alt="Student Image"
+                      style={{ height: "250px", width: "200px" }}
+                    />
+                  </div>
                 )}
               </div>
             </div>

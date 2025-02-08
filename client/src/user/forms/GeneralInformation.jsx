@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const GeneralInformation = ({ onNext }) => {
   const { formData, handleChange } = useForm();
@@ -25,9 +26,8 @@ export const GeneralInformation = ({ onNext }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (validateForm()) {
-      onNext();
+        onNext();
     }
   };
 
@@ -49,6 +49,35 @@ export const GeneralInformation = ({ onNext }) => {
     "Class XI",
     "Class XII",
   ];
+
+  const fetchDetails = async () => {
+    const user = Cookies.get("userId");
+    const response = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/get-admission-form/1`,
+      { user }
+    );
+
+    if (response?.data?.success) {
+      const admissionData = response.data.admission.general_information;
+
+      const fieldsToUpdate = [
+        "grade",
+        "applied_before",
+        "applied_year",
+        "applied_grade",
+      ];
+
+      fieldsToUpdate.forEach((field) => {
+        if (admissionData[field]) {
+          handleChange("general_information", field, admissionData[field]);
+        }
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
 
   return (
     <>

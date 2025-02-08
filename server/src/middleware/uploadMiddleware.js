@@ -17,6 +17,8 @@ const storage = multer.diskStorage({
       uploadPath = "src/uploads/content";
     } else if (req.originalUrl.includes("/api/v1/job-application")) {
       uploadPath = "src/uploads/job application";
+    } else if (req.originalUrl.includes("/api/v1/admission-application")) {
+      uploadPath = "src/uploads/admissionApplication";
     } else {
       uploadPath = "src/uploads/";
     }
@@ -58,10 +60,9 @@ const pdfFilter = (req, file, cb) => {
     cb(null, true); // Accept the PDF file
   } else {
     cb(new Error("Only PDF files are allowed!"), false);
-  } 
+  }
 };
 
-// Set up multer middleware to handle both image and PDF
 const upload = multer({
   storage: storage,
   limits: {

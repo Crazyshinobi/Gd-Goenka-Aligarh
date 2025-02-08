@@ -1,6 +1,4 @@
 import React, { createContext, useContext, useState } from "react";
-import Cookies from "js-cookie";
-
 const FormContext = createContext();
 
 export const FormProvider = ({ children }) => {
@@ -23,8 +21,10 @@ export const FormProvider = ({ children }) => {
       city: "",
       pincode: "",
       email: "",
+      permanent_education_number: "",
       mobile: "",
       emergency_mobile: "",
+      image:""
     },
     health_information: {
       allergy: "",
@@ -37,13 +37,20 @@ export const FormProvider = ({ children }) => {
       city: "",
       from_grade: "",
       to_grade: "",
+      transfer_certificate: false,
+      image: "",
+      transfer_certificate_date: "",
       expelled: false,
       expelled_reason: "",
     },
-    parents_information: [], // Initialize as an empty array
+    parents_information: [],
     other_relatives: [],
     transport_facility: false,
+    transport_area: "",
     declaration: false,
+    formCompleted: false,
+    current_step: 1,
+    current_step_completed: false
   });
 
   const handleChange = (section, field, value, index = null) => {
@@ -65,9 +72,10 @@ export const FormProvider = ({ children }) => {
           },
         };
       } else if (
-        section === "transport_facility" ||
+        section === "transport_facility" ||section === "transport_area" ||
         section === "declaration" ||
-        section === "user"
+        section === "user" ||
+        section === "formCompleted"
       ) {
         return {
           ...prevData,
@@ -92,8 +100,6 @@ export const FormProvider = ({ children }) => {
       return prevData; // Fallback to prevent undefined state
     });
   };
-
-  
 
   return (
     <FormContext.Provider value={{ formData, setFormData, handleChange }}>

@@ -17,10 +17,7 @@ const AdmissionForm = () => {
   const [loading, setLoading] = useState(false);
 
   const admissionApi = usePostRequest(
-    `${process.env.REACT_APP_BASE_URL}/api/v1/admission`
-  );
-  const registerApi = usePostRequest(
-    `${process.env.REACT_APP_BASE_URL}/api/v1/user/register`
+    `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/admission-form/0`
   );
   const loginApi = usePostRequest(
     `${process.env.REACT_APP_BASE_URL}/api/v1/user/login`
@@ -30,15 +27,12 @@ const AdmissionForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
-    name: "",
+    full_name: "",
     dob: "",
     email: "",
     mobile: "",
-    academic_year: "",
     grade: "",
   });
-
-  
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -63,36 +57,26 @@ const AdmissionForm = () => {
       setLoading(true);
 
       try {
-        window.gtag('event', 'conversion', {
-          'send_to': 'AW-11435073187/mTffCPbYoYwaEKO91cwq',
-          'value': 1.0,
-          'currency': 'INR',
+        window.gtag("event", "conversion", {
+          send_to: "AW-11435073187/mTffCPbYoYwaEKO91cwq",
+          value: 1.0,
+          currency: "INR",
         });
+
         // Submit admission form
         const admissionResponse = await admissionApi.postRequest(formData);
 
         if (admissionResponse?.success) {
-          // If admission successful, proceed with registration
-          const registerResponse = await registerApi.postRequest({
-            name: formData.name,
-            email: formData.email,
+          setFormData({
+            name: "",
+            dob: "",
+            email: "",
+            mobile: "",
+            grade: "",
           });
 
-          if (registerResponse?.success) {
-            setFormData({
-              name: "",
-              dob: "",
-              email: "",
-              mobile: "",
-              academic_year: "",
-              grade: "",
-            });
-
-            toast.success("Application submitted successfully!");
-            navigate("/admission/application-submission");
-          } else {
-            toast.error("Registration failed!");
-          }
+          toast.success("Application submitted successfully!");
+          navigate("/admission/application-submission");
         } else {
           toast.error("Admission submission failed!");
         }
@@ -155,7 +139,7 @@ const AdmissionForm = () => {
 
   const RegistervalidateForm = () => {
     let newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.full_name.trim()) newErrors.full_name = "Name is required";
     if (!formData.dob) newErrors.dob = "Date of birth is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
@@ -409,23 +393,23 @@ const AdmissionForm = () => {
                   <div className="grid grid-cols-1 gap-4 md:gap-6">
                     <div>
                       <label
-                        htmlFor="name"
+                        htmlFor="full_name"
                         className="block text-sm font-medium text-gray-700 mb-1"
                       >
-                       Student Name
+                        Student Name
                       </label>
                       <input
                         type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
+                        id="full_name"
+                        name="full_name"
+                        value={formData.full_name}
                         onChange={handleRegisterChange}
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                         placeholder="Enter Student full name"
                       />
-                      {errors.name && (
+                      {errors.full_name && (
                         <p className="mt-1 text-sm text-red-600">
-                          {errors.name}
+                          {errors.full_name}
                         </p>
                       )}
                     </div>

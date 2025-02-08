@@ -1,24 +1,21 @@
-import React, { useState } from "react";
-import { useForm } from "../forms/FormContext";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { UserLayout } from "../components/UserLayout";
 import { FaSchool, FaMoneyBillWave, FaWallet, FaSpinner } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const PaymentSummary = () => {
-  const { formData } = useForm();
-  const [loading, setLoading] = useState(false); // Loading state
-  const [FormData, setFormData] = useState({
+  const [admission, setAdmission] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
     txnid: "",
     amount: "",
-    name:
-      formData.personal_details.first_name +
-      " " +
-      formData.personal_details.last_name,
-    email: formData.personal_details.email,
-    phone: formData.personal_details.mobile,
-    productinfo: formData.general_information.grade,
+    name: "",
+    email: "",
+    phone: "",
+    productinfo: "",
     udf1: "",
     udf2: "",
     udf3: "",
@@ -35,12 +32,12 @@ const PaymentSummary = () => {
   const navigate = useNavigate();
 
   const handleGoToPayment = async () => {
-    setLoading(true); // Start loading
+    setLoading(true);
     const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/payment/initiate_payment`;
     try {
-      const response = await axios.post(apiURL, FormData);
+      const response = await axios.post(apiURL, formData);
       if (response?.data?.url) {
-        window.location.href = response.data.url; // Redirect to payment gateway
+        window.location.href = response.data.url;
       } else {
         navigate("/payment-failure");
       }
@@ -48,34 +45,67 @@ const PaymentSummary = () => {
       console.error("Payment initiation failed:", error);
       navigate("/payment-failure");
     } finally {
-      setLoading(false); // Stop loading if redirection fails
+      setLoading(false);
     }
   };
+
+  const fetchDetails = async () => {
+    const user = Cookies.get("userId");
+    const apiUrl = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/get-admission-form/7`;
+    try {
+      const response = await axios.post(apiUrl, { user });
+      if (response?.data?.success) {
+        setAdmission(response.data.admission);
+      } else {
+        alert("Something went wrong");
+      }
+    } catch (error) {
+      console.error("Error fetching admission details:", error);
+    }
+  };
+
+  // Update formData when admission changes
+  useEffect(() => {
+    if (admission?.personal_details) {
+      setFormData((prevData) => ({
+        ...prevData,
+        name: `${admission.personal_details.first_name} ${admission.personal_details.last_name}`,
+        email: admission.personal_details.email,
+        phone: admission.personal_details.mobile.toString(),
+        productinfo: admission.general_information.grade,
+      }));
+    }
+  }, [admission]);
+
+  // Fetch admission details on component mount
+  useEffect(() => {
+    fetchDetails();
+  }, []);
 
   let registrationFees, admissionFees;
 
   if (
-    formData.general_information.grade === "Nursery" ||
-    formData.general_information.grade === "LKG" ||
-    formData.general_information.grade === "UKG" ||
-    formData.general_information.grade === "Class I" ||
-    formData.general_information.grade === "Class II" ||
-    formData.general_information.grade === "Class III" ||
-    formData.general_information.grade === "Class IV" ||
-    formData.general_information.grade === "Class V"
+    admission?.general_information?.grade === "Nursery" ||
+    admission?.general_information?.grade === "LKG" ||
+    admission?.general_information?.grade === "UKG" ||
+    admission?.general_information?.grade === "Class I" ||
+    admission?.general_information?.grade === "Class II" ||
+    admission?.general_information?.grade === "Class III" ||
+    admission?.general_information?.grade === "Class IV" ||
+    admission?.general_information?.grade === "Class V"
   ) {
     registrationFees = 500.0;
     admissionFees = 10000.0;
   } else if (
-    formData.general_information.grade === "Class VI" ||
-    formData.general_information.grade === "Class VII" ||
-    formData.general_information.grade === "Class VIII"
+    admission?.general_information?.grade === "Class VI" ||
+    admission?.general_information?.grade === "Class VII" ||
+    admission?.general_information?.grade === "Class VIII"
   ) {
     registrationFees = 750.0;
     admissionFees = 10000.0;
   } else if (
-    formData.general_information.grade === "Class IX" ||
-    formData.general_information.grade === "Class X"
+    admission?.general_information?.grade === "Class IX" ||
+    admission?.general_information?.grade === "Class X"
   ) {
     registrationFees = 1000.0;
     admissionFees = 12500.0;
@@ -85,7 +115,6 @@ const PaymentSummary = () => {
   }
 
   const totalFees = registrationFees + admissionFees;
-  const grade = formData.general_information.grade;
 
   // Animation variants for Framer Motion
   const containerVariants = {
@@ -138,7 +167,7 @@ const PaymentSummary = () => {
                   Grade
                 </span>
                 <span className="text-gray-800 font-semibold text-lg dark:text-black block">
-                  {grade}
+                  {admission?.general_information?.grade}
                 </span>
               </div>
             </motion.div>
@@ -202,8 +231,8 @@ const PaymentSummary = () => {
                 variants={buttonVariants}
                 whileHover={!loading && "hover"}
                 whileTap={!loading && "tap"}
-                onClick={!loading ? handleGoToPayment : null} // Disable click when loading
-                disabled={loading} // Disable button while loading
+                onClick={!loading ? handleGoToPayment : null}
+                disabled={loading}
               >
                 {loading ? (
                   <>

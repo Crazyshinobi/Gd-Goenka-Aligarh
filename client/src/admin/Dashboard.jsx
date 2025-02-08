@@ -14,7 +14,6 @@ export const Dashboard = () => {
     contact: "Loading, please wait...",
     gallery: "Loading, please wait...",
     content: "Loading, please wait...",
-    admission: "Loading, please wait...",
     job: "Loading, please wait...",
     jobApplication: "Loading, please wait...",
     admissionApplication: "Loading, please wait...",
@@ -27,23 +26,27 @@ export const Dashboard = () => {
       "contact",
       "gallery",
       "content",
-      "admission",
       "job",
       "job-application",
       "admission-application",
       "admission-application-query",
     ];
 
-    // Fetch the count data for each item
-    const countData = {};
+    try {
+      // Create an array of promises for all count requests
+      const countPromises = countItems.map((item) =>
+        axios.get(`${process.env.REACT_APP_BASE_URL}/api/v1/${item}/count`)
+      );
 
-    for (let item of countItems) {
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/v1/${item}/count`
-        );
+      // Fetch all counts concurrently using Promise.all
+      const responses = await Promise.all(countPromises);
+
+      // Map responses to the counts object
+      const countData = {};
+      responses.forEach((response, index) => {
+        const item = countItems[index];
         if (item === "job-application") {
-          countData.jobApplication = response.data.data; // Assign to camelCase key
+          countData.jobApplication = response.data.data;
         } else if (item === "admission-application") {
           countData.admissionApplication = response.data.data;
         } else if (item === "admission-application-query") {
@@ -51,11 +54,14 @@ export const Dashboard = () => {
         } else {
           countData[item] = response.data.data;
         }
-      } catch (error) {
-        console.error(`Error fetching ${item} count:`, error);
-      }
+      });
+
+      // Update the counts state
+      setCounts(countData);
+    } catch (error) {
+      console.error("Error fetching counts:", error);
+      // Optionally, set an error state or show a notification to the user
     }
-    setCounts(countData);
   };
 
   useEffect(() => {
@@ -98,7 +104,7 @@ export const Dashboard = () => {
             {/* Card 1 */}
             <div className="flex flex-col gap-2 items-center justify-center rounded-lg bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 dark:bg-gradient-to-r dark:from-indigo-400 dark:via-indigo-500 dark:to-indigo-600 shadow-md p-4 transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
               <h2 className="text-sm font-semibold text-white dark:text-gray-100">
-                Total User
+                Total Applicants
               </h2>
               <p className="text-xl font-bold text-white dark:text-gray-200">
                 {counts.admin}
@@ -113,7 +119,7 @@ export const Dashboard = () => {
             {/* Card 2 */}
             <div className="flex flex-col gap-2 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 via-green-600 to-green-700 dark:bg-gradient-to-r dark:from-green-400 dark:via-green-500 dark:to-green-600 shadow-md p-4 transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
               <h2 className="text-sm font-semibold text-white dark:text-gray-100">
-                Total Enquiries
+                Total Contact Enquiries
               </h2>
               <p className="text-xl font-bold text-white dark:text-gray-200">
                 {counts.contact}
@@ -155,21 +161,6 @@ export const Dashboard = () => {
               </Link>
             </div>
 
-            {/* Card 5 */}
-            <div className="flex flex-col gap-2 items-center justify-center rounded-lg bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 dark:bg-gradient-to-r dark:from-yellow-400 dark:via-yellow-500 dark:to-yellow-600 shadow-md p-4 transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
-              <h2 className="text-sm font-semibold text-white dark:text-gray-100">
-                Total Admission Enquiry
-              </h2>
-              <p className="text-xl font-bold text-white dark:text-gray-200">
-                {counts.admission}
-              </p>
-              <Link to="/admin/view-admission">
-                <button className="mt-2 px-5 py-1.5 bg-white text-yellow-600 text-xs font-semibold rounded-lg shadow-md hover:bg-yellow-200 focus:outline-none dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500">
-                  View Details
-                </button>
-              </Link>
-            </div>
-
             {/* Card 6 */}
             <div className="flex flex-col gap-2 items-center justify-center rounded-lg bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 dark:bg-gradient-to-r dark:from-purple-400 dark:via-purple-500 dark:to-purple-600 shadow-md p-4 transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
               <h2 className="text-sm font-semibold text-white dark:text-gray-100">
@@ -199,6 +190,7 @@ export const Dashboard = () => {
                 </button>
               </Link>
             </div>
+
             {/* Card 8 */}
             <div className="flex flex-col gap-2 items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 dark:bg-gradient-to-r dark:from-orange-400 dark:via-orange-500 dark:to-orange-600 shadow-md p-4 transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
               <h2 className="text-sm font-semibold text-white dark:text-gray-100">
