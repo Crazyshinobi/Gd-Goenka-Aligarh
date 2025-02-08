@@ -97,7 +97,7 @@ export const OtherRelatives = ({ onNext, onBack }) => {
         other_relatives: existingRelatives
       };
   
-      console.log('Submitting data:', submitData);
+      // console.log('Submitting data:', submitData);
   
       const response = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/admission-form/6`,
@@ -140,7 +140,7 @@ export const OtherRelatives = ({ onNext, onBack }) => {
         // Update form context
         handleChange("other_relatives", null, formattedRelatives);
         
-        console.log('Fetched relatives:', formattedRelatives);
+        // console.log('Fetched relatives:', formattedRelatives);
       }
     } catch (error) {
       console.error('Error fetching relatives:', error);

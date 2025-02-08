@@ -220,7 +220,7 @@ export const ParentInformation = ({ onBack, onNext }) => {
       const response = await axios.post(apiUrl, updatedFormData);
 
       if (response?.data?.success) {
-        console.log("Success:", response.data);
+        // console.log("Success:", response.data);
         onNext();
       } else {
         console.error("API Error:", response.data);

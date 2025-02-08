@@ -37,7 +37,6 @@ export const UpdateModal = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     if (record) {
       await updateRecord(record._id);
       if (!loading && !error) {

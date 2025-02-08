@@ -8,7 +8,6 @@ export const ViewAdmissionApplicationQuery = () => {
   const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application-query/`;
   const { data, loading, error, refetch } = useFetchData(apiURL);
   const admissionApplicationQuery = data?.data || [];
-  console.log(admissionApplicationQuery);
   const columns = [
     {
       header: "S.No",

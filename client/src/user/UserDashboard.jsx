@@ -17,7 +17,6 @@ export const UserDashboard = () => {
     try {
       const response = await axios.get(apiUrl);
       if (!response?.data?.success) {
-        console.log(response);
         const status = response.data.data;
         setStatus(status);
         setAlreadySubmitted(true);

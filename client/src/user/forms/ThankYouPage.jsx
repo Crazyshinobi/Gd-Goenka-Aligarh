@@ -57,7 +57,7 @@ const ThankYouPage = ({ status }) => {
       await Promise.all([fetchAdmissionData(), fetchFeeDetails()]);
       setLoading(false); // Reset loading state after both requests complete
     };
-    console.log(formData);
+    // console.log(formData);
     fetchData();
   }, []);
 

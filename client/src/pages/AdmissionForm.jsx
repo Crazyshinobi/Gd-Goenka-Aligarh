@@ -94,15 +94,15 @@ const AdmissionForm = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Login form submitted");
+    // console.log("Login form submitted");
 
     if (LoginValidateForm()) {
       setLoading(true);
-      console.log("Form validated successfully");
+      // console.log("Form validated successfully");
       try {
         const response = await loginApi.postRequest(loginData);
         if (response?.success && response?.userToken) {
-          console.log("Login successful, setting token in cookies");
+          // console.log("Login successful, setting token in cookies");
           Cookies.set("userToken", response.userToken, {
             expires: 1,
             secure: true,

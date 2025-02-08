@@ -49,7 +49,7 @@ export const TransportFacility = ({ onNext, onBack }) => {
           `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/admission-form/7`,
           formData
         );
-        console.log(response);
+        // console.log(response);
         if (response?.data?.success) {
           formData.formCompleted = true;
           const response = await axios.post(
