@@ -1,15 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "./FormContext";
 import { UserLayout } from "../components/UserLayout";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const HealthInformation = ({ onNext, onBack }) => {
   const { formData, handleChange } = useForm();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     onNext();
   };
+
+  const fetchDetails = async () => {
+    const user = Cookies.get("userId");
+    const response = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/get-admission-form/3`,
+      { user }
+    );
+    if (response?.data?.success) {
+      const admissionData = response.data.admission;
+      // Update health information fields
+      const healthInfoFields = ["allergy", "physical_handicap", "other"];
+      healthInfoFields.forEach((field) => {
+        if (admissionData.health_information) {
+          if (admissionData.health_information[field]) {
+            handleChange(
+              "health_information",
+              field,
+              admissionData.health_information[field]
+            );
+          }
+        }
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
 
   return (
     <>
@@ -29,7 +57,7 @@ export const HealthInformation = ({ onNext, onBack }) => {
               <input
                 type="text"
                 name="allergy"
-                value={formData.health_information.allergy}
+                value={formData.health_information?.allergy}
                 onChange={(e) =>
                   handleChange("health_information", "allergy", e.target.value)
                 }
@@ -46,7 +74,7 @@ export const HealthInformation = ({ onNext, onBack }) => {
               <input
                 type="text"
                 name="physical_handicap"
-                value={formData.health_information.physical_handicap}
+                value={formData.health_information?.physical_handicap}
                 onChange={(e) =>
                   handleChange(
                     "health_information",
@@ -63,7 +91,7 @@ export const HealthInformation = ({ onNext, onBack }) => {
               <label className="block mb-2">Other Health Conditions</label>
               <textarea
                 name="other"
-                value={formData.health_information.other}
+                value={formData.health_information?.other}
                 onChange={(e) =>
                   handleChange("health_information", "other", e.target.value)
                 }

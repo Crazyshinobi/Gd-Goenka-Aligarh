@@ -47,7 +47,10 @@ const loginAdmin = [
       if (!isAdmin) {
         return res
           .status(401)
-          .json({ success: false, message: "Not allowed to access this portal" });
+          .json({
+            success: false,
+            message: "Not allowed to access this portal",
+          });
       }
       // Generate a token
       const token = jwt.sign(
@@ -243,7 +246,7 @@ const getAdmins = async (req, res) => {
 
 const countAdmin = async (req, res) => {
   try {
-    const response = await getCount(Admin);
+    const response = await getCount(Admin, { role: "user" });
 
     sendResponse(res, 200, true, "Count Successfully fetched", response.data);
   } catch (error) {

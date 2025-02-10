@@ -9,12 +9,11 @@ const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
 
-// Router 
+// Router
 const adminRoutes = require("./src/routes/adminRoutes");
 const contactRoutes = require("./src/routes/contactRoutes");
 const galleryRoutes = require("./src/routes/galleryRoutes");
 const contentRoutes = require("./src/routes/contentRoutes");
-const admissionRoutes = require("./src/routes/admissionRoutes");
 const jobRoutes = require("./src/routes/jobRoutes");
 const jobApplicationRoutes = require("./src/routes/jobApplicationRoutes");
 const admissionApplicationRoutes = require("./src/routes/admissionApplicationRoutes");
@@ -22,6 +21,7 @@ const admissionApplicationQueryRoutes = require("./src/routes/admissionApplicati
 const userRoutes = require("./src/routes/userRoutes");
 const paymentRoutes = require("./src/routes/paymentRoutes.js");
 const paymentTransactionRoutes = require("./src/routes/paymentTransactionRoutes.js");
+const upload = require("./src/controllers/uploadController.js");
 
 // Middleware
 const corsOptions = {
@@ -48,7 +48,6 @@ app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/contact", contactRoutes);
 app.use("/api/v1/gallery", galleryRoutes);
 app.use("/api/v1/content", contentRoutes);
-app.use("/api/v1/admission", admissionRoutes);
 app.use("/api/v1/job", jobRoutes);
 app.use("/api/v1/job-application", jobApplicationRoutes);
 app.use("/api/v1/admission-application", admissionApplicationRoutes);
@@ -61,6 +60,21 @@ app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Server is running on port ${process.env.PORT || 8080}`);
+});
+
+app.post("/api/v1/upload", upload.single("file"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({
+      success: false,
+      message: "No file uploaded.",
+    });
+  }
+
+  const filePath = req.file.path; // Path to the uploaded file
+  res.status(200).json({
+    success: true,
+    filePath, // Return the file path to the frontend
+  });
 });
 
 app.get("/", (req, res) => {

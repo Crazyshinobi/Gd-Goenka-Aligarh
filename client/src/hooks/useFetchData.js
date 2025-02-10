@@ -13,7 +13,6 @@ export const useFetchData = (url) => {
       if (response.data.success) {
         setData(response.data || []);
       } else {
-        console.log(response);
         setError("Failed to fetch data");
       }
     } catch (error) {

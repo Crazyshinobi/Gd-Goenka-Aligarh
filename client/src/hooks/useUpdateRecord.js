@@ -12,11 +12,10 @@ export const useUpdateRecord = (url, data) => {
 
     const formData = new FormData();
     let hasFiles = false; 
-    console.log("Data being sent to FormData:", data);
 
     // Append all fields (both text and files) to FormData
     Object.keys(data).forEach((key) => {
-      console.log(`Processing field: ${key} with value:`, data[key]);
+      // console.log(`Processing field: ${key} with value:`, data[key]);
 
       if (Array.isArray(data[key])) {
         // Handle multiple files

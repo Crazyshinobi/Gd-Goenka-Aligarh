@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserLayout } from "../components/UserLayout";
 import { useForm } from "./FormContext";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export const TransportFacility = ({ onNext, onBack }) => {
   const { formData, handleChange } = useForm();
@@ -8,12 +10,12 @@ export const TransportFacility = ({ onNext, onBack }) => {
   const [showDropdown, setShowDropdown] = useState(
     formData.transport_facility === true
   );
-
+  const user = Cookies.get("userId");
   const handleTransportChange = (value) => {
     handleChange("transport_facility", "transport_facility", value);
     setShowDropdown(value);
     if (!value) {
-      handleChange("bus_stop", "bus_stop", ""); // Reset bus stop if "No" is selected
+      handleChange("transport_area", "transport_area", ""); // Reset bus stop if "No" is selected
     }
   };
 
@@ -22,12 +24,16 @@ export const TransportFacility = ({ onNext, onBack }) => {
 
     const newErrors = {};
 
-    if (formData.transport_facility === null || formData.transport_facility === undefined) {
-      newErrors.transport_facility = "Please select an option for transport facility";
+    if (
+      formData.transport_facility === null ||
+      formData.transport_facility === undefined
+    ) {
+      newErrors.transport_facility =
+        "Please select an option for transport facility";
     }
 
-    if (formData.transport_facility && !formData.bus_stop) {
-      newErrors.bus_stop = "Please select a bus stop";
+    if (formData.transport_facility && !formData.transport_area) {
+      newErrors.transport_area = "Please select a bus stop";
     }
 
     if (!formData.declaration) {
@@ -37,9 +43,64 @@ export const TransportFacility = ({ onNext, onBack }) => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      onNext();
+      try {
+        formData.user = user;
+        const response = await axios.post(
+          `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/admission-form/7`,
+          formData
+        );
+        // console.log(response);
+        if (response?.data?.success) {
+          formData.formCompleted = true;
+          const response = await axios.post(
+            `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/admission-form/8`,
+            formData
+          );
+          if (response?.data?.success) {
+            onNext(); // Proceed to the next step
+          } else {
+            console.error("Submission failed:", response.data.message);
+          }
+        } else {
+          console.error("Submission failed:", response.data.message);
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
     }
   };
+
+  const fetchDetails = async () => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/get-admission-form/7`,
+        { user }
+      );
+
+      if (response.data.success) {
+        const { transport_facility, transport_area, declaration } =
+          response.data.admission;
+
+        // Update form data with fetched values
+        handleChange(
+          "transport_facility",
+          "transport_facility",
+          transport_facility
+        );
+        handleChange("transport_area", "transport_area", transport_area);
+        handleChange("declaration", "declaration", declaration);
+
+        // Show dropdown if transport_facility is true
+        setShowDropdown(transport_facility === true);
+      }
+    } catch (error) {
+      console.error("Error fetching transport details:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
 
   return (
     <>
@@ -80,7 +141,9 @@ export const TransportFacility = ({ onNext, onBack }) => {
                 </label>
               </div>
               {errors.transport_facility && (
-                <span className="text-red-500 text-sm">{errors.transport_facility}</span>
+                <span className="text-red-500 text-sm">
+                  {errors.transport_facility}
+                </span>
               )}
             </div>
 
@@ -92,20 +155,40 @@ export const TransportFacility = ({ onNext, onBack }) => {
                   <span className="text-red-500 text-2xl">*</span>
                 </label>
                 <select
-                  name="bus_stop"
-                  value={formData.bus_stop || ""}
-                  onChange={(e) => handleChange("bus_stop", "bus_stop", e.target.value)}
+                  name="transport_area"
+                  value={formData.transport_area || ""}
+                  onChange={(e) => {
+                    handleChange(
+                      "transport_area",
+                      "transport_area",
+                      e.target.value
+                    );
+                  }}
                   className="w-full p-2 border rounded-md dark:bg-gray-600 dark:text-white"
                 >
-                  <option value="" disabled>Select your bus stop</option>
-                  <option value="Sasni Gate">Sasni Gate and the Area Around</option>
-                  <option value="Ramghat Road">Ramghat Road and the Area Around</option>
-                  <option value="Sootmill Crossing">Sootmill Crossing and the Area Around</option>
-                  <option value="Khereshwar Crossing">Khereshwar Crossing and the Area Around</option>
-                  <option value="Suburban Areas">Suburban Areas as Khair, Panethi, etc.</option>
+                  <option value="" disabled>
+                    Select your bus stop
+                  </option>
+                  <option value="Sasni Gate">
+                    Sasni Gate and the Area Around
+                  </option>
+                  <option value="Ramghat Road">
+                    Ramghat Road and the Area Around
+                  </option>
+                  <option value="Sootmill Crossing">
+                    Sootmill Crossing and the Area Around
+                  </option>
+                  <option value="Khereshwar Crossing">
+                    Khereshwar Crossing and the Area Around
+                  </option>
+                  <option value="Suburban Areas">
+                    Suburban Areas as Khair, Panethi, etc.
+                  </option>
                 </select>
                 {errors.bus_stop && (
-                  <span className="text-red-500 text-sm">{errors.bus_stop}</span>
+                  <span className="text-red-500 text-sm">
+                    {errors.transport_area}
+                  </span>
                 )}
               </div>
             )}
@@ -117,14 +200,18 @@ export const TransportFacility = ({ onNext, onBack }) => {
                   type="checkbox"
                   name="declaration"
                   checked={formData.declaration}
-                  onChange={(e) => handleChange("declaration", "declaration", e.target.checked)}
+                  onChange={(e) =>
+                    handleChange("declaration", "declaration", e.target.checked)
+                  }
                   className="mr-2"
                 />
                 I agree to the terms and conditions.
                 <span className="text-red-500 text-2xl">*</span>
               </label>
               {errors.declaration && (
-                <span className="text-red-500 text-sm">{errors.declaration}</span>
+                <span className="text-red-500 text-sm">
+                  {errors.declaration}
+                </span>
               )}
             </div>
 

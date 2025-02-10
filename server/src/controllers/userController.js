@@ -5,7 +5,7 @@ const Admin = require("../models/Admin");
 const { userEmailService } = require("../services/userEmailService");
 const { sendResponse } = require("../utils/responseUtils");
 
-function generateRandomPassword(length) {
+async function generateRandomPassword(length) {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
   let password = "";
@@ -19,7 +19,7 @@ function generateRandomPassword(length) {
 const userRegister = async (req, res) => {
   try {
     const { name, email } = req.body;
-    const password = generateRandomPassword(12);
+    const password = await generateRandomPassword(12);
     const role = "user";
     const existingUser = await Admin.findOne({ email });
     if (existingUser) {
@@ -120,4 +120,4 @@ const userLogin = [
   },
 ];
 
-module.exports = { userRegister, userLogin };
+module.exports = { userRegister, userLogin, generateRandomPassword };

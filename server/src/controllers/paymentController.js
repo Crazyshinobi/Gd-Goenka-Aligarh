@@ -112,7 +112,7 @@ const paymentResponse = async (req, res) => {
     if (data.status === "success") {
       const app = await AdmissionApplication.updateOne(
         { "personal_details.email": data.email },
-        { $set: { feesPaid: true } }
+        { $set: { feesPaid: true , status: "under review"} }
       );
       console.log("User feesPaid updated successfully");
       return res.redirect(`${process.env.BASE_URL}/payment-success`);

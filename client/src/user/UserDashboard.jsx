@@ -9,6 +9,7 @@ import ThankYouPage from "./forms/ThankYouPage";
 export const UserDashboard = () => {
   document.title = "User Dashboard";
   const [alreadySubmitted, setAlreadySubmitted] = useState(false);
+  const [status, setStatus] = useState("")
   const { formData, handleChange } = useForm();
   const userId = Cookies.get("userId");
   const apiUrl = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-application/check-user-paid/${userId}`;
@@ -16,6 +17,8 @@ export const UserDashboard = () => {
     try {
       const response = await axios.get(apiUrl);
       if (!response?.data?.success) {
+        const status = response.data.data;
+        setStatus(status);
         setAlreadySubmitted(true);
       }
     } catch (error) {
@@ -33,7 +36,7 @@ export const UserDashboard = () => {
       {alreadySubmitted ? (
         <div className="p-4 py-6 lg:p-6 sm:ml-64 dark:bg-gray-800 min-h-screen">
           <div className="border-2 border-gray-200 rounded-lg dark:border-white mt-14 bg-white dark:bg-gray-700 shadow-lg">
-            <ThankYouPage />
+            <ThankYouPage status={status} />
           </div>
         </div>
       ) : (
