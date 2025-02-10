@@ -11,13 +11,10 @@ const ContactForm = () => {
   document.title = "Contact Us - GDGPS Aligarh";
 
   const [formData, setFormData] = useState({
-    parent_name: "",
-    student_name: "",
-    parent_email_address: "",
+    name: "",
+    email: "",
     mobile: "",
-    state: "",
-    city: "",
-    grade: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -33,27 +30,23 @@ const ContactForm = () => {
 
   const validateForm = () => {
     let newErrors = {};
-    if (!formData.parent_name)
-      newErrors.parent_name = "Parent name is required";
-    if (!formData.student_name)
-      newErrors.student_name = "Student name is required";
-    if (!formData.parent_email_address)
-      newErrors.parent_email_address = "Parent email is required";
+    if (!formData.name)
+      newErrors.name = "Name is required";
+    if (!formData.email)
+      newErrors.email = "Email Address is required";
     else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
-        formData.parent_email_address
+        formData.email
       )
     ) {
-      newErrors.parent_email_address = "Invalid email address";
+      newErrors.email = "Invalid email address";
     }
     if (!formData.mobile)
       newErrors.mobile = "Student mobile number is required";
     else if (!/^[0-9]{10}$/.test(formData.mobile)) {
       newErrors.mobile = "Invalid mobile number";
     }
-    if (!formData.state) newErrors.state = "State is required";
-    if (!formData.city) newErrors.city = "City is required";
-    if (!formData.grade) newErrors.grade = "Class is required";
+    if (!formData.message) newErrors.message = "Message is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -67,17 +60,15 @@ const ContactForm = () => {
 
     if (validateForm()) {
       setLoading(true);
+      console.log("Form Data:", formData);
       const response = await postRequest(formData);
 
       if (response && response.success) {
         setFormData({
-          parent_name: "",
-          student_name: "",
-          parent_email_address: "",
+          name: "",
+          email: "",
           mobile: "",
-          state: "",
-          city: "",
-          grade: "",
+          message: "",
         });
         setTimeout(() => {
           setLoading(false);
@@ -217,46 +208,46 @@ const ContactForm = () => {
                   {/* First row: Name and Email */}
                   <div>
                     <label
-                      htmlFor="parentName"
+                      htmlFor="name"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
                       Name
                     </label>
                     <input
                       type="text"
-                      id="parentName"
-                      name="parent_name"
-                      value={formData.parent_name}
+                      id="name"
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
                       className="mt-1 p-2 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       placeholder="Enter your full name"
                     />
-                    {errors.parent_name && (
+                    {errors.name && (
                       <p className="mt-1 text-sm text-red-600">
-                        {errors.parent_name}
+                        {errors.name}
                       </p>
                     )}
                   </div>
 
                   <div>
                     <label
-                      htmlFor="email_address"
+                      htmlFor="email"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
                       Email
                     </label>
                     <input
                       type="email"
-                      id="Email"
-                      name="email_address"
-                      value={formData.email_address}
+                      id="email"
+                      name="email"
+                      value={formData.email}
                       onChange={handleChange}
                       className="mt-1 p-2 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       placeholder="Enter your email"
                     />
-                    {errors.email_address && (
+                    {errors.email && (
                       <p className="mt-1 text-sm text-red-600">
-                        {errors.email_address}
+                        {errors.email}
                       </p>
                     )}
                   </div>
@@ -264,14 +255,14 @@ const ContactForm = () => {
                   {/* Second row: Mobile number */}
                   <div className="md:col-span-2">
                     <label
-                      htmlFor="studentMobile"
+                      htmlFor="mobile"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
                       Mobile No.
                     </label>
                     <input
                       type="tel"
-                      id="Mobile"
+                      id="mobile"
                       name="mobile"
                       value={formData.mobile}
                       onChange={handleChange}
@@ -288,22 +279,22 @@ const ContactForm = () => {
                   {/* Third row: Message */}
                   <div className="md:col-span-2">
                     <label
-                      htmlFor="state"
+                      htmlFor="message"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
                       Your Message:
                     </label>
                     <textarea
-                      id="state"
-                      name="state"
-                      value={formData.state}
+                      id="message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleChange}
                       className="mt-1 p-2 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       placeholder="Enter your message"
                     />
-                    {errors.state && (
+                    {errors.message && (
                       <p className="mt-1 text-sm text-red-600">
-                        {errors.state}
+                        {errors.message}
                       </p>
                     )}
                   </div>

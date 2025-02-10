@@ -171,7 +171,7 @@ export const ViewAdmissionApplication = () => {
     },
     {
       field: "educational_background.image",
-      header: "Transfer Certificate Date",
+      header: "Transfer Certificate Image",
       body: (rowData) => (
         <a
           href={

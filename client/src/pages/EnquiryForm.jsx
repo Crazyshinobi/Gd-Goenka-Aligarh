@@ -54,7 +54,7 @@ const EnquiryForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/contact/`;
+  const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-enquiry/`;
 
   const { postRequest, error } = usePostRequest(apiURL);
 
