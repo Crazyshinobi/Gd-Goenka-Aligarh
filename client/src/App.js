@@ -63,6 +63,8 @@ import PaymentSuccess from "./user/payment/PaymentSuccess";
 import { MultiStepForm } from "./user/route/MultStepForm";
 import PaymentSummary from "./user/payment/PaymentSummary";
 import { ViewPaymentTransaction } from "./admin/pages/paymentTransaction/ViewPaymentTransaction";
+import { StudentDataPdf } from "./user/submittedData/StudentDataPdf";
+import {PaymentReceipt} from "./user/payment/PaymentReceipt";
 
 function App() {
   return (
@@ -171,6 +173,11 @@ function App() {
         <Route path="/user/steps"   element={<UserPrivateRoute>{<MultiStepForm/>}</UserPrivateRoute>}/>
         <Route path={"/payment-success"} element={<PaymentSuccess />} />
         <Route path={"/payment-failure"} element={<PaymentFailure />} />
+        
+        
+        <Route path={"/student-data"} element={<StudentDataPdf />} />
+        <Route path={"/payment-receipt"} element={<PaymentReceipt />} />
+
 
         <Route
           path={"/about/mandatory-disclosure/RecognisationCet"}

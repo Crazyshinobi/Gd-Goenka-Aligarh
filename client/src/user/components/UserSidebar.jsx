@@ -8,6 +8,7 @@ export const UserSidebar = ({ mobileMenu }) => {
   const signOut = () => {
     Cookies.remove("userToken");
     localStorage.removeItem("studentname");
+    localStorage.removeItem("formData");
     navigate("/admission/application-form/login");
   };
 

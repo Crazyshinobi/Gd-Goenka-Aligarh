@@ -4,6 +4,7 @@ import NavigationPages from "./NavigationPages"
 import { motion } from "framer-motion"
 import GoenkanBanner from "../assets/bg2.jpg"
 import GoenkanPursuitsPdf from "../assets/Goenkan Pursuits-2025-26-(NUR - II).pdf"
+import GoenkanPursuitsPdf2 from '../assets/GOENKAN-PURSUITS-2025-26(Term1).pdf'
 
 function GoenkanPursuits() {
   const iframeRef = useRef(null)
@@ -81,14 +82,35 @@ function GoenkanPursuits() {
 
       <NavigationPages />
 
-      <section className="container max-w-7xl py-12 w-full md:w-[40%] mx-auto gap-4 flex flex-col lg:flex-row">
+      <section className="container max-w-7xl py-12 w-full  mx-auto gap-4 flex flex-col lg:flex-row ">
         {/* PDF Viewer Section */}
-        <div className="lg:w-full">
-          <h2 className="text-2xl underline text-center mb-6 font-bold">Goenkan Pursuits PDF</h2>
+        <div className="lg:w-full lg:p-0 p-3">
+          <h2 className="text-2xl underline text-center mb-6 font-bold">Goenkan Pursuits Nursery to II</h2>
           <div className="relative w-full h-[80vh]">
             <iframe
               ref={iframeRef}
               src={`${GoenkanPursuitsPdf}#toolbar=0&navpanes=0&view=FitH`}
+              title="Goenkan Pursuits PDF"
+              className="w-full h-full"
+              frameBorder="0"
+              style={{
+                pointerEvents: "auto",
+                userSelect: "none",
+                WebkitUserSelect: "none",
+                MozUserSelect: "none",
+                msUserSelect: "none",
+              }}
+            ></iframe>
+            <div className="absolute inset-0 pointer-events-none" onContextMenu={(e) => e.preventDefault()}></div>
+          </div>
+        </div>
+
+        <div className="lg:w-full lg:p-0 p-3">
+          <h2 className="text-2xl underline text-center mb-6 font-bold">Goenkan Pursuits III to IX </h2>
+          <div className="relative w-full h-[80vh]">
+            <iframe
+              ref={iframeRef}
+              src={`${GoenkanPursuitsPdf2}#toolbar=0&navpanes=0&view=FitH`}
               title="Goenkan Pursuits PDF"
               className="w-full h-full"
               frameBorder="0"

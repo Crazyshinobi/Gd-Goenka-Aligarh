@@ -10,9 +10,10 @@ import { OtherRelatives } from "../forms/OtherRelatives"
 import { TransportFacility } from "../forms/TransportFacility"
 import { useForm } from "../forms/FormContext"
 import { SummaryPage } from "../submittedData/SummaryPage"
+import Cookies from "js-cookie"
 
 export const MultiStepForm = () => {
-  const { formData, handleChange, setFormData } = useForm()
+  const { formData, setFormData } = useForm()
   const [activeStep, setActiveStep] = useState(0)
   const [completedSteps, setCompletedSteps] = useState(Array(8).fill(false))
 
@@ -28,21 +29,85 @@ export const MultiStepForm = () => {
   ]
 
   useEffect(() => {
-    const savedStep = localStorage.getItem("activeStep")
-    const savedCompletedSteps = localStorage.getItem("completedSteps")
-    const savedFormData = localStorage.getItem("formData")
+    const userToken = Cookies.get("userToken")
+    const userId = Cookies.get("userId")
 
-    if (savedStep && savedCompletedSteps && savedFormData) {
-      setActiveStep(Number.parseInt(savedStep, 10))
-      setCompletedSteps(JSON.parse(savedCompletedSteps))
-      setFormData(JSON.parse(savedFormData))
+    if (userToken && userId) {
+      const savedStep = localStorage.getItem(`activeStep_${userId}`)
+      const savedCompletedSteps = localStorage.getItem(`completedSteps_${userId}`)
+      const savedFormData = localStorage.getItem(`formData_${userId}`)
+
+      if (savedStep && savedCompletedSteps && savedFormData) {
+        // Returning user, load saved progress
+        setActiveStep(Number.parseInt(savedStep, 10))
+        setCompletedSteps(JSON.parse(savedCompletedSteps))
+        setFormData(JSON.parse(savedFormData))
+      } else {
+        // New logged-in user, start fresh
+        initializeForm()
+      }
+    } else {
+      // Not logged in, start fresh
+      initializeForm()
     }
   }, [setFormData])
 
-  const saveProgress = (step) => {
-    localStorage.setItem("activeStep", step)
-    localStorage.setItem("completedSteps", JSON.stringify(completedSteps))
-    localStorage.setItem("formData", JSON.stringify(formData))
+  const initializeForm = () => {
+    setActiveStep(0)
+    setCompletedSteps(Array(8).fill(false))
+    setFormData({
+      user: "",
+      general_information: {
+        grade: "",
+        applied_before: false,
+        applied_year: "",
+        applied_grade: "",
+      },
+      personal_details: {
+        first_name: "",
+        middle_name: "",
+        last_name: "",
+        dob: "",
+        nationality: "",
+        gender: "",
+        address: "",
+        city: "",
+        pincode: "",
+        email: "",
+        permanent_education_number: "",
+        mobile: "",
+        emergency_mobile: "",
+      },
+      health_information: {
+        allergy: "",
+        physical_handicap: "",
+        other: "",
+      },
+      educational_background: {
+        attended_school: false,
+        previous_school: "",
+        city: "",
+        from_grade: "",
+        to_grade: "",
+        expelled: false,
+        expelled_reason: "",
+      },
+      parents_information: [],
+      other_relatives: [],
+      transport_facility: false,
+      declaration: false,
+    })
+  }
+
+  const saveProgress = () => {
+    const userToken = Cookies.get("userToken")
+    const userId = Cookies.get("userId")
+
+    if (userToken && userId) {
+      localStorage.setItem(`activeStep_${userId}`, activeStep)
+      localStorage.setItem(`completedSteps_${userId}`, JSON.stringify(completedSteps))
+      localStorage.setItem(`formData_${userId}`, JSON.stringify(formData))
+    }
   }
 
   const handleNext = () => {
@@ -53,25 +118,19 @@ export const MultiStepForm = () => {
       newCompleted[activeStep] = true
       return newCompleted
     })
-    saveProgress(nextStep)
+    saveProgress()
   }
 
   const handleBack = () => {
-    setActiveStep((prevStep) => Math.max(prevStep - 1, 0))
-  }
-
-  const handleReset = () => {
-    setActiveStep(0)
-    setCompletedSteps(Array(8).fill(false))
-    setFormData({}) // reset form data to initial state
-    localStorage.removeItem("activeStep")
-    localStorage.removeItem("completedSteps")
-    localStorage.removeItem("formData")
+    const prevStep = Math.max(activeStep - 1, 0)
+    setActiveStep(prevStep)
+    saveProgress()
   }
 
   const handleStepClick = (step) => {
     if (completedSteps[step] || step <= activeStep) {
       setActiveStep(step)
+      saveProgress()
     }
   }
 

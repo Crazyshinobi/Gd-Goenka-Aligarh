@@ -51,7 +51,11 @@ export const FormProvider = ({ children }) => {
     setFormData((prevData) => {
       if (section === "parents_information" && index !== null) {
         const updatedParents = [...prevData.parents_information];
-        updatedParents[index] = { ...updatedParents[index], [field]: value };
+        if (field === "image" && value instanceof File) {
+          updatedParents[index] = { ...updatedParents[index], image: value };
+        } else {
+          updatedParents[index] = { ...updatedParents[index], [field]: value };
+        }
         return { ...prevData, parents_information: updatedParents };
       } else if (
         section === "father" ||

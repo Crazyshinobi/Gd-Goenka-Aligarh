@@ -43,17 +43,25 @@ export const ParentInformation = ({ onBack, onNext }) => {
       ) {
         newErrors.father_age = "Father's age must be a positive number.";
       }
-      if (!formData.parents_information[0]?.nationality) {
-        newErrors.father_nationality = "Father's nationality is required.";
-      }
+
       if (!formData.parents_information[0]?.education) {
         newErrors.father_education = "Father's education is required.";
+      }
+      if (!formData.parents_information[0]?.adhaar_number) {
+        newErrors.father_adhaar_number = "Father's Aadhaar number is required.";
+      }
+      if (
+        formData.parents_information[0]?.adhaar_number &&
+        formData.parents_information[0]?.adhaar_number.length !== 12
+      ) {
+        newErrors.father_adhaar_number =
+          "Aadhaar number must be exactly 12 digits.";
       }
       if (!formData.parents_information[0]?.profession) {
         newErrors.father_profession = "Father's profession is required.";
       }
-      if (!formData.parents_information[0]?.email) {
-        newErrors.father_email = "Father's email is required.";
+      if (!formData.parents_information[0]?.image) {
+        newErrors.father_image = "Father's image is required.";
       }
 
       // Validate Mother's fields
@@ -66,17 +74,25 @@ export const ParentInformation = ({ onBack, onNext }) => {
       ) {
         newErrors.mother_age = "Mother's age must be a positive number.";
       }
-      if (!formData.parents_information[1]?.nationality) {
-        newErrors.mother_nationality = "Mother's nationality is required.";
-      }
+
       if (!formData.parents_information[1]?.education) {
         newErrors.mother_education = "Mother's education is required.";
+      }
+      if (!formData.parents_information[1]?.adhaar_number) {
+        newErrors.mother_adhaar_number = "Mother's Aadhaar number is required.";
+      }
+      if (
+        formData.parents_information[1]?.adhaar_number &&
+        formData.parents_information[1]?.adhaar_number.length !== 12
+      ) {
+        newErrors.mother_adhaar_number =
+          "Aadhaar number must be exactly 12 digits.";
       }
       if (!formData.parents_information[1]?.profession) {
         newErrors.mother_profession = "Mother's profession is required.";
       }
-      if (!formData.parents_information[1]?.email) {
-        newErrors.mother_email = "Mother's email is required.";
+      if (!formData.parents_information[0]?.image) {
+        newErrors.mother_image = "Mother's image is required.";
       }
     } else if (parentType === "guardian") {
       // Validate Guardian's fields
@@ -113,23 +129,23 @@ export const ParentInformation = ({ onBack, onNext }) => {
         parent_type: "father",
         name: formData.parents_information[0]?.name || "",
         age: formData.parents_information[0]?.age || "",
-        nationality: formData.parents_information[0]?.nationality || "",
         education: formData.parents_information[0]?.education || "",
+        adhaar_number: formData.parents_information[0]?.adhaar_number || "",
         profession: formData.parents_information[0]?.profession || "",
         income: formData.parents_information[0]?.income || "",
         office_address: formData.parents_information[0]?.office_address || "",
-        email: formData.parents_information[0]?.email || "",
+        image: formData.parents_information[0]?.image || "",
       };
       const mother = {
         parent_type: "mother",
         name: formData.parents_information[1]?.name || "",
         age: formData.parents_information[1]?.age || "",
-        nationality: formData.parents_information[1]?.nationality || "",
         education: formData.parents_information[1]?.education || "",
+        adhaar_number: formData.parents_information[1]?.adhaar_number || " ",
         profession: formData.parents_information[1]?.profession || "",
         income: formData.parents_information[1]?.income || "",
         office_address: formData.parents_information[1]?.office_address || "",
-        email: formData.parents_information[1]?.email || "",
+        image: formData.parents_information[1]?.image || "",
       };
 
       updatedFormData = {
@@ -141,12 +157,12 @@ export const ParentInformation = ({ onBack, onNext }) => {
         parent_type: "guardian",
         name: formData.parents_information[0]?.name || "",
         age: formData.parents_information[0]?.age || "",
-        nationality: formData.parents_information[0]?.nationality || " ",
         education: formData.parents_information[0]?.education || " ",
+        adhaar_number: formData.parents_information[0]?.adhaar_number || " ",
         profession: formData.parents_information[0]?.profession || " ",
         income: formData.parents_information[0]?.income || " ",
         office_address: formData.parents_information[0]?.office_address || " ",
-        email: formData.parents_information[0]?.email || " ",
+        image: formData.parents_information[0]?.image || "",
         relationship_with_child:
           formData.parents_information[0]?.relationship_with_child || "",
       };
@@ -274,12 +290,41 @@ export const ParentInformation = ({ onBack, onNext }) => {
                           </p>
                         )}
                       </div>
-                     
                     </div>
 
-                    {/* Second Row: Education, Profession, Income */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                     
+                    {/* Second Row: Profession , Aadhar*/}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Aadhar No.
+                          <span className="text-gray-400">
+                            {" "}
+                            (must be in number)
+                          </span>
+                          <span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="number"
+                          value={
+                            formData.parents_information[0]?.adhaar_number || ""
+                          }
+                          onChange={(e) =>
+                            handleChange(
+                              "parents_information",
+                              "adhaar_number",
+                              e.target.value,
+                              0
+                            )
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.father_adhaar_number && (
+                          <p className="text-red-500 text-sm">
+                            {errors.father_adhaar_number}
+                          </p>
+                        )}
+                      </div>
+
                       <div>
                         <label className="block text-sm font-medium">
                           Profession
@@ -306,6 +351,10 @@ export const ParentInformation = ({ onBack, onNext }) => {
                           </p>
                         )}
                       </div>
+                    </div>
+
+                    {/* Third Row:  Profession, Income */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium">
                           Income per year
@@ -362,10 +411,49 @@ export const ParentInformation = ({ onBack, onNext }) => {
                           </p>
                         )}
                       </div>
-
                     </div>
 
-              
+                    {/* Fourth row : Image  */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+                      {/* Father Image  */}
+                    <div className="grid grid-cols-1  gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Father Image
+                          <span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) =>
+                            handleChange(
+                              "parents_information",
+                              "image",
+                              e.target.files[0],
+                              0
+                            )
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {formData.parents_information[0]?.image && (
+                          <div className="mt-2">
+                            <img
+                              src={URL.createObjectURL(
+                                formData.parents_information[0].image
+                              )}
+                              alt="Father's Preview"
+                              className="w-40 h-28 object-cover rounded"
+                            />
+                          </div>
+                        )}
+                        {errors.father_image && (
+                          <p className="text-red-500 text-sm">
+                            {errors.father_image}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    </div>
                   </div>
                 </div>
 
@@ -450,12 +538,41 @@ export const ParentInformation = ({ onBack, onNext }) => {
                           </p>
                         )}
                       </div>
-                   
                     </div>
 
-                    {/* Second Row: Education, Profession, Income */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  
+                    {/* Second Row: Aadhar number, Profession */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Aadhar No.
+                          <span className="text-gray-400">
+                            {" "}
+                            (must be in number)
+                          </span>
+                          <span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="number"
+                          value={
+                            formData.parents_information[1]?.adhaar_number || ""
+                          }
+                          onChange={(e) =>
+                            handleChange(
+                              "parents_information",
+                              "adhaar_number",
+                              e.target.value,
+                              1
+                            )
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {errors.mother_adhaar_number && (
+                          <p className="text-red-500 text-sm">
+                            {errors.mother_adhaar_number}
+                          </p>
+                        )}
+                      </div>
+
                       <div>
                         <label className="block text-sm font-medium">
                           Profession
@@ -482,6 +599,10 @@ export const ParentInformation = ({ onBack, onNext }) => {
                           </p>
                         )}
                       </div>
+                    </div>
+
+                    {/* Third Row:  Income , Office Address */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium">
                           Income per year
@@ -540,7 +661,44 @@ export const ParentInformation = ({ onBack, onNext }) => {
                       </div>
                     </div>
 
-                
+                    {/* Mother Image  */}
+                    <div className="grid grid-cols-1  gap-4">
+                      <div>
+                        <label className="block text-sm font-medium">
+                          Mother Image
+                          <span className="text-red-500 text-2xl">*</span>
+                        </label>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) =>
+                            handleChange(
+                              "parents_information",
+                              "image",
+                              e.target.files[0],
+                              1
+                            )
+                          }
+                          className="w-full p-2 border rounded dark:bg-white dark:border-black"
+                        />
+                        {formData.parents_information[1]?.image && (
+                          <div className="mt-2">
+                            <img
+                              src={URL.createObjectURL(
+                                formData.parents_information[1].image
+                              )}
+                              alt="Mother's Preview"
+                              className="w-24 h-24 object-cover rounded"
+                            />
+                          </div>
+                        )}
+                        {errors.mother_image && (
+                          <p className="text-red-500 text-sm">
+                            {errors.mother_image}
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

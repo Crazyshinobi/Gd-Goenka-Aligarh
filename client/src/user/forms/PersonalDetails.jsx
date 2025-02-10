@@ -53,8 +53,10 @@ export const PersonalDetails = ({ onNext, onBack }) => {
       }
     }
 
-    
 
+    if(permanent_education_number && permanent_education_number.length !== 12){
+      newErrors.permanent_education_number = "Permanent education number must be 12 digits long"
+    }
     if (!mobile) {
       newErrors.mobile = "Mobile number is required";
     } else {

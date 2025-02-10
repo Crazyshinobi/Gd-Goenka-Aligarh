@@ -2,6 +2,7 @@ import React from "react";
 import Header1 from "./Header1";
 import Footer from "./Footer";
 import SocialConnect from "./SocialConnect";
+import ModalBox from "./ModalBox";
 
 export const Layout = ({ children }) => {
 
@@ -12,6 +13,7 @@ export const Layout = ({ children }) => {
       {/* Navbar */}
       <SocialConnect/>
       <Header1 />
+      <ModalBox/>
 
       {/* Main Content */}
       <div className="flex-1 overflow-hidden">

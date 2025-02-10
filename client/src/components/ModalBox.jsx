@@ -12,7 +12,7 @@ const ModalBox = () => {
     <div className="absolute min-h-screen hidden lg:flex md:flex">
       <button
         onClick={openModal}
-        className="fixed -rotate-90 top-1/2 -right-[4.2rem] px-6 py-5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-t-lg z-50 shadow-lg text-sm sm:text-base"
+        className="fixed -rotate-90 top-1/2 -right-[4.2rem] px-6 py-5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-t-lg z-50 shadow-lg text-sm sm:text-base"
       >
         Admission Enquiry
       </button>

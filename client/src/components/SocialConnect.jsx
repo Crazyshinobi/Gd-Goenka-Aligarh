@@ -16,7 +16,7 @@ const SocialConnect = () => {
         <div className="ml-2">
           {" "}
           <NavLink to={"/admission/application-form"}>
-            <p className="text-white  font-bold capitalize bg-blue-600 py-1 px-4 rounded-md" >Admission 2025-26</p>
+            <p className="text-white  font-bold capitalize bg-red-600 py-1 px-4 rounded-md" >Admission 2025-26</p>
           </NavLink>
         </div>
       </div>

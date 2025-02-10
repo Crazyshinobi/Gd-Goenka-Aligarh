@@ -108,50 +108,63 @@ const AdmissionForm = () => {
   };
 
   const handleLoginSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    console.log("Login form submitted");
-
-    if (LoginValidateForm()) {
-      setLoading(true);
-      console.log("Form validated successfully");
+    if (LoginValidateForm(loginData)) {
+      // Pass loginData to the validation function
+      setLoading(true)
       try {
-        const response = await loginApi.postRequest(loginData);
+        const response = await loginApi.postRequest(loginData)
         if (response?.success && response?.userToken) {
-          console.log("Login successful, setting token in cookies");
           Cookies.set("userToken", response.userToken, {
             expires: 1,
             secure: true,
             sameSite: "Strict",
-          });
+          })
           Cookies.set("userId", response.userID, {
             expires: 1,
             secure: true,
             sameSite: "Strict",
-          });
+          })
 
           if (response.name) {
-            // Access name directly from the response
-            localStorage.setItem("studentname", response.name); // Use the correct key
-          } else {
-            console.warn("User name not found in the response");
+            localStorage.setItem("studentname", response.name)
           }
 
-          toast.success("Login successful");
+          // Transfer temporary form data to user-specific storage
+          const tempActiveStep = sessionStorage.getItem("tempActiveStep")
+          const tempCompletedSteps = sessionStorage.getItem("tempCompletedSteps")
+          const tempFormData = sessionStorage.getItem("tempFormData")
+
+          if (tempActiveStep && tempCompletedSteps && tempFormData) {
+            localStorage.setItem(`activeStep_${response.userID}`, tempActiveStep)
+            localStorage.setItem(`completedSteps_${response.userID}`, tempCompletedSteps)
+            localStorage.setItem(`formData_${response.userID}`, tempFormData)
+
+            // Clear temporary data
+            sessionStorage.removeItem("tempActiveStep")
+            sessionStorage.removeItem("tempCompletedSteps")
+            sessionStorage.removeItem("tempFormData")
+          } else {
+            // No temporary data, mark as a new user
+            localStorage.setItem(`isNewUser_${response.userID}`, "true")
+          }
+
+          toast.success("Login successful")
           setTimeout(() => {
-            navigate(`/user/dashboard/`);
-          }, 1000);
+            navigate(`/user/dashboard/`)
+          }, 1000)
         } else {
-          toast.error("Login failed");
+          toast.error("Login failed")
         }
       } catch (error) {
-        console.error("Login error:", error);
-        toast.error("An error occurred. Please try again later.");
+        console.error("Login error:", error)
+        toast.error("An error occurred. Please try again later.")
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     }
-  };
+  }
 
   const RegistervalidateForm = () => {
     let newErrors = {};

@@ -66,30 +66,29 @@ const ContactForm = () => {
     e.preventDefault();
 
     if (validateForm()) {
+      setLoading(true);
+      const response = await postRequest(formData);
 
-    setLoading(true);
-    const response = await postRequest(formData);
-
-    if (response && response.success) {
-      setFormData({
-        parent_name: "",
-        student_name: "",
-        parent_email_address: "",
-        mobile: "",
-        state: "",
-        city: "",
-        grade: "",
-      });
-      setTimeout(() => {
+      if (response && response.success) {
+        setFormData({
+          parent_name: "",
+          student_name: "",
+          parent_email_address: "",
+          mobile: "",
+          state: "",
+          city: "",
+          grade: "",
+        });
+        setTimeout(() => {
+          setLoading(false);
+          toast.success("Form submitted successfully");
+        });
+      } else {
+        toast.error("Failed to submit the form.");
+        console.error("Error Submitting form:", error);
         setLoading(false);
-        toast.success("Form submitted successfully");
-      });
-    } else {
-      toast.error("Failed to submit the form.");
-      console.error("Error Submitting form:", error);
-      setLoading(false);
+      }
     }
-  }
   };
 
   return (
@@ -126,7 +125,7 @@ const ContactForm = () => {
         <div className="w-full max-w-7xl bg-white bg-opacity-90 rounded-lg shadow-xl overflow-hidden">
           <div className="flex flex-col md:flex-row">
             {/* Contact Information */}
-            <div className="w-full lg:flex-[33%] md:flex-1 md:w-1/3 bg-gray-100 p-6 md:p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out">
+            <div className="w-full lg:flex-[40%] md:flex-1 md:w-1/3 bg-gray-100 p-6 md:p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out">
               <h2 className="text-2xl md:text-3xl font-bold text-center text-red-600 mb-6">
                 Contact Us
               </h2>
@@ -204,7 +203,7 @@ const ContactForm = () => {
             </div>
 
             {/* Registration Form */}
-            <div className="w-full lg:flex-[66%] md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-red-500">
+            <div className="w-full lg:flex-[60%] md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-red-500">
               <div className="mb-6 md:mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600">
                   Get In Touch
@@ -215,12 +214,13 @@ const ContactForm = () => {
               </div>
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  {/* First row: Name and Email */}
                   <div>
                     <label
                       htmlFor="parentName"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Parent Name
+                      Name
                     </label>
                     <input
                       type="text"
@@ -228,8 +228,8 @@ const ContactForm = () => {
                       name="parent_name"
                       value={formData.parent_name}
                       onChange={handleChange}
-                      className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                      placeholder="Enter parent's full name"
+                      className="mt-1 p-2 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                      placeholder="Enter your full name"
                     />
                     {errors.parent_name && (
                       <p className="mt-1 text-sm text-red-600">
@@ -240,64 +240,42 @@ const ContactForm = () => {
 
                   <div>
                     <label
-                      htmlFor="studentName"
+                      htmlFor="email_address"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Student Name
-                    </label>
-                    <input
-                      type="text"
-                      id="studentName"
-                      name="student_name"
-                      value={formData.student_name}
-                      onChange={handleChange}
-                      className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                      placeholder="Enter student's full name"
-                    />
-                    {errors.student_name && (
-                      <p className="mt-1 text-sm text-red-600">
-                        {errors.student_name}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="parent_email_address"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Parent Email
+                      Email
                     </label>
                     <input
                       type="email"
-                      id="parentEmail"
-                      name="parent_email_address"
-                      value={formData.parent_email_address}
+                      id="Email"
+                      name="email_address"
+                      value={formData.email_address}
                       onChange={handleChange}
-                      className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                      placeholder="Enter parent's email"
+                      className="mt-1 p-2 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                      placeholder="Enter your email"
                     />
-                    {errors.parent_email_address && (
+                    {errors.email_address && (
                       <p className="mt-1 text-sm text-red-600">
-                        {errors.parent_email_address}
+                        {errors.email_address}
                       </p>
                     )}
                   </div>
 
-                  <div>
+                  {/* Second row: Mobile number */}
+                  <div className="md:col-span-2">
                     <label
                       htmlFor="studentMobile"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Student Mobile No.
+                      Mobile No.
                     </label>
                     <input
                       type="tel"
-                      id="studentMobile"
+                      id="Mobile"
                       name="mobile"
                       value={formData.mobile}
                       onChange={handleChange}
-                      className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                      className="mt-1 p-2 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       placeholder="Enter 10-digit mobile number"
                     />
                     {errors.mobile && (
@@ -307,81 +285,25 @@ const ContactForm = () => {
                     )}
                   </div>
 
-                  <div>
+                  {/* Third row: Message */}
+                  <div className="md:col-span-2">
                     <label
                       htmlFor="state"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      State
+                      Your Message:
                     </label>
-                    <input
-                      type="text"
+                    <textarea
                       id="state"
                       name="state"
                       value={formData.state}
                       onChange={handleChange}
-                      className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                      placeholder="Enter state"
+                      className="mt-1 p-2 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
+                      placeholder="Enter your message"
                     />
                     {errors.state && (
                       <p className="mt-1 text-sm text-red-600">
                         {errors.state}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="city"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      City
-                    </label>
-                    <input
-                      type="text"
-                      id="city"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleChange}
-                      className="mt-1 p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                      placeholder="Enter city"
-                    />
-                    {errors.city && (
-                      <p className="mt-1 text-sm text-red-600">{errors.city}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="class"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Class
-                    </label>
-                    <select
-                      id="class"
-                      name="grade"
-                      value={formData.grade}
-                      onChange={handleChange}
-                      className="mt-1  p-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
-                    >
-                      <option value="">Select Class</option>
-                      <option value="classI">Class I</option>
-                      <option value="classII">Class II</option>
-                      <option value="classIII">Class III</option>
-                      <option value="classIV">Class IV</option>
-                      <option value="classV">Class V</option>
-                      <option value="classVI">Class VI</option>
-                      <option value="classVII">Class VII</option>
-                      <option value="classVIII">Class VIII</option>
-                      <option value="classIX">Class IX</option>
-                      <option value="classX">Class X</option>
-                      <option value="classXI">Class XI</option>
-                      <option value="classXII">Class XII</option>
-                    </select>
-                    {errors.grade && (
-                      <p className="mt-1 text-sm text-red-600">
-                        {errors.grade}
                       </p>
                     )}
                   </div>

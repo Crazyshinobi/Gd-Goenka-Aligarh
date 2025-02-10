@@ -7,6 +7,7 @@ import user from "../../admin/assets/user.png";
 export const Usernavbar = ({ mobileMenu, setMobileMenu }) => {
   const [profile, setProfile] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [userName, setUserName] = useState("")
   const navigate = useNavigate();
 
   const changeTheme = () => {
@@ -49,12 +50,40 @@ export const Usernavbar = ({ mobileMenu, setMobileMenu }) => {
   const handleProfile = () => {
     setProfile(!profile);
   };
+  useEffect(() => {
+    const userToken = Cookies.get("userToken")
+    const userId = Cookies.get("userId")
+    const studentname = localStorage.getItem("studentname")
+
+    if (userToken && userId && studentname) {
+      setUserName(studentname)
+    }
+  }, [])
+
 
   const signOut = () => {
-    Cookies.remove("userToken");
-    localStorage.removeItem("studentname");
-    navigate("/admission/application-form/login");
-  };
+    const userId = Cookies.get("userId")
+
+    // Clear user-specific data from localStorage
+    if (userId) {
+      localStorage.removeItem(`activeStep_${userId}`)
+      localStorage.removeItem(`completedSteps_${userId}`)
+      localStorage.removeItem(`formData_${userId}`)
+      localStorage.removeItem(`isNewUser_${userId}`)
+    }
+
+    // Clear cookies and other localStorage items
+    Cookies.remove("userToken")
+    Cookies.remove("userId")
+    localStorage.removeItem("studentname")
+
+    // Clear any remaining temporary session data
+    sessionStorage.removeItem("tempActiveStep")
+    sessionStorage.removeItem("tempCompletedSteps")
+    sessionStorage.removeItem("tempFormData")
+
+    navigate("/admission/application-form/login")
+  }
 
   useEffect(() => {
     toggleDark();
