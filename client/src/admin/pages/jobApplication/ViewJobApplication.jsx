@@ -73,7 +73,7 @@ export const ViewJobApplication = () => {
       header: "Profile",
       body: (rowData) => (
         <a
-          href={`${process.env.REACT_APP_BASE_URL}/${rowData.image}`}
+          href={`${rowData.image}`}
           target="_blank"
         >
           <button
@@ -114,7 +114,7 @@ export const ViewJobApplication = () => {
       header: "Resume",
       body: (rowData) => (
         <a
-          href={`${process.env.REACT_APP_BASE_URL}/${rowData.resume}`}
+          href={`${rowData.resume}`}
           target="_blank"
         >
           <button

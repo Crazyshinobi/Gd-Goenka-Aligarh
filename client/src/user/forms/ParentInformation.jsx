@@ -253,7 +253,7 @@ export const ParentInformation = ({ onBack, onNext }) => {
           handleChange(
             "parents_information",
             "image",
-            response.data.filePath,
+            response.data.fileUrl,
             index
           );
         } else {
@@ -592,7 +592,7 @@ export const ParentInformation = ({ onBack, onNext }) => {
                       <div>
                         {formData.parents_information[0]?.image && (
                           <img
-                            src={`${process.env.REACT_APP_BASE_URL}/${formData.parents_information[0].image}`}
+                            src={`${formData.parents_information[0].image}`}
                             alt="Father's Image"
                             className="w-20 h-20"
                           />
@@ -818,7 +818,7 @@ export const ParentInformation = ({ onBack, onNext }) => {
                       <div>
                         {formData.parents_information[1]?.image && (
                           <img
-                            src={`${process.env.REACT_APP_BASE_URL}/${formData.parents_information[1].image}`}
+                            src={`${formData.parents_information[1].image}`}
                             alt="Mother's Image"
                             className="w-20 h-20"
                           />
@@ -1066,7 +1066,7 @@ export const ParentInformation = ({ onBack, onNext }) => {
                     <div>
                       {formData.parents_information[0]?.image && (
                         <img
-                          src={`${process.env.REACT_APP_BASE_URL}/${formData.parents_information[0].image}`}
+                          src={`${formData.parents_information[0].image}`}
                           alt="Guardian's Image"
                           className="w-20 h-20"
                         />

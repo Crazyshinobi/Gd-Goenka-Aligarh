@@ -154,7 +154,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
             </ul>
           </li>
           {/* Content  */}
-          <li>
+          {/* <li>
             <button
               onClick={() => handleAccordion(1)}
               type="button"
@@ -223,7 +223,7 @@ export const AdminSidebar = ({ mobileMenu }) => {
                 </NavLink>
               </li>
             </ul>
-          </li>
+          </li> */}
           {/* Job */}
           <li>
             <button

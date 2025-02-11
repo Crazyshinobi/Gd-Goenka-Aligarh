@@ -20,7 +20,7 @@ export const ViewGallery = () => {
       header: "Image",
       body: (rowData) => (
         <img
-          src={`${process.env.REACT_APP_BASE_URL}/${rowData.image}`}
+          src={`${rowData.image}`}
           alt={rowData.image}
           className="w-[200px] h-[100px] shadow-2 rounded-lg"
         />

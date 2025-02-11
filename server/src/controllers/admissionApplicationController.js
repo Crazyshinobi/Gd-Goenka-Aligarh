@@ -9,8 +9,14 @@ const { sendResponse } = require("../utils/responseUtils");
 const { userEmailService } = require("../services/userEmailService");
 const { generateRandomPassword } = require("./userController");
 const bcrypt = require("bcryptjs");
-const path = require("path");
-const fs = require("fs");
+const { Storage } = require("@google-cloud/storage");
+
+// Initialize Google Cloud Storage
+const storage = new Storage({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  projectId: "gd-goenka-school",
+});
+const bucket = storage.bucket(process.env.BUCKET_NAME);
 
 const createAdmissionApplication = async (req, res) => {
   const {
@@ -383,66 +389,77 @@ const deleteAdmissionApplication = async (req, res) => {
       return sendResponse(res, 404, false, "Record not found");
     }
 
-    let imagePaths = [];
+    // Array to store file deletion promises
+    const deletePromises = [];
 
-    if (admissionApplication.personal_details?.image) {
-      imagePaths.push(
-        path.join(
-          __dirname,
-          "..",
-          "uploads/admissionApplication",
-          path.basename(admissionApplication.personal_details.image)
-        )
-      );
-    }
+    // Helper function to delete file from Cloud Storage
+    const deleteFileFromStorage = async (fileUrl) => {
+      if (fileUrl) {
+        try {
+          // Extract the full path from the URL
+          // Example URL: https://storage.googleapis.com/bucket-name/admission-application/filename.jpg
+          const urlParts = fileUrl.split('/');
+          const fileName = urlParts[urlParts.length - 1];
+          console.log('Deleting file:', fileName);  
+          const filePath = `admission-application/${fileName}`;
 
-    if (admissionApplication.parents_information?.[0]?.image) {
-      imagePaths.push(
-        path.join(
-          __dirname,
-          "..",
-          "uploads/admissionApplication",
-          path.basename(admissionApplication.parents_information[0].image)
-        )
-      );
-    }
-
-    if (admissionApplication.parents_information?.[1]?.image) {
-      imagePaths.push(
-        path.join(
-          __dirname,
-          "..",
-          "uploads/admissionApplication",
-          path.basename(admissionApplication.parents_information[1].image)
-        )
-      );
-    }
-
-    if (admissionApplication.educational_background?.image) {
-      imagePaths.push(
-        path.join(
-          __dirname,
-          "..",
-          "uploads/admissionApplication",
-          path.basename(admissionApplication.educational_background.image)
-        )
-      );
-    }
-
-    imagePaths.forEach((imgPath) => {
-      if (fs.existsSync(imgPath)) {
-        fs.unlink(imgPath, (err) => {
-          if (err) console.error(`Error deleting image ${imgPath}:`, err);
-        });
+          // Delete file from bucket
+          await bucket.file(filePath).delete();
+          console.log(`Successfully deleted file: ${filePath}`);
+        } catch (error) {
+          console.error(`Failed to delete file: ${fileUrl}`, error.message);
+          // Continue with other deletions even if one fails
+        }
       }
-    });
+    };
 
+    // Delete personal details image
+    if (admissionApplication.personal_details?.image) {
+      console.log('Deleting personal details image:', admissionApplication.personal_details.image);
+      deletePromises.push(
+        deleteFileFromStorage(admissionApplication.personal_details.image)
+      );
+    }
+
+    // Delete parent images
+    if (admissionApplication.parents_information && Array.isArray(admissionApplication.parents_information)) {
+      admissionApplication.parents_information.forEach((parent, index) => {
+        if (parent?.image) {
+          console.log(`Deleting parent ${index + 1} image:`, parent.image);
+          deletePromises.push(deleteFileFromStorage(parent.image));
+        }
+      });
+    }
+
+    // Delete educational background image
+    if (admissionApplication.educational_background?.image) {
+      console.log('Deleting educational background image:', admissionApplication.educational_background.image);
+      deletePromises.push(
+        deleteFileFromStorage(admissionApplication.educational_background.image)
+      );
+    }
+
+    // Wait for all file deletions to complete
+    try {
+      await Promise.all(deletePromises);
+      console.log('All files deleted successfully');
+    } catch (error) {
+      console.error('Error during file deletion:', error.message);
+      // Continue with record deletion even if file deletion fails
+    }
+
+    // Delete the admission application record
     await AdmissionApplication.findByIdAndDelete(id);
 
-    sendResponse(res, 200, true, "Admission Application deleted successfully");
+    sendResponse(
+      res,
+      200,
+      true,
+      "Admission Application and associated files deleted successfully"
+    );
   } catch (error) {
-    console.error(error);
-    sendResponse(res, 500, false, "Internal Server Error", error);
+    console.error('Delete operation failed:', error.message);
+    sendResponse(res, 500, false, "Internal Server Error", error.message);
   }
 };
 

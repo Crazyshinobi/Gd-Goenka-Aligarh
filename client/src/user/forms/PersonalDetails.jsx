@@ -27,7 +27,7 @@ export const PersonalDetails = ({ onNext, onBack }) => {
 
         if (response.data.success) {
           // Save the file path or URL in the form data
-          handleChange("personal_details", "image", response.data.filePath);
+          handleChange("personal_details", "image", response.data.fileUrl);
         } else {
           console.error("Failed to upload file:", response.data.message);
         }
@@ -412,31 +412,7 @@ export const PersonalDetails = ({ onNext, onBack }) => {
                     {errors.permanent_education_number}
                   </p>
                 )}
-              </div>
-
-              <div>
-                <label className="block mb-2">
-                  Permanent Education Numbers(PEN)<span className="text-red-500 text-2xl"></span>
-                </label>
-                <input
-                  type="tel"
-                  name="permanent_education_number"
-                  value={formData.personal_details.permanent_education_number}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    const numericValue = value.replace(/[^0-9]/g, "");
-                    if (numericValue.length <= 12) {
-                      handleChange("personal_details", "permanent_education_number", numericValue);
-                    }
-                  }}
-                  className="w-full p-2 border rounded"
-                />
-                {errors.permanent_education_number && (
-                  <p className="text-red-500">{errors.permanent_education_number}</p>
-                )}
-              </div>
-
-           
+              </div>           
             </div>
 
            
@@ -516,7 +492,7 @@ export const PersonalDetails = ({ onNext, onBack }) => {
                   <div>
                     <h3>Uploaded Image:</h3>
                     <img
-                      src={`${process.env.REACT_APP_BASE_URL}/${formData.personal_details.image}`}
+                      src={`${formData.personal_details.image}`}
                       alt="Student Image"
                       style={{ height: "250px", width: "200px" }}
                     />
