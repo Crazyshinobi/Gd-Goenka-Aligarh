@@ -69,7 +69,7 @@ export const EducationalBackground = ({ onNext, onBack }) => {
           handleChange(
             "educational_background",
             "image",
-            response.data.filePath
+            response.data.fileUrl
           );
         } else {
           console.error("Failed to upload file:", response.data.message);
@@ -342,7 +342,7 @@ export const EducationalBackground = ({ onNext, onBack }) => {
                         <div>
                           <h3>Uploaded Image:</h3>
                           <img
-                            src={`${process.env.REACT_APP_BASE_URL}/${formData.educational_background.image}`}
+                            src={`${formData.educational_background.image}`}
                             alt="Educational background"
                             style={{ width: "100px", height: "auto" }}
                           />

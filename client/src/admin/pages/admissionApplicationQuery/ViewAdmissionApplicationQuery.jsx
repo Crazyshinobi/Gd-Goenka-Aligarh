@@ -43,7 +43,7 @@ export const ViewAdmissionApplicationQuery = () => {
       <div className="p-4 py-6 sm:ml-64 dark:bg-gray-700 min-h-screen">
         <div className="p-2 border-2 border-gray-200 rounded-lg dark:border-white mt-14">
           <h3 className="text-xl lg:text-2xl font-semibold text-center text-gray-900 dark:text-white py-5">
-            View Admission Application Queries
+            View Student Admission Queries
           </h3>
           <BasicTable
             data={admissionApplicationQuery}

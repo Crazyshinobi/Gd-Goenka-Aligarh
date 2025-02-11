@@ -6,7 +6,7 @@ import { BasicTable } from "../../components/BasicTable";
 export const ViewAddmission = () => {
   document.title = "Admin - View Admission";
 
-  const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admission/`;
+  const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/admission-enquiry/`;
   const { data, loading, error, refetch } = useFetchData(apiURL);
   const admission = data?.data || [];
 
@@ -16,21 +16,12 @@ export const ViewAddmission = () => {
       body: (rowData, { rowIndex }) => rowIndex + 1, 
       style: { width: "50px" },
     },
-    { field: "name", header: "Name" },
-    { field: "mobile", header: "Mobile" },
-    {
-      field: "academic_year",
-      header: "Academic year",
-      sortable: true,
-      body: (rowData) =>
-        `${rowData.academic_year} - ${rowData.academic_year + 1}`,
-    },  
-    {
-      field: "dob",
-      header: "D.O.B",
-      body: (rowData) => new Date(rowData.dob).toLocaleDateString("en-GB"),
-    },
-    { field: "email", header: "Email address" },
+    { field: "parent_name", header: "Parent Name" },
+    { field: "student_name", header: "Student Name" },
+    { field: "parent_email_address", header: "Parent Email Address" },
+    { field: "mobile", header: "Mobile Number" },
+    { field: "state", header: "State" },
+    { field: "city", header: "City" },
     { field: "grade", header: "Grade" },
     {
       field: "createdAt",

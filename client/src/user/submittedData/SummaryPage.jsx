@@ -90,7 +90,7 @@ export const SummaryPage = ({ onBack }) => {
               </h3>
               <div className="mb-3">
                 <img
-                  src={`${process.env.REACT_APP_BASE_URL}/${admission?.personal_details?.image}`}
+                  src={`${admission?.personal_details?.image}`}
                   className="h-[200px] w-[200px] object-cover"
                   alt="Student Image"
                 />
@@ -227,7 +227,7 @@ export const SummaryPage = ({ onBack }) => {
                     <strong>Transfer Certificate:</strong>
                   </p>
                   <img
-                    src={`${process.env.REACT_APP_BASE_URL}/${admission?.educational_background?.image}`}
+                    src={`${admission?.educational_background?.image}`}
                     className="h-[150px] w-[200px]"
                     alt="Transfer Certficate"
                   />
@@ -308,7 +308,7 @@ export const SummaryPage = ({ onBack }) => {
                         <strong>Parent's Image:</strong>{" "}
                       </p>
                       <img
-                        src={`${process.env.REACT_APP_BASE_URL}/${parent.image}`}
+                        src={`${parent.image}`}
                         alt="Parent Image"
                         className="h-[150px] w-[150px]"
                       />

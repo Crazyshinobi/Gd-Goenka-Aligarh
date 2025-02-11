@@ -14,13 +14,10 @@ const sendAdmissionEmail = async (data) => {
         <p style="font-size: 16px; line-height: 1.5; color: #555; margin: 20px 0;">Dear Admin,</p>
         <p style="font-size: 16px; line-height: 1.5; color: #555; margin: 20px 0;">A new admission application has been submitted with the following details:</p>
         <div style="margin: 20px 0; padding: 10px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 5px;">
-            <p style="margin: 5px 0;"><strong>Parent Name:</strong> ${data.parent_name}</p>
-            <p style="margin: 5px 0;"><strong>Student Name:</strong> ${data.student_name}</p>
-            <p style="margin: 5px 0;"><strong>Email Address:</strong> ${data.parent_email_address}</p>
+            <p style="margin: 5px 0;"><strong>Name:</strong> ${data.name}</p>
+            <p style="margin: 5px 0;"><strong>Email Address:</strong> ${data.email}</p>
             <p style="margin: 5px 0;"><strong>Mobile:</strong> ${data.mobile}</p>
-            <p style="margin: 5px 0;"><strong>State:</strong> ${data.state}</p>
-            <p style="margin: 5px 0;"><strong>City:</strong> ${data.city}</p>
-            <p style="margin: 5px 0;"><strong>Grade:</strong> ${data.grade}</p>
+            <p style="margin: 5px 0;"><strong>Message:</strong> ${data.message}</p>
         </div>
         <p style="font-size: 16px; line-height: 1.5; color: #555; margin: 20px 0;">Please take the necessary action.</p>
         <div style="margin-top: 20px; font-size: 14px; color: #777;">
@@ -42,7 +39,7 @@ const sendAdmissionEmail = async (data) => {
 
   const mailOptions = {
     from: process.env.EMAIL,
-    to: "webdev.ayush@seglko.org",
+    to: "ceo@admissionx.info",
     subject: "New Admission Application - GD Goenka Public School Aligarh",
     html: htmlContent,
   };

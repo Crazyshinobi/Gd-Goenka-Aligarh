@@ -10,24 +10,18 @@ const { sendAdmissionEmail } = require("../services/admissionEmailService");
 
 const createContact = async (req, res) => {
   const {
-    parent_name,
-    student_name,
-    parent_email_address,
+    name,
+    email,
     mobile,
-    state,
-    city,
-    grade,
+    message,
   } = req.body;
 
   try {
     const data = {
-      parent_name,
-      student_name,
-      parent_email_address,
+      name,
+      email,
       mobile,
-      state,
-      city,
-      grade,
+      message,
     };
 
     const emailSent = await sendAdmissionEmail(data);

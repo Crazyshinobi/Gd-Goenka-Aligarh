@@ -5,17 +5,18 @@ const {
   deleteJobApplication,
   countJobApplication,
 } = require("../controllers/jobApplicationController");
-const { uploadOneImageAndOnePDF } = require("../middleware/uploadMiddleware");
+const { uploadOneImageAndOnePDF, processImageAndPDF } = require("../middleware/uploadMiddleware");
 
 const router = express.Router();
 
-router
-  .route("/")
-  .post(uploadOneImageAndOnePDF, createJobApplication)
-  .get(getJobApplications);
+// Base routes
+router.post("/", uploadOneImageAndOnePDF, processImageAndPDF, createJobApplication); // Changed to separate middleware
+router.get("/", getJobApplications);
 
-  router
-  .route("/count").get(countJobApplication)
+// Count route
+router.get("/count", countJobApplication);
 
-  router.route("/:id").delete(deleteJobApplication)
+// Routes with ID parameter
+router.delete("/:id", deleteJobApplication);
+
 module.exports = router;

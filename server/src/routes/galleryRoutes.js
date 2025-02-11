@@ -7,17 +7,20 @@ const {
   getSingleGallery,
   countGallery,
 } = require("../controllers/galleryController");
-const { upload } = require("../middleware/uploadMiddleware");
+const { upload, processUpload } = require("../middleware/uploadMiddleware");
 
 const router = express.Router();
 
-router.route("/").post(upload, createGallery).get(getGallery);
-router.route("/count").get(countGallery);
+// Base routes
+router.post("/", upload, processUpload, createGallery); // Changed to separate middleware
+router.get("/", getGallery);
 
-router
-  .route("/:id")
-  .delete(deleteGallery)
-  .patch(upload, updateGallery)
-  .get(getSingleGallery);
+// Count route
+router.get("/count", countGallery);
+
+// Routes with ID parameter
+router.delete("/:id", deleteGallery);
+router.patch("/:id", upload, processUpload, updateGallery);
+router.get("/:id", getSingleGallery);
 
 module.exports = router;

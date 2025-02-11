@@ -87,7 +87,7 @@ export const ViewAdmissionApplication = () => {
       header: "Student Image",
       body: (rowData) => (
         <a
-          href={`${process.env.REACT_APP_BASE_URL}/${rowData.personal_details.image}`}
+          href={`${rowData.personal_details.image}`}
           target="_blank"
         >
           <button
@@ -171,12 +171,12 @@ export const ViewAdmissionApplication = () => {
     },
     {
       field: "educational_background.image",
-      header: "Transfer Certificate Date",
+      header: "Transfer Certificate Image",
       body: (rowData) => (
         <a
           href={
             rowData.educational_background.image
-              ? `${process.env.REACT_APP_BASE_URL}/${rowData.educational_background.image}`
+              ? `${rowData.educational_background.image}`
               : ""
           }
           target="_blank"
@@ -275,7 +275,7 @@ export const ViewAdmissionApplication = () => {
         header: `Parent-${parentIndex + 1} Image`,
         body: (rowData) => (
           <a
-            href={`${process.env.REACT_APP_BASE_URL}/${rowData.parents_information[parentIndex]?.image}`}
+            href={`${rowData.parents_information[parentIndex]?.image}`}
             target="_blank"
           >
             <button

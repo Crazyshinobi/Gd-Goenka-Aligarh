@@ -1,8 +1,16 @@
 const JobApplication = require("../models/JobApplication");
 const { sendResponse } = require("../utils/responseUtils");
-const { createRecord, deleteRecord, getCount } = require("../common/commonDatabaseQueries");
-const fs = require("fs");
-const path = require("path");
+const {
+  createRecord,
+  deleteRecord,
+  getCount,
+} = require("../common/commonDatabaseQueries");
+const { Storage } = require("@google-cloud/storage");
+const storage = new Storage({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  projectId: "gd-goenka-school",
+});
+const bucket = storage.bucket(process.env.BUCKET_NAME);
 
 const createJobApplication = async (req, res) => {
   const {
@@ -19,8 +27,8 @@ const createJobApplication = async (req, res) => {
   } = req.body;
 
   // Handle file uploads
-  const image = req.files?.image[0]?.path;
-  const resume = req.files?.resume[0]?.path;
+  const image = req.fileUrls?.imageUrl;
+  const resume = req.fileUrls?.resumeUrl;
 
   // Check for missing fields and return specific error messages
   if (!job) {
@@ -39,15 +47,15 @@ const createJobApplication = async (req, res) => {
     return sendResponse(res, 400, false, "qualification is required!");
   }
   if (!expected_salary) {
-    return sendResponse(res, 400, false, "expected_salary details are required!");
-  }
-  if (!last_organization) {
     return sendResponse(
       res,
       400,
       false,
-      "last_organization is required!"
+      "expected_salary details are required!"
     );
+  }
+  if (!last_organization) {
+    return sendResponse(res, 400, false, "last_organization is required!");
   }
   if (!last_salary) {
     return sendResponse(res, 400, false, "last_salary experience is required!");
@@ -126,41 +134,40 @@ const getJobApplications = async (req, res) => {
 
 const deleteJobApplication = async (req, res) => {
   const { id } = req.params;
-  const jobApplication = await JobApplication.findById(id);
-  if (!jobApplication) {
-    return sendResponse(res, 404, false, "Record not found");
-  }
-  try {
-    let paths = [
-      path.join(
-        __dirname,
-        "..",
-        "uploads/job application",
-        path.basename(jobApplication.image)
-      ),
-      path.join(
-        __dirname,
-        "..",
-        "uploads/job application",
-        path.basename(jobApplication.resume)
-      ),
-    ];
 
-    paths.forEach((path) => {
-      fs.access(path, fs.constants.F_OK, (err) => {
-        if (!err) {
-          fs.unlink(path, (unlinkErr) => {
-            if (unlinkErr) {
-              console.error("Failed to delete associated file:", unlinkErr);
-            } else {
-              console.log("Associated files deleted:", path);
-            }
-          });
-        } else {
-          console.log(err);
-        }
-      });
-    });
+  try {
+    const jobApplication = await JobApplication.findById(id);
+    if (!jobApplication) {
+      return sendResponse(res, 404, false, "Record not found");
+    }
+
+    // Delete image from Google Cloud Storage
+    if (jobApplication.image) {
+      const imageUrlParts = jobApplication.image.split("/");
+      const imageFileName = `job-application/images/${
+        imageUrlParts[imageUrlParts.length - 1]
+      }`;
+      try {
+        await bucket.file(imageFileName).delete();
+        console.log("Successfully deleted image:", imageFileName);
+      } catch (error) {
+        console.error("Failed to delete image from Cloud Storage:", error);
+      }
+    }
+
+    // Delete resume from Google Cloud Storage
+    if (jobApplication.resume) {
+      const resumeUrlParts = jobApplication.resume.split("/");
+      const resumeFileName = `job-application/resumes/${
+        resumeUrlParts[resumeUrlParts.length - 1]
+      }`;
+      try {
+        await bucket.file(resumeFileName).delete();
+        console.log("Successfully deleted resume:", resumeFileName);
+      } catch (error) {
+        console.error("Failed to delete resume from Cloud Storage:", error);
+      }
+    }
 
     const deletedJobApplication = await deleteRecord(JobApplication, {
       _id: id,
@@ -198,5 +205,5 @@ module.exports = {
   createJobApplication,
   getJobApplications,
   deleteJobApplication,
-  countJobApplication
+  countJobApplication,
 };

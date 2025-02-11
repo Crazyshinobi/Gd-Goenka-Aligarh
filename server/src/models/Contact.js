@@ -2,15 +2,11 @@ const mongoose = require("mongoose");
 
 const contactSchema = new mongoose.Schema(
   {
-    parent_name: {
+    name: {
       type: String,
       requried: true,
     },
-    student_name: {
-      type: String,
-      requried: true,
-    },
-    parent_email_address: {
+    email: {
       type: String,
       requried: true,
     },
@@ -18,15 +14,7 @@ const contactSchema = new mongoose.Schema(
       type: Number,
       requried: true,
     },
-    state: {
-      type: String,
-      requried: true,
-    },
-    city: {
-      type: String,
-      requried: true,
-    },
-    grade: {
+    message: {
       type: String,
       requried: true,
     },

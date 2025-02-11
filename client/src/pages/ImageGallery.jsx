@@ -182,7 +182,7 @@ const ImageGallery = () => {
             >
               <Tilt className="Tilt" options={{ max: 25, scale: 1.05 }}>
                 <LazyLoadImage
-                  src={`${baseURL}/${image.image}`}
+                  src={`${image.image}`}
                   alt={`${image.category} ${index + 1}`}
                   effect="blur"
                   className="gallery-image"
@@ -199,7 +199,7 @@ const ImageGallery = () => {
         <div className="fullscreen-modal" onClick={closeFullScreen}>
           <div className="fullscreen-content" onClick={(e) => e.stopPropagation()}>
             <img
-              src={`${baseURL}/${fullScreenImage.image}`}
+              src={`${fullScreenImage.image}`}
               alt="Full Screen"
               className="fullscreen-image"
             />

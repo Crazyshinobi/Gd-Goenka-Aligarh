@@ -149,7 +149,7 @@ export const Dashboard = () => {
             {/* Card 4 */}
             <div className="flex flex-col gap-2 items-center justify-center rounded-lg bg-gradient-to-r from-red-500 via-red-600 to-red-700 dark:bg-gradient-to-r dark:from-red-400 dark:via-red-500 dark:to-red-600 shadow-md p-4 transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
               <h2 className="text-sm font-semibold text-white dark:text-gray-100">
-                Total Admission Application Query
+                Total Student Admission Query
               </h2>
               <p className="text-xl font-bold text-white dark:text-gray-200">
                 {counts.admissionApplicationQuery}

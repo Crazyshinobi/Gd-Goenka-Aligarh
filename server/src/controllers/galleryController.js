@@ -10,19 +10,24 @@ const {
 const { sendResponse } = require("../utils/responseUtils");
 
 const Gallery = require("../models/Gallery");
-const fs = require("fs");
-const path = require("path");
+const { Storage } = require("@google-cloud/storage");
+const storage = new Storage({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  projectId: "gd-goenka-school",
+});
+
+const bucket = storage.bucket(process.env.BUCKET_NAME);
 
 const createGallery = async (req, res) => {
   const { category } = req.body;
-  const imagePath = req.file?.path;
+  const imageUrl = req.fileUrl; // Using Cloud Storage URL from middleware
 
-  if (!category || !imagePath) {
+  if (!category || !imageUrl) {
     return sendResponse(res, 400, false, "category and image are required");
   }
 
   try {
-    const recordObj = { category, image: imagePath };
+    const recordObj = { category, image: imageUrl };
     const gallery = await createRecord(Gallery, recordObj);
 
     if (gallery.status) {
@@ -86,26 +91,15 @@ const deleteGallery = async (req, res) => {
       return sendResponse(res, 404, false, "Gallery not found");
     }
 
-    const imagePath = path.join(
-      __dirname,
-      "..",
-      "uploads/gallery",
-      path.basename(deletingGallery.image)
-    );
-
-    fs.access(imagePath, fs.constants.F_OK, (err) => {
-      if (!err) {
-        fs.unlink(imagePath, (unlinkErr) => {
-          if (unlinkErr) {
-            console.error("Failed to delete image file:", unlinkErr);
-          } else {
-            console.log("Image file deleted:", imagePath);
-          }
-        });
-      } else {
-        console.log(err);
+    // Delete from Google Cloud Storage
+    if (deletingGallery.image) {
+      const fileName = deletingGallery.image.split("/").pop(); // Get filename from URL
+      try {
+        await bucket.file(`gallery/${fileName}`).delete();
+      } catch (error) {
+        console.error("Failed to delete image from Cloud Storage:", error);
       }
-    });
+    }
 
     const deletedGallery = await deleteRecord(Gallery, { _id: id });
 
@@ -145,21 +139,20 @@ const updateGallery = async (req, res) => {
 
     let updatedObj = { category };
 
-    if (req.file) {
-      updatedObj.image = req.file.path;
+    if (req.fileUrl) {
+      updatedObj.image = req.fileUrl;
 
-      // Delete the old image if it exists
+      // Delete the old image from Cloud Storage if it exists
       if (galleryToUpdate.image) {
-        const oldImagePath = path.join(
-          __dirname,
-          "..",
-          galleryToUpdate.image.replace("src", "")
-        );
-        fs.unlink(oldImagePath, (err) => {
-          if (err) {
-            console.error(`Error deleting old image: ${err.message}`);
-          }
-        });
+        const oldFileName = galleryToUpdate.image.split("/").pop();
+        try {
+          await bucket.file(`gallery/${oldFileName}`).delete();
+        } catch (error) {
+          console.error(
+            "Failed to delete old image from Cloud Storage:",
+            error
+          );
+        }
       }
     }
 
@@ -187,12 +180,11 @@ const countGallery = async (req, res) => {
   }
 };
 
-
 module.exports = {
   createGallery,
   getGallery,
   deleteGallery,
   updateGallery,
   getSingleGallery,
-  countGallery
+  countGallery,
 };
