@@ -65,6 +65,8 @@ import PaymentSummary from "./user/payment/PaymentSummary";
 import { ViewPaymentTransaction } from "./admin/pages/paymentTransaction/ViewPaymentTransaction";
 import { StudentDataPdf } from "./user/submittedData/StudentDataPdf";
 import {PaymentReceipt} from "./user/payment/PaymentReceipt";
+import EntranceExamPdf from './pages/EntranceExamPdf'
+import AnnualDateSheet from "./pages/AnnualDateSheet";
 
 function App() {
   return (
@@ -140,6 +142,14 @@ function App() {
         <Route
           path={"/admission/application-submission"}
           element={<AdmissionSubmission />}
+        />
+        <Route
+          path={"/admission/entrance-exam-syllabus"}
+          element={<EntranceExamPdf/>}
+        />
+        <Route
+          path={"/annual-exam-datesheet-2024-25"}
+          element={<AnnualDateSheet/>}
         />
 
         <Route

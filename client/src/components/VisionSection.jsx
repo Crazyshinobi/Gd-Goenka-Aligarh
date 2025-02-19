@@ -101,7 +101,14 @@ function VisionSection() {
         >
           <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div className="bg-[#003963] text-4xl text-white p-6 text-center">
-              Term-2
+              Notifications
+            </div>
+            <div className='space-y-4 p-2 font-bold text-red-600 mx-auto text-center text-lg'>
+             <a href="/annual-exam-datesheet-2024-25"
+             target="_blank"
+             rel="noopener noreferrer">
+             Annual Exam Date Sheet 2024-25
+             </a>
             </div>
             <div className="p-6 space-y-4 text-[#212529]">
               {[

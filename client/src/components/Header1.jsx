@@ -187,7 +187,16 @@ function Header1() {
                 admission schedule 2025-26
               </li>
               <hr />
-              <a
+              <a href="/admission/entrance-exam-syllabus"
+              target="_blank"
+              rel="noopener noreferrer"
+              >
+              <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
+                  Entrance exam syllabus 2025-26
+                </li>
+              </a>
+              <hr />
+              <a 
                 href="/fee-payment/fees-structure"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -541,6 +550,15 @@ function Header1() {
                   Admission schedule 2025-26
                 </li>
                 <hr />
+                <a href="/admission/entrance-exam-syllabus"
+              target="_blank"
+              rel="noopener noreferrer"
+              >
+                <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
+                  Entrance exam syllabus 2025-26
+                </li>
+              </a>
+              <hr />
 
                 <a
                   href="/fee-payment/fees-structure"
