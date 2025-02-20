@@ -6,7 +6,7 @@ const ExcellenceSection = () => {
     <div className="bg-blue-900  text-white py-10">
       {/* Middle Heading */}
       <h1 className="text-3xl  font-bold text-center mb-6 uppercase">
-        29 Years of Excellence GD Goenka Group
+        30 Years of Excellence GD Goenka Group
       </h1>
 
       <div className="container  mx-auto px-4 flex flex-col justify-center md:flex-row md:items-stretch gap-4">
@@ -14,10 +14,10 @@ const ExcellenceSection = () => {
         <div className="md:w-1/2 max-w-[1280px] w-full bg-white text-blue-900 rounded-lg shadow-lg h-[26rem] flex flex-col items-center justify-center lg:w-2/5">
           <div className="w-5/6 overflow-y-scroll scrollable-content h-[20rem] pr-4">
             <h2 className="text-2xl font-bold mb-4">
-              NEW FRONTIERS ... 29 YEARS OF EXCELLENCE! THE NEXT BIG THING!
+              NEW FRONTIERS ... 30 YEARS OF EXCELLENCE! THE NEXT BIG THING!
             </h2>
             <p className="text-lg leading-relaxed mb-4">
-              In 29 years, GDGPS Aligarh has gained a firm foothold on the
+              In 30 years, GDGPS Aligarh has gained a firm foothold on the
               national arena with new expansions in infrastructure and a dynamic
               curriculum.
             </p>

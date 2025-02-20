@@ -183,11 +183,8 @@ function Header1() {
                 </li>
               </NavLink>
               <hr />
-              {/* <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
-                admission schedule 2025-26
-              </li> 
-              <hr /> */}
-              <a href="/admission/entrance-exam-syllabus"
+              
+              <a href="/pdfs/syllabus-of-entrance-exam-2025-2026.pdf"
               target="_blank"
               rel="noopener noreferrer"
               >
@@ -546,10 +543,7 @@ function Header1() {
                   </li>
                 </NavLink>
                 <hr />
-                <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
-                  Admission schedule 2025-26
-                </li>
-                <hr />
+                
                 <a href="/admission/entrance-exam-syllabus"
               target="_blank"
               rel="noopener noreferrer"
