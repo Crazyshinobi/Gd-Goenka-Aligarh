@@ -48,25 +48,17 @@ import { ViewUser } from "./admin/pages/user/ViewUser";
 import { AddUser } from "./admin/pages/user/AddUser";
 import { UserDashboard } from "./user/UserDashboard";
 import { UserForgotPassword } from "./user/auth/UserForgetPassword";
-import { GeneralInformation } from "./user/forms/GeneralInformation";
-import { PersonalDetails } from "./user/forms/PersonalDetails";
 import { FormProvider } from "./user/forms/FormContext";
-import { HealthInformation } from "./user/forms/HealthInformation";
-import { EducationalBackground } from "./user/forms/EducationalBackground";
-import { ParentInformation } from "./user/forms/ParentInformation";
-import { OtherRelatives } from "./user/forms/OtherRelatives";
-import { TransportFacility } from "./user/forms/TransportFacility";
-import { SummaryPage } from "./user/submittedData/SummaryPage";
 import QueryForm from "./user/forms/QueryForm";
 import PaymentFailure from "./user/payment/PaymentFailure";
 import PaymentSuccess from "./user/payment/PaymentSuccess";
 import { MultiStepForm } from "./user/route/MultStepForm";
 import PaymentSummary from "./user/payment/PaymentSummary";
 import { ViewPaymentTransaction } from "./admin/pages/paymentTransaction/ViewPaymentTransaction";
+
+
 import { StudentDataPdf } from "./user/submittedData/StudentDataPdf";
 import {PaymentReceipt} from "./user/payment/PaymentReceipt";
-import EntranceExamPdf from './pages/EntranceExamPdf'
-import AnnualDateSheet from "./pages/AnnualDateSheet";
 
 function App() {
   return (
@@ -143,14 +135,7 @@ function App() {
           path={"/admission/application-submission"}
           element={<AdmissionSubmission />}
         />
-        <Route
-          path={"/admission/entrance-exam-syllabus"}
-          element={<EntranceExamPdf/>}
-        />
-        <Route
-          path={"/annual-exam-datesheet-2024-25"}
-          element={<AnnualDateSheet/>}
-        />
+        
 
         <Route
           path={"/user/forgot-password"}
