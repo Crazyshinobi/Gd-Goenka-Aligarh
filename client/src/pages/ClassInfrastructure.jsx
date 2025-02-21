@@ -5,6 +5,9 @@ import NavigationPages from "./NavigationPages";
 import classInfraBanner from "../assets/classInfraBanner.JPG";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import computerLab from "../assets/Lab2.jpg";
+import LibraryImg from "../assets/Library.jpg";
+
 
 const ClassInfrastructure = () => {
   document.title = 'Class Infrastructure - GDGPS Aligarh';
@@ -50,7 +53,7 @@ const ClassInfrastructure = () => {
         "From basic programming to advanced web development and artificial intelligence, our computer labs cater to various skill levels and interests. Students have access to high-speed internet, allowing them to explore online resources and collaborate on global projects.",
         "Regular workshops and coding bootcamps are organized to keep students updated with the latest trends in technology and prepare them for the digital future.",
       ],
-      images: [classInfraBanner, classInfraBanner],
+      images: [computerLab, computerLab],
     },
     {
       title: "Library",
@@ -59,7 +62,7 @@ const ClassInfrastructure = () => {
         "The library is equipped with computer stations for digital research and access to online databases. Comfortable reading nooks and group study areas cater to different learning preferences and collaborative projects.",
         "Regular events such as book clubs, author visits, and reading challenges foster a love for literature and lifelong learning among our students.",
       ],
-      images: [classInfraBanner, classInfraBanner],
+      images: [LibraryImg, LibraryImg],
     },
    
   ];

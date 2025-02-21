@@ -103,17 +103,11 @@ function VisionSection() {
             <div className="bg-[#003963] text-4xl text-white p-6 text-center">
               Notifications
             </div>
-            <div className=' p-2 font-bold text-red-600 mx-auto text-center text-lg flex flex-col gap-2'>
+            <div className=' p-2 font-bold text-red-600 mx-auto text-center text-lg '>
              <a href="/pdfs/AnnualExamDateSheet24-25.pdf"
              target="_blank"
-             rel="noopener noreferrer">
+             rel="noopener noreferrer"> 
              Annual Exam Date Sheet 2024-25
-             </a>
-
-             <a href="/pdfs/HolidayPlanner2025-26.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-             Holiday Planner 2025-26
              </a>
             </div>
             <div className="p-6 space-y-4 text-[#212529]">

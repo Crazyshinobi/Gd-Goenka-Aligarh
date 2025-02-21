@@ -14,7 +14,7 @@ function Header1() {
   const [isSidebar, setIsSidebar] = useState(false);
 
   const sideToggle = () => {
-    setIsSmallSidebar(!isSmallSidebar); 
+    setIsSmallSidebar(!isSmallSidebar);
   };
 
   const sideBar = () => {
@@ -113,9 +113,17 @@ function Header1() {
                 </li>
               </NavLink>
               <hr />
-              <NavLink
-                to={"/academics/goenkan-pursuits"}
+              <a
+                href="/pdfs/HolidayPlanner2025-26.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
               >
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex mt-[-16px] mb-[-16px]">
+                  Holiday Planner 2025-26
+                </li>
+              </a>
+              <hr />
+              <NavLink to={"/academics/goenkan-pursuits"}>
                 {" "}
                 <li className="menu-item cursor-pointer ps-2 hover:text-white flex mt-[-16px] mb-[-16px]">
                   GOENKAN PURSUITS
@@ -183,17 +191,18 @@ function Header1() {
                 </li>
               </NavLink>
               <hr />
-              
-              <a href="/pdfs/syllabus-of-entrance-exam-2025-2026.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+
+              <a
+                href="/pdfs/syllabus-of-entrance-exam-2025-2026.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-              <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
                   Entrance exam syllabus 2025-26
                 </li>
               </a>
               <hr />
-              <a 
+              <a
                 href="/fee-payment/fees-structure"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -393,9 +402,18 @@ function Header1() {
                   </li>
                 </NavLink>
                 <hr />
-                <NavLink
-                to={"/academics/goenkan-pursuits"}
-              >
+                <a
+                  href="/pdfs/HolidayPlanner2025-26.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer mt-[-4px] mb-[-4px] ms-[-4px] uppercase">
+                    {" "}
+                    Holiday Planner 2025-26
+                  </li>
+                </a>
+                <hr />
+                <NavLink to={"/academics/goenkan-pursuits"}>
                   <li className="menu-item cursor-pointer mb-[-4px] ms-[-4px] uppercase">
                     GOENKAN PURSUIT
                   </li>
@@ -543,16 +561,17 @@ function Header1() {
                   </li>
                 </NavLink>
                 <hr />
-                
-                <a href="/admission/entrance-exam-syllabus"
-              target="_blank"
-              rel="noopener noreferrer"
-              >
-                <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
-                  Entrance exam syllabus 2025-26
-                </li>
-              </a>
-              <hr />
+
+                <a
+                  href="/admission/entrance-exam-syllabus"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
+                    Entrance exam syllabus 2025-26
+                  </li>
+                </a>
+                <hr />
 
                 <a
                   href="/fee-payment/fees-structure"
