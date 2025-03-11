@@ -176,7 +176,7 @@ function Header1() {
           </div>
 
           <div className="relative peer">
-            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+            <li className="relative peer uppercase p-3 hover:bg-sky-300 hover:text-white rounded-md cursor-pointer transition-all">
               admissions
             </li>
 
@@ -193,7 +193,7 @@ function Header1() {
               <hr />
 
               <a
-                href="/pdfs/syllabus-of-entrance-exam-2025-2026.pdf"
+                href="/pdfs/Syllabus-of-Entrance-Exam-2025-2026.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
