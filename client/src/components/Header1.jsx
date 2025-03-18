@@ -176,7 +176,7 @@ function Header1() {
           </div>
 
           <div className="relative peer">
-            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+            <li className="relative peer uppercase p-3 hover:bg-sky-300 hover:text-white rounded-md cursor-pointer transition-all">
               admissions
             </li>
 
