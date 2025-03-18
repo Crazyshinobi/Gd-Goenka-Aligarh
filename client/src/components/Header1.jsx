@@ -114,7 +114,7 @@ function Header1() {
               </NavLink>
               <hr />
               <a
-                href="/pdfs/HolidayPlanner2025-26.pdf"
+                href="/pdfs/HolidayPlanner2025-26.pdf#toolbar=0&navpanes=0&scrollbar=0"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -190,10 +190,9 @@ function Header1() {
                   application form
                 </li>
               </NavLink>
-              <hr />
-
+              <hr/>
               <a
-                href="/pdfs/Syllabus-of-Entrance-Exam-2025-2026.pdf"
+                href="/pdfs/Syllabus-of-Entrance-Exam-2025-2026.pdf#toolbar=0&navpanes=0&scrollbar=0"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -201,7 +200,7 @@ function Header1() {
                   Entrance exam syllabus 2025-26
                 </li>
               </a>
-              <hr />
+              <hr/>
                <a
                     href="/pdfs/admission-procedure.pdf#toolbar=0&navpanes=0&scrollbar=0"
                   target="_blank"
@@ -413,7 +412,7 @@ function Header1() {
                 </NavLink>
                 <hr />
                 <a
-                  href="/pdfs/HolidayPlanner2025-26.pdf"
+                  href="/pdfs/HolidayPlanner2025-26.pdf#toolbar=0&navpanes=0&scrollbar=0"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -573,7 +572,7 @@ function Header1() {
                 <hr />
 
                 <a
-                 href="/pdfs/Syllabus-of-Entrance-Exam-2025-2026.pdf"
+                 href="/pdfs/Syllabus-of-Entrance-Exam-2025-2026.pdf#toolbar=0&navpanes=0&scrollbar=0"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
