@@ -104,7 +104,7 @@ function VisionSection() {
               Notifications
             </div>
             <div className=' p-2 font-bold text-red-600 mx-auto text-center text-lg '>
-             <a href="/pdfs/AnnualExamDateSheet24-25.pdf"
+             <a href="/pdfs/AnnualExamDateSheet24-25.pdf#toolbar=0"
              target="_blank"
              rel="noopener noreferrer"> 
              Annual Exam Date Sheet 2024-25
@@ -112,15 +112,41 @@ function VisionSection() {
             </div>
             <div className="p-6 space-y-4 text-[#212529]">
               {[
-                'Celebration of Folk Dances of India (Grade 7) | 29.11.24',
-                'PREBOARD-1 (Grade 12) | 02.12.24 -23.12.24',
-                'Tongue Twisters / Role Play (Grades 9-12; Grades Activity) | 03.12.24',
-                'Spell Bee/ Quiz /Spin a Story/Poetry creation (Grades 9-12) | 05.12.24',
-                'Meet the Author - Read-Aloud Session (Grades 3-12) | 06.12.24',
-                'Scholastic Excellence Award Ceremony (Grades 3-12) | 07.12.2024',
+               {
+                title : 'Christmas Day Celebration | 24.12.2024',
+                pdfLink : '/pdfs/Christmas-Celebration.pdf'
+               },
+               {
+                title : 'Diwali Celebration | 28.10.2024',
+                pdfLink : '/pdfs/Diwali-Celebration.pdf'
+               },
+               {
+                title : 'Janmashtami Celebration | 24.08.2024',
+                pdfLink : '/pdfs/Janamashtami-Celebration.pdf'
+               },
+               {
+                title : 'Independence Day Celebration | 14.08.2024',
+                pdfLink : '/pdfs/Independence-Day.pdf'
+               },
+                {
+                  newtitle :  'Celebration of Folk Dances of India (Grade 7) | 29.11.24',
+               },
+               {
+                newtitle : 'Scholastic Excellence Award Ceremony (Grades 3-12) | 07.12.2024',
+               },
+               {
+                newtitle : 'Meet the Author - Read-Aloud Session (Grades 3-12) | 06.12.24',
+               },
               ].map((event, index) => (
                 <p key={index} className="text-lg leading-relaxed">
-                  {event}
+                  <a href={`${event.pdfLink}#toolbar=0`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                  {event.title}
+                  </a>
+                  {event.newtitle}
                 </p>
               ))}
             </div>
