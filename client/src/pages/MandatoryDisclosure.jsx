@@ -101,6 +101,7 @@ const MandatoryDisclosure = () => {
 
           {[
             { label: "Society registration", link: "/mandatory-disclosure-link/SocietyRegistration.pdf" },
+            { label: "SchooL recognition certificate", link: "/mandatory-disclosure-link/SCHOOLRECOGNITION.pdf" },
             { label: "No objection certificate (noc)", link: "/mandatory-disclosure-link/NOC.pdf" },
             { label: "Recognition certificate", link: "/mandatory-disclosure-link/RecognitionApprovalLetter.pdf" },
             { label: "Building safety certificate", link: "/mandatory-disclosure-link/2BUILDINGSAFETYCERTIFICATE.pdf" },

@@ -190,7 +190,7 @@ function Header1() {
                   application form
                 </li>
               </NavLink>
-              <hr/>
+              <hr />
               <a
                 href="/pdfs/Syllabus-of-Entrance-Exam-2025-2026.pdf#toolbar=0&navpanes=0&scrollbar=0"
                 target="_blank"
@@ -200,14 +200,24 @@ function Header1() {
                   Entrance exam syllabus 2025-26
                 </li>
               </a>
-              <hr/>
-               <a
-                    href="/pdfs/admission-procedure.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <hr />
+              <a
+                href="/pdfs/admission-procedure.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
                   Admission Procedure
+                </li>
+              </a>
+              <hr />
+              <a
+                href="/pdfs/age-criteria.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
+                  Age Criteria
                 </li>
               </a>
               <hr />
@@ -572,7 +582,7 @@ function Header1() {
                 <hr />
 
                 <a
-                 href="/pdfs/Syllabus-of-Entrance-Exam-2025-2026.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  href="/pdfs/Syllabus-of-Entrance-Exam-2025-2026.pdf#toolbar=0&navpanes=0&scrollbar=0"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -582,12 +592,23 @@ function Header1() {
                 </a>
                 <hr />
                 <a
-                    href="/pdfs/admission-procedure.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  href="/pdfs/admission-procedure.pdf#toolbar=0&navpanes=0&scrollbar=0"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
                     Admission Procedure
+                  </li>
+                </a>
+                <hr />
+                <a
+                  href="/pdfs/age-criteria.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
+                    {" "}
+                    Age Criteria
                   </li>
                 </a>
                 <hr />
