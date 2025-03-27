@@ -175,6 +175,49 @@ function Header1() {
             </ul>
           </div>
 
+          
+          <div className="relative peer">
+            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+            Schedule
+            </li>
+
+            <ul
+              className="fee_payment_drop pt-3 top-[49px] font-extralight uppercase absolute hidden peer-hover:flex hover:flex w-[200px]
+                flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
+            >
+               <a
+                href="/pdfs/Daily-Routine.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
+                  Daily Routine
+                </li>
+              </a>
+              <hr />
+              <a
+                href="/pdfs/GD-GOENKA-LUNCH-SCHEDULE.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
+                  Lunch time
+                </li>
+              </a>
+              <hr />
+              <a
+                href="/pdfs/Notice-for-New-Session.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
+                 New Session 
+                </li>
+              </a>
+
+            </ul>
+          </div>
+
           <div className="relative peer">
             <li className="relative peer uppercase p-3 hover:bg-sky-300 hover:text-white rounded-md cursor-pointer transition-all">
               admissions
@@ -559,6 +602,54 @@ function Header1() {
             >
               alumni
             </AccordionSummary>
+          </Accordion>
+
+          {/* Routine  */}
+
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+              className="uppercase"
+            >
+              Schedule
+            </AccordionSummary>
+            <AccordionDetails>
+              <ul>
+              <a
+                  href="/pdfs/Daily-Routine.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                    Daily Routine
+                  </li>
+                </a>
+                <hr />
+
+                <a
+                  href="/pdfs/GD-GOENKA-LUNCH-SCHEDULE.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
+                    Lunch time
+                  </li>
+                </a>
+                <hr />
+    
+                <a
+                  href="/pdfs/Notice-for-New-Session.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
+                  New Session
+                  </li>
+                </a>
+              </ul>
+            </AccordionDetails>
           </Accordion>
 
           {/* ADMISSION ACCORDIAN */}
