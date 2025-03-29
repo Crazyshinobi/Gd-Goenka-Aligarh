@@ -8,9 +8,9 @@ const {
 } = require("../common/commonDatabaseQueries");
 
 const { sendResponse } = require("../utils/responseUtils");
-
 const Gallery = require("../models/Gallery");
 const { Storage } = require("@google-cloud/storage");
+
 const storage = new Storage({
   keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
   projectId: "gd-goenka-school",

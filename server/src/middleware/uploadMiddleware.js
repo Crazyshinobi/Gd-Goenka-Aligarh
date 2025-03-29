@@ -3,19 +3,22 @@ const { Storage } = require("@google-cloud/storage");
 
 const storage = new Storage({
   keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-  projectId: "gd-goenka-school" 
+  projectId: "gd-goenka-school",
 });
 
 const bucket = storage.bucket(process.env.BUCKET_NAME);
-bucket.exists().then((exists) => {
-  if (!exists[0]) {
-    console.error('Error: Bucket does not exist or credentials are invalid');
-  } else {
-    console.log('Successfully connected to Google Cloud Storage bucket');
-  }
-}).catch((error) => {
-  console.error('Error connecting to Google Cloud Storage:', error);
-});
+bucket
+  .exists()
+  .then((exists) => {
+    if (!exists[0]) {
+      console.error("Error: Bucket does not exist or credentials are invalid");
+    } else {
+      console.log("Successfully connected to Google Cloud Storage bucket");
+    }
+  })
+  .catch((error) => {
+    console.error("Error connecting to Google Cloud Storage:", error);
+  });
 
 // Multer configuration for memory storage
 const multerStorage = multer.memoryStorage();
@@ -50,7 +53,7 @@ const pdfFilter = (req, file, cb) => {
 const uploadToGCS = async (file, folder) => {
   const fileName = `${folder}/${Date.now()}-${file.originalname}`;
   const blob = bucket.file(fileName);
-  
+
   const blobStream = blob.createWriteStream({
     resumable: false,
     metadata: {
@@ -59,9 +62,9 @@ const uploadToGCS = async (file, folder) => {
   });
 
   return new Promise((resolve, reject) => {
-    blobStream.on('error', (err) => reject(err));
-    
-    blobStream.on('finish', async () => {
+    blobStream.on("error", (err) => reject(err));
+
+    blobStream.on("finish", async () => {
       await blob.makePublic();
       const publicUrl = `https://storage.googleapis.com/${process.env.BUCKET_NAME}/${fileName}`;
       resolve(publicUrl);
@@ -78,7 +81,7 @@ const upload = multer({
     fileSize: 5 * 1024 * 1024, // 5MB
   },
   fileFilter: imageFilter,
-}).single('image');
+}).single("image");
 
 // Middleware to process the upload and store in GCS
 const processUpload = async (req, res, next) => {
@@ -87,19 +90,21 @@ const processUpload = async (req, res, next) => {
       return next();
     }
 
-    let folder = 'general';
+    let folder = "general";
     if (req.originalUrl.includes("/api/v1/faculty")) {
-      folder = 'faculty';
+      folder = "faculty";
     } else if (req.originalUrl.includes("/api/v1/gallery")) {
-      folder = 'gallery';
+      folder = "gallery";
+    } else if (req.originalUrl.includes("/api/v1/faculty")) {
+      folder = "faculty";
     } else if (req.originalUrl.includes("/api/v1/event")) {
-      folder = 'event';
+      folder = "event";
     } else if (req.originalUrl.includes("/api/v1/content")) {
-      folder = 'content';
+      folder = "content";
     } else if (req.originalUrl.includes("/api/v1/job-application")) {
-      folder = 'job-application';
+      folder = "job-application";
     } else if (req.originalUrl.includes("/api/v1/admission-application")) {
-      folder = 'admission-application';
+      folder = "admission-application";
     }
 
     const publicUrl = await uploadToGCS(req.file, folder);
@@ -117,7 +122,7 @@ const uploadMultiple = multer({
     fileSize: 5 * 1024 * 1024,
   },
   fileFilter: imageFilter,
-}).array('images');
+}).array("images");
 
 // Process multiple uploads
 const processMultipleUploads = async (req, res, next) => {
@@ -126,12 +131,12 @@ const processMultipleUploads = async (req, res, next) => {
       return next();
     }
 
-    let folder = 'general';
+    let folder = "general";
     if (req.originalUrl.includes("/api/v1/gallery")) {
-      folder = 'gallery';
+      folder = "gallery";
     }
 
-    const uploadPromises = req.files.map(file => uploadToGCS(file, folder));
+    const uploadPromises = req.files.map((file) => uploadToGCS(file, folder));
     const urls = await Promise.all(uploadPromises);
     req.fileUrls = urls;
     next();
@@ -148,7 +153,7 @@ const uploadOneImageAndOnePDF = multer({
   },
 }).fields([
   { name: "image", maxCount: 1 },
-  { name: "resume", maxCount: 1 }
+  { name: "resume", maxCount: 1 },
 ]);
 
 // Process image and PDF uploads
@@ -159,19 +164,21 @@ const processImageAndPDF = async (req, res, next) => {
     }
 
     const uploadPromises = [];
-    const folder = 'job-application';
+    const folder = "job-application";
 
     if (req.files.image) {
       uploadPromises.push(uploadToGCS(req.files.image[0], `${folder}/images`));
     }
     if (req.files.resume) {
-      uploadPromises.push(uploadToGCS(req.files.resume[0], `${folder}/resumes`));
+      uploadPromises.push(
+        uploadToGCS(req.files.resume[0], `${folder}/resumes`)
+      );
     }
 
     const [imageUrl, resumeUrl] = await Promise.all(uploadPromises);
     req.fileUrls = {
       imageUrl: imageUrl || null,
-      resumeUrl: resumeUrl || null
+      resumeUrl: resumeUrl || null,
     };
     next();
   } catch (error) {
@@ -185,5 +192,5 @@ module.exports = {
   uploadMultiple,
   processMultipleUploads,
   uploadOneImageAndOnePDF,
-  processImageAndPDF
+  processImageAndPDF,
 };
