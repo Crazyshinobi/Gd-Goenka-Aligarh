@@ -36,6 +36,8 @@ import { ViewAddmission } from "./admin/pages/admission/ViewAddmission";
 import { ViewAdmissionApplication } from "./admin/pages/admissionApplication/ViewAdmissionApplication";
 import { AddGallery } from "./admin/pages/gallery/AddGallery";
 import { ViewGallery } from "./admin/pages/gallery/ViewGallery";
+import { AddFaculty } from "./admin/pages/faculty/AddFaculty";
+import { ViewFaculty } from "./admin/pages/faculty/ViewFaculty";
 import { ViewJobApplication } from "./admin/pages/jobApplication/ViewJobApplication";
 import { ViewContent } from "./admin/pages/content/ViewContent";
 import { AddContent } from "./admin/pages/content/AddContent";
@@ -288,6 +290,23 @@ function App() {
           element={
             <PrivateRoute>
               <ViewGallery />
+            </PrivateRoute>
+          }
+        />
+        {/* Faculty  */}
+        <Route
+          path={"/admin/add-faculty"}
+          element={
+            <PrivateRoute>
+              <AddFaculty />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/admin/view-faculty"}
+          element={
+            <PrivateRoute>
+              <ViewFaculty />
             </PrivateRoute>
           }
         />

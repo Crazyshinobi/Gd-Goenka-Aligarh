@@ -23,6 +23,7 @@ const admissionApplicationQueryRoutes = require("./src/routes/admissionApplicati
 const userRoutes = require("./src/routes/userRoutes");
 const paymentRoutes = require("./src/routes/paymentRoutes.js");
 const paymentTransactionRoutes = require("./src/routes/paymentTransactionRoutes.js");
+const facultyRoutes = require("./src/routes/facultyRoutes.js");
 
 // Middleware
 const corsOptions = {
@@ -57,6 +58,7 @@ app.use("/api/v1/admission-application-query", admissionApplicationQueryRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/payment-transaction", paymentTransactionRoutes);
+app.use("/api/v1/faculty", facultyRoutes);
 
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
