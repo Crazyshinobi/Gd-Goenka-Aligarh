@@ -36,7 +36,7 @@ export const ViewFaculty = () => {
   ];
 
   const fields = [
-    { name: "category", label: "Category", type: "text" },
+    { name: "name", label: "Faculty Name", type: "text" },
     { name: "image", label: "  Upload 1 file (JPEG, PNG, JPG or WEBP - MAX. 5 MB)", type: "file" },
   ];
   return (
