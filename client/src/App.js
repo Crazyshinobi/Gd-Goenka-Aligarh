@@ -59,6 +59,7 @@ import { ViewPaymentTransaction } from "./admin/pages/paymentTransaction/ViewPay
 
 import { StudentDataPdf } from "./user/submittedData/StudentDataPdf";
 import {PaymentReceipt} from "./user/payment/PaymentReceipt";
+import FacultyPage from "./pages/FacultyPage";
 
 function App() {
   return (
@@ -110,6 +111,7 @@ function App() {
         <Route path={"/activities"} element={<Activities />} />
         <Route path={"/gallery"} element={<ImageGallery />} />
         <Route path={"/contact-us"} element={<ContactForm />} />
+        <Route path={"/our-faculty"} element={<FacultyPage />} />
         <Route
           path={"/academics/goenkan-pursuits"}
           element={<GoenkanPursuits />}
