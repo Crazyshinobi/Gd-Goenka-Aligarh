@@ -254,15 +254,11 @@ function Header1() {
                 </li>
               </a>
               <hr />
-              <a
-                href="/pdfs/age-criteria.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <NavLink to={"/admission/age-criteria"}>
                 <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
                   Age Criteria
                 </li>
-              </a>
+              </NavLink>
               <hr />
               <a
                 href="/fee-payment/fees-structure"
@@ -692,16 +688,12 @@ function Header1() {
                   </li>
                 </a>
                 <hr />
-                <a
-                  href="/pdfs/age-criteria.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <NavLink to={"/admission/age-criteria"}>
                   <li className="menu-item cursor-pointer ps-1 leading-none flex  uppercase ms-[-4px]">
                     {" "}
                     Age Criteria
                   </li>
-                </a>
+                </NavLink>
                 <hr />
 
                 <a

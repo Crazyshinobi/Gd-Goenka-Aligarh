@@ -62,6 +62,7 @@ import { ViewPaymentTransaction } from "./admin/pages/paymentTransaction/ViewPay
 import { StudentDataPdf } from "./user/submittedData/StudentDataPdf";
 import {PaymentReceipt} from "./user/payment/PaymentReceipt";
 import FacultyPage from "./pages/FacultyPage";
+import AgeCriteria from "./pages/AgeCriteria";
 
 function App() {
   return (
@@ -127,6 +128,12 @@ function App() {
           path={"/fee-payment/fees-structure"}
           element={<FeeStructure />}
         />
+
+<Route
+          path={"/admission/age-criteria"}
+          element={<AgeCriteria />}
+        />
+
         <Route
           path={"/admission/application-form"}
           element={<AdmissionForm />}

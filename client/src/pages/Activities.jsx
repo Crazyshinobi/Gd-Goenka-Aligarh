@@ -34,6 +34,7 @@ const Activities = () => {
   const cardsRef = useRef([]);
 
   const activitiesData = [
+
     {
       id: 1,
       title: "Annual Sports Meet",
