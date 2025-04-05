@@ -27,6 +27,7 @@ import ParikshaPeCharcha from '../assets/ParikshaPeCharcha.jpeg'
 import BlackDayAssemblyImage from '../assets/BlackDayAssemblyImage.jpeg'
 import SchoolExhibition from '../assets/SchoolExhibition.jpeg'
 import AnnualSportsMeetImage from '../assets/SportsMeet.jpeg'
+import art from "../assets/artCraftactivity.jpeg";
 
 
 const Activities = () => {
@@ -34,161 +35,162 @@ const Activities = () => {
   const cardsRef = useRef([]);
 
   const activitiesData = [
-
     {
       id: 1,
+      title: "Art and Craft",
+      description:
+      "NC KG students have a blast in beginning of New academic year with the Taste & Touch activity, exploring their senses while also learning about the ascending and descending order of numbers through fun and interactive play!",
+      image: art,
+    },
+    {
+      id: 2,
       title: "Annual Sports Meet",
       description:
-      "The Annual Sports Meet at G.D. Goenka Public School on 24th February 2025 began with an inspiring address by the Principal, performances, and a grand march-past. Students showcased their athletic talent in fun races (Frog Race, Coffee Race, etc.), 50m & 100m sprints, and sports like football, cricket, and kho-kho.The event fostered team spirit, healthy competition, and sportsmanship. Its success was credited to the dedication of students, staff, and organizers. We eagerly look forward to an even more thrilling sports meet next year!",
-      image: AnnualSportsMeetImage, // Ensure this image is correctly imported
+        "The Annual Sports Meet at G.D. Goenka Public School on 24th February 2025 began with an inspiring address by the Principal, performances, and a grand march-past. Students showcased their athletic talent in fun races (Frog Race, Coffee Race, etc.), 50m & 100m sprints, and sports like football, cricket, and kho-kho. The event fostered team spirit, healthy competition, and sportsmanship. Its success was credited to the dedication of students, staff, and organizers. We eagerly look forward to an even more thrilling sports meet next year!",
+      image: AnnualSportsMeetImage,
     },
-    {id: 2,
-    title : "School Exhibition",
-    description :
-    "The School Exhibition on February 18, 2025, at G.D. Goenka Public School, Aligarh, featured impressive student projects across various subjects, including Simple Machines, Modes of Communication, the Solar System, and Rainwater Harvesting. Guided by dedicated teachers, students showcased their creativity and knowledge, making the event a grand celebration of learning and innovation. ",
-    image : SchoolExhibition
-  },
     {
       id: 3,
-      title: "Black Day Assembly",
+      title: "School Exhibition",
       description:
-        "The special assembly for Black Day was a success in educating the students about the history and significance of the day. It provided a meaningful opportunity for reflection, creating a greater awareness of social issues and instilling a sense of responsibility towards creating a just society.",
-      image: BlackDayAssemblyImage, // Make sure to define/import the correct image
+        "The School Exhibition on February 18, 2025, at G.D. Goenka Public School, Aligarh, featured impressive student projects across various subjects, including Simple Machines, Modes of Communication, the Solar System, and Rainwater Harvesting. Guided by dedicated teachers, students showcased their creativity and knowledge, making the event a grand celebration of learning and innovation.",
+      image: SchoolExhibition,
     },
     {
       id: 4,
+      title: "Black Day Assembly",
+      description:
+        "The special assembly for Black Day was a success in educating the students about the history and significance of the day. It provided a meaningful opportunity for reflection, creating a greater awareness of social issues and instilling a sense of responsibility towards creating a just society.",
+      image: BlackDayAssemblyImage,
+    },
+    {
+      id: 5,
       title: "Pariksha Pe Charcha",
       description:
         "The much-awaited event, Pariksha Pe Charcha (PPC), was shown at G D GOENKA PUBLIC SCHOOL, Aligarh on 10 Feb 25. This initiative, led by Prime Minister Narendra Modi, aims to engage students, teachers, and parents in meaningful conversations about exams, stress management, and overall well-being. The event was conducted to help students overcome the anxiety that often accompanies exams and to offer guidance on how to approach them with confidence and ease.",
       image: ParikshaPeCharcha,
     },
     {
-      id: 5,
+      id: 6,
       title: "Republic Day Celebration",
       description:
         "The Republic Day celebration at G.D. Goenka Public School, Aligarh was a grand success, bringing together students, teachers, and staff to honor the rich history and values of our nation. The event was filled with patriotic fervor, cultural performances, insightful speeches, and recognition of student achievements. The day reminded everyone of the importance of democracy, unity, and the responsibilities we all share in building a better India. The collective efforts of all those involved made the celebration both meaningful and memorable.",
       image: RepublicDayImage,
     },
     {
-      id: 6,
+      id: 7,
       title: "Clean & Green Initiative",
       description:
         "Through our 'Clean & Green' initiative, students engage in hands-on efforts to keep their surroundings spotless. From sweeping pathways to planting trees and recycling waste, they contribute to a healthier and more beautiful campus. This initiative nurtures responsibility, environmental awareness, and the spirit of community service.",
       image: CleaningActivity,
     },
     {
-      id: 7,
+      id: 8,
       title: "Vasant Panchami Celebration",
       description:
         "The students and staff of G.D. Goenka Public School, Aligarh celebrated Vasant Panchami, a festival marking the arrival of spring, on 2nd February, 2025. The day began with a special assembly highlighting the festival's significance. Dedicated to Goddess Saraswati, the deity of knowledge and wisdom, the celebration included a prayer ceremony where students and teachers offered flowers, seeking blessings for academic success.",
       image: VasantPanchami,
     },
     {
-      id: 8,
+      id: 9,
       title: "Lohri Celebration",
       description:
         "Festival of Lohri was celebrated at GD Goenka Public School, Aligarh with exuberance and fanfare. The entire atmosphere of the school was absorbed in the festive spirit and echoed the melodious vocals.",
       image: LohriImage,
     },
     {
-      id: 9,
+      id: 10,
       title: "Festival Celebrations",
       description:
         "At G.D. Goenka Aligarh, we celebrate a variety of cultural festivals with great enthusiasm. These events bring students together to learn about different traditions, foster creativity, and enjoy moments of joy through music, dance, and food.",
       image: FestivalImage,
     },
     {
-      id: 10,
+      id: 11,
       title: "Christmas Celebration",
       description:
         "At G.D. Goenka Aligarh, Christmas is celebrated with joy and warmth. Students engage in various festive activities, including carol singing, decorating the school, and exchanging gifts. The event fosters a sense of togetherness and spreads the spirit of kindness and giving.",
       image: ChristmasCelebrationImage,
     },
     {
-      id: 11,
+      id: 12,
       title: "Indoor Activities",
       description:
         "Our indoor activities provide a creative and engaging environment for students. From board games and art workshops to puzzle-solving and science experiments, these activities promote teamwork, critical thinking, and overall development, making learning fun and interactive.",
       image: IndoorActivityImage,
     },
     {
-      id: 12,
+      id: 13,
       title: "Diwali Celebration",
       description:
         "Diwali at G.D. Goenka Aligarh is a festival of lights, celebrated with zeal and enthusiasm. The students participate in rangoli making, diya decorating, and traditional dance performances, creating a vibrant atmosphere that fosters cultural understanding and joy.",
       image: DiwaliCelebrationImage,
     },
     {
-      id: 13,
+      id: 14,
       title: "Pooja Ceremony",
       description:
         "The Pooja ceremony at G.D. Goenka Aligarh is a significant event that brings the school community together in a spiritual celebration. Students, teachers, and parents join in to offer prayers, seek blessings, and celebrate the positive energy and harmony in the school.",
       image: PoojaCeremonyImage,
     },
     {
-      id: 14,
+      id: 15,
       title: "National Sports Day",
       description:
         "National Sports Day is celebrated at G.D. Goenka Aligarh to encourage physical fitness and sportsmanship. Students participate in various sports events and activities, highlighting the importance of teamwork, discipline, and healthy competition.",
       image: NationalSportsDayImage,
     },
     {
-      id: 15,
+      id: 16,
       title: "Rakshabandhan Celebration",
       description:
         "Rakshabandhan is a special celebration at G.D. Goenka Aligarh, where students honor the bond between siblings and express love and affection. The celebration includes the tying of rakhis, exchanging sweets, and creating memorable moments with friends and family.",
       image: Rakshabandhan,
     },
     {
-      id: 16,
+      id: 17,
       title: "School Trips",
       description:
         "Educational trips at G.D. Goenka Aligarh offer students the opportunity to explore new places, learn beyond the classroom, and build stronger bonds with their peers. These trips are designed to provide enriching experiences that complement academic learning and encourage curiosity.",
       image: Trips,
     },
     {
-      id: 17,
+      id: 18,
       title: "Badminton Playing",
       description:
         "Badminton is one of the popular indoor sports at G.D. Goenka Aligarh. With well-maintained courts and expert coaching, our students regularly participate in friendly matches and tournaments, developing their skills and teamwork.",
       image: BadmintonImage,
     },
     {
-      id: 18,
+      id: 19,
       title: "Outdoor Activities",
       description:
         "We encourage our students to engage in various outdoor activities such as nature walks, gardening, and adventure camps. These activities help students develop resilience, teamwork, and a deeper connection with nature.",
       image: OutdoorActivity,
     },
     {
-      id: 19,
+      id: 20,
       title: "Outdoor Games",
       description:
         "G.D. Goenka Aligarh offers a wide variety of outdoor games that help students stay active and energized. From relay races to obstacle courses, students enjoy these games, which promote teamwork, fitness, and leadership skills.",
       image: Outdoor,
     },
     {
-      id: 20,
+      id: 21,
       title: "Robotics",
       description:
         "Our Robotics program provides students with an exciting opportunity to explore STEM fields. By building and programming robots, students develop problem-solving, critical thinking, and teamwork skills, preparing them for future technological advancements.",
       image: Robotics,
     },
     {
-      id: 21,
-      title: "Art and Craft",
-      description:
-        "The art and craft program at G.D. Goenka Aligarh fosters creativity and self-expression among students. Whether it's painting, sculpture, or craftwork, students are encouraged to explore different mediums and develop their artistic talents.",
-      image: Art,
-    },
-    {
-      id: 22 ,
+      id: 22,
       title: "Horse Riding",
       description:
         "Horse riding is a unique activity offered at G.D. Goenka Aligarh. Our equestrian program allows students to develop confidence, discipline, and a sense of responsibility while interacting with horses in a safe and nurturing environment.",
       image: HorseRiding,
     },
   ];
+  
   
   
   

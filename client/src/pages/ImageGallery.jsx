@@ -47,11 +47,17 @@ const ImageGallery = () => {
   }, [imagesError, categoriesError]);
 
   useEffect(() => {
-    if (Array.isArray(images.data)) {
+    if (Array.isArray(images?.data)) {
+      // Sort images by createdAt date (newest first)
+      const sortedImages = [...images.data].sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+
       const filtered = selectedCategory === 'ALL'
-        ? images.data
-        : images.data.filter((image) => image.category === selectedCategory);
-      setFilteredImages(filtered.reverse());
+        ? sortedImages
+        : sortedImages.filter((image) => image.category === selectedCategory);
+      
+      setFilteredImages(filtered);
     } else {
       setFilteredImages([]);
     }
