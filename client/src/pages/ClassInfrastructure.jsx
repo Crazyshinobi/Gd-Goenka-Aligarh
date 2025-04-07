@@ -7,7 +7,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import computerLab from "../assets/Lab2.jpg";
 import LibraryImg from "../assets/Library.jpg";
-
+import { Helmet } from "react-helmet";
 
 const ClassInfrastructure = () => {
   document.title = 'Class Infrastructure - GDGPS Aligarh';
@@ -69,6 +69,11 @@ const ClassInfrastructure = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Class Infrastructure - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Discover world-class classroom infrastructure and facilities offered at GD Goenka Public School Aligarh." />
+</Helmet>
+
       {/* Banner Section with Framer Motion */}
       <motion.div
         className="relative h-[35vh] md:h-[60vh] lg:h-[60vh] overflow-hidden"

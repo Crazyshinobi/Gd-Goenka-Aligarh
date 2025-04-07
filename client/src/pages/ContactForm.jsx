@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import bgdesign from "../assets/bgdesign3.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import { usePostRequest } from "../hooks/usePostRequest";
+import { Helmet } from "react-helmet";
 
 const ContactForm = () => {
-  document.title = "Contact Us - GDGPS Aligarh";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -85,6 +85,11 @@ const ContactForm = () => {
   return (
     <Layout>
       <Toaster />
+      <Helmet>
+  <title>Contact Us - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Get in touch with GD Goenka Public School Aligarh through our easy-to-use contact form." />
+</Helmet>
+
       <div className="relative bgImage">
         <motion.img
           src={ContactBanner}

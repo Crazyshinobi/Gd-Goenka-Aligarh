@@ -7,9 +7,9 @@ import NavigationPages from "./NavigationPages";
 import JobBanner from "../assets/JobBanner.jpeg";
 import bgdesign from "../assets/bgdesign3.jpg";
 import { Button } from "../admin/components/Button";
+import { Helmet } from "react-helmet";
 
 export default function JobApplicationForm() {
-  document.title = "Job Application - GDGPS Aligarh";
   const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/job-application`;
   const { state } = useLocation();
   const { job } = state || {};
@@ -170,6 +170,11 @@ export default function JobApplicationForm() {
   return (
     <>
       <Toaster />
+      <Helmet>
+  <title>Apply for a Job - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Submit your job application to join the team at GD Goenka Public School Aligarh." />
+</Helmet>
+
       <Layout>
         <div className="relative bgImage">
           <h1 className="absolute bottom-4 shadow-md md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded">

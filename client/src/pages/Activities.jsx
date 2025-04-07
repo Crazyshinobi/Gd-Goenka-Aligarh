@@ -20,18 +20,18 @@ import Trips from "../assets/Trips.jpeg";
 import Rakshabandhan from "../assets/Rakshabandhan.jpeg";
 import LohriImage from "../assets/LohriImage.jpeg";
 import RepublicDayImage from "../assets/RepublicDayImage.jpeg";
-import VasantPanchami from '../assets/VasantPanchmi.jpeg'
-import ActivitesBanner from '../assets/ActivitiesBanner.jpeg'
-import CleaningActivity from '../assets/CleaningActivity.jpeg'
-import ParikshaPeCharcha from '../assets/ParikshaPeCharcha.jpeg'
-import BlackDayAssemblyImage from '../assets/BlackDayAssemblyImage.jpeg'
-import SchoolExhibition from '../assets/SchoolExhibition.jpeg'
-import AnnualSportsMeetImage from '../assets/SportsMeet.jpeg'
+import VasantPanchami from "../assets/VasantPanchmi.jpeg";
+import ActivitesBanner from "../assets/ActivitiesBanner.jpeg";
+import CleaningActivity from "../assets/CleaningActivity.jpeg";
+import ParikshaPeCharcha from "../assets/ParikshaPeCharcha.jpeg";
+import BlackDayAssemblyImage from "../assets/BlackDayAssemblyImage.jpeg";
+import SchoolExhibition from "../assets/SchoolExhibition.jpeg";
+import AnnualSportsMeetImage from "../assets/SportsMeet.jpeg";
 import art from "../assets/artCraftactivity.jpeg";
 
+import { Helmet } from "react-helmet";
 
 const Activities = () => {
-  document.title = "Activities - GDGPS Aligarh";
   const cardsRef = useRef([]);
 
   const activitiesData = [
@@ -39,7 +39,7 @@ const Activities = () => {
       id: 1,
       title: "Art and Craft",
       description:
-      "NC KG students have a blast in beginning of New academic year with the Taste & Touch activity, exploring their senses while also learning about the ascending and descending order of numbers through fun and interactive play!",
+        "NC KG students have a blast in beginning of New academic year with the Taste & Touch activity, exploring their senses while also learning about the ascending and descending order of numbers through fun and interactive play!",
       image: art,
     },
     {
@@ -190,13 +190,17 @@ const Activities = () => {
       image: HorseRiding,
     },
   ];
-  
-  
-  
-  
 
   return (
     <Layout>
+      <Helmet>
+        <title>School Activities - GD Goenka Public School Aligarh</title>
+        <meta
+          name="description"
+          content="Explore a wide range of school activities at GD Goenka Aligarh including sports, cultural events, workshops, and student clubs."
+        />
+      </Helmet>
+
       {/* Banner Section */}
       <motion.div
         className="relative h-[28vh] md:h-[60vh] lg:h-[60vh] overflow-hidden"

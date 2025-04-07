@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import GoenkanBanner from "../assets/bg2.jpg"
 import GoenkanPursuitsPdf from "../assets/Goenkan Pursuits-2025-26-(NUR - II).pdf"
 import GoenkanPursuitsPdf2 from '../assets/GOENKAN-PURSUITS-2025-26(Term1).pdf'
+import { Helmet } from "react-helmet"
 
 function GoenkanPursuits() {
   const iframeRef = useRef(null)
@@ -61,6 +62,11 @@ function GoenkanPursuits() {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Goenkan Pursuits - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Explore unique initiatives and student-driven programs under the Goenkan Pursuits at GD Goenka Aligarh." />
+</Helmet>
+
       <div className="relative bgImage">
         <motion.img
           src={GoenkanBanner}

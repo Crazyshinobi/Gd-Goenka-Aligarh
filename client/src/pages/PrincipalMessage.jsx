@@ -5,12 +5,17 @@ import { motion } from "framer-motion";
 import School from "../assets/School.jpg";
 import PrincipalPhoto from "../assets/principal1.jpeg";
 import bg1 from '../assets/bg2.jpg'
+import { Helmet } from "react-helmet";
 
 const PrincipalMessage = () => {
-  document.title = 'Principal Message - GDGPS Aligarh';
 
   return (
     <Layout>
+      <Helmet>
+  <title>Principal's Message - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="A message from the Principal of GD Goenka Public School Aligarh emphasizing vision, goals, and student growth." />
+</Helmet>
+
       {/* Banner Section */}
       <div className="relative bgImage">
         <motion.img

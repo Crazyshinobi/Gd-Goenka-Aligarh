@@ -9,11 +9,11 @@ import managementPhoto from "../assets/Management1.jpg";
 import managementPhoto2 from "../assets/Management2.jpg";
 
 import bgDesign from "../assets/bgdesign3.jpg";
+import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ManagementPage = () => {
-  document.title = "Management - GDGPS Aligarh";
   useEffect(() => {
     // GSAP Animations
     gsap.fromTo(
@@ -37,6 +37,11 @@ const ManagementPage = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Management - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Meet the school management team and learn about the leadership driving GD Goenka Aligarh." />
+</Helmet>
+
       {/* Banner Section */}
       <div className="bgImage relative">
         <motion.img

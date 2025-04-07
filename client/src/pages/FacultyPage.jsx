@@ -4,6 +4,7 @@ import NavigationPages from './NavigationPages';
 import JobBanner from "../assets/JobBanner.jpeg";
 import axios from 'axios';
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 export default function FacultyPage() {
     document.title = "Our Faculty - GDGPS Aligarh";
@@ -27,6 +28,11 @@ export default function FacultyPage() {
 
     return (
         <Layout>
+          <Helmet>
+  <title>Meet Our Faculty - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Meet the dedicated teachers and educators who drive excellence at GD Goenka Public School Aligarh." />
+</Helmet>
+
             <div className="relative bgImage">
                 <h1 className="absolute bottom-4 shadow-md md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded">
                     Faculty

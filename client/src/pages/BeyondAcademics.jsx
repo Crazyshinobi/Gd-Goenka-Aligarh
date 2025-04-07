@@ -17,11 +17,11 @@ import FestivalImage1 from "../assets/Festival.JPG";
 import FestivalImage2 from "../assets/Festival2.JPG";
 import plantation1 from "../assets/plantation1.jpeg";
 import plantation2 from "../assets/plantation2.jpeg";
+import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const BeyondAcademics = () => {
-  document.title = "Beyond Academics - GDGPS Aligarh";
   const bannerRef = useRef(null);
   const sectionsRef = useRef([]);
 
@@ -138,6 +138,11 @@ The benefits of art education do not stop in the classroom or at the school. Art
 
   return (
     <Layout>
+      <Helmet>
+  <title>Beyond Academics - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Explore co-curricular activities beyond academics including sports, arts, and leadership development at GD Goenka Aligarh." />
+</Helmet>
+
       {/* Enhanced Banner Section with Overlay */}
       <div
         className="relative bgImage w-full h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[65vh] overflow-hidden"

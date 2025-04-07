@@ -6,9 +6,9 @@ import IgnitingMinds from "../assets/IgnitingMinds.jpg";
 import IgnitingMinds1 from "../assets/IgnitingMinds1.JPG";
 import Carousel from "react-multi-carousel";
 import bgDesign from '../assets/bgdesign3.jpg'
+import { Helmet } from "react-helmet";  
 
 const IgnitingMindsPage = () => {
-  document.title = 'Ignitind Minds - GDGPS Aligarh'
   
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
@@ -17,6 +17,11 @@ const IgnitingMindsPage = () => {
   };
   return (
     <Layout>
+      <Helmet>
+  <title>Igniting Minds - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Discover how we ignite young minds through innovation, creativity, and a future-focused approach to learning." />
+</Helmet>
+
       {/* Banner Section */}
       <div className="relative bgImage">
         <h1  className="absolute  bottom-6 left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-md">

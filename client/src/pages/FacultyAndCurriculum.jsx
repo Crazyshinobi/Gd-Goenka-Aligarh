@@ -31,6 +31,7 @@ import IndoorGames from "../assets/IndoorGames.JPG";
 import TableTennis from "../assets/TableTennis.JPG";
 import bg1 from "../assets/bg2.jpg";
 import CricketGround from "../assets/Cricket.jpeg";
+import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,6 +150,12 @@ const FacultyAndCurriculum = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Faculty and Curriculum - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Learn about our experienced faculty members and the rich, balanced curriculum followed at GD Goenka Aligarh." />
+</Helmet>
+
+
       {/* Banner Section */}
       <div className="relative bgImage">
         <motion.img

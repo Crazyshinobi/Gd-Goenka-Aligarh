@@ -11,11 +11,11 @@ import { useFetchData } from '../hooks/useFetchData';
 import bgDesign from "../assets/bgdesign3.jpg";
 import GalleryBanner from '../assets/Family.jpg'
 import { IoIosClose } from "react-icons/io";
+import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ImageGallery = () => {
-  document.title = 'Gallery - GDGPS Aligarh'
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [filteredImages, setFilteredImages] = useState([]);
   const [categories, setCategories] = useState(['ALL']);
@@ -112,6 +112,11 @@ const ImageGallery = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Gallery - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Browse our image gallery to see vibrant campus life and school events at GD Goenka Aligarh." />
+</Helmet>
+
       <motion.div
         className="relative h-[35vh] md:h-[60vh] lg:h-[60vh] overflow-hidden"
         initial={{ opacity: 0 }}

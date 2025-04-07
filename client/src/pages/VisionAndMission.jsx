@@ -7,11 +7,11 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Bannerbg from "../assets/visionBanner1.jpeg";
 import vision from "../assets/vision.jpeg";
 import mission from "../assets/mission.jpeg";
+import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const VisionAndMission = () => {
-  document.title = "Vision and Mission - GDGPS Aligarh";
   useEffect(() => {
     gsap.fromTo(
       ".section-heading",
@@ -60,6 +60,11 @@ const VisionAndMission = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Vision and Mission - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Learn about our school’s mission and vision focused on holistic education and leadership." />
+</Helmet>
+
       {/* Banner Section */}
       <div className="relative">
         <motion.img

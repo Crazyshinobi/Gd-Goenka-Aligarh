@@ -9,11 +9,11 @@ import Carousel from "react-multi-carousel";
 import lab from "../assets/Lab.JPG";
 import lab2 from "../assets/Lab2.jpg";
 import bgDesign from "../assets/bgdesign4.webp";
+import { Helmet } from "react-helmet";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const LabsAndLibrary = () => {
-  document.title = "Labs and Library - GDGPS Aligarh";
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
     tablet: { breakpoint: { max: 1024, min: 464 }, items: 1 },
@@ -68,6 +68,11 @@ const LabsAndLibrary = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Labs and Library - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Explore our state-of-the-art laboratories and extensive library facilities designed to support student learning." />
+</Helmet>
+
       {/* Enhanced Banner Section */}
       <motion.div
         className="relative h-[35vh] md:h-[60vh] lg:h-[60vh] overflow-hidden"

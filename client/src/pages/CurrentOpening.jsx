@@ -4,7 +4,7 @@ import { useFetchData } from "../hooks/useFetchData";
 import { useNavigate } from "react-router-dom";
 import NavigationPages from "./NavigationPages";
 import careerBanner from '../assets/CareerBanner1.jpeg'
-
+import { Helmet } from "react-helmet";
 const CurrentOpening = () => {
   const apiURL = `${process.env.REACT_APP_BASE_URL}/api/v1/job/`;
   const { data, loading, error } = useFetchData(apiURL);
@@ -20,6 +20,11 @@ const CurrentOpening = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Career Opportunities - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Explore current job openings and career opportunities at GD Goenka Public School Aligarh." />
+</Helmet>
+
       <div className="relative bgImage">
         <h1 className="absolute bottom-4 shadow-md md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded">
           CAREER

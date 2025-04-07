@@ -7,10 +7,9 @@ import Carousel from "react-multi-carousel";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import bgDesign from '../assets/bgdesign3.jpg'
-
+import { Helmet } from "react-helmet";
 
 const CompetitionAwards = () => {
-  document.title ='Competition and Awards - GDGPS Aligarh'
   useEffect(() => {
    
     // GSAP Scroll Trigger Animation
@@ -39,6 +38,11 @@ const CompetitionAwards = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Competitions and Awards - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="View our achievements and awards in inter-school competitions, academic excellence, and extracurricular events." />
+</Helmet>
+
       {/* Banner Section */}
       <div className="relative">
         <motion.img

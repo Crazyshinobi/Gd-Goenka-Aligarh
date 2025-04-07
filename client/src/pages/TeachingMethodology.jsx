@@ -7,10 +7,10 @@ import Student2 from "../assets/Student2.JPG";
 import Carousel from "react-multi-carousel";
 import { motion } from "framer-motion";
 import bgDesign from '../assets/bgdesign3.jpg'
+import { Helmet } from "react-helmet";
 
 
 const TeachingMethodology = () => {
-  document.title = 'Teaching Methodology - GDGPS Aligarh'
  
 
   const responsive = {
@@ -21,6 +21,11 @@ const TeachingMethodology = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Teaching Methodology - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Discover innovative and student-friendly teaching methodologies adopted at GD Goenka Public School Aligarh." />
+</Helmet>
+
       {/* Banner Section */}
       <div className="relative">
         <motion.img

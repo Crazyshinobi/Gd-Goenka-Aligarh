@@ -4,9 +4,9 @@ import { motion } from "framer-motion"
 import MandatoryBanner from "../assets/Mandatory-Disclosure1.jpeg"
 import NavigationPages from "./NavigationPages"
 import MandatoryDisclosurePdf from "../assets/MandatoryDisclosureDetails.pdf"
+import { Helmet } from "react-helmet"
 
 const MandatoryDisclosure = () => {
-  document.title = "Mandatory Disclosure - GDGPS Aligarh"
 
   const [selectedPdf, setSelectedPdf] = useState(null)
   const baseURL = `${process.env.REACT_APP_PDF_URL}`
@@ -68,6 +68,11 @@ const MandatoryDisclosure = () => {
 
   return (
     <Layout>
+      <Helmet>
+  <title>Mandatory Disclosure - GD Goenka Public School Aligarh</title>
+  <meta name="description" content="Access mandatory public disclosures as per education board norms at GD Goenka Aligarh." />
+</Helmet>
+
       <div className="relative bgImage">
         <motion.img
           src={MandatoryBanner}

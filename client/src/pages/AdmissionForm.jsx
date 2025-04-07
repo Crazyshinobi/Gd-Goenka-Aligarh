@@ -9,9 +9,9 @@ import bgdesign from "../assets/bgdesign3.jpg";
 import AdmissionSideBanner from "../assets/AdmissionFormSideImg.png";
 import { usePostRequest } from "../hooks/usePostRequest";
 import Cookies from "js-cookie";
+import { Helmet } from "react-helmet";
 
 const AdmissionForm = () => {
-  document.title = "Admission - GDGPS Aligarh";
   const navigate = useNavigate();
   const location = useLocation(); // Get the current location
   const [loading, setLoading] = useState(false);
@@ -92,7 +92,7 @@ const AdmissionForm = () => {
   };
 
   const handleLoginSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // console.log("Login form submitted");
 
@@ -100,58 +100,65 @@ const AdmissionForm = () => {
       setLoading(true);
       // console.log("Form validated successfully");
       try {
-        const response = await loginApi.postRequest(loginData)
+        const response = await loginApi.postRequest(loginData);
         if (response?.success && response?.userToken) {
           // console.log("Login successful, setting token in cookies");
           Cookies.set("userToken", response.userToken, {
             expires: 1,
             secure: true,
             sameSite: "Strict",
-          })
+          });
           Cookies.set("userId", response.userID, {
             expires: 1,
             secure: true,
             sameSite: "Strict",
-          })
+          });
 
           if (response.name) {
-            localStorage.setItem("studentname", response.name)
+            localStorage.setItem("studentname", response.name);
           }
 
           // Transfer temporary form data to user-specific storage
-          const tempActiveStep = sessionStorage.getItem("tempActiveStep")
-          const tempCompletedSteps = sessionStorage.getItem("tempCompletedSteps")
-          const tempFormData = sessionStorage.getItem("tempFormData")
+          const tempActiveStep = sessionStorage.getItem("tempActiveStep");
+          const tempCompletedSteps =
+            sessionStorage.getItem("tempCompletedSteps");
+          const tempFormData = sessionStorage.getItem("tempFormData");
 
           if (tempActiveStep && tempCompletedSteps && tempFormData) {
-            localStorage.setItem(`activeStep_${response.userID}`, tempActiveStep)
-            localStorage.setItem(`completedSteps_${response.userID}`, tempCompletedSteps)
-            localStorage.setItem(`formData_${response.userID}`, tempFormData)
+            localStorage.setItem(
+              `activeStep_${response.userID}`,
+              tempActiveStep
+            );
+            localStorage.setItem(
+              `completedSteps_${response.userID}`,
+              tempCompletedSteps
+            );
+            localStorage.setItem(`formData_${response.userID}`, tempFormData);
 
             // Clear temporary data
-            sessionStorage.removeItem("tempActiveStep")
-            sessionStorage.removeItem("tempCompletedSteps")
-            sessionStorage.removeItem("tempFormData")
+            sessionStorage.removeItem("tempActiveStep");
+            sessionStorage.removeItem("tempCompletedSteps");
+            sessionStorage.removeItem("tempFormData");
           } else {
             // No temporary data, mark as a new user
-            localStorage.setItem(`isNewUser_${response.userID}`, "true")
+            localStorage.setItem(`isNewUser_${response.userID}`, "true");
           }
 
-          toast.success("Login successful")
+          toast.success("Login successful");
           setTimeout(() => {
-            navigate(`/user/dashboard/`)
-          }, 1000)
+            navigate(`/user/dashboard/`);
+          }, 1000);
         } else {
-          toast.error("Login failed")
+          toast.error("Login failed");
         }
       } catch (error) {
-        console.error("Login error:", error)
-        toast.error("An error occurred. Please try again later.")
+        console.error("Login error:", error);
+        toast.error("An error occurred. Please try again later.");
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-  }
+  };
 
   const RegistervalidateForm = () => {
     let newErrors = {};
@@ -201,6 +208,11 @@ const AdmissionForm = () => {
   return (
     <Layout>
       <Toaster />
+      <Helmet>
+        <title>Admission Form - GD Goenka Public School Aligarh</title>
+        <meta name="description" content="Apply online to GD Goenka Public School Aligarh. Complete the admission form easily and take the first step toward a quality education." />
+      </Helmet>
+
       <div className="relative bgImage">
         <motion.img
           src={AdmissionBanner}
