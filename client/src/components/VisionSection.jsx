@@ -1,14 +1,14 @@
-import React from 'react';
-import principal from '../assets/principal1.jpeg';
-import icon from '../assets/prin_icon1.png';
+import React from "react";
+import principal from "../assets/principal1.jpeg";
+import icon from "../assets/prin_icon1.png";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion'; 
-import bg1 from '../assets/bg2.jpg'
+import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
+import bg1 from "../assets/bg2.jpg";
 
 function VisionSection() {
   return (
-    <div className=" w-full mx-auto px-4 py-12 sm:py-16 flex flex-col items-center bg-gradient-to-r  from-blue-50  to-blue-100 " >
+    <div className=" w-full mx-auto px-4 py-12 sm:py-16 flex flex-col items-center bg-gradient-to-r  from-blue-50  to-blue-100 ">
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 max-w-[1280px]">
         {/* Principal Section */}
         <motion.div
@@ -60,7 +60,7 @@ function VisionSection() {
 
         {/* Vision and Mission */}
         <div className="w-full lg:w-[30%] space-y-8">
-          {['Vision', 'Mission'].map((item, index) => (
+          {["Vision", "Mission"].map((item, index) => (
             <motion.div
               key={index}
               className="bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
@@ -73,9 +73,9 @@ function VisionSection() {
                 {item}
               </h2>
               <p className="text-white text-lg mb-6">
-                {item === 'Vision'
-                  ? 'To create an inspiring environment that fosters creativity, curiosity, and growth, where learning becomes a journey of limitless possibilities.'
-                  : 'GD Goenka Aligarh empowers students with knowledge, skills, and leadership to thrive in a dynamic world and meet future challenges with confidence.'}
+                {item === "Vision"
+                  ? "To create an inspiring environment that fosters creativity, curiosity, and growth, where learning becomes a journey of limitless possibilities."
+                  : "GD Goenka Aligarh empowers students with knowledge, skills, and leadership to thrive in a dynamic world and meet future challenges with confidence."}
               </p>
               <div className="flex justify-end">
                 <NavLink to={"/about/vision-and-mission"}>
@@ -103,48 +103,55 @@ function VisionSection() {
             <div className="bg-[#003963] text-4xl text-white p-6 text-center">
               Notifications
             </div>
-            <div className=' p-2 font-bold text-red-600 mx-auto text-center text-lg '>
-             <a href="/pdfs/AnnualExamDateSheet24-25.pdf#toolbar=0"
-             target="_blank"
-             rel="noopener noreferrer"> 
-             Annual Exam Date Sheet 2024-25
-             </a>
+            <div className=" p-2 font-bold text-red-600 mx-auto text-center text-lg ">
+              <a
+                href="/pdfs/AnnualExamDateSheet24-25.pdf#toolbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Annual Exam Date Sheet 2024-25
+              </a>
             </div>
             <div className="p-6 space-y-4 text-[#212529]">
               {[
-               {
-                title : 'Christmas Day Celebration | 24.12.2024',
-                pdfLink : '/pdfs/Christmas-Celebration.pdf'
-               },
-               {
-                title : 'Diwali Celebration | 28.10.2024',
-                pdfLink : '/pdfs/Diwali-Celebration.pdf'
-               },
-               {
-                title : 'Janmashtami Celebration | 24.08.2024',
-                pdfLink : '/pdfs/Janamashtami-Celebration.pdf'
-               },
-               {
-                title : 'Independence Day Celebration | 14.08.2024',
-                pdfLink : '/pdfs/Independence-Day.pdf'
-               },
                 {
-                  newtitle :  'Celebration of Folk Dances of India (Grade 7) | 29.11.24',
-               },
-               {
-                newtitle : 'Scholastic Excellence Award Ceremony (Grades 3-12) | 07.12.2024',
-               },
-               {
-                newtitle : 'Meet the Author - Read-Aloud Session (Grades 3-12) | 06.12.24',
-               },
+                  title: "School Timing Notice | 01.04.2025",
+                  pdfLink: "/pdfs/Notice-school-timing.pdf",
+                },
+
+                {
+                  title: "Online Fee Payment Notice | 01.04.2025",
+                  pdfLink: "/pdfs/Notice-for-online-payment.pdf",
+                },
+                {
+                  title: "School Operation Committee Notice | 01.04.2025",
+                  pdfLink: "/pdfs/School-Operations-Committee-2025-26.pdf",
+                },
+                {
+                  title: "Christmas Day Celebration | 24.12.2024",
+                  pdfLink: "/pdfs/Christmas-Celebration.pdf",
+                },
+                {
+                  title: "Diwali Celebration | 28.10.2024",
+                  pdfLink: "/pdfs/Diwali-Celebration.pdf",
+                },
+                {
+                  title: "Janmashtami Celebration | 24.08.2024",
+                  pdfLink: "/pdfs/Janamashtami-Celebration.pdf",
+                },
+                {
+                  title: "Independence Day Celebration | 14.08.2024",
+                  pdfLink: "/pdfs/Independence-Day.pdf",
+                },
               ].map((event, index) => (
                 <p key={index} className="text-lg leading-relaxed">
-                  <a href={`${event.pdfLink}#toolbar=0`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                  <a
+                    href={`${event.pdfLink}#toolbar=0`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 hover:underline"
                   >
-                  {event.title}
+                    {event.title}
                   </a>
                   {event.newtitle}
                 </p>
@@ -152,7 +159,10 @@ function VisionSection() {
             </div>
           </div>
           <div className="text-center mt-4">
-            <NavLink to={"/academics/goenkan-pursuits"}  className="text-blue-500 hover:underline">
+            <NavLink
+              to={"/academics/goenkan-pursuits"}
+              className="text-blue-500 hover:underline"
+            >
               Read more
             </NavLink>
           </div>

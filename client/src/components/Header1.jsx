@@ -186,12 +186,22 @@ function Header1() {
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
                <a
-                href="/pdfs/Daily-Routine.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                href="/pdfs/Daily-Routine-Junior.pdf#toolbar=0&navpanes=0&scrollbar=0"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
-                  Daily Routine
+                  Junior Daily Routine
+                </li>
+              </a>
+              <hr />
+               <a
+                href="/pdfs/Daily-Routine-Senior.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
+                 Senior Daily Routine
                 </li>
               </a>
               <hr />
@@ -614,12 +624,22 @@ function Header1() {
             <AccordionDetails>
               <ul>
               <a
-                  href="/pdfs/Daily-Routine.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  href="/pdfs/Daily-Routine-Junior.pdf#toolbar=0&navpanes=0&scrollbar=0"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
-                    Daily Routine
+                   Junior Daily Routine
+                  </li>
+                </a>
+                <hr />
+              <a
+                  href="/pdfs/Daily-Routine-Senior.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                   Senior Daily Routine
                   </li>
                 </a>
                 <hr />

@@ -16,55 +16,53 @@ const MandatoryDisclosure = () => {
     setSelectedPdf(pdf)
   }
 
-  useEffect(() => {
-    const preventContextMenu = (e) => {
-      e.preventDefault()
-      return false
-    }
-
-    const preventKeyboardShortcuts = (e) => {
-      if (
-        (e.ctrlKey && (e.key === "s" || e.key === "p" || e.key === "c")) || // Prevent Ctrl+S, Ctrl+P, Ctrl+C
-        (e.altKey && e.key === "PrintScreen") // Prevent Alt+PrintScreen
-      ) {
-        e.preventDefault()
-        return false
-      }
-    }
-
-    const preventCopyPaste = (e) => {
-      e.preventDefault()
-      return false
-    }
-
-    if (iframeRef.current) {
-      const iframeDocument = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document
-
-      iframeDocument.addEventListener("contextmenu", preventContextMenu)
-      iframeDocument.addEventListener("keydown", preventKeyboardShortcuts)
-      iframeDocument.addEventListener("copy", preventCopyPaste)
-      iframeDocument.addEventListener("cut", preventCopyPaste)
-      iframeDocument.addEventListener("paste", preventCopyPaste)
-
-      // Disable text selection
-      iframeDocument.body.style.userSelect = "none"
-      iframeDocument.body.style.webkitUserSelect = "none"
-      iframeDocument.body.style.msUserSelect = "none"
-      iframeDocument.body.style.mozUserSelect = "none"
-    }
-
-    return () => {
-      if (iframeRef.current) {
-        const iframeDocument = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document
-
-        iframeDocument.removeEventListener("contextmenu", preventContextMenu)
-        iframeDocument.removeEventListener("keydown", preventKeyboardShortcuts)
-        iframeDocument.removeEventListener("copy", preventCopyPaste)
-        iframeDocument.removeEventListener("cut", preventCopyPaste)
-        iframeDocument.removeEventListener("paste", preventCopyPaste)
-      }
-    }
-  }, [])
+  // useEffect(() => {
+  //   const iframe = iframeRef.current;
+  
+  //   if (iframe) {
+  //     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+  
+  //     const preventContextMenu = (e) => {
+  //       e.preventDefault();
+  //       return false;
+  //     };
+  
+  //     const preventKeyboardShortcuts = (e) => {
+  //       if (
+  //         (e.ctrlKey && (e.key === "s" || e.key === "p" || e.key === "c")) ||
+  //         (e.altKey && e.key === "PrintScreen")
+  //       ) {
+  //         e.preventDefault();
+  //         return false;
+  //       }
+  //     };
+  
+  //     const preventCopyPaste = (e) => {
+  //       e.preventDefault();
+  //       return false;
+  //     };
+  
+  //     iframeDocument.addEventListener("contextmenu", preventContextMenu);
+  //     iframeDocument.addEventListener("keydown", preventKeyboardShortcuts);
+  //     iframeDocument.addEventListener("copy", preventCopyPaste);
+  //     iframeDocument.addEventListener("cut", preventCopyPaste);
+  //     iframeDocument.addEventListener("paste", preventCopyPaste);
+  
+  //     iframeDocument.body.style.userSelect = "none";
+  //     iframeDocument.body.style.webkitUserSelect = "none";
+  //     iframeDocument.body.style.msUserSelect = "none";
+  //     iframeDocument.body.style.mozUserSelect = "none";
+  
+  //     return () => {
+  //       iframeDocument.removeEventListener("contextmenu", preventContextMenu);
+  //       iframeDocument.removeEventListener("keydown", preventKeyboardShortcuts);
+  //       iframeDocument.removeEventListener("copy", preventCopyPaste);
+  //       iframeDocument.removeEventListener("cut", preventCopyPaste);
+  //       iframeDocument.removeEventListener("paste", preventCopyPaste);
+  //     };
+  //   }
+  // }, []);
+  
 
   return (
     <Layout>
@@ -125,7 +123,7 @@ const MandatoryDisclosure = () => {
           ].map((item, index) => (
             <button
               key={index}
-              onClick={() => handlePdfSelect(`${baseURL}${item.link}`)}
+              onClick={() => handlePdfSelect(item.link)}
               className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] text-left py-2 px-4 rounded-lg mb-2 w-full"
             >
               {item.label}
