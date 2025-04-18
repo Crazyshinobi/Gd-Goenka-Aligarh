@@ -2,32 +2,72 @@ import React from "react";
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
 
-export const ExcelExport = ({ data, columns }) => {
+export const ExcelExport = ({ data, columns, fileName = "Report" }) => {
+  // Helper to get nested property values
+  const getNestedValue = (obj, path) => {
+    return path.split('.').reduce((o, p) => (o ? o[p] : null), obj);
+  };
+
+  // Format value for Excel export
+  const formatValue = (value) => {
+    if (value === null || value === undefined) return '-';
+    if (typeof value === 'boolean') return value ? 'Yes' : 'No';
+    if (value instanceof Date) return value.toLocaleDateString("en-GB");
+    return value;
+  };
+
   const exportExcel = () => {
-    // Map data to only include the columns you want
-    const filteredData = data.map((rowData, index) => {
-      const row = {
-        // Add S.No manually, increment based on index
-        "S.No": index + 1, // This is to add the S.No column dynamically
-      };
+    if (!data || !columns) return;
+
+    const processedData = data.map((rowData, rowIndex) => {
+      const row = {};
 
       columns.forEach((col) => {
-        // Check if the column has a field (standard field-based columns)
+        // Skip separator columns
+        if (col.separator) return;
+
+        // Handle standard fields (including nested paths)
         if (col.field) {
-          row[col.header] = rowData[col.field];
-        } else {
-          // If there's no 'field' (like for custom columns such as 'S.No')
-          row[col.header] = col.body
-            ? col.body(rowData, { rowIndex: index })
-            : null;
+          const value = getNestedValue(rowData, col.field);
+          row[col.header] = formatValue(value);
+        }
+        // Handle custom body columns
+        else if (col.body) {
+          const result = col.body(rowData, { rowIndex });
+          // Handle JSX elements (like buttons) by extracting text content
+          if (React.isValidElement(result)) {
+            row[col.header] = result.props.children || '-';
+          } else {
+            row[col.header] = formatValue(result);
+          }
+        }
+        // Handle columns with header but no field/body (like S.No)
+        else if (col.header) {
+          row[col.header] = rowIndex + 1;
+        }
+      });
+
+      // Handle array fields (like parents_information, other_relatives)
+      // This automatically detects and flattens array fields
+      Object.keys(rowData).forEach(key => {
+        if (Array.isArray(rowData[key])) {
+          rowData[key].forEach((item, index) => {
+            if (typeof item === 'object') {
+              Object.keys(item).forEach(prop => {
+                row[`${key}_${index+1}_${prop}`] = formatValue(item[prop]);
+              });
+            } else {
+              row[`${key}_${index+1}`] = formatValue(item);
+            }
+          });
         }
       });
 
       return row;
     });
 
-    // Convert to sheet
-    const worksheet = XLSX.utils.json_to_sheet(filteredData);
+    // Convert to worksheet
+    const worksheet = XLSX.utils.json_to_sheet(processedData);
     const workbook = { Sheets: { data: worksheet }, SheetNames: ["data"] };
 
     // Export as Excel file
@@ -36,21 +76,15 @@ export const ExcelExport = ({ data, columns }) => {
       type: "array",
     });
 
-    saveAsExcelFile(excelBuffer, "Report");
+    saveAsExcelFile(excelBuffer, fileName);
   };
 
   const saveAsExcelFile = (buffer, fileName) => {
-    const EXCEL_TYPE =
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+    const EXCEL_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
     const EXCEL_EXTENSION = ".xlsx";
-    const data = new Blob([buffer], {
-      type: EXCEL_TYPE,
-    });
+    const data = new Blob([buffer], { type: EXCEL_TYPE });
 
-    saveAs(
-      data,
-      fileName + "_export_" + new Date().getTime() + EXCEL_EXTENSION
-    );
+    saveAs(data, `${fileName}_${new Date().getTime()}${EXCEL_EXTENSION}`);
   };
 
   return (
