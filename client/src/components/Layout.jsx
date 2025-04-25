@@ -7,8 +7,7 @@ import ModalBox from "./ModalBox";
 export const Layout = ({ children }) => {
 
   return (
-    // style={{background: "linear-gradient(135deg, #E8EEF8, #FFFFFF)"}}
-    // style={{ background: "linear-gradient(135deg, #DDEAFE, #FFFFFF)" }} 
+    
     <div className="flex flex-col min-h-screen ">
       {/* Navbar */}
       <SocialConnect/>

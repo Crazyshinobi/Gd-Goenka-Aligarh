@@ -12,7 +12,7 @@ export const ViewAdmissionApplication = () => {
     ...admissionApplication.map((row) => row.parents_information?.length || 0)
   );
   const maxRelatives = Math.max(
-    ...admissionApplication.map((row) => row.other_relatives?.length || 0)
+    ...admissionApplication.map((row) => row.other_relatives?.length || 0)    
   );
   const columns = [
     {
