@@ -1,5 +1,5 @@
 import React from "react";
-import mainImage from "../assets/admission_banner.jpg";
+import mainImage from "../assets/admission_banner.png";
 import "../css/ImageSection.css";
 import { Link } from "react-router-dom";
 

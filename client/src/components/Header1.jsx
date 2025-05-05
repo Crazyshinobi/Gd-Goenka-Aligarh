@@ -64,17 +64,16 @@ function Header1() {
             <hr />
             <NavLink to={"/about/vision-and-mission"}>
               {" "}
-              <li className="menu-item cursor-pointer hover:text-white mt-[-8px] mb-[-8px]">
+              <li className="menu-item cursor-pointer hover:text-white mt-[-9px]">
                 VISION & MISSION
               </li>
             </NavLink>
-            <hr />
-            <NavLink to={"/about/mandatory-disclosure"}>
+           {/* <NavLink to={"/about/mandatory-disclosure"}>
               {" "}
               <li className="menu-item cursor-pointer hover:text-white mt-[-9px]">
                 MANDATORY DISCLOSURE
               </li>
-            </NavLink>
+            </NavLink> */}
           </ul>
 
           <div className="relative peer">
@@ -342,6 +341,19 @@ function Header1() {
                   </NavLink>
                 </ul>
               </AccordionDetails>
+            </Accordion>
+            
+            <Accordion>
+              <AccordionSummary
+                aria-controls="panel2-content"
+                id="panel2-header"
+                className="uppercase"
+              >
+              <NavLink to={"/about/mandatory-disclosure"}>
+                MANDATORY DISCLOSURE
+            </NavLink>
+              </AccordionSummary>
+            
             </Accordion>
 
             {/* IMAGE GALLERY ACCORDIAN */}
