@@ -31,6 +31,7 @@ import art from "../assets/artCraftactivity.jpeg";
 import EarthDay from '../assets/EarthDayImg.jpeg'
 import PahalgamImg from '../assets/pahalgamImg.jpeg'
 import GoenkanTest from '../assets/goenkanTest.jpeg'
+import MothersDayImage from '../assets/MothersDayImg.jpeg'
 
 import { Helmet } from "react-helmet";
 
@@ -212,6 +213,13 @@ const Activities = () => {
       description:
         "The GOENKAN Common Ability Assessment (GCAA) exam was conducted by GD Goenka Public School, Vasant Kunj, for students from various branches, including GDG Aligarh. The exam was OMR-based, allowing for efficient evaluation of student performance.The school aims to create an environment conducive to creative learning, empowering students to meet current and future challenges. It focuses on holistic development, incorporating 21st-century skills, and nurturing emotional health and social awareness.",
       image: GoenkanTest,
+    },
+    {
+      id: 26,
+      title: "Mother's Day Celebration",
+      description:
+        "Our school celebrated Mother’s Day with great enthusiasm and heartfelt emotions. The event featured vibrant performances, including emotional, cute, and funny dances that delighted the audience. A touching group song dedicated to mothers and a heartfelt skit on a mother’s love moved many to tears. Fun games for the mothers added joy and laughter to the celebration.",
+      image: MothersDayImage,
     },
 
   ];
