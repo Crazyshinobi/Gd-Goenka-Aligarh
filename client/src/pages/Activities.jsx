@@ -224,10 +224,10 @@ const Activities = () => {
       image: MothersDayImage,
     },
     {
-      id: 26,
+      id: 27,
       title: "Parent's Teacher Meeting",
       description:
-        "We successfully conducted our first Parent-Teacher Meeting of the new academic session on 21 May 2025. It was a productive day filled with meaningful conversations between parents and teachers, all focused on the growth and well-being of our students.Parents received insights into their child's early progress, classroom behavior, and goals for the term. The PTM also provided a platform to strengthen the home-school connection, which is vital for holistic development.A big thank you to all the parents who joined us and to our dedicated teachers for making it a valuable experience!",
+        "We successfully conducted our first Parent-Teacher Meeting of the new academic session on 21 May 2025. It was a productive day filled with meaningful conversations between parents and teachers, all focused on the growth and well-being of our students.Parents received insights into their child's early progress, classroom behavior, and goals for the term. A big thank you to all the parents who joined us and to our dedicated teachers for making it a valuable experience!",
         image: PTMImage,
     },
 
@@ -235,7 +235,7 @@ const Activities = () => {
       id: 28,
       title: "Summer Camp",
       description:
-        "The much-awaited Summer Camp 2025 commenced with great enthusiasm and vibrant energy on its first day. Students started the day with joyful participation in music and dance, setting a lively tone. This was followed by energetic sessions of cricket, badminton, and table tennis.Creative skills were nurtured through cursive writing, while martial arts boosted confidence and discipline. A special personality development session helped students build self-esteem and communication skills. The day concluded with smiles and a sense of accomplishment!",
+        "The much-awaited Summer Camp 2025 commenced with great enthusiasm and vibrant energy on its first day. Students started the day with joyful participation in music and dance, setting a lively tone. This was followed by energetic sessions of cricket, badminton, and table tennis.Creative skills were nurtured through cursive writing, while martial arts boosted confidence and discipline.The day concluded with smiles and a sense of accomplishment!",
       image: SummerCampImage,
     },
   
