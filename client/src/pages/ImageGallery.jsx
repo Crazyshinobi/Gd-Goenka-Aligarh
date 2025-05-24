@@ -98,8 +98,6 @@ const ImageGallery = () => {
     });
   }, []);
 
-
-
   const openFullScreen = (image) => {
     setFullScreenImage(image);
     setIsFullScreen(true);
