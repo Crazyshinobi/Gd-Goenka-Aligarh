@@ -227,6 +227,40 @@ function Header1() {
             </ul>
           </div>
 
+          {/* committee  */}
+          <div className="relative peer">
+            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+            Committee
+            </li>
+
+            <ul
+              className="fee_payment_drop pt-3 top-[49px] font-extralight uppercase absolute hidden peer-hover:flex hover:flex w-[220px]
+                flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
+            >
+               <a
+                href="/pdfs/Sexual-Harrasment-Committee-GDGOENKA.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
+                  Harrasment Committee
+                </li>
+              </a>
+              <hr />
+               
+              <a
+                href="/pdfs/Pocso-Committee-of-GD-Goenka.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
+                 Posco Committee
+                </li>
+              </a>
+
+            </ul>
+          </div>
+
           <div className="relative peer">
             <li className="relative peer uppercase p-3 hover:bg-sky-300 hover:text-white rounded-md cursor-pointer transition-all">
               admissions
@@ -679,6 +713,44 @@ function Header1() {
               </ul>
             </AccordionDetails>
           </Accordion>
+
+          {/* committee  */}
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+              className="uppercase"
+            >
+              Committee
+            </AccordionSummary>
+            <AccordionDetails>
+              <ul>
+              <a
+                href="/pdfs/Sexual-Harrasment-Committee-GDGOENKA.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 flex mt-[-16px] ms-[-4px] uppercase">
+                   Harrasment Committee
+                  </li>
+                </a>
+            
+                <hr />
+    
+                <a
+                  href="/pdfs/Pocso-Committee-of-GD-Goenka.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
+                  Posco Committee
+                  </li>
+                </a>
+              </ul>
+            </AccordionDetails>
+          </Accordion>
+
 
           {/* ADMISSION ACCORDIAN */}
 

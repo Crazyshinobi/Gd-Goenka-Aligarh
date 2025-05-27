@@ -9,7 +9,6 @@ import { usePostRequest } from "../hooks/usePostRequest";
 import { Helmet } from "react-helmet";
 
 const ContactForm = () => {
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,15 +29,9 @@ const ContactForm = () => {
 
   const validateForm = () => {
     let newErrors = {};
-    if (!formData.name)
-      newErrors.name = "Name is required";
-    if (!formData.email)
-      newErrors.email = "Email Address is required";
-    else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
-        formData.email
-      )
-    ) {
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.email) newErrors.email = "Email Address is required";
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
       newErrors.email = "Invalid email address";
     }
     if (!formData.mobile)
@@ -60,23 +53,20 @@ const ContactForm = () => {
 
     if (validateForm()) {
       setLoading(true);
-      console.log("Form Data:", formData);
-      const response = await postRequest(formData);
-
-      if (response && response.success) {
-        setFormData({
-          name: "",
-          email: "",
-          mobile: "",
-          message: "",
-        });
-        setTimeout(() => {
-          setLoading(false);
+      try {
+        console.log("Sending data:", formData);
+        const response = await postRequest(formData);
+        console.log("Response from backend:", response);
+        if (response && response.success) {
+          setFormData({ name: "", email: "", mobile: "", message: "" });
           toast.success("Form submitted successfully");
-        });
-      } else {
-        toast.error("Failed to submit the form.");
-        console.error("Error Submitting form:", error);
+        } else {
+          toast.error(response?.message || "Failed to submit the form.");
+        }
+      } catch (err) {
+        console.error("Submit error:", err);
+        toast.error("An error occurred during submission.");
+      } finally {
         setLoading(false);
       }
     }
@@ -86,9 +76,12 @@ const ContactForm = () => {
     <Layout>
       <Toaster />
       <Helmet>
-  <title>Contact Us - GD Goenka Public School Aligarh</title>
-  <meta name="description" content="Get in touch with GD Goenka Public School Aligarh through our easy-to-use contact form." />
-</Helmet>
+        <title>Contact Us - GD Goenka Public School Aligarh</title>
+        <meta
+          name="description"
+          content="Get in touch with GD Goenka Public School Aligarh through our easy-to-use contact form."
+        />
+      </Helmet>
 
       <div className="relative bgImage">
         <motion.img
@@ -228,9 +221,7 @@ const ContactForm = () => {
                       placeholder="Enter your full name"
                     />
                     {errors.name && (
-                      <p className="mt-1 text-sm text-red-600">
-                        {errors.name}
-                      </p>
+                      <p className="mt-1 text-sm text-red-600">{errors.name}</p>
                     )}
                   </div>
 
