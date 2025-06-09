@@ -254,7 +254,7 @@ function Header1() {
                 rel="noopener noreferrer"
               >
                 <li className="menu-item cursor-pointer ps-2 flex mt-[-16px] hover:text-white">
-                 Posco Committee
+                 Pocso Committee
                 </li>
               </a>
 
@@ -744,7 +744,7 @@ function Header1() {
                   rel="noopener noreferrer"
                 >
                   <li className="menu-item cursor-pointer ps-1 leading-none flex  mb-[-4px] uppercase ms-[-4px]">
-                  Posco Committee
+                  Pocso Committee
                   </li>
                 </a>
               </ul>

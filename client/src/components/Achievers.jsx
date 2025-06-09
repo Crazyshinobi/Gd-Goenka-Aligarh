@@ -67,7 +67,7 @@ function Achievers(){
         
         {/* Perfect 100 Slide */}
         <div className="px-2 ">
-          <div className="bg-gradient-to-r from-gray-100 to-white rounded-lg">
+          <div className="bg-gradient-to-r text-red-300 from-gray-100 to-white rounded-lg">
             <img src={Topper} alt="Perfect 100 Toppers" className="rounded-lg" />
           </div>
         </div>
