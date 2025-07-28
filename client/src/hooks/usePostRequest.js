@@ -10,12 +10,15 @@ export const usePostRequest = (url) => {
     setLoading(true);
     setError(null); 
     try {
+      console.log("Sending POST request to:", url, "with data:", data);
       const response = await axios.post(url, data);
+      console.log("Response from server:", response.data);
       return response.data; 
     } catch (err) {
-      console.error(err);
+      console.error("POST request failed:", err);
       setError(err);
       toast.error(err.response?.data?.message || "An error occurred.");
+      return null;
     } finally {
       setLoading(false);
     }

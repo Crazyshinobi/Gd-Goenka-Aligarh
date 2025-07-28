@@ -32,6 +32,8 @@ import EarthDay from '../assets/EarthDayImg.jpeg'
 import PahalgamImg from '../assets/pahalgamImg.jpeg'
 import GoenkanTest from '../assets/goenkanTest.jpeg'
 import MothersDayImage from '../assets/MothersDayImg.jpeg'
+import SummerCampImage from '../assets/SummerCampImg.jpeg'
+import PTMImage from '../assets/PTMImg.jpeg'
 
 import { Helmet } from "react-helmet";
 
@@ -221,7 +223,22 @@ const Activities = () => {
         "Our school celebrated Mother’s Day with great enthusiasm and heartfelt emotions. The event featured vibrant performances, including emotional, cute, and funny dances that delighted the audience. A touching group song dedicated to mothers and a heartfelt skit on a mother’s love moved many to tears. Fun games for the mothers added joy and laughter to the celebration.",
       image: MothersDayImage,
     },
+    {
+      id: 27,
+      title: "Parent's Teacher Meeting",
+      description:
+        "We successfully conducted our first Parent-Teacher Meeting of the new academic session on 21 May 2025. It was a productive day filled with meaningful conversations between parents and teachers, all focused on the growth and well-being of our students.Parents received insights into their child's early progress, classroom behavior, and goals for the term. A big thank you to all the parents who joined us and to our dedicated teachers for making it a valuable experience!",
+        image: PTMImage,
+    },
 
+    {
+      id: 28,
+      title: "Summer Camp",
+      description:
+        "The much-awaited Summer Camp 2025 commenced with great enthusiasm and vibrant energy on its first day. Students started the day with joyful participation in music and dance, setting a lively tone. This was followed by energetic sessions of cricket, badminton, and table tennis.Creative skills were nurtured through cursive writing, while martial arts boosted confidence and discipline.The day concluded with smiles and a sense of accomplishment!",
+      image: SummerCampImage,
+    },
+  
   ];
   
 

@@ -6,7 +6,7 @@ import LabsAndLibraryBanner from "../assets/Library.jpg";
 import NavigationPages from "./NavigationPages";
 import { Layout } from "../components/Layout";
 import Carousel from "react-multi-carousel";
-import lab2 from "../assets/Lab.JPG";
+import lab2 from "../assets/Lab.jpg";
 import lab from "../assets/Lab2.jpg";
 import bgDesign from "../assets/bgdesign4.webp";
 import { Helmet } from "react-helmet";
