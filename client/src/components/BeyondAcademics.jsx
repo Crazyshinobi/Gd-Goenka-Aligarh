@@ -4,11 +4,11 @@ import "react-multi-carousel/lib/styles.css";
 import { motion } from "framer-motion"; // Import framer-motion
 import "../css/BeyondAcademics.css";
 import ParentChild from "../assets/Family.jpg";
-import Sports from "../assets/Sports.JPG";
-import Music from "../assets/MusicAndDance.jpg";
-import Art from "../assets/Art.jpg";
+import SummerCamp from "../assets/SummerCamp.jpeg";
+import YogaImage from "../assets/YogaImage.jpeg";
+import TeejCelebration from "../assets/TeejCelebration.jpeg";
+import SportsActivity from '../assets/SportsActivity.jpeg'
 import bg from "../assets/imagebg.jpg";
-import CulturalFestivals from "../assets/Festival.JPG";
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1536 }, items: 3 },
@@ -24,29 +24,29 @@ const cardsData = [
     description:
       "GD Goenka Public School, Aligarh, strengthens family bonds through engaging parent-child activities and collaborative events.",
   },
-  {
-    title: "Sport",
-    image: Sports,
+ {
+    title: "Teej Celebration",
+    image: TeejCelebration,
     description:
-      "At GD Goenka Public School, Aligarh, sports training instills a sense of discipline, teamwork, and physical fitness.",
+      "The vibrant Teej celebration at GD Goenka Public School brings traditional customs alive, teaching students the value of cultural heritage.",
   },
   {
-    title: "Music & Dance",
-    image: Music,
+    title: "Summer Camp",
+    image: SummerCamp,
     description:
-      "Learning at GD Goenka Public School extends beyond the classrooms into the vibrant world of music and dance.",
+      "The Summer Camp at GD Goenka Public School offers students a fun-filled environment to learn, play, and grow during the holidays.",
   },
   {
-    title: "Cultural Festivals",
-    image: CulturalFestivals,
+    title: "Yoga",
+    image: YogaImage,
     description:
-      "Cultural festivals celebrate diversity and heritage, fostering unity among students.",
+      "Regular yoga sessions at GD Goenka Public School promote mindfulness, flexibility, and overall well-being among students.",
   },
   {
-    title: "Art & Craft",
-    image: Art,
+    title: "Sports Activity",
+    image: SportsActivity,
     description:
-      "GD Goenka Public School encourages artistic expression through a vibrant art and craft curriculum.",
+      "Exciting sports activities nurture a healthy competitive spirit and encourage physical fitness among students.",
   },
 ];
 

@@ -324,7 +324,9 @@ const ImageGallery = () => {
           }
           .gallery-image {
             height: 150px;
-          }
+          }9
+
+          
           .fullscreen-image {
             width: 500px;
             height: 400px;
