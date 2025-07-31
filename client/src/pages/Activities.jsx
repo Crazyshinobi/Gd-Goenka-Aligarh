@@ -36,7 +36,7 @@ import SummerCampImage from "../assets/SummerCampImg.jpeg";
 import PTMImage from "../assets/PTMImg.jpeg";
 import TeejImage from "../assets/TeejCelebration.jpeg";
 import GuruPurnimaImage from "../assets/GuruPurnimaImg.jpeg";
-import YogaDayImage from "../assets/TeejCelebration.jpeg";
+import YogaDayImage from "../assets/YogaImage.jpeg";
 
 import { Helmet } from "react-helmet";
 
@@ -242,12 +242,13 @@ const Activities = () => {
       image: SummerCampImage,
     },
 
-    {
-      id: 29,
-      title: "Teej Celebration",
+   
+     {
+      id: 31,
+      title: "Yoga Day",
       description:
-        "The vibrant festival of Teej was celebrated at G.D. Goenka Public School, Aligarh with great zeal and traditional fervor. Students dressed in colorful attire participated in cultural performances, including folk songs and dances, highlighting the significance of the festival. The event encouraged students to appreciate cultural heritage and festive traditions.",
-      image: TeejImage,
+        "International Yoga Day was observed at G.D. Goenka Public School, Aligarh with enthusiasm and dedication. Students and staff gathered for a special yoga session promoting physical fitness, mental well-being, and mindfulness. The event emphasized the importance of incorporating yoga into daily life for a healthy body and mind.",
+      image: YogaDayImage,
     },
     {
       id: 30,
@@ -256,12 +257,12 @@ const Activities = () => {
         "Guru Purnima at G.D. Goenka Public School, Aligarh was marked by heartfelt tributes to teachers and mentors. Students expressed gratitude through speeches, poems, and performances, acknowledging the invaluable role of teachers in shaping their lives. The event fostered respect, humility, and the timeless bond between students and teachers.",
       image: GuruPurnimaImage,
     },
-    {
-      id: 31,
-      title: "Yoga Day",
+     {
+      id: 29,
+      title: "Teej Celebration",
       description:
-        "International Yoga Day was observed at G.D. Goenka Public School, Aligarh with enthusiasm and dedication. Students and staff gathered for a special yoga session promoting physical fitness, mental well-being, and mindfulness. The event emphasized the importance of incorporating yoga into daily life for a healthy body and mind.",
-      image: YogaDayImage,
+        "The vibrant festival of Teej was celebrated at G.D. Goenka Public School, Aligarh with great zeal and traditional fervor. Students dressed in colorful attire participated in cultural performances, including folk songs and dances, highlighting the significance of the festival. The event encouraged students to appreciate cultural heritage and festive traditions.",
+      image: TeejImage,
     },
   ];
 
