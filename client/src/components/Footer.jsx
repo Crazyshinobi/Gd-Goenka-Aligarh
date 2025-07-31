@@ -37,6 +37,9 @@ function Footer() {
           <p className="mb-1 flex items-center">
             <FaEnvelope className="mr-2" /> Email: admission@gdgpsaligarh.com
           </p>
+          <p className="mb-1 flex items-center">
+            <FaEnvelope className="mr-2" /> Email: hr@gdgpsaligarh.com
+          </p>
         </div>
 
         {/* About GDGPS */}

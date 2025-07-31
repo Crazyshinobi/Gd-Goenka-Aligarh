@@ -6,19 +6,21 @@ import { NavLink } from "react-router-dom";
 const SocialConnect = () => {
   return (
     <div className="h-12 w-full shadow-md hidden bg-gray-100 lg:flex lg:flex-row items-center justify-between px-4">
-      <div className="flex flex-row items-center justify-end">
+      <div className="flex flex-row gap-1 items-center justify-end">
         <p className="mr-2">
           <BsTelephoneInbound />
         </p>
         <a href="tel:011-43060860">011-43060860,</a>{" "}
         <a href="tel:+91-9810054878"> +91-9810054878, </a>
         <a href="tel:+91-8126747489"> 8126747489 |</a>
+        <a href="mailto:hr@gdgpsaligarh.com" className="hover:text-red-600">hr@gdgpsaligarh.com</a>
         <div className="ml-2">
           {" "}
           <NavLink to={"/admission/application-form"}>
             <p className="text-white  font-bold capitalize bg-red-600 py-1 px-4 rounded-md" >Admission 2025-26</p>
           </NavLink>
         </div>
+        
       </div>
 
       <div>

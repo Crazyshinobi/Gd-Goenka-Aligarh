@@ -167,7 +167,7 @@ const ContactForm = () => {
                     <a href="tel:+91-8126747489"> 8126747489 </a>
                   </span>
                 </div>
-                <div className="flex items-center space-x-4 hover:text-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
+                <div className="flex items-center space-x-4  transition duration-300 ease-in-out transform hover:scale-105">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 md:h-6 md:w-6 text-blue-600 hover:text-blue-800 transition duration-300 flex-shrink-0"
@@ -182,11 +182,23 @@ const ContactForm = () => {
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                  <span className="text-base md:text-lg font-medium">
-                    <a href="mailto:admission@gdgpsaligarh.com">
+                  <span className="text-base flex flex-col  md:text-lg font-medium">
+                  <div className="hover:text-blue-600">
+                      <a href="mailto:admission@gdgpsaligarh.com" >
                       admission@gdgpsaligarh.com
                     </a>
+                  </div>
+                   
+                    
+
+                    <div className="hover:text-blue-600">
+                       <a href="mailto:hr@gdgpsaligarh.com">
+                      hr@gdgpsaligarh.com
+                    </a>
+                    </div>
+                    
                   </span>
+                  
                 </div>
               </div>
             </div>
