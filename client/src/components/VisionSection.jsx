@@ -103,7 +103,7 @@ function VisionSection() {
             <div className="bg-[#003963] text-4xl text-white p-6 text-center">
               Notifications
             </div>
-            <div className=" p-2 font-bold text-red-600 mx-auto text-center text-lg ">
+            <div className=" p-2 font-bold text-red-600 hover:underline mx-auto text-center text-lg ">
               <a
                 href="/pdfs/AnnualExamDateSheet24-25.pdf#toolbar=0"
                 target="_blank"
@@ -112,37 +112,49 @@ function VisionSection() {
                 Annual Exam Date Sheet 2024-25
               </a>
             </div>
-            <div className="p-6 space-y-4 text-[#212529]">
+
+            <div className="px-6 space-y-4 text-[#212529] text-lg flex flex-col">
+              <NavLink to="/activities" className="text-blue-600 hover:text-blue-800 hover:underline"> 
+                Teej Celebration - Gd Goenka
+              </NavLink>
+              <NavLink to="/activities" className="text-blue-600 hover:text-blue-800 hover:underline">
+                Guru Purnima - Gd Goenka
+              </NavLink>
+            </div>
+ 
+
+            <div className="px-6 py-4 space-y-4 text-[#212529]">
               {[
                 {
-                  title: "School Timing Notice | 01.04.2025",
+                  title: "Pocso Committee - Gd Goenka",
+                  pdfLink: "/pdfs/Pocso-Committee-of-GD-Goenka.pdf",
+                },
+                {
+                  title: "Harassment Committee - GD Goenka",
+                  pdfLink: "/pdfs/Sexual-Harassment-Committee-GDGOENKA.pdf",
+                },
+                {
+                  title: "School Timing Notice - GD Goenka",
                   pdfLink: "/pdfs/Notice-school-timing.pdf",
                 },
 
                 {
-                  title: "Online Fee Payment Notice | 01.04.2025",
+                  title: "Online Fee Payment Notice - GD Goenka",
                   pdfLink: "/pdfs/Notice-for-online-payment.pdf",
                 },
                 {
-                  title: "School Operation Committee Notice | 01.04.2025",
+                  title: "School Operation Committee Notice - GD Goenka",
                   pdfLink: "/pdfs/School-Operations-Committee-2025-26.pdf",
                 },
                 {
-                  title: "Christmas Day Celebration | 24.12.2024",
+                  title: "Christmas Day Celebration - GD Goenka",
                   pdfLink: "/pdfs/Christmas-Celebration.pdf",
                 },
                 {
-                  title: "Diwali Celebration | 28.10.2024",
+                  title: "Diwali Celebration - GD Goenka",
                   pdfLink: "/pdfs/Diwali-Celebration.pdf",
                 },
-                {
-                  title: "Janmashtami Celebration | 24.08.2024",
-                  pdfLink: "/pdfs/Janamashtami-Celebration.pdf",
-                },
-                {
-                  title: "Independence Day Celebration | 14.08.2024",
-                  pdfLink: "/pdfs/Independence-Day.pdf",
-                },
+               
               ].map((event, index) => (
                 <p key={index} className="text-lg leading-relaxed">
                   <a
