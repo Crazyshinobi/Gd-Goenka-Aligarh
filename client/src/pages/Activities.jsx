@@ -28,15 +28,15 @@ import BlackDayAssemblyImage from "../assets/BlackDayAssemblyImage.jpeg";
 import SchoolExhibition from "../assets/SchoolExhibition.jpeg";
 import AnnualSportsMeetImage from "../assets/SportsMeet.jpeg";
 import art from "../assets/artCraftactivity.jpeg";
-import EarthDay from '../assets/EarthDayImg.jpeg'
-import PahalgamImg from '../assets/pahalgamImg.jpeg'
-import GoenkanTest from '../assets/goenkanTest.jpeg'
-import MothersDayImage from '../assets/MothersDayImg.jpeg'
-import SummerCampImage from '../assets/SummerCampImg.jpeg'
-import PTMImage from '../assets/PTMImg.jpeg'
-import TeejImage from '../assets/TeejCelebration.jpeg'
-import GuruPurnimaImage from '../assets/GuruPurnimaImg.jpeg'
-import YogaDayImage from '../assets/TeejCelebration.jpeg'
+import EarthDay from "../assets/EarthDayImg.jpeg";
+import PahalgamImg from "../assets/pahalgamImg.jpeg";
+import GoenkanTest from "../assets/goenkanTest.jpeg";
+import MothersDayImage from "../assets/MothersDayImg.jpeg";
+import SummerCampImage from "../assets/SummerCampImg.jpeg";
+import PTMImage from "../assets/PTMImg.jpeg";
+import TeejImage from "../assets/TeejCelebration.jpeg";
+import GuruPurnimaImage from "../assets/GuruPurnimaImg.jpeg";
+import YogaDayImage from "../assets/TeejCelebration.jpeg";
 
 import { Helmet } from "react-helmet";
 
@@ -231,7 +231,7 @@ const Activities = () => {
       title: "Parent's Teacher Meeting",
       description:
         "We successfully conducted our first Parent-Teacher Meeting of the new academic session on 21 May 2025. It was a productive day filled with meaningful conversations between parents and teachers, all focused on the growth and well-being of our students.Parents received insights into their child's early progress, classroom behavior, and goals for the term. A big thank you to all the parents who joined us and to our dedicated teachers for making it a valuable experience!",
-        image: PTMImage,
+      image: PTMImage,
     },
 
     {
@@ -240,33 +240,30 @@ const Activities = () => {
       description:
         "The much-awaited Summer Camp 2025 commenced with great enthusiasm and vibrant energy on its first day. Students started the day with joyful participation in music and dance, setting a lively tone. This was followed by energetic sessions of cricket, badminton, and table tennis.Creative skills were nurtured through cursive writing, while martial arts boosted confidence and discipline.The day concluded with smiles and a sense of accomplishment!",
       image: SummerCampImage,
-    },  
+    },
 
-     {
-  id: 29,
-  title: "Teej Celebration",
-  description:
-    "The vibrant festival of Teej was celebrated at G.D. Goenka Public School, Aligarh with great zeal and traditional fervor. Students dressed in colorful attire participated in cultural performances, including folk songs and dances, highlighting the significance of the festival. The event encouraged students to appreciate cultural heritage and festive traditions.",
-  image: TeejImage, 
-},
-{
-  id: 30,
-  title: "Guru Purnima",
-  description:
-    "Guru Purnima at G.D. Goenka Public School, Aligarh was marked by heartfelt tributes to teachers and mentors. Students expressed gratitude through speeches, poems, and performances, acknowledging the invaluable role of teachers in shaping their lives. The event fostered respect, humility, and the timeless bond between students and teachers.",
-  image: GuruPurnimaImage, 
-},
-{
-  id: 31,
-  title: "Yoga Day",
-  description:
-    "International Yoga Day was observed at G.D. Goenka Public School, Aligarh with enthusiasm and dedication. Students and staff gathered for a special yoga session promoting physical fitness, mental well-being, and mindfulness. The event emphasized the importance of incorporating yoga into daily life for a healthy body and mind.",
-  image: YogaDayImage, 
-},
-
-  
+    {
+      id: 29,
+      title: "Teej Celebration",
+      description:
+        "The vibrant festival of Teej was celebrated at G.D. Goenka Public School, Aligarh with great zeal and traditional fervor. Students dressed in colorful attire participated in cultural performances, including folk songs and dances, highlighting the significance of the festival. The event encouraged students to appreciate cultural heritage and festive traditions.",
+      image: TeejImage,
+    },
+    {
+      id: 30,
+      title: "Guru Purnima",
+      description:
+        "Guru Purnima at G.D. Goenka Public School, Aligarh was marked by heartfelt tributes to teachers and mentors. Students expressed gratitude through speeches, poems, and performances, acknowledging the invaluable role of teachers in shaping their lives. The event fostered respect, humility, and the timeless bond between students and teachers.",
+      image: GuruPurnimaImage,
+    },
+    {
+      id: 31,
+      title: "Yoga Day",
+      description:
+        "International Yoga Day was observed at G.D. Goenka Public School, Aligarh with enthusiasm and dedication. Students and staff gathered for a special yoga session promoting physical fitness, mental well-being, and mindfulness. The event emphasized the importance of incorporating yoga into daily life for a healthy body and mind.",
+      image: YogaDayImage,
+    },
   ];
-  
 
   return (
     <Layout>
