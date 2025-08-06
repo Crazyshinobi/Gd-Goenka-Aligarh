@@ -117,7 +117,7 @@ const EnquiryForm = () => {
   }, [formData.state]);
 
   return (
-    <div className="w-full p-6 bg-gradient-to-r from-red-400 via-red-500 to-red-200 rounded-lg shadow-lg">
+    <div className="w-full p-6 bg-[#2a3c7e] rounded-lg shadow-lg">
       <div className="mb-2 text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
           Get In Touch
@@ -314,7 +314,7 @@ const EnquiryForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full py-3 px-4 border border-orange-400 rounded-md shadow-lg text-sm font-medium text-white bg-orange-400 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-150 ease-in-out transform hover:scale-105"
+          className="w-full py-3 px-4 border border-[#bea05a] rounded-md shadow-lg text-sm font-medium text-white bg-[#bea05a] hover:bg-[#bea05a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#bea05a] transition duration-150 ease-in-out transform hover:scale-105"
         >
           {loading ? <div className="loader1"></div> : "Enquire now"}
         </button>

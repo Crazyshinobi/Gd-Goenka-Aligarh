@@ -8,7 +8,7 @@ import bg1 from "../assets/bg2.jpg";
 
 function VisionSection() {
   return (
-    <div className=" w-full mx-auto px-4 py-12 sm:py-16 flex flex-col items-center bg-gradient-to-r  from-blue-50  to-blue-100 ">
+    <div className=" w-full font-polymath mx-auto px-4 py-12 sm:py-16 flex flex-col items-center bg-gradient-to-r  from-blue-50  to-blue-100 ">
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 max-w-[1280px]">
         {/* Principal Section */}
         <motion.div
@@ -35,11 +35,11 @@ function VisionSection() {
               />
             </div>
             <div className="text-center p-6">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003963] mb-2">
+              <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold text-[#003963] mb-2">
                 Principal's Message
               </h2>
               <p className="text-red-500 font-medium mb-4">Dr. Anubhav Lodhi</p>
-              <p className="text-[#666666] text-base sm:text-lg mb-6 leading-relaxed">
+              <p className="text-[#666666] text-base sm:text-lg mb-6 leading-relaxed font-polymath">
                 GD Goenka Public School provides every student with the
                 opportunity to achieve their best in academics, sports, and
                 personal development, shaping a bright future.
@@ -63,7 +63,7 @@ function VisionSection() {
           {["Vision", "Mission"].map((item, index) => (
             <motion.div
               key={index}
-              className="bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+              className="p-6 rounded-lg shadow-lg bg-[#2a3c7e] hover:shadow-2xl transition-shadow duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -100,7 +100,7 @@ function VisionSection() {
           transition={{ duration: 0.7 }}
         >
           <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-            <div className="bg-[#003963] text-4xl text-white p-6 text-center">
+            <div className="bg-[#707070] text-4xl text-white p-6 text-center">
               Notifications
             </div>
             <div className=" p-2 font-bold text-red-600 hover:underline mx-auto text-center text-lg ">
@@ -114,16 +114,16 @@ function VisionSection() {
             </div>
 
             <div className="px-6 space-y-4 text-[#212529] text-lg flex flex-col">
-              <NavLink to="/activities" className="text-blue-600 hover:text-blue-800 hover:underline"> 
+              <NavLink to="/activities" className="text-[#2a3c7e] hover:underline"> 
                 Teej Celebration - Gd Goenka
               </NavLink>
-              <NavLink to="/activities" className="text-blue-600 hover:text-blue-800 hover:underline">
+              <NavLink to="/activities" className="text-[#2a3c7e] hover:underline">
                 Guru Purnima - Gd Goenka
               </NavLink>
             </div>
  
 
-            <div className="px-6 py-4 space-y-4 text-[#212529]">
+            <div className="px-6 py-4 space-y-4 text-[#2a3c7e] ">
               {[
                 {
                   title: "Pocso Committee - Gd Goenka",
@@ -161,7 +161,7 @@ function VisionSection() {
                     href={`${event.pdfLink}#toolbar=0`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 hover:underline"
+                    className="text-[#2a3c7e]  hover:underline"
                   >
                     {event.title}
                   </a>

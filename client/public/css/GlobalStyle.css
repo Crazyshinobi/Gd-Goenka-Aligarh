@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'Polymath';
+  src: url('/fonts/polymath/Polymath-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Polymath';
+  src: url('/fonts/polymath/Polymath-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Polymath';
+  src: url('/fonts/polymath/Polymath-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Polymath';
+  src: url('/fonts/polymath/Polymath-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Polymath';
+  src: url('/fonts/polymath/Polymath-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Polymath';
+  src: url('/fonts/polymath/Polymath-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}

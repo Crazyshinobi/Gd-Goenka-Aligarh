@@ -107,7 +107,7 @@ const VisionAndMission = () => {
 
             {/* Vision Content */}
             <motion.div
-              className="relative order-2 md:order-1 section-content"
+              className="relative order-2 md:order-1 section-content "
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -123,7 +123,7 @@ const VisionAndMission = () => {
                 In our vision for the school, each and every student should
                 develop and mould their ambitions towards perfection.
               </p>
-              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed ">
                 The goal is to support and nurture the student's and our own
                 natural desire to be lifelong learners. We anticipate creativity
                 and initiative, enterprise and innovation, and cognitive

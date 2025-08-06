@@ -49,7 +49,7 @@ function Faculty() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#2a3c7e] mb-4">
           Meet Our Expert Faculty
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -59,7 +59,7 @@ function Faculty() {
 
         <div className="hidden lg:flex justify-center mb-8">
           <NavLink to={"/our-faculty"}>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+            <button className="bg-[#2a3c7e] text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
               Explore More Faculty
             </button>
           </NavLink>

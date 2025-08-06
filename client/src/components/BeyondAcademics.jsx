@@ -53,7 +53,7 @@ const cardsData = [
 function BeyondAcademics() {
   return (
     <section
-      className="py-16 px-4 w-full sm:px-6 lg:px-8 bg-cover bg-center"
+      className="py-16 px-4 w-full sm:px-6 lg:px-8 bg-cover bg-center font-polymath font-normal"
       style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="mx-auto max-w-[1280px]">
@@ -63,7 +63,7 @@ function BeyondAcademics() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#2a3c7e] mb-4">
             Beyond Academics
           </h2>
           <p className="text-lg text-gray-600 italic leading-relaxed">
@@ -76,7 +76,7 @@ function BeyondAcademics() {
 
         <div className="hidden lg:flex space-x-4 justify-center mb-8">
           <a href="/beyond-academics">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+            <button className="bg-[#2a3c7e] hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
               Explore More
             </button>
           </a>
@@ -131,7 +131,7 @@ function BeyondAcademics() {
                   </div>
                   <a
                     href="/beyond-academics"
-                    className="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors mt-auto"
+                    className="inline-flex items-center text-[#2a3c7e] hover:text-[#2a3c7e] transition-colors mt-auto"
                   >
                     Read More
                     <svg

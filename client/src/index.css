@@ -9,6 +9,7 @@
   @tailwind utilities;
 }
 
+
 html,body{
   scroll-behavior: smooth;
 }

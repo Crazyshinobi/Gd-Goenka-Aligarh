@@ -52,8 +52,8 @@ function Achievers(){
   return (
     <div className=" w-full mx-auto px-1 pt-4 pb-4 bg-cover bg-center flex flex-col items-center" style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", }}>
       <div className="text-center  text-xs text-gray-600 pt-10 mb-8">
-        <h1 className='text-5xl font-bold text-blue-900'>Student Achievers @ GDGPS</h1>
-        <h3 className='text-2xl font-semibold text-blue-900'>CLASS XII:2023-24</h3>
+        <h1 className='text-5xl font-bold text-[#2a3c7e]'>Student Achievers @ GDGPS</h1>
+        <h3 className='text-2xl font-semibold text-[#2a3c7e]'>CLASS XII:2023-24</h3>
       </div>
       
       <Carousel

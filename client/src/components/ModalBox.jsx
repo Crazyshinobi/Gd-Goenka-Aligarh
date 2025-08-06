@@ -12,7 +12,7 @@ const ModalBox = () => {
     <div className="absolute min-h-screen hidden lg:flex md:flex">
       <button
         onClick={openModal}
-        className="fixed -rotate-90 top-1/2 -right-[4.2rem] px-6 py-5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-t-lg z-50 shadow-lg text-sm sm:text-base"
+        className="fixed -rotate-90 top-1/2 -right-[4.2rem] px-6 py-5 bg-[#bea05a]  text-white font-semibold rounded-t-lg z-50 shadow-lg text-sm sm:text-base"
       >
         Admission Enquiry
       </button>
@@ -29,7 +29,7 @@ const ModalBox = () => {
             <div className="relative p-4 sm:p-6 md:p-6">
               <button
                 onClick={closeModal}
-                className="absolute top-2 right-2 text-xl text-white bg-red-600 rounded-full p-2"
+                className="absolute top-2 right-2 text-xl text-white bg-[#bea05a] rounded-full p-2"
               >
                 <RxCross1 />
               </button>
