@@ -19,44 +19,44 @@ function Footer() {
         backgroundPosition: "center",
       }}
     >
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" >
         {/* Contact Info */}
         <div>
-          <h2 className="text-xl font-bold mb-3 flex items-center">
+          <h2 className="text-xl font-bold mb-3 font-polymath flex items-center">
             <FaMapMarkerAlt className="mr-2" /> G.D. Goenka Public School
           </h2>
-          <p className="mb-2">
+          <p className="mb-2 font-polymath font-light">
             3KMs Stone, Mathura Rd, Sasni Gate, Aligarh - Uttar Pradesh 202001
           </p>
-          <p className="mb-1 flex items-center">
+          <p className="mb-1 flex items-center font-polymath font-light">
             <FaPhoneAlt className="mr-2" /> Landline: 011-43060860
           </p>
-          <p className="mb-1 flex items-center">
+          <p className="mb-1 flex items-center font-polymath font-light">
             <FaMobileAlt className="mr-2" /> Mobile: +91-9810054878 , 8126747489
           </p>
-          <p className="mb-1 flex items-center">
+          <p className="mb-1 flex items-center font-polymath font-light">
             <FaEnvelope className="mr-2" /> Email: admission@gdgpsaligarh.com
           </p>
-          <p className="mb-1 flex items-center">
+          <p className="mb-1 flex items-center font-polymath font-light">
             <FaEnvelope className="mr-2" /> Email: hr@gdgpsaligarh.com
           </p>
         </div>
 
         {/* About GDGPS */}
         <div>
-          <h3 className="text-xl font-bold mb-3">About GDGPS</h3>
+          <h3 className="text-xl font-bold mb-3 font-polymath">About GDGPS</h3>
           <ul>
             <NavLink to={"/about/principal-message"}>
-              <li className="hover:text-blue-300 cursor-pointer">
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">
                 Principal's Message
               </li>
             </NavLink>
             <NavLink to={"/about/management"}>
-              <li className="hover:text-blue-300 cursor-pointer">Management</li>
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">Management</li>
             </NavLink>
             <NavLink to={"/about/vision-and-mission"}>
               {" "}
-              <li className="hover:text-blue-300 cursor-pointer">
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">
                 Mission and Vision
               </li>
             </NavLink>
@@ -65,22 +65,22 @@ function Footer() {
 
         {/* Academics */}
         <div>
-          <h3 className="text-xl font-bold mb-3">Academics</h3>
+          <h3 className="text-xl font-bold mb-3 font-polymath">Academics</h3>
           <ul>
             <NavLink to={"/academics/faculty-&-curriculum"}>
               {" "}
-              <li className="hover:text-blue-300 cursor-pointer">
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">
                 Faculty & Curriculum
               </li>
             </NavLink>
             <NavLink to={"/academics/teaching-methodology"}>
               {" "}
-              <li className="hover:text-blue-300 cursor-pointer">
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">
                 Teaching Methodology
               </li>
             </NavLink>
             <NavLink to={"/academics/competition-&-awards"}>
-              <li className="hover:text-blue-300 cursor-pointer">
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">
                 Competitions & Awards
               </li>
             </NavLink>
@@ -89,7 +89,7 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <li className="hover:text-blue-300 cursor-pointer">
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">
                 Mandatory Disclosure
               </li>
             </a>
@@ -98,22 +98,22 @@ function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-xl font-bold mb-3">Quick Links</h3>
+          <h3 className="text-xl font-bold mb-3 font-polymath">Quick Links</h3>
           <ul>
-            <li className="hover:text-blue-300 cursor-pointer">
+            <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">
               Events & Celebrations
             </li>
             <NavLink to={"/admission/application-form"}>
-              <li className="hover:text-blue-300 cursor-pointer">Admissions</li>
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">Admissions</li>
             </NavLink>
             <NavLink to={"/gallery "}>
               {" "}
-              <li className="hover:text-blue-300 cursor-pointer">
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">
                 Image Gallery
               </li>
             </NavLink>
             <NavLink to={"/contact-us"}>
-              <li className="hover:text-blue-300 cursor-pointer">Contact Us</li>
+              <li className="hover:text-blue-300 cursor-pointer font-polymath font-light">Contact Us</li>
             </NavLink>
             <li>
               <div>

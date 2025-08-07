@@ -41,13 +41,13 @@ function Header1() {
           />
         </Link>
 
-        <ul className="hidden xl:flex items-center gap-4 font-semibold text-base relative right-[60px]">
-          <li className="peer p-3 hover:bg-sky-300 hover:text-white rounded-md cursor-pointer transition-all">
+        <ul className="hidden xl:flex items-center gap-4  text-base relative right-[60px] font-polymath font-light">
+          <li className="peer p-3 hover:bg-[#003963] hover:text-white rounded-md cursor-pointer transition-all">
             ABOUT US
           </li>
 
           <ul
-            className="pt-4  top-[49px] font-extralight absolute hidden peer-hover:flex hover:flex w-[240px] 
+            className="pt-4  top-[49px] font-light absolute hidden peer-hover:flex hover:flex w-[240px] 
                 flex-col bg-white drop-shadow-lg rounded-md gap-2 transition-all duration-100 ease-in"
           >
             <NavLink to={"/about/principal-message"}>
@@ -77,7 +77,7 @@ function Header1() {
           </ul>
 
           <div className="relative peer">
-            <li className="relative peer p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+            <li className="relative peer p-3 hover:bg-[#003963]  hover:text-white rounded-md cursor-pointer transition-all">
               ACADEMICS
             </li>
 
@@ -145,14 +145,14 @@ function Header1() {
           <div className="relative peer">
             <NavLink to={"/beyond-academics"}>
               {" "}
-              <li className="relative peer p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+              <li className="relative peer p-3 hover:bg-[#003963]  hover:text-white rounded-md cursor-pointer transition-all">
                 BEYOND ACADEMICS
               </li>
             </NavLink>
           </div>
 
           <div className="relative peer">
-            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+            <li className="relative peer uppercase p-3 hover:bg-[#003963]  hover:text-white rounded-md cursor-pointer transition-all">
               our campus
             </li>
 
@@ -161,7 +161,7 @@ function Header1() {
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
               <NavLink to={"/our-campus/class-infrastructure"}>
-                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px] hover:text-white">
+                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px] hover:text-white leading-none">
                   class infrastructure
                 </li>
               </NavLink>
@@ -176,11 +176,10 @@ function Header1() {
 
           
           <div className="relative peer">
-            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+            <li className="relative peer uppercase p-3 hover:bg-[#003963]  hover:text-white rounded-md cursor-pointer transition-all">
             Schedule
             </li>
-
-            <ul
+ <ul
               className="fee_payment_drop pt-3 top-[49px] font-extralight uppercase absolute hidden peer-hover:flex hover:flex w-[200px]
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
@@ -189,7 +188,7 @@ function Header1() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
+                 <li className="menu-item cursor-pointer ps-2 flex mb-[-16px]  hover:text-white leading-none">
                   Junior Daily Routine
                 </li>
               </a>
@@ -229,7 +228,7 @@ function Header1() {
 
           {/* committee  */}
           <div className="relative peer">
-            <li className="relative peer uppercase p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+            <li className="relative peer uppercase p-3 hover:bg-[#003963]  hover:text-white rounded-md cursor-pointer transition-all">
             Committee
             </li>
 
@@ -242,7 +241,7 @@ function Header1() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <li className="menu-item cursor-pointer hover:text-white ps-2 flex  mt-[-16px]  mb-[-16px]  leading-none ">
+                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px]  hover:text-white leading-none">
                   Harassment Committee
                 </li>
               </a>
@@ -262,7 +261,7 @@ function Header1() {
           </div>
 
           <div className="relative peer">
-            <li className="relative peer uppercase p-3 hover:bg-sky-300 hover:text-white rounded-md cursor-pointer transition-all">
+            <li className="relative peer uppercase p-3 hover:bg-[#003963] hover:text-white rounded-md cursor-pointer transition-all">
               admissions
             </li>
 
@@ -318,14 +317,14 @@ function Header1() {
           <div className="relative peer">
             <NavLink to={"/contact-us"}>
               {" "}
-              <li className="relative peer p-3 hover:bg-sky-300  hover:text-white rounded-md cursor-pointer transition-all">
+              <li className="relative peer p-3 hover:bg-[#003963]  hover:text-white rounded-md cursor-pointer transition-all">
                 CONTACT US
               </li>
             </NavLink>
           </div>
 
           <div
-            className="nav_toggler cursor-pointer text-xl text-red-400"
+            className="nav_toggler cursor-pointer text-xl text-[#003963]"
             onClick={sideToggle}
           >
             <FaBars />
