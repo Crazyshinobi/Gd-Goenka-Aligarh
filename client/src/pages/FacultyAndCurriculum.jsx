@@ -167,7 +167,7 @@ const FacultyAndCurriculum = () => {
           transition={{ duration: 0.8 }}
         />
         <motion.h1
-          className="absolute shadow-md bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          className="absolute shadow-md bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-[#2a3c7e] bg-white bg-opacity-80 px-4 py-2 rounded"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -182,7 +182,7 @@ const FacultyAndCurriculum = () => {
       {/* Main Content */}
       <motion.section
         ref={(el) => (sectionRefs.current[0] = el)}
-        className="container mx-auto py-12 w-full"
+        className="container mx-auto py-12 w-full font-polymath"
         style={{ backgroundImage: `url(${bg1})` }}
       >
         <motion.h1
@@ -279,7 +279,7 @@ const FacultyAndCurriculum = () => {
               className="w-full h-[25rem] p-6 object-cover"
             />
             <div className="p-6">
-              <h2 className="text-2xl font-bold text-blue-900 mb-4">
+              <h2 className="text-2xl font-bold text-[#2a3c7e] mb-4">
                 Pre Primary and Early Primary School <br />
                 (Nursery to Grade II)
               </h2>
@@ -304,7 +304,7 @@ const FacultyAndCurriculum = () => {
               className="w-full h-[25rem] p-6 object-cover"
             />
             <div className="p-6">
-              <h2 className="text-2xl font-bold text-blue-900 mb-4">
+              <h2 className="text-2xl font-bold text-[#2a3c7e] mb-4">
                 Primary School (Grade III to V)
               </h2>
               <p className="text-gray-600 text-base leading-relaxed">
@@ -337,7 +337,7 @@ const FacultyAndCurriculum = () => {
               className="w-full h-[25rem] p-6 object-cover"
             />
             <div className="p-6">
-              <h2 className="text-2xl font-bold text-blue-900 mb-4">
+              <h2 className="text-2xl font-bold text-[#2a3c7e] mb-4">
                 The Middle Section (Grade VI to VIII)
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-4">
@@ -361,7 +361,7 @@ const FacultyAndCurriculum = () => {
               className="w-full h-[25rem] p-6 object-cover"
             />
             <div className="p-6">
-              <h2 className="text-2xl font-bold text-blue-900 mb-4">
+              <h2 className="text-2xl font-bold text-[#2a3c7e] mb-4">
                 The Senior Section (Grade IX to XII)
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
@@ -402,7 +402,7 @@ const FacultyAndCurriculum = () => {
         className="py-16 w-full bg-yellow-50 flex flex-col items-center"
       >
         <motion.h2
-          className="text-4xl font-bold text-center text-blue-900 mb-8"
+          className="text-4xl font-bold text-center text-[#2a3c7e] mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -437,7 +437,7 @@ const FacultyAndCurriculum = () => {
                 className="w-full h-full object-fill transition-transform duration-500 group-hover:scale-110"
               />
               <motion.div
-                className="absolute bottom-0 left-0 w-full bg-green-300 text-white text-center p-3 
+                className="absolute bottom-0 left-0 w-full bg-[#2a3c7e] text-white text-center p-3 
                 transform translate-y-full transition-transform duration-500 group-hover:translate-y-0 scrollable-content"
                 style={{ height: "100%", overflow: "auto" }}
               >

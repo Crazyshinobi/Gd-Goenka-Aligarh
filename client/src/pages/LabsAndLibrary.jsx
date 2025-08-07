@@ -90,7 +90,7 @@ const LabsAndLibrary = () => {
         />
 
         <motion.h1
-          className="absolute shadow-md bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          className="absolute shadow-md bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-[#2a3c7e] bg-white bg-opacity-80 px-4 py-2 rounded"
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
@@ -107,13 +107,13 @@ const LabsAndLibrary = () => {
       <NavigationPages />
 
       <motion.div
-        className="px-4 py-12 md:py-20 flex flex-col items-center bg-gradient-to-b from-gray-50 to-white bg-pattern"
+        className="px-4 py-12 md:py-20 flex flex-col items-center bg-gradient-to-b from-gray-50 to-white bg-pattern font-polymath"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <motion.h1
-          className="text-center text-3xl md:text-5xl font-bold text-blue-900 mb-8"
+          className="text-center text-3xl md:text-5xl font-bold text-[#2a3c7e] mb-8"
           variants={fadeInUp}
         >
           Labs and Library

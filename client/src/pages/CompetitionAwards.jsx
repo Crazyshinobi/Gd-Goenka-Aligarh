@@ -54,7 +54,7 @@ const CompetitionAwards = () => {
           transition={{ duration: 1 }}
         />
         <motion.h1
-          className="absolute bottom-6 text-3xl md:text-5xl left-8  font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-md"
+          className="absolute bottom-6 text-3xl md:text-5xl left-8  font-bold text-[#2a3c7e] bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-md"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
@@ -67,8 +67,8 @@ const CompetitionAwards = () => {
       <NavigationPages />
 
       {/* Main Content Section */}
-      <div className="principalMessageSection px-4 py-12 bg-pattern">
-        <h1 className="text-center text-3xl font-bold text-blue-900 mb-8 award-title">
+      <div className="principalMessageSection px-4 py-12 bg-pattern font-polymath">
+        <h1 className="text-center text-3xl font-black text-[#2a3c7e] mb-8 award-title">
           Competition & Awards
         </h1>
         
@@ -80,7 +80,7 @@ const CompetitionAwards = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
-            <div className="overflow-y-scroll pr-4 h-[20rem]">
+            <div className=" pr-4 h-[20rem]">
               <p className="text-lg leading-relaxed mb-4">
                 To celebrate and glorify excellence in Academic performance,
                 the scholastic excellence awards are conferred upon students who
@@ -119,7 +119,7 @@ const CompetitionAwards = () => {
               transition={{ duration: 0.8 }}
             >
               <div className="p-6">
-                <h2 className="text-xl font-bold text-blue-900 mb-4">Roll of Honour</h2>
+                <h2 className="text-xl font-bold text-[#2a3c7e] mb-4">Roll of Honour</h2>
                 <p className="text-gray-600 leading-relaxed">
                   The Roll of Honour celebrates excellence and success,
                   recognizing brilliance and diligence among students.
@@ -135,7 +135,7 @@ const CompetitionAwards = () => {
               transition={{ duration: 0.8 }}
             >
               <div className="p-6">
-                <h2 className="text-xl font-bold text-blue-900 mb-4">Certificate of Appreciation</h2>
+                <h2 className="text-xl font-bold text-[#2a3c7e] mb-4">Certificate of Appreciation</h2>
                 <p className="text-gray-600 leading-relaxed">
                   Scholastic performance is applauded with certificates,
                   encouraging every effort made by students.

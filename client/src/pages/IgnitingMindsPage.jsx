@@ -24,7 +24,7 @@ const IgnitingMindsPage = () => {
 
       {/* Banner Section */}
       <div className="relative bgImage">
-        <h1  className="absolute  bottom-6 left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-md">
+        <h1  className="absolute  bottom-6 left-8 text-3xl md:text-5xl font-bold text-[#2a3c7e] bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-md">
           ACADEMICS
         </h1>
         <img
@@ -42,7 +42,7 @@ const IgnitingMindsPage = () => {
           Igniting Minds
         </h1>
 
-        <section className="container mx-auto max-w-7xl py-12 flex flex-col lg:flex-row items-center justify-center">
+        <section className="container mx-auto max-w-7xl py-12 flex flex-col lg:flex-row items-center justify-center font-polymath">
           {/* Left Content */}
           <div className="w-[90%] md:w-[80%] lg:w-[45%] bg-gray-100 text-gray-800 rounded-l shadow-lg p-8 h-[26rem] flex items-center">
             <div className="w-full h-[20rem] overflow-y-scroll pr-4 scrollable-content">

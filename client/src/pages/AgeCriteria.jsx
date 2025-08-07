@@ -114,7 +114,7 @@ const AgeCriteria = () => {
         />
 
         <motion.h1
-          className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded shadow-md"
+          className="absolute bottom-4 md:bottom-6 left-4 md:left-8 text-xl md:text-5xl font-bold text-[#2a3c7e] bg-white bg-opacity-80 px-4 py-2 rounded shadow-md"
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
@@ -130,13 +130,13 @@ const AgeCriteria = () => {
 
       <NavigationPages />
 
-      <div className="max-w-4xl mx-auto my-8 p-6 bg-yellow-200 shadow-lg rounded-lg">
-        <h2 className="text-xl md:text-2xl font-bold text-center text-gray-800 mb-4">
+      <div className="max-w-4xl mx-auto my-8 p-6 bg-[#2a3c7e] shadow-lg rounded-lg">
+        <h2 className="text-xl md:text-2xl font-bold text-center text-white mb-4">
           Age Criteria for AY 2025-26 Admissions
         </h2>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse border border-gray-400">
-            <thead className="bg-yellow-500 text-white">
+            <thead className="bg-[#bea05a] text-white">
               <tr>
                 <th className="border border-gray-400 px-4 py-2">Class</th>
                 <th className="border border-gray-400 px-4 py-2">Min Age</th>
@@ -148,7 +148,7 @@ const AgeCriteria = () => {
             </thead>
             <tbody className="bg-yellow-100 text-gray-800">
               {ageCriteria.map((item, index) => (
-                <tr key={index} className="hover:bg-yellow-300">
+                <tr key={index} className="hover:bg-[#bea05a]">
                   <td className="border border-gray-400 px-4 py-2 text-center">
                     {item.className}
                   </td>

@@ -77,7 +77,7 @@ function GoenkanPursuits() {
           transition={{ duration: 0.8 }}
         />
         <motion.h1
-          className="absolute bottom-4 shadow-md md:bottom-6 left-4 md:left-8 text-2xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          className="absolute bottom-4 shadow-md md:bottom-6 left-4 md:left-8 text-2xl md:text-5xl font-bold text-[#2a3c7e] bg-white bg-opacity-80 px-4 py-2 rounded"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}

@@ -223,7 +223,7 @@ const AdmissionForm = () => {
           transition={{ duration: 0.8 }}
         />
         <motion.h1
-          className="absolute uppercase bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded shadow-md"
+          className="absolute uppercase bottom-4 md:bottom-6 left-4 md:left-8 text-3xl md:text-5xl font-bold text-[#bea05a] bg-white bg-opacity-80 px-4 py-2 rounded shadow-md"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -235,7 +235,7 @@ const AdmissionForm = () => {
       <NavigationPages />
 
       <div
-        className="min-h-[80vh] bg-cover bg-center bg-no-repeat flex items-center justify-center p-4 md:p-8"
+        className="min-h-[80vh] bg-cover bg-center bg-no-repeat flex items-center justify-center p-4 md:p-8 font-polymath"
         style={{
           backgroundImage: `url(${bgdesign})`,
         }}
@@ -246,9 +246,9 @@ const AdmissionForm = () => {
               <img src={AdmissionSideBanner} alt="Admission Side Banner" />
             </div>
 
-            <div className="w-full lg:flex-[55%] md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-red-500">
+            <div className="w-full lg:flex-[55%] md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-[#bea05a]">
               <div className="mb-6 md:mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600">
+                <h2 className="text-3xl md:text-4xl font-bold text-center text-[#bea05a]">
                   {isLogin ? "Login" : "Admission Form"}
                 </h2>
                 <p className="text-center text-gray-600 mt-2">
@@ -263,7 +263,7 @@ const AdmissionForm = () => {
                   onClick={() => handleToggleForm(false)} // Navigate to the main form
                   className={`py-2 px-4 text-sm font-medium ${
                     !isLogin
-                      ? "bg-red-600 text-white"
+                      ? "bg-[#2a3c7e] text-white"
                       : "bg-gray-200 text-gray-700"
                   } rounded-md`}
                 >
@@ -273,7 +273,7 @@ const AdmissionForm = () => {
                   onClick={() => handleToggleForm(true)} // Navigate to the login route
                   className={`py-2 px-4 text-sm font-medium ${
                     isLogin
-                      ? "bg-red-600 text-white"
+                      ? "bg-[#2a3c7e] text-white"
                       : "bg-gray-200 text-gray-700"
                   } rounded-md`}
                 >
@@ -309,7 +309,7 @@ const AdmissionForm = () => {
                       placeholder="Enter email or username"
                     />
                     {errors.email && (
-                      <p className="mt-1 text-sm text-red-600">
+                       <p className="mt-1 text-sm text-red-600">
                         {errors.email}
                       </p>
                     )}
@@ -388,7 +388,7 @@ const AdmissionForm = () => {
                         )}
                       </button>
                       {errors.password && (
-                        <p className="mt-1 text-sm text-red-600">
+                         <p className="mt-1 text-sm text-red-600">
                           {errors.password}
                         </p>
                       )}
@@ -407,7 +407,7 @@ const AdmissionForm = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out"
+                    className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#2a3c7e] hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out"
                   >
                     {loading ? <div className="loader"></div> : "Login"}
                   </button>
@@ -457,7 +457,7 @@ const AdmissionForm = () => {
                         className="mt-1 p-3 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-150 ease-in-out"
                       />
                       {errors.dob && (
-                        <p className="mt-1 text-sm text-red-600">
+                         <p className="mt-1 text-sm text-red-600">
                           {errors.dob}
                         </p>
                       )}
@@ -480,7 +480,7 @@ const AdmissionForm = () => {
                         placeholder="Enter your email"
                       />
                       {errors.email && (
-                        <p className="mt-1 text-sm text-red-600">
+                         <p className="mt-1 text-sm text-red-600">
                           {errors.email}
                         </p>
                       )}
@@ -503,7 +503,7 @@ const AdmissionForm = () => {
                         placeholder="Enter 10-digit mobile number"
                       />
                       {errors.mobile && (
-                        <p className="mt-1 text-sm text-red-600">
+                         <p className="mt-1 text-sm text-red-600">
                           {errors.mobile}
                         </p>
                       )}
@@ -527,7 +527,7 @@ const AdmissionForm = () => {
                         <option value="2025">2025-26</option>
                       </select>
                       {errors.academic_year && (
-                        <p className="mt-1 text-sm text-red-600">
+                         <p className="mt-1 text-sm text-red-600">
                           {errors.academic_year}
                         </p>
                       )}
@@ -565,7 +565,7 @@ const AdmissionForm = () => {
                         <option value="Class XII">Class XII</option>
                       </select>
                       {errors.grade && (
-                        <p className="mt-1 text-sm text-red-600">
+                         <p className="mt-1 text-sm text-red-600">
                           {errors.grade}
                         </p>
                       )}
@@ -574,7 +574,7 @@ const AdmissionForm = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out"
+                    className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#2a3c7e] hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#bea05a] transition duration-150 ease-in-out"
                   >
                     {loading ? <div className="loader"></div> : "Apply now"}
                   </button>

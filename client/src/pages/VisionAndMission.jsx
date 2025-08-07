@@ -76,7 +76,7 @@ const VisionAndMission = () => {
           transition={{ duration: 1 }}
         />
         <motion.h1
-          className="absolute bottom-4 md:bottom-6 shadow-md left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          className="absolute bottom-4 md:bottom-6 shadow-md left-4 md:left-8 text-3xl md:text-5xl font-bold text-[#2a3c7e] bg-white bg-opacity-80 px-4 py-2 rounded"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
@@ -89,7 +89,7 @@ const VisionAndMission = () => {
       <NavigationPages />
 
       {/* Vision Section */}
-      <div className="space-y-12 sm:space-y-16 md:space-y-20 py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+      <div className="space-y-12 sm:space-y-16 md:space-y-20 py-8 sm:py-12 px-4 sm:px-6 lg:px-8 font-polymath">
         <section className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-center">
             {/* Vision Image */}
@@ -116,7 +116,7 @@ const VisionAndMission = () => {
               <div className="absolute -z-10 top-0 left-0 text-gray-100 text-[80px] sm:text-[100px] md:text-[120px] lg:text-[180px] font-bold leading-none opacity-50">
                 VISION
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-red-600 mb-4 sm:mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2a3c7e] mb-4 sm:mb-6">
                 VISION
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 sm:mb-6">
@@ -169,12 +169,12 @@ const VisionAndMission = () => {
               <div className="absolute -z-10 top-0 lg:-left-48 left-0 md:-left-40 text-gray-100 text-[80px] sm:text-[100px] md:text-[120px] lg:text-[180px] font-bold leading-none opacity-50">
                 MISSION
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-red-600 mb-4 sm:mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2a3c7e] mb-4 sm:mb-6">
                 MISSION
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 sm:mb-6">
                 The school motto{" "}
-                <span className="text-red-600 font-semibold">
+                <span className="text-[#2a3c7e] font-semibold">
                   HIGHER STRONGER BRIGHTER
                 </span>{" "}
                 takes its core idea from a quest for excellence, an insatiable

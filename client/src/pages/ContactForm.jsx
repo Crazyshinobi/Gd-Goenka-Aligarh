@@ -93,7 +93,7 @@ const ContactForm = () => {
           transition={{ duration: 0.8 }}
         />
         <motion.h1
-          className="absolute uppercase bottom-4 md:bottom-6 left-4 md:left-8 text-xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded shadow-md"
+          className="absolute uppercase bottom-4 md:bottom-6 left-4 md:left-8 text-xl md:text-5xl font-bold text-[#2a3c7e] bg-white bg-opacity-80 px-4 py-2 rounded shadow-md"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -115,7 +115,7 @@ const ContactForm = () => {
           <div className="flex flex-col md:flex-row">
             {/* Contact Information */}
             <div className="w-full lg:flex-[40%] md:flex-1 md:w-1/3 bg-gray-100 p-6 md:p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out">
-              <h2 className="text-2xl md:text-3xl font-bold text-center text-red-600 mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-center text-[#2a3c7e] mb-6">
                 Contact Us
               </h2>
               <div className="space-y-6">
@@ -191,22 +191,52 @@ const ContactForm = () => {
                    
                     
 
-                    <div className="hover:text-blue-600">
+                   
+                    
+                  </span>
+
+                  
+                </div>
+
+
+                 <div className="flex items-center space-x-4  transition duration-300 ease-in-out transform hover:scale-105">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 md:h-6 md:w-6 text-blue-600 hover:text-blue-800 transition duration-300 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+              
+                   <span className="text-base flex flex-col  md:text-lg font-medium">
+                     <div className="hover:text-blue-600">
                        <a href="mailto:hr@gdgpsaligarh.com">
-                      hr@gdgpsaligarh.com
+                      For Jobs(Send Cv): hr@gdgpsaligarh.com
                     </a>
                     </div>
-                    
                   </span>
                   
                 </div>
+ 
+
+
+
+
+
               </div>
             </div>
 
             {/* Registration Form */}
-            <div className="w-full lg:flex-[60%] md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-red-500">
+            <div className="w-full lg:flex-[60%] md:w-2/3 md:flex-1 p-6 md:p-8 bg-white rounded-lg shadow-lg border-2 border-[#bea05a]">
               <div className="mb-6 md:mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600">
+                <h2 className="text-3xl md:text-4xl font-bold text-center text-[#2a3c7e]">
                   Get In Touch
                 </h2>
                 <p className="text-center text-gray-600 mt-2">
@@ -310,7 +340,7 @@ const ContactForm = () => {
 
                 <button
                   type="submit"
-                  className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out transform hover:scale-105"
+                  className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#bea05a] hover:bg-[#bea05a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out transform hover:scale-105"
                 >
                   {loading ? <div className="loader"></div> : "Submit"}
                 </button>

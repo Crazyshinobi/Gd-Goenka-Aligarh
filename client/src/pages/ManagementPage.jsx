@@ -53,7 +53,7 @@ const ManagementPage = () => {
           transition={{ duration: 0.8 }}
         />
         <motion.h1
-          className="absolute bottom-4 md:bottom-6 shadow-md left-4 md:left-8 text-3xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          className="absolute bottom-4 md:bottom-6 shadow-md left-4 md:left-8 text-3xl md:text-5xl font-bold text-[#003963] bg-white bg-opacity-80 px-4 py-2 rounded"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -68,7 +68,7 @@ const ManagementPage = () => {
       {/* Management Content Section */}
       <div className="managementMessageSection px-4 py-8 md:py-12 bg-pattern">
         <motion.h1
-          className="text-center text-4xl text-blue-900 mb-8 fade-in"
+          className="text-center text-4xl text-[#bea05a] mb-8 fade-in font-polymath" 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -79,7 +79,7 @@ const ManagementPage = () => {
 
         {/* Principal's Section */}
         <motion.section
-          className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg flex flex-col md:flex-row overflow-hidden fade-in"
+          className="max-w-6xl mx-auto font-polymath bg-white shadow-lg rounded-lg flex flex-col md:flex-row overflow-hidden fade-in"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -111,7 +111,7 @@ const ManagementPage = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.h2
-              className="text-2xl md:text-3xl font-bold text-blue-700 mb-2"
+              className="text-2xl md:text-3xl font-bold text-[#2a3c7e] mb-2"
               whileHover={{ color: "#003963" }}
             >
               “I don’t teach children, but create conditions for them to learn.”
@@ -183,7 +183,7 @@ const ManagementPage = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.h2
-              className="text-xl md:text-3xl font-bold text-blue-700 mb-2"
+              className="text-xl md:text-3xl font-bold text-[#2a3c7e] mb-2"
               whileHover={{ color: "#003963" }}
             >
               “Stories have no end; countries have no lines. Everything you feel
