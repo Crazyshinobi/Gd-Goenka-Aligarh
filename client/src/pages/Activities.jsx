@@ -37,6 +37,7 @@ import PTMImage from "../assets/PTMImg.jpeg";
 import TeejImage from "../assets/TeejCelebration.jpeg";
 import GuruPurnimaImage from "../assets/GuruPurnimaImg.jpeg";
 import YogaDayImage from "../assets/YogaImage.jpeg";
+import RakshaBandhan from '../assets/RakshaBandhanImg.jpeg'
 
 import { Helmet } from "react-helmet";
 
@@ -264,6 +265,14 @@ const Activities = () => {
         "The vibrant festival of Teej was celebrated at G.D. Goenka Public School, Aligarh with great zeal and traditional fervor. Students dressed in colorful attire participated in cultural performances, including folk songs and dances, highlighting the significance of the festival. The event encouraged students to appreciate cultural heritage and festive traditions.",
       image: TeejImage,
     },
+    {
+  id: 30,
+  title: "Raksha Bandhan Celebration",
+  description:
+    "Raksha Bandhan is celebrated at G.D. Goenka Aligarh with joy and tradition. The festival strengthens the bond between brothers and sisters, where students participate in tying rakhis, exchanging gifts, and sharing heartfelt moments that promote love, respect, and unity.",
+  image: RakshaBandhan,
+},
+
   ];
 
   return (

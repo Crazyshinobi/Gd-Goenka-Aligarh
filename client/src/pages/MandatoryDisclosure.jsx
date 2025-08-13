@@ -81,7 +81,7 @@ const MandatoryDisclosure = () => {
           transition={{ duration: 0.8 }}
         />
         <motion.h1
-          className="absolute bottom-4 shadow-md md:bottom-6 left-4 md:left-8 text-2xl md:text-5xl font-bold text-red-600 bg-white bg-opacity-80 px-4 py-2 rounded"
+          className="absolute bottom-4 shadow-md md:bottom-6 left-4 md:left-8 text-2xl md:text-5xl font-bold text-[#2a3c7e] bg-white bg-opacity-80 px-4 py-2 rounded"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -97,7 +97,7 @@ const MandatoryDisclosure = () => {
         <div className="lg:w-2/5 mb-4 lg:mb-0 text-left">
           <button
             onClick={() => handlePdfSelect(MandatoryDisclosurePdf)}
-            className="text-base text-white bg-blue-600 py-2 px-4 rounded-lg uppercase mb-2 block"
+            className="text-base text-white bg-[#2a3c7e] py-2 px-4 rounded-lg uppercase mb-2 block"
           >
             Mandatory Disclosure
           </button>
@@ -124,7 +124,7 @@ const MandatoryDisclosure = () => {
             <button
               key={index}
               onClick={() => handlePdfSelect(item.link)}
-              className="text-lg text-black uppercase bg-[#ffc107] border-[#ffc107] text-left py-2 px-4 rounded-lg mb-2 w-full"
+              className="text-lg text-black uppercase bg-[#bea05a] border-[#bea05a] text-left py-2 px-4 rounded-lg mb-2 w-full"
             >
               {item.label}
             </button>
