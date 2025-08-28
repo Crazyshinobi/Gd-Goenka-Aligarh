@@ -85,6 +85,49 @@ function Header1() {
               className="academics_drop pt-4 top-[49px] font-extralight absolute hidden peer-hover:flex hover:flex w-[240px]
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
+
+              {/* NEW MENUS */}
+
+                <a href="/pdfs/Calendar2025-26.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer">
+                  <li className="menu-item cursor-pointer ps-2 hover:text-white flex mb-[-16px]">
+                    Academic Calendar 2025-26
+                  </li>
+                </a>
+                <hr />
+
+                <a href="/pdfs/Newsletter.pdf#toolbar=0&navpanes=0&scrollbar=0" target="_blank"
+                rel="noopener noreferrer">
+                  <li className="menu-item cursor-pointer ps-2 hover:text-white flex mb-[-16px]">
+                    NEWSLETTER
+                  </li>
+                </a>
+                <hr />
+                
+                <a href="/pdfs/Handbook-for-Teachers.pdf#toolbar=0&navpanes=0&scrollbar=0" target="_blank"
+                rel="noopener noreferrer">
+                  <li className="menu-item cursor-pointer ps-2 hover:text-white flex mb-[-16px]">
+                    TEACHER'S HANDBOOK
+                  </li>
+                </a>
+                <hr />
+                <a href="/pdfs/NEP2020.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer">
+               <li className="menu-item cursor-pointer ps-2 hover:text-white flex mb-[-16px]">
+                NEP 2020
+              </li>
+                </a>
+                <hr />
+                <a href="/pdfs/National-Curricculam-Framework 2023.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer">
+               <li className="menu-item cursor-pointer ps-2 hover:text-white flex mb-[-16px]">
+                 NCF 2023
+              </li>
+                </a>
+                <hr />
               <NavLink to={"/academics/faculty-&-curriculum"}>
                 <li className="menu-item cursor-pointer ps-2 hover:text-white flex mb-[-16px]">
                   FACULTY & CURRICULUM
