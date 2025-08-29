@@ -128,6 +128,10 @@ function Header1() {
               </li>
                 </a>
                 <hr />
+
+           
+
+              {/* OLD MENUS */}
               <NavLink to={"/academics/faculty-&-curriculum"}>
                 <li className="menu-item cursor-pointer ps-2 hover:text-white flex mb-[-16px]">
                   FACULTY & CURRICULUM
@@ -279,6 +283,17 @@ function Header1() {
               className="fee_payment_drop pt-3 top-[49px] font-extralight uppercase absolute hidden peer-hover:flex hover:flex w-[220px]
                 flex-col bg-white drop-shadow-lg rounded-md delay-[2s] gap-4"
             >
+                <a
+                href="/pdfs/PTA 2025-26.docx#toolbar=0&navpanes=0&scrollbar=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <li className="menu-item cursor-pointer ps-2 flex mb-[-16px]  hover:text-white leading-none">
+                  PTA 2025-26
+                </li>
+              </a>
+              <hr />
+               
                <a
                 href="/pdfs/Sexual-Harassment-Committee-GDGOENKA.pdf#toolbar=0&navpanes=0&scrollbar=0"
                 target="_blank"

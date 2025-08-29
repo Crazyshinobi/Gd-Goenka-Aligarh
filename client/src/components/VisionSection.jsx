@@ -5,10 +5,11 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import bg1 from "../assets/bg2.jpg";
+import Newsletters from "./Newsletters";
 
 function VisionSection() {
   return (
-    <div className=" w-full font-polymath mx-auto px-4 py-12 sm:py-16 flex flex-col items-center bg-gradient-to-r  from-blue-50  to-blue-100 ">
+    <div className="w-full font-polymath mx-auto px-4 py-12 sm:py-16 flex flex-col items-center bg-gradient-to-r from-blue-50 to-blue-100">
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 max-w-[1280px]">
         {/* Principal Section */}
         <motion.div
@@ -91,94 +92,95 @@ function VisionSection() {
           ))}
         </div>
 
-        {/* Term Section */}
-        <motion.div
-          className="w-full lg:w-[35%]"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-            <div className="bg-[#707070] text-4xl text-white p-6 text-center">
-              Notifications
+        {/* Combined section- Important Documents and Notifications */}
+        <div className="w-full lg:w-[35%] space-y-8">
+          {/* News Letter / Important Documents */}
+          <Newsletters />
+          {/* Term Section */}
+          <motion.div
+            className="w-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="bg-[#707070] text-4xl text-white p-6 text-center">
+                Notifications
+              </div>
+              <div className="p-2 font-bold text-red-600 hover:underline mx-auto text-center text-lg">
+                <a
+                  href="/pdfs/AnnualExamDateSheet24-25.pdf#toolbar=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Annual Exam Date Sheet 2024-25
+                </a>
+              </div>
+              <div className="px-6 space-y-4 text-[#212529] text-lg flex flex-col">
+                <NavLink to="/activities" className="text-[#2a3c7e] hover:underline">
+                  Teej Celebration - Gd Goenka
+                </NavLink>
+                <NavLink to="/activities" className="text-[#2a3c7e] hover:underline">
+                  Guru Purnima - Gd Goenka
+                </NavLink>
+              </div>
+
+              <div className="px-6 py-4 space-y-4 text-[#2a3c7e]">
+                {[
+                  {
+                    title: "Pocso Committee - Gd Goenka",
+                    pdfLink: "/pdfs/Pocso-Committee-of-GD-Goenka.pdf",
+                  },
+                  {
+                    title: "Harassment Committee - GD Goenka",
+                    pdfLink: "/pdfs/Sexual-Harassment-Committee-GDGOENKA.pdf",
+                  },
+                  {
+                    title: "School Timing Notice - GD Goenka",
+                    pdfLink: "/pdfs/Notice-school-timing.pdf",
+                  },
+                  {
+                    title: "Online Fee Payment Notice - GD Goenka",
+                    pdfLink: "/pdfs/Notice-for-online-payment.pdf",
+                  },
+                  {
+                    title: "School Operation Committee Notice - GD Goenka",
+                    pdfLink: "/pdfs/School-Operations-Committee-2025-26.pdf",
+                  },
+                  {
+                    title: "Christmas Day Celebration - GD Goenka",
+                    pdfLink: "/pdfs/Christmas-Celebration.pdf",
+                  },
+                  {
+                    title: "Diwali Celebration - GD Goenka",
+                    pdfLink: "/pdfs/Diwali-Celebration.pdf",
+                  },
+                ].map((event, index) => (
+                  <p key={index} className="text-lg leading-relaxed">
+                    <a
+                      href={`${event.pdfLink}#toolbar=0`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#2a3c7e] hover:underline"
+                    >
+                      {event.title}
+                    </a>
+                    {event.newtitle}
+                  </p>
+                ))}
+              </div>
             </div>
-            <div className=" p-2 font-bold text-red-600 hover:underline mx-auto text-center text-lg ">
-              <a
-                href="/pdfs/AnnualExamDateSheet24-25.pdf#toolbar=0"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="text-center mt-4">
+              <NavLink
+                to={"/academics/goenkan-pursuits"}
+                className="text-blue-500 hover:underline"
               >
-                Annual Exam Date Sheet 2024-25
-              </a>
-            </div>
-
-            <div className="px-6 space-y-4 text-[#212529] text-lg flex flex-col">
-              <NavLink to="/activities" className="text-[#2a3c7e] hover:underline"> 
-                Teej Celebration - Gd Goenka
-              </NavLink>
-              <NavLink to="/activities" className="text-[#2a3c7e] hover:underline">
-                Guru Purnima - Gd Goenka
+                Read more
               </NavLink>
             </div>
- 
-
-            <div className="px-6 py-4 space-y-4 text-[#2a3c7e] ">
-              {[
-                {
-                  title: "Pocso Committee - Gd Goenka",
-                  pdfLink: "/pdfs/Pocso-Committee-of-GD-Goenka.pdf",
-                },
-                {
-                  title: "Harassment Committee - GD Goenka",
-                  pdfLink: "/pdfs/Sexual-Harassment-Committee-GDGOENKA.pdf",
-                },
-                {
-                  title: "School Timing Notice - GD Goenka",
-                  pdfLink: "/pdfs/Notice-school-timing.pdf",
-                },
-
-                {
-                  title: "Online Fee Payment Notice - GD Goenka",
-                  pdfLink: "/pdfs/Notice-for-online-payment.pdf",
-                },
-                {
-                  title: "School Operation Committee Notice - GD Goenka",
-                  pdfLink: "/pdfs/School-Operations-Committee-2025-26.pdf",
-                },
-                {
-                  title: "Christmas Day Celebration - GD Goenka",
-                  pdfLink: "/pdfs/Christmas-Celebration.pdf",
-                },
-                {
-                  title: "Diwali Celebration - GD Goenka",
-                  pdfLink: "/pdfs/Diwali-Celebration.pdf",
-                },
-               
-              ].map((event, index) => (
-                <p key={index} className="text-lg leading-relaxed">
-                  <a
-                    href={`${event.pdfLink}#toolbar=0`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#2a3c7e]  hover:underline"
-                  >
-                    {event.title}
-                  </a>
-                  {event.newtitle}
-                </p>
-              ))}
-            </div>
-          </div>
-          <div className="text-center mt-4">
-            <NavLink
-              to={"/academics/goenkan-pursuits"}
-              className="text-blue-500 hover:underline"
-            >
-              Read more
-            </NavLink>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Inspirational Message */}
