@@ -4,7 +4,6 @@ import icon from "../assets/prin_icon1.png";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import bg1 from "../assets/bg2.jpg";
 import Newsletters from "./Newsletters";
 
 function VisionSection() {
@@ -75,8 +74,8 @@ function VisionSection() {
               </h2>
               <p className="text-white text-lg mb-6">
                 {item === "Vision"
-                  ? "To create an inspiring environment that fosters creativity, curiosity, and growth, where learning becomes a journey of limitless possibilities."
-                  : "GD Goenka Aligarh empowers students with knowledge, skills, and leadership to thrive in a dynamic world and meet future challenges with confidence."}
+                  ? "Empowering students to reach their full potential in a supportive and inclusive learning environment that fosters academic excellence, character development, and environmental awareness"
+                  : "To provide a holistic education that empowers students to excel academically, develop strong character, and become environmentally conscious global citizens. We strive to create a supportive and inclusive learning environment that encourages curiosity, creativity, and critical thinking, enabling our students to reach their full potential and make a positive impact in the world."}
               </p>
               <div className="flex justify-end">
                 <NavLink to={"/about/vision-and-mission"}>

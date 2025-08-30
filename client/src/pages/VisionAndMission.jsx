@@ -123,16 +123,10 @@ const VisionAndMission = () => {
                 In our vision for the school, each and every student should
                 develop and mould their ambitions towards perfection.
               </p>
-              <p className="text-sm sm:text-base text-gray-700 leading-relaxed ">
-                The goal is to support and nurture the student's and our own
-                natural desire to be lifelong learners. We anticipate creativity
-                and initiative, enterprise and innovation, and cognitive
-                strategies for progressive learning. Our vision is to prepare
-                and motivate our students for a rapidly changing world, by
-                instilling in them critical thinking skills, a global
-                perspective, and a respect for core values of honesty, loyalty,
-                perseverance, and compassion. Students will have success for
-                today and be prepared for tomorrow.
+              <p className=" sm:text-base text-gray-700 leading-relaxed ">
+               Empowering students to reach their full potential in a supportive and inclusive 
+               learning environment that fosters academic excellence, character development, 
+               and environmental awareness.
               </p>
             </motion.div>
           </div>
@@ -180,23 +174,15 @@ const VisionAndMission = () => {
                 takes its core idea from a quest for excellence, an insatiable
                 thirst for knowledge, and a limitless craving for the latest.
               </p>
-              <div className="space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+              <div className="space-y-4 sm:text-base text-gray-700 leading-relaxed">
                 <p>
-                  Our school aspires to be a national leader in developing
-                  educated contributors, career-ready learners, and global
-                  citizens, and in generating a meaningful, high-impact,
-                  progressive, and sustainable partnership with society.
+                 To provide a holistic education that empowers students to excel academically, 
+                 develop strong character, and become environmentally conscious global citizens. 
+                 We strive to create a supportive and inclusive learning environment that encourages curiosity, 
+                 creativity, and critical thinking, enabling our students to reach their full potential 
+                 and make a positive impact in the world.
                 </p>
-                <p>
-                  Our mission is to provide a safe haven where everyone is
-                  valued and respected. The faculty, in partnership with parents
-                  and families, are fully committed to student's college and
-                  career readiness.
-                </p>
-                <p>
-                  We honour achievement and promote pride in ourselves, our
-                  school, and our country.
-                </p>
+               
               </div>
             </motion.div>
           </div>
