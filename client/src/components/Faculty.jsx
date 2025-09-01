@@ -6,6 +6,8 @@ import KomitUjjwal from "../assets/KomitUjjwal.jpeg";
 import DivyaChauhan from "../assets/DivyaChauhan.jpeg";
 import PinkyMahour from "../assets/PinkyMahour.jpeg";
 import DiptiVerma from "../assets/DiptiVerma.jpeg";
+import HimadriSaraswat from "../assets/HimadriSaraswat.png";
+import HimaniSharma from "../assets/HimaniSharma.jpeg";
 import { motion } from "framer-motion";
 import { NavLink } from 'react-router-dom';
 
@@ -36,7 +38,16 @@ const facultyData = [
   {
     name: "Ms. Dipti Verma",
     image: DiptiVerma
-  }
+  },
+  {
+    name: "Ms. Himadri Saraswat",
+    image: HimadriSaraswat
+  },
+  {
+    name: "Mrs. Himani Sharma",
+    image: HimaniSharma
+  },
+
 ];
 
 function Faculty() {
