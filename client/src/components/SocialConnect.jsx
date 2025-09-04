@@ -42,6 +42,12 @@ const SocialConnect = () => {
               <p className="text-blue-700 ">ERP Login </p>
             </a>
             <p>|</p>
+
+             <a href="/pdfs/GD-Goenka-Public-School-Aligarh.pdf#toolbar=0&navpanes=0&scrollbar=0" target="_blank"
+                rel="noopener noreferrer">
+              <p className="text-blue-700 ">ERP Manual </p>
+            </a>
+            <p>|</p>
           </div>
           <li className="icon-content">
             <a
